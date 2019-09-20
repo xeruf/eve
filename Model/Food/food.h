@@ -4,6 +4,7 @@
 
 #ifndef EVE_FOOD_H
 #define EVE_FOOD_H
+
 class Food {
 private:
     int value = 1;

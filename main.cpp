@@ -1,10 +1,7 @@
 #include <iostream>
-#include "test.h"
-#include "world.h"
+#include "Model/World/world.h"
+#include "Model/Food/food.h"
 #include <experimental/random>
-
-#define WIDTH 1000
-#define HEIGHT 800
 
 int main() {
     auto world = new World();
