@@ -8,6 +8,19 @@ add_executable(
         src/main.cpp src/main.h
         src/model/world/world.cpp src/model/world/world.h
         src/model/food/food.cpp src/model/food/food.h
-
-        test/catch.hpp
 )
+
+add_executable(
+        tests
+        test/main.cpp
+        test/model/food/food.cpp
+        src/model/world/world.cpp src/model/world/world.h
+        src/model/food/food.cpp src/model/food/food.h
+)
+
+find_package(Catch2 REQUIRED)
+target_link_libraries(tests Catch2::Catch2)
+
+include(CTest)
+include(Catch)
+catch_discover_tests(tests)
