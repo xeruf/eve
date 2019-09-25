@@ -12,4 +12,5 @@ add_executable(
 
         Model/Food/food.cpp
         Model/Food/food.h
+        main.h
 )
