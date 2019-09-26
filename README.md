@@ -1,14 +1,21 @@
 # EVE
 
-## About
+This project aims to simulate basic lifeforms evolving and getting smarter, in a simplified manner.
 
-This project aims to simulate basic lifeforms evolving and getting smarter, in a simplified manner
+## Development
 
+### Installation
 
-## Installation
+1. Install cmake & [Catch2](https://github.com/catchorg/Catch2) on your OS
+2. Clone this repository:  
+   ```git clone https://github.com/Xerus2000/eve```
+3. Build 'eve' via CLion so that all tasks become available for running
 
-We are using [Catch2](https://github.com/catchorg/Catch2) as testing framework.
-In order to test it, it Catch2 must be installed on your operating system.
+### Structure
 
-To clone this repository, run:
-```git clone https://github.com/Xerus2000/eve```
+All source files go into [src], separated into model, view and controller.
+The test files are under [test] and mirror the source file structure.
+
+### Testing
+
+We use [Catch2](https://github.com/catchorg/Catch2) for testing.
