@@ -8,7 +8,8 @@ This project aims to simulate basic lifeforms evolving and getting smarter, in a
 
 1. Install cmake & [Catch2](https://github.com/catchorg/Catch2) on your OS
 2. Clone this repository:  
-   ```git clone https://github.com/Xerus2000/eve```
+   HTTPS: ```git clone https://github.com/Xerus2000/eve```  
+   SSH: ```git clone git@github.com:Xerus2000/eve.git```
 3. Build 'eve' via CLion so that all tasks become available for running
 
 ### Structure
