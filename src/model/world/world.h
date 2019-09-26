@@ -5,7 +5,7 @@
 #ifndef EVE_WORLD_H
 #define EVE_WORLD_H
 
-#include "../food/food.h"
+#include "../entity/food/food.h"
 
 class World {
 private:

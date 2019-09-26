@@ -1,6 +1,6 @@
 #include <iostream>
-#include "model/world/world.h"
-#include "model/food/food.h"
+#include "model/entity/world/world.h"
+#include "model/entity/food/food.h"
 #include <experimental/random>
 
 int main() {
