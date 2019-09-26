@@ -12,6 +12,7 @@ private:
     Food food[100];
     int foodIndex = 0;
 public:
+
     void addFood(Food *);
     Food * getFood();
     int getSize();

@@ -9,6 +9,7 @@
 
 #include <exception>
 
+#include <experimental/random>
 #include <iostream>
 
 class Food : public Object {
@@ -17,6 +18,7 @@ private:
 
     void checkValue();
 public:
+    Food();
     Food(Point, int);
     Food(int, int, int);
     ~Food() override;
