@@ -10,4 +10,6 @@ TEST_CASE("Construct food", "[food]") {
     REQUIRE(food2.getValue() == 10);
     REQUIRE(food2.getPosition().x == -100);
     REQUIRE(food2.getPosition().y == 200);
+
+    REQUIRE_THROWS_AS(Food(0, 0, -10), std::range_error);
 }

@@ -7,13 +7,19 @@
 
 #include "../object.h"
 
+#include <exception>
+
+#include <iostream>
+
 class Food : public Object {
 private:
     int value;
+
+    void checkValue();
 public:
-    explicit Food(Point, int);
-    explicit Food(int, int, int);
-    ~Food();
+    Food(Point, int);
+    Food(int, int, int);
+    ~Food() override;
 
     int getValue();
 };
