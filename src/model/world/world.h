@@ -5,15 +5,15 @@
 #ifndef EVE_WORLD_H
 #define EVE_WORLD_H
 
-#include "../entity/food/food.h"
+#include "../object/food/food.h"
 
 class World {
 private:
-    Food food[100] = {};
+    Food food[100];
     int foodIndex = 0;
 public:
-    void addFood(Food*);
-    Food* getFood();
+    void addFood(Food *);
+    Food * getFood();
     int getSize();
 };
 

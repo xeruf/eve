@@ -7,12 +7,13 @@
 
 #include "../object.h"
 
-class Food : Object {
+class Food : public Object {
 private:
     int value;
 public:
     explicit Food(Point, int);
     explicit Food(int, int, int);
+    ~Food();
 
     int getValue();
 };

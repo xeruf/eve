@@ -8,15 +8,15 @@ add_executable(
         src/main.cpp src/main.h
         src/model/object/object.cpp src/model/object/object.h
         src/model/world/world.cpp src/model/world/world.h
-        src/model/object/food/food.cpp src/model/object/food/food.h src/model/model.h)
+        src/model/object/food/food.cpp src/model/object/food/food.h src/model/model.h src/model/model.cpp)
 
 add_executable(
         tests
         test/main.cpp
-        test/model/food/food.cpp
+        test/model/object/food/food.cpp
         src/model/object/object.cpp src/model/object/object.h
         src/model/world/world.cpp src/model/world/world.h
-        src/model/object/food/food.cpp src/model/object/food/food.h)
+        src/model/object/food/food.cpp src/model/object/food/food.h src/model/model.cpp)
 
 find_package(Catch2 REQUIRED)
 target_link_libraries(tests Catch2::Catch2)

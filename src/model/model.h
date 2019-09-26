@@ -8,7 +8,9 @@
 struct Point {
     int x;
     int y;
-    Point(int x, int y) : x{x}, y{y} {}
+    Point(int, int);
 };
+
+bool operator==(const Point &, const Point &);
 
 #endif //EVE_MODEL_H
