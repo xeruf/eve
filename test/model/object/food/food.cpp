@@ -1,6 +1,7 @@
 #include "../../../../src/model/object/food/food.h"
 #include "../../../catch.hpp"
 
+
 TEST_CASE("Construct food", "[food]") {
     Food food1 = Food(10, 20, 30);
     REQUIRE(food1.getValue() == 30);

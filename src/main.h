@@ -5,4 +5,6 @@
 #ifndef EVE_MAIN_H
 #define EVE_MAIN_H
 
+#include "controller/controller.h"
+
 #endif //EVE_MAIN_H
