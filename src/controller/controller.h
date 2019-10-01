@@ -6,8 +6,6 @@
 #define EVE_CONTROLLER_H
 
 #include "../model/world/world.h"
-#include "../model/object/food/food.h"
-#include "../model/object/entity/entity.h"
 
 #include <vector>
 

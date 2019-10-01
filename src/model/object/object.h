@@ -14,14 +14,14 @@ class Object {
 protected:
     Point position;
 public:
-    explicit Object(Point);
-    Object(int, int);
+    explicit Object(Point position);
+    Object(int x, int y);
 
     virtual ~Object() = 0;
 
     virtual Point getPosition();
-    virtual void setPosition(Point);
-    virtual void setPosition(int, int);
+    virtual void setPosition(Point position);
+    virtual void setPosition(int x, int y);
 };
 
 #endif //EVE_OBJECT_H
