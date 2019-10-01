@@ -19,8 +19,8 @@ private:
     void checkValue();
 public:
     Food();
-    Food(Point, int);
-    Food(int, int, int);
+    Food(Point position, int value);
+    Food(int x, int y, int value);
     ~Food() override;
 
     int getValue();
