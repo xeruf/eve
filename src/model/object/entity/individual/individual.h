@@ -8,6 +8,7 @@
 #include "../entity.h"
 
 class Individual : public Entity {
+public:
     virtual ~Individual() = 0;
 };
 
