@@ -7,6 +7,8 @@
 
 #include "../entity.h"
 
-class Individual : public Entity {};
+class Individual : public Entity {
+    virtual ~Individual() = 0;
+};
 
 #endif //EVE_INDIVIDUAL_H
