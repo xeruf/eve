@@ -1,5 +1,5 @@
-#include "../../../../src/model/object/food/food.h"
-#include "../../../catch.hpp"
+#include "../../../../../src/model/object/entity/food/food.h"
+#include "../../../../catch.hpp"
 
 
 TEST_CASE("Construct food", "[food]") {

@@ -5,8 +5,8 @@
 #ifndef EVE_WORLD_H
 #define EVE_WORLD_H
 
-#include "../object/food/food.h"
-#include "../object/entity/individual.h"
+#include "../object/entity/food/food.h"
+#include "../object/entity/individual/individual.h"
 
 #include <vector>
 
