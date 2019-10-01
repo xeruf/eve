@@ -5,7 +5,7 @@
 #ifndef EVE_FOOD_H
 #define EVE_FOOD_H
 
-#include "../../entity.h"
+#include "../entity.h"
 
 #include <exception>
 

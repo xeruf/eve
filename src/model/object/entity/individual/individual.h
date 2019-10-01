@@ -5,8 +5,10 @@
 #ifndef EVE_INDIVIDUAL_H
 #define EVE_INDIVIDUAL_H
 
-#include "../../entity.h"
+#include "../entity.h"
 
-class Individual : public Entity {};
+class Individual : public Entity {
+    virtual ~Individual() = 0;
+};
 
 #endif //EVE_INDIVIDUAL_H
