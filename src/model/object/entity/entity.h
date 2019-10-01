@@ -7,7 +7,6 @@
 #ifndef EVE_ENTITY_H
 #define EVE_ENTITY_H
 
-
 #include "../../model.h"
 #include "../object.h"
 

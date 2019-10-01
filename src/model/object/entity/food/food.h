@@ -21,7 +21,6 @@ public:
     Food();
     Food(Point position, int value);
     Food(int x, int y, int value);
-    ~Food() override;
 
     int getValue();
 };
