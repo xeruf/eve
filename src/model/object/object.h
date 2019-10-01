@@ -14,8 +14,8 @@ protected:
     Point position;
 
 public:
-    explicit Object(Point);
-    Object(int, int);
+    explicit Object(Point position);
+    Object(int x, int y);
 
     virtual ~Object() = 0;
 };

@@ -13,6 +13,6 @@ struct Point {
     Point(int x, int y);
 };
 
-bool operator == (Point & a, Point & b);
+bool operator == (const Point &, const Point &);
 
 #endif //EVE_MODEL_H
