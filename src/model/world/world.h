@@ -6,16 +6,19 @@
 #define EVE_WORLD_H
 
 #include "../object/food/food.h"
+#include "../object/entity/entity.h"
+
+#include <vector>
 
 class World {
 private:
-    Food food[100];
-    int foodIndex = 0;
+    std::vector<Food> foods;
+    std::vector<Entity> entities;
 public:
+    World();
 
-    void addFood(Food *);
-    Food * getFood();
-    int getSize();
+    void addFood(Food &);
+    std::vector<Food> getFood();
 };
 
 #endif //EVE_WORLD_H

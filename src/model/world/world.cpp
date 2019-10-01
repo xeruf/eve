@@ -4,14 +4,12 @@
 
 #include "world.h"
 
-Food *World::getFood() {
-    return food;
+World::World() = default;
+
+std::vector<Food> World::getFood() {
+    return foods;
 }
 
-void World::addFood(Food *food) {
-    this->food[foodIndex++] = *food;
-}
-
-int World::getSize() {
-    return foodIndex;
+void World::addFood(Food & food) {
+    foods.push_back(food);
 }
