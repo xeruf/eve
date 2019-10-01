@@ -5,14 +5,14 @@
 #ifndef EVE_FOOD_H
 #define EVE_FOOD_H
 
-#include "../object.h"
+#include "../entity.h"
 
 #include <exception>
 
 #include <experimental/random>
 #include <iostream>
 
-class Food : public Object {
+class Food : public Entity {
 private:
     int value;
 

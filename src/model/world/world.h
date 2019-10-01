@@ -6,14 +6,14 @@
 #define EVE_WORLD_H
 
 #include "../object/food/food.h"
-#include "../object/entity/entity.h"
+#include "../object/entity/individual.h"
 
 #include <vector>
 
 class World {
 private:
     std::vector<Food> foods;
-    std::vector<Entity> entities;
+    std::vector<Individual> individuals;
 public:
     World();
 
