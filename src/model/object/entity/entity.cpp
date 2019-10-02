@@ -6,7 +6,6 @@
 
 Entity::Entity(Point position) : position{position} {}
 Entity::Entity(int x, int y) : position{x, y} {}
-Entity::~Entity() = default;
 
 Point Entity::getPosition() {return position;}
 void Entity::setPosition(Point p) { position = p;}

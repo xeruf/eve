@@ -7,10 +7,10 @@
 #ifndef EVE_ENTITY_H
 #define EVE_ENTITY_H
 
+#include "../../model.h"
+#include "../object.h"
 
-#include "../model.h"
-
-class Entity {
+class Entity : public Object {
 protected:
     Point position;
 public:

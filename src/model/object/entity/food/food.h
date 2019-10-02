@@ -6,6 +6,7 @@
 #define EVE_FOOD_H
 
 #include "../entity.h"
+#include "../../../geometry/shape/shape.h"
 
 #include <exception>
 
@@ -18,10 +19,10 @@ private:
 
     void checkValue();
 public:
-    Food();
     Food(Point position, int value);
     Food(int x, int y, int value);
-    ~Food() override;
+
+    Shape getHitBox() override;
 
     int getValue();
 };
