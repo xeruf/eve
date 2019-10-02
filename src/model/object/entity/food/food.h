@@ -9,7 +9,8 @@
 #include "../../../geometry/shape/shape.h"
 
 #include <exception>
-#include <stdexcept>
+
+#include <experimental/random>
 #include <iostream>
 
 class Food : public Entity {
