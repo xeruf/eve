@@ -5,10 +5,13 @@
 #ifndef EVE_OBJECT_H
 #define EVE_OBJECT_H
 
+#include "../geometry/shape/shape.h"
+
+#include <vector>
 
 class Object {
 public:
-    virtual ~Object() = 0;
+    virtual Shape getHitBox() = 0;
 };
 
 
