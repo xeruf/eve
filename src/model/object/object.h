@@ -8,7 +8,7 @@
 #define EVE_OBJECT_H
 
 
-#include "../model.h"
+#include "../../geometry/0d/point.h"
 
 class Object {
 protected:

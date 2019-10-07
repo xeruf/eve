@@ -1,9 +1,10 @@
 //
-// Created by aaron on 26/09/2019.
+// Created by aaron on 07/10/2019.
 //
 
-#ifndef EVE_MODEL_H
-#define EVE_MODEL_H
+#ifndef EVE_POINT_H
+#define EVE_POINT_H
+
 
 struct Point {
     int x;
@@ -13,4 +14,4 @@ struct Point {
 
 bool operator==(const Point &, const Point &);
 
-#endif //EVE_MODEL_H
+#endif //EVE_POINT_H

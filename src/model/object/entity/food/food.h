@@ -5,23 +5,20 @@
 #ifndef EVE_FOOD_H
 #define EVE_FOOD_H
 
-#include "../object.h"
+#include "../entity.h"
+#include "../../../../geometry/0d/point.h"
 
 #include <exception>
 
 #include <experimental/random>
 #include <iostream>
 
-class Food : public Object {
+class Food : public Entity {
 private:
     int value;
 
     void checkValue();
 public:
-    Food();
-    Food(Point, int);
-    Food(int, int, int);
-    ~Food() override;
 
     int getValue();
 };

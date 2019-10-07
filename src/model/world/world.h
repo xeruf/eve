@@ -6,7 +6,7 @@
 #define EVE_WORLD_H
 
 #include "../object/food/food.h"
-#include "../object/entity/entity.h"
+#include "../object/entity/individual.h"
 
 #include <vector>
 
