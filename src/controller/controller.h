@@ -14,8 +14,13 @@
 class Controller {
 private:
     World world;
+    int iteration = 0;
+
+    bool simulate();
 public:
     Controller(int WIDTH, int HEIGHT, int ENERGY);
+
+    void run();
 };
 
 #endif //EVE_CONTROLLER_H
