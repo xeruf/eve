@@ -6,8 +6,3 @@
 
 Object::Object(Point position) : position{position} {}
 Object::Object(int x, int y) : position{x, y} {}
-Object::~Object() = default;
-
-Point Object::getPosition() {return position;}
-void Object::setPosition(Point p) {position = p;}
-void Object::setPosition(int x, int y) {position = Point(x, y);}

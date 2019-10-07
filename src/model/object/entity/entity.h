@@ -8,7 +8,11 @@
 #include "../object.h"
 
 class Entity : public Object {
+public:
+    Entity(int x, int y);
+    explicit Entity(Point position);
 
+    virtual ~Entity() = 0;
 };
 
 

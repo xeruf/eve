@@ -7,21 +7,17 @@
 #ifndef EVE_OBJECT_H
 #define EVE_OBJECT_H
 
-
-#include "../../geometry/0d/point.h"
+#include "../model.h"
 
 class Object {
 protected:
     Point position;
+
 public:
     explicit Object(Point);
     Object(int, int);
 
     virtual ~Object() = 0;
-
-    virtual Point getPosition();
-    virtual void setPosition(Point);
-    virtual void setPosition(int, int);
 };
 
 #endif //EVE_OBJECT_H

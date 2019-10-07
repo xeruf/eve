@@ -4,4 +4,4 @@
 
 #include "controller.h"
 
-Controller::Controller() = default;
+Controller::Controller(int WIDTH, int HEIGHT, int ENERGY) : world{World(WIDTH, HEIGHT, ENERGY)} {};

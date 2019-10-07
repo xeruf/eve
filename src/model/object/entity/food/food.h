@@ -6,12 +6,9 @@
 #define EVE_FOOD_H
 
 #include "../entity.h"
-#include "../../../../geometry/0d/point.h"
 
-#include <exception>
-
-#include <experimental/random>
 #include <iostream>
+#include <stdexcept>
 
 class Food : public Entity {
 private:
@@ -19,6 +16,8 @@ private:
 
     void checkValue();
 public:
+    Food(Point position, int value);
+    Food(int x, int y, int value);
 
     int getValue();
 };
