@@ -12,4 +12,5 @@ void Controller::run() {
 
 bool Controller::simulate() {
     // TODO What has to be simulated
+    return false;
 }

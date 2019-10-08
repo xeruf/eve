@@ -5,13 +5,20 @@
 #ifndef EVE_OBJECT_H
 #define EVE_OBJECT_H
 
-#include "../geometry/shape/shape.h"
+#include "../model.h"
 
 #include <vector>
 
+/* Abstract base class for all objects in the world */
 class Object {
+protected:
+    Point position;
+
 public:
-    virtual Shape getHitBox() = 0;
+    explicit Object(Point position);
+    Object(int x, int y);
+
+    Point getPosition();
 };
 
 

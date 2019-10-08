@@ -6,3 +6,5 @@
 
 Object::Object(Point position) : position{position} {}
 Object::Object(int x, int y) : position{x, y} {}
+
+Point Object::getPosition() {return position;}

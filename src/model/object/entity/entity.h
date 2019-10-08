@@ -13,6 +13,9 @@ public:
     explicit Entity(Point position);
 
     virtual ~Entity() = 0;
+
+    void setPosition(Point position);
+    void setPosition(int x, int y);
 };
 
 

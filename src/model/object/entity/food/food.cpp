@@ -7,9 +7,6 @@
 Food::Food(int x, int y, int value) : Entity(x, y), value{value} {checkValue();}
 Food::Food(Point position, int value) : Entity(position), value{value} {checkValue();}
 
-Shape Food::getHitBox() {
-    return Shape();
-}
 
 void Food::checkValue() {
     if (value <= 0) throw std::range_error("Food can't have a negative value");
@@ -18,4 +15,3 @@ void Food::checkValue() {
 int Food::getValue() {return value;}
 
 Food::Entity::~Entity() = default;
-Food::Object::~Object() = default;

@@ -1,3 +1,4 @@
+
 cmake_minimum_required(VERSION 3.14)
 project(eve)
 
@@ -7,6 +8,8 @@ add_executable(
 eve
 src/model/object/object.h
 src/model/object/object.cpp
+src/model/object/obstacle/obstacle.h
+src/model/object/obstacle/obstacle.cpp
 src/model/object/entity/entity.cpp
 src/model/object/entity/food/food.cpp
 src/model/object/entity/food/food.h
@@ -27,6 +30,8 @@ add_executable(
 tests
 src/model/object/object.h
 src/model/object/object.cpp
+src/model/object/obstacle/obstacle.h
+src/model/object/obstacle/obstacle.cpp
 src/model/object/entity/entity.cpp
 src/model/object/entity/food/food.cpp
 src/model/object/entity/food/food.h
@@ -40,7 +45,6 @@ src/model/model.cpp
 src/main.h
 src/controller/controller.h
 src/controller/controller.cpp
-test/model/object/entity/food/food.cpp
 test/model/world/world.cpp
 test/main.cpp
 )
@@ -51,3 +55,4 @@ target_link_libraries(tests Catch2::Catch2)
 include(CTest)
 include(Catch)
 catch_discover_tests(tests)
+
