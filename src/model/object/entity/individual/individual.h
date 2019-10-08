@@ -8,8 +8,13 @@
 #include "../entity.h"
 
 class Individual : public Entity {
+private:
+    const int ID;
 public:
+    Individual(int x, int y, int ID);
     virtual ~Individual() = 0;
+
+    int getID();
 };
 
 #endif //EVE_INDIVIDUAL_H
