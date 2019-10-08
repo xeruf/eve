@@ -6,14 +6,21 @@
 #define EVE_CONTROLLER_H
 
 #include "../model/world/world.h"
+#include "../model/object/entity/food/food.h"
+#include "../model/object/entity/individual/individual.h"
 
 #include <vector>
 
 class Controller {
 private:
     World world;
+    int iteration = 0;
+
+    bool simulate();
 public:
-    Controller();
+    Controller(int WIDTH, int HEIGHT, int ENERGY);
+
+    void run();
 };
 
 #endif //EVE_CONTROLLER_H
