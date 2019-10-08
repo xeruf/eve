@@ -24,7 +24,8 @@ src/main.h
 src/main.cpp
 src/controller/controller.h
 src/controller/controller.cpp
-        src/model/object/entity/individual/fred/fred.cpp src/model/object/entity/individual/fred/fred.h)
+src/model/object/entity/individual/fred/fred.cpp
+src/model/object/entity/individual/fred/fred.h)
 
 add_executable(
 tests
@@ -47,7 +48,8 @@ src/controller/controller.h
 src/controller/controller.cpp
 test/model/world/world.cpp
 test/main.cpp
-        src/model/object/entity/individual/fred/fred.cpp src/model/object/entity/individual/fred/fred.h)
+src/model/object/entity/individual/fred/fred.cpp
+src/model/object/entity/individual/fred/fred.h)
 
 find_package(Catch2 REQUIRED)
 target_link_libraries(tests Catch2::Catch2)
