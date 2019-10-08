@@ -5,7 +5,7 @@
 #include "food.h"
 
 Food::Food(int x, int y, int value) : Entity(x, y), value{value} {checkValue();}
-Food::Food(Point position, int value) : Entity(position), value{value} {checkValue();}
+Food::Food(Point position, int value) : Entity(position.x, position.y), value{value} {checkValue();}
 
 
 void Food::checkValue() {
