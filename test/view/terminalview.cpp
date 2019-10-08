@@ -29,10 +29,10 @@ TEST_CASE("A string table can be created"){
         );
     }
 
-    Food food2 = Food(1000, 1000, 10);
-    SECTION("stringifyFood correctly formats food at max position") {
+    Food food2 = Food(1000, 1000, 100);
+    SECTION("stringifyFood correctly formats food at max values") {
         REQUIRE(
-            terminalView.stringifyFood(food2) == "X: 1000 | Y: 1000 | Value: 10\n"
+            terminalView.stringifyFood(food2) == "X: 1000 | Y: 1000 | Value: 100\n"
         );
     }
 }
