@@ -8,7 +8,7 @@
 #include "../entity.h"
 
 #include <iostream>
-#include <stdexcept>
+#include <exception>
 
 class Food : public Entity {
 private:
