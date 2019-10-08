@@ -10,7 +10,7 @@ TEST_CASE("A string table can be created"){
         "Food:\n"
         "—————————————————————————————————————————\n"
         "X:  500 | Y:  689 | Value: 10\n"
-        "X:  100 | Y:  123 | Value: 10\n"
+        "X: 1000 | Y: 1000 | Value: 10\n"
         "X:   43 | Y:  978 | Value: 20\n"
         "—————————————————————————————————————————\n"
         "Entities:\n"
@@ -26,6 +26,13 @@ TEST_CASE("A string table can be created"){
     SECTION("stringifyFood can convert a Food object into a string") {
         REQUIRE(
             terminalView.stringifyFood(food1) == "X:  500 | Y:  689 | Value: 10\n"
+        );
+    }
+
+    Food food2 = Food(1000, 1000, 10);
+    SECTION("stringifyFood correctly formats food at max position") {
+        REQUIRE(
+            terminalView.stringifyFood(food2) == "X: 1000 | Y: 1000 | Value: 10\n"
         );
     }
 }
