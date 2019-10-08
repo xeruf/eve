@@ -4,6 +4,6 @@
 
 #include "individual.h"
 
-Individual::Individual(int x, int y, int ID) : Entity(x, y), ID{ID} {}
+Individual::Individual(int x, int y, int energy, int ID) : Entity(x, y, energy), ID{ID} {}
 
 int Individual::getID() {return ID;}
