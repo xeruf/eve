@@ -2,7 +2,6 @@
 // Created by aaron on 07/10/2019.
 //
 
-#include <stdexcept>
 #include "model.h"
 
 Point::Point(int x, int y) : x{x}, y{y} {}
