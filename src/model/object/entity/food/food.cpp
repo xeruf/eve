@@ -4,14 +4,7 @@
 
 #include "food.h"
 
-Food::Food(int x, int y, int value) : Entity(x, y), value{value} {checkValue();}
-Food::Food(Point position, int value) : Entity(position.x, position.y), value{value} {checkValue();}
-
-
-void Food::checkValue() {
-    if (value <= 0) throw std::range_error("Food can't have a negative value");
-}
-
-int Food::getValue() {return value;}
+Food::Food(int x, int y, int energy) : Entity(x, y, energy) {}
+Food::Food(Point position, int energy) : Entity(position.x, position.y, energy) {}
 
 Food::Entity::~Entity() = default;
