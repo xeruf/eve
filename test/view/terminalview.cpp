@@ -9,9 +9,9 @@ TEST_CASE("A string table can be created"){
         "—————————————————————————————————————————\n"
         "Food:\n"
         "—————————————————————————————————————————\n"
-        "X:  500 | Y:  689 | Value: 10\n"
-        "X: 1000 | Y: 1000 | Value: 10\n"
-        "X:   43 | Y:  978 | Value: 20\n"
+        "X:  500 | Y:  689 | Value:  10\n"
+        "X: 1000 | Y: 1000 | Value:  10\n"
+        "X:   43 | Y:  978 | Value:  20\n"
         "—————————————————————————————————————————\n"
         "Entities:\n"
         "—————————————————————————————————————————\n"
@@ -25,7 +25,7 @@ TEST_CASE("A string table can be created"){
     Food food1 = Food(500, 689, 10);
     SECTION("stringifyFood can convert a Food object into a string") {
         REQUIRE(
-            terminalView.stringifyFood(food1) == "X:  500 | Y:  689 | Value: 10\n"
+            terminalView.stringifyFood(food1) == "X:  500 | Y:  689 | Value:  10\n"
         );
     }
 
