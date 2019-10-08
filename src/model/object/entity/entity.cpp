@@ -4,7 +4,6 @@
 
 #include "entity.h"
 
-Entity::Entity(Point position) : Object(position) {}
 Entity::Entity(int x, int y) : Object(x, y) {}
 
 void Entity::setPosition(Point p) { position = p;}

@@ -15,7 +15,6 @@ protected:
     Point position;
 
 public:
-    explicit Object(Point position);
     Object(int x, int y);
 
     Point getPosition();

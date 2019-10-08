@@ -16,10 +16,6 @@
 
 class World {
 private:
-    const int WIDTH;
-    const int HEIGHT;
-
-    const int ENERGY;
     int energy = 0;
 
     std::vector<Food> food;
@@ -29,6 +25,11 @@ private:
     void addFoodRandomly(int value);
     void fillUpEnergy();
 public:
+    const int WIDTH;
+    const int HEIGHT;
+
+    const int ENERGY;
+
     World(int WIDTH, int HEIGHT, int ENERGY);
 
     std::vector<Food> getFood();
