@@ -11,14 +11,8 @@
 #include <exception>
 
 class Food : public Entity {
-private:
-    int value;
-
-    void checkValue();
 public:
     Food(Point position, int value);
     Food(int x, int y, int value);
-
-    int getValue();
 };
 #endif //EVE_FOOD_H

@@ -11,7 +11,7 @@ class Individual : public Entity {
 private:
     const int ID;
 public:
-    Individual(int x, int y, int ID);
+    Individual(int x, int y, int energy, int ID);
     virtual ~Individual() = 0;
 
     int getID();

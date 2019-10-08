@@ -6,15 +6,22 @@
 #define EVE_ENTITY_H
 
 #include "../object.h"
+#include <stdexcept>
 
 class Entity : public Object {
+protected:
+    int energy;
+
+    void checkEnergy();
+
 public:
-    Entity(int x, int y);
+    Entity(int x, int y, int energy);
 
     virtual ~Entity() = 0;
 
     void setPosition(Point position);
     void setPosition(int x, int y);
+    int getEnergy();
 };
 
 
