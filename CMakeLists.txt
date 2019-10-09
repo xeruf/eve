@@ -6,51 +6,59 @@ set(CMAKE_CXX_STANDARD 17)
 
 add_executable(
 eve
-src/main.h
-src/controller/controller.h
-src/controller/controller.cpp
-src/main.cpp
+src/model/object/object.h
+src/model/object/object.cpp
+src/model/object/obstacle/obstacle.h
+src/model/object/obstacle/obstacle.cpp
+src/model/object/entity/entity.cpp
+src/model/object/entity/food/food.cpp
+src/model/object/entity/food/food.h
+src/model/object/entity/entity.h
+src/model/object/entity/individual/fred/fred.cpp
+src/model/object/entity/individual/fred/fred.h
+src/model/object/entity/individual/individual.h
+src/model/object/entity/individual/individual.cpp
+src/model/model.h
 src/model/world/world.cpp
 src/model/world/world.h
 src/model/model.cpp
-src/model/object/entity/entity.h
-src/model/object/entity/food/food.cpp
-src/model/object/entity/food/food.h
-src/model/object/entity/individual/individual.cpp
-src/model/object/entity/individual/individual.h
-src/model/object/entity/individual/fred/fred.cpp
-src/model/object/entity/individual/fred/fred.h
-src/model/object/entity/entity.cpp
-src/model/object/object.cpp
-src/model/object/obstacle/obstacle.cpp
-src/model/object/obstacle/obstacle.h
-src/model/object/object.h
-src/model/model.h
-)
+src/main.h
+src/main.cpp
+src/controller/controller.h
+        src/controller/thread_handler/worker/worker.h
+        src/controller/thread_handler/worker/queue/queue.h
+        src/controller/thread_handler/worker/queue/queue.cpp
+        src/controller/thread_handler/worker/worker.cpp
+src/controller/controller.cpp
+        src/controller/thread_handler/worker/thread/thread.cpp src/controller/thread_handler/worker/thread/thread.h src/controller/thread_handler/thread_handler.cpp src/controller/thread_handler/thread_handler.h)
 
 add_executable(
 tests
-src/main.h
-src/controller/controller.h
-src/controller/controller.cpp
+src/model/object/object.h
+src/model/object/object.cpp
+src/model/object/obstacle/obstacle.h
+src/model/object/obstacle/obstacle.cpp
+src/model/object/entity/entity.cpp
+src/model/object/entity/food/food.cpp
+src/model/object/entity/food/food.h
+src/model/object/entity/entity.h
+src/model/object/entity/individual/fred/fred.cpp
+src/model/object/entity/individual/fred/fred.h
+src/model/object/entity/individual/individual.h
+src/model/object/entity/individual/individual.cpp
+src/model/model.h
 src/model/world/world.cpp
 src/model/world/world.h
 src/model/model.cpp
-src/model/object/entity/entity.h
-src/model/object/entity/food/food.cpp
-src/model/object/entity/food/food.h
-src/model/object/entity/individual/individual.cpp
-src/model/object/entity/individual/individual.h
-src/model/object/entity/individual/fred/fred.cpp
-src/model/object/entity/individual/fred/fred.h
-src/model/object/entity/entity.cpp
-src/model/object/object.cpp
-src/model/object/obstacle/obstacle.cpp
-src/model/object/obstacle/obstacle.h
-src/model/object/object.h
-src/model/model.h
-test/main.cpp
+src/main.h
+src/controller/controller.h
+        src/controller/thread_handler/worker/worker.h
+        src/controller/thread_handler/worker/queue/queue.h
+        src/controller/thread_handler/worker/queue/queue.cpp
+        src/controller/thread_handler/worker/worker.cpp
+src/controller/controller.cpp
 test/model/world/world.cpp
+test/main.cpp
 )
 
 find_package(Catch2 REQUIRED)
