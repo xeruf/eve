@@ -3,3 +3,5 @@
 //
 
 #include "worker.h"
+
+Worker::Worker() : Queue(), thread{Thread(& Queue::pop)} {}

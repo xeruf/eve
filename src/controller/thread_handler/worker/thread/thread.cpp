@@ -3,3 +3,15 @@
 //
 
 #include "thread.h"
+
+Thread::Thread(const std::function<Container()> & pop) : pop{pop}, thread{std::thread(& Thread::run)} {}
+Thread::~Thread() {
+    stopThread = true;
+    thread.join();
+}
+
+void Thread::run() {
+    while (not stopThread) {
+        pop().run();
+    }
+}
