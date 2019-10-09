@@ -8,10 +8,10 @@ class TerminalView {
 private:
     std::string formatNumberSpacing(int number, int maxLen);
 public:
-    void render(World world);
-    std::string createTable(World world);
-    std::string stringifyFood(Food food);
-    std::string stringifyEntity(Entity & entity);
+    void render(const World world);
+    std::string createTable(const World world);
+    std::string stringifyFood(const Food food);
+    std::string stringifyEntity(const Entity & entity);
 };
 
 #endif // EVE_TERMINALVIEW_H
