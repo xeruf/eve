@@ -35,4 +35,11 @@ TEST_CASE("A string table can be created"){
             terminalView.stringifyFood(food2) == "X: 1000 | Y: 1000 | Value: 100\n"
         );
     }
+
+    Food food3 = Food(0, 0, 1);
+    SECTION("stringifyFood correctly formats food at minimum values"){
+        REQUIRE(
+            terminalView.stringifyFood(food3) == "X:    0 | Y:    0 | Value:   1\n"
+        );
+    }
 }
