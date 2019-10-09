@@ -19,7 +19,7 @@ private:
     int energy = 0;
 
     std::vector<Food> food;
-    std::vector<Entity> entities;
+    std::vector<Individual> individuals;
 
     void addFood(int x, int y, int value);
     void addFoodRandomly(int value);
