@@ -22,6 +22,7 @@ TEST_CASE("A string table can be created"){
     World world = World(1000, 1000, 40);
     SECTION(""){}
 
+    // Food tests
     Food food1 = Food(500, 689, 10);
     SECTION("stringifyFood can convert a Food object into a string") {
         REQUIRE(
