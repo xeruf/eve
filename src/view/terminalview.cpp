@@ -3,13 +3,13 @@
 std::string TerminalView::formatNumberSpacing(int number, int maxLen) {
     std::string formattedString;
     formattedString = std::to_string(number);
-    while (formattedString.length() < maxLen){
+    while (formattedString.length() < maxLen) {
         formattedString = " " + formattedString;
     }
     return formattedString;
 };
 
-std::string TerminalView::stringifyFood(Food food){
+std::string TerminalView::stringifyFood(Food food) {
     int xPos;
     int yPos;
     int value;
