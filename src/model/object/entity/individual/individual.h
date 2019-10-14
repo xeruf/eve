@@ -8,7 +8,7 @@
 #include "../entity.h"
 
 class Individual : public Entity {
-private:
+protected:
     const int ID;
 public:
     Individual(int x, int y, int energy, int ID);

@@ -8,9 +8,8 @@
 #include "../individual.h"
 
 class Fred : public Individual {
-private:
-
+public:
+    Fred(int x, int y, int energy, int ID);
 };
-
 
 #endif //EVE_FRED_H
