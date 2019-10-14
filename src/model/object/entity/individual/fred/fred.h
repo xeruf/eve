@@ -9,7 +9,7 @@
 
 class Fred : public Individual {
 public:
-    Fred(int x, int y, int energy, int ID);
+    Fred(int x, int y, int energy);
 };
 
 #endif //EVE_FRED_H

@@ -4,6 +4,6 @@
 
 #include "fred.h"
 
-Fred::Fred(int x, int y, int energy, int ID) : Individual(x, y, energy, ID) {}
+Fred::Fred(int x, int y, int energy) : Individual(x, y, energy) {}
 
-Fred::Individual::~Individual() {}
+Fred::Individual::~Individual() = default;

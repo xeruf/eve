@@ -8,10 +8,11 @@
 #include "../entity.h"
 
 class Individual : public Entity {
-protected:
+private:
+    static int numberOfIndividuals;
     const int ID;
 public:
-    Individual(int x, int y, int energy, int ID);
+    Individual(int x, int y, int energy);
     virtual ~Individual() = 0;
 
     int getID();
