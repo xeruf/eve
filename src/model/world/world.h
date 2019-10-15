@@ -9,8 +9,9 @@
 #include "../object/entity/individual/individual.h"
 
 #include <vector>
-#include <exception>
+#include <stdexcept>
 #include <experimental/random>
+#include <string>
 
 #define MAX_FOOD_SIZE 50
 
@@ -21,9 +22,8 @@ private:
     std::vector<Food> food;
     std::vector<Individual> individuals;
 
-    void addFood(int x, int y, int value);
-    void addFoodRandomly(int value);
-    void fillUpEnergy();
+    void incEnergy(Entity & entity);
+
 public:
     const int WIDTH;
     const int HEIGHT;
@@ -33,6 +33,10 @@ public:
     World(int WIDTH, int HEIGHT, int ENERGY);
 
     std::vector<Food> getFood();
+    void addFood(Food * food);
+
+    std::vector<Individual> getIndividuals();
+    void addIndividual(Individual * individual);
 };
 
 #endif //EVE_WORLD_H
