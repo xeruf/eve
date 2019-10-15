@@ -4,4 +4,4 @@
 
 #include "worker.h"
 
-Worker::Worker() : Queue(), thread{Thread(& Queue::pop)} {}
+Worker::Worker() : Queue<Container<Task_e>>(), thread{this} {}

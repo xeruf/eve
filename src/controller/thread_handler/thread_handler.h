@@ -9,6 +9,10 @@
 
 #include "worker/worker.h"
 
+#include "task/task.h"
+
+#include <functional>
+#include <cmath>
 #include <thread>
 
 class ThreadHandler {
@@ -22,6 +26,8 @@ public:
     explicit ThreadHandler(int threads);
 
     static int getThreadAmount();
+
+    void async(Task_e & task, int priority = 0);
 };
 
 

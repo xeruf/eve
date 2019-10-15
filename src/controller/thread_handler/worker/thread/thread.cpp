@@ -4,14 +4,12 @@
 
 #include "thread.h"
 
-Thread::Thread(const std::function<Container()> & pop) : pop{pop}, thread{std::thread(& Thread::run)} {}
+Thread::Thread(const Queue<Container<Task_e>> * queue) : queue{queue} {}
 Thread::~Thread() {
     stopThread = true;
     thread.join();
 }
 
 void Thread::run() {
-    while (not stopThread) {
-        pop().run();
-    }
+    while (not stopThread) queue.pop().run();
 }

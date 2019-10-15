@@ -5,11 +5,11 @@
 #ifndef EVE_WORKER_H
 #define EVE_WORKER_H
 
-#include "queue/queue.h"
-#include "queue/container/container.h"
+#include "../../queue/queue.h"
 #include "thread/thread.h"
+#include "../task/task.h"
 
-class Worker : private Queue<Container> {
+class Worker : public Queue<Container<Task_e>> {
 private:
     Thread thread;
 public:

@@ -16,3 +16,8 @@ int ThreadHandler::calcThreadAmount() {
 }
 
 int ThreadHandler::getThreadAmount() {return threadAmount;}
+
+void ThreadHandler::async(Task_e & task, int priority) {
+    int index = std::max(0, std::min(threadAmount, priority));
+    workers[index].push(task);
+}

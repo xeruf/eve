@@ -5,9 +5,8 @@
 #ifndef EVE_THREAD_H
 #define EVE_THREAD_H
 
-#include "../queue/queue.h"
-#include "../queue/container/container.h"
-#include "../queue/container/task.h"
+#include "../../../queue/queue.h"
+#include "../../task/task.h"
 
 #include <utility>
 #include <thread>
@@ -15,13 +14,13 @@
 
 class Thread {
 private:
-    std::function<Container()> pop;
+    Queue<Container<Task_e>> * queue;
     std::thread thread;
     bool stopThread = false;
 
     void run();
 public:
-    explicit Thread(const std::function<Container()> & pop);
+    explicit Thread(const Queue<Container<Task_e>> * queue);
     ~Thread();
 };
 
