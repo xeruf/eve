@@ -19,10 +19,10 @@ class World {
 private:
     int energy = 0;
 
-    std::vector<Food> food;
-    std::vector<Individual> individuals;
+    std::vector<Food *> food;
+    std::vector<Individual *> individuals;
 
-    void incEnergy(Entity & entity);
+    void incEnergy(Entity * entity);
 
 public:
     const int WIDTH;
@@ -31,11 +31,12 @@ public:
     const int ENERGY;
 
     World(int WIDTH, int HEIGHT, int ENERGY);
+    ~World();
 
-    std::vector<Food> getFood();
+    std::vector<Food *> getFood();
     void addFood(Food * food);
 
-    std::vector<Individual> getIndividuals();
+    std::vector<Individual *> getIndividuals();
     void addIndividual(Individual * individual);
 };
 

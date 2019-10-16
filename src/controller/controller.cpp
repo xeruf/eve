@@ -4,7 +4,8 @@
 
 #include "controller.h"
 
-Controller::Controller(int WIDTH, int HEIGHT, int ENERGY) : world{World(WIDTH, HEIGHT, ENERGY)} {};
+Controller::Controller(int WIDTH, int HEIGHT, int ENERGY) :
+    world(World(WIDTH, HEIGHT, ENERGY)) {}
 
 void Controller::run() {
     while (simulate()) iteration++;

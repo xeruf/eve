@@ -16,8 +16,7 @@ protected:
 
 public:
     Entity(int x, int y, int energy);
-
-    virtual ~Entity() = 0;
+    ~Entity() override = 0;
 
     void setPosition(Point position);
     void setPosition(int x, int y);

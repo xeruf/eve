@@ -6,19 +6,23 @@
 SCENARIO("A world can be created and initialised") {
     GIVEN("A world is instantiated") {
         REQUIRE_THROWS_AS(World(-10, -20, 30), std::range_error);
+        REQUIRE_THROWS_AS(World(40, 0, -60), std::range_error);
         REQUIRE_THROWS_AS(World(40, 50, -60), std::range_error);
 
         World world = World(1000, 1000, 100);
         int foodSize = world.getFood().size();
         int individuals = world.getIndividuals().size();
 
+        REQUIRE(not foodSize);
+        REQUIRE(not individuals);
+
         WHEN ("I add entities to the world") {
             world.addFood(new Food(10, 20, 5));
             world.addIndividual(new Fred(40, 50, 10));
 
             THEN ("the amount of things in the world increase") {
-                REQUIRE(world.getFood().size() == foodSize + 1);
-                REQUIRE(world.getIndividuals().size() == individuals + 1);
+                REQUIRE(world.getFood().size() == ++foodSize);
+                REQUIRE(world.getIndividuals().size() == ++individuals);
             }
         }
     }

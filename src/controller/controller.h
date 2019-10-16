@@ -7,7 +7,7 @@
 
 #include "../model/world/world.h"
 #include "../model/object/entity/food/food.h"
-#include "../model/object/entity/individual/individual.h"
+#include "../model/object/entity/individual/fred/fred.h"
 
 #include <vector>
 

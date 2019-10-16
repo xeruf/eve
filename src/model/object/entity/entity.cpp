@@ -14,3 +14,5 @@ int Entity::getEnergy() {return energy;}
 
 void Entity::setPosition(Point p) { position = p;}
 void Entity::setPosition(int x, int y) { position = Point(x, y);}
+
+Entity::Object::~Object() = default;

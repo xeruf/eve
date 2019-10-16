@@ -16,6 +16,7 @@ protected:
 
 public:
     Object(int x, int y);
+    virtual ~Object() = 0;
 
     Point getPosition();
 };

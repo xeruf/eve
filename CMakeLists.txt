@@ -38,8 +38,8 @@ src/model/object/entity/entity.cpp
 src/model/object/entity/food/food.cpp
 src/model/object/entity/food/food.h
 src/model/object/entity/entity.h
-src/model/object/entity/individual/fred/fred.h
 src/model/object/entity/individual/fred/fred.cpp
+src/model/object/entity/individual/fred/fred.h
 src/model/object/entity/individual/individual.h
 src/model/object/entity/individual/individual.cpp
 src/model/model.h
