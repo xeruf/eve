@@ -19,7 +19,7 @@ class World {
 private:
     int energy = 0;
 
-    std::vector<Food *> food;
+    std::vector<Food *> foods;
     std::vector<Individual *> individuals;
 
     void incEnergy(Entity * entity);

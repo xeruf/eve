@@ -15,11 +15,12 @@ World::World(int WIDTH, int HEIGHT, int ENERGY) :
 }
 
 World::~World() {
-    for (int i = 0; i < food.size(); i++) delete food[i];
+    for (auto food : foods) delete food;
+    for (auto individual : individuals) delete individual;
 }
 
 void World::addFood(Food * food) {
-    (this->food).emplace_back(& * food);
+    foods.emplace_back(& * food);
     incEnergy(food);
 }
 
@@ -34,7 +35,7 @@ void World::incEnergy(Entity * entity) {
 }
 
 std::vector<Food *> World::getFood() {
-    return food;
+    return foods;
 }
 
 std::vector<Individual *> World::getIndividuals() {
