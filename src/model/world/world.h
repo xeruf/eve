@@ -36,10 +36,12 @@ public:
 
     std::vector<Food *> getFood();
     void addFood(Food * food);
-    bool fillWithFood(const std::function<Food * (int energy)> & f);  // f is iteratively called until energy == ENERGY
+    bool fillWithFood(const std::function<Food * (const World * world, int energy)> & f);  // f is iteratively called until energy == ENERGY
 
     std::vector<Individual *> getIndividuals();
     void addIndividual(Individual * individual);
+
+    bool kill(int ID);
 };
 
 #endif //EVE_WORLD_H

@@ -9,8 +9,12 @@
 #include "../model/object/entity/food/food.h"
 #include "../model/object/entity/individual/fred/fred.h"
 
+#include <cmath>
 #include <vector>
 #include <stdexcept>
+#include <experimental/random>
+
+#define MIN_FOOD_SIZE 20
 
 class Controller {
 private:

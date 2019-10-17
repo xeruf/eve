@@ -46,12 +46,22 @@ std::vector<Individual *> World::getIndividuals() {
     return individuals;
 }
 
-bool World::fillWithFood(const std::function<Food *(int energy)> & f) {
+bool World::fillWithFood(const std::function<Food *(const World * world, int energy)> & f) {
     try {
-        while (energy < ENERGY) addFood(f(energy));
+        while (energy < ENERGY) addFood(f(this, energy));
         return true;
     } catch (std::overflow_error & e) {
         std::cerr << e.what() << std::endl;
         return false;
     }
+}
+
+bool World::kill(int ID) {
+    for (int i = 0; i < individuals.size(); i++){
+        if (individuals[i]->getID() == ID) {
+            individuals.erase(individuals.begin() + i);
+            return true;
+        }
+    }
+    return false;
 }

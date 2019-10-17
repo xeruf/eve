@@ -46,7 +46,7 @@ SCENARIO("A world can be created and initialised") {
             }
 
             WHEN ("I fill up to max ENERGY") {
-                world.fillWithFood([](int energy) -> Food * {
+                world.fillWithFood([](const World * world, int energy) -> Food * {
                     return new Food(0, 0, std::min(foodE, energy));
                 });
 
