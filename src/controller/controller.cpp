@@ -5,9 +5,15 @@
 #include "controller.h"
 
 Controller::Controller(int WIDTH, int HEIGHT, int ENERGY) :
-    world(World(WIDTH, HEIGHT, ENERGY)) {}
+    world(World(WIDTH, HEIGHT, ENERGY))
+{}
+
+void Controller::init() {
+    initialised = true;
+}
 
 int Controller::run() {
+    if (not initialised) throw(std::logic_error("Controller::run(): .init() must be run first"));
     while (simulate()) iteration++;
     return iteration;
 }

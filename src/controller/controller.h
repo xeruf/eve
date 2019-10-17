@@ -10,14 +10,17 @@
 #include "../model/object/entity/individual/fred/fred.h"
 
 #include <vector>
+#include <stdexcept>
 
 class Controller {
 private:
-    World world;
     int iteration = 0;
+    bool initialised = false;
 
     bool simulate();
 public:
+    World world;
+
     Controller(int WIDTH, int HEIGHT, int ENERGY);
 
     void init();

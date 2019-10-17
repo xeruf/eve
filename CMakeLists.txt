@@ -51,6 +51,7 @@ src/controller/controller.h
 src/controller/controller.cpp
 test/model/world/world.cpp
 test/main.cpp
+test/controller/controller.cpp
 )
 
 find_package(Catch2 REQUIRED)
