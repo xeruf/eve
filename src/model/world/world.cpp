@@ -30,8 +30,12 @@ void World::addIndividual(Individual * individual) {
 }
 
 void World::incEnergy(Entity * entity) {
-    if (energy + entity->getEnergy() > ENERGY) throw std::exception();
+    if (energy + entity->getEnergy() > ENERGY) throw std::overflow_error("World::incEnergy(): operation exceeds ENERGY");
     energy += entity->getEnergy();
+}
+
+int World::getEnergy() {
+    return energy;
 }
 
 std::vector<Food *> World::getFood() {
@@ -40,4 +44,14 @@ std::vector<Food *> World::getFood() {
 
 std::vector<Individual *> World::getIndividuals() {
     return individuals;
+}
+
+bool World::fillWithFood(const std::function<Food *(int energy)> & f) {
+    try {
+        while (energy < ENERGY) addFood(f(energy));
+        return true;
+    } catch (std::overflow_error & e) {
+        std::cerr << e.what() << std::endl;
+        return false;
+    }
 }

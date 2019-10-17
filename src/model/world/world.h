@@ -8,12 +8,11 @@
 #include "../object/entity/food/food.h"
 #include "../object/entity/individual/individual.h"
 
+#include <functional>
 #include <vector>
 #include <stdexcept>
 #include <experimental/random>
 #include <string>
-
-#define MAX_FOOD_SIZE 50
 
 class World {
 private:
@@ -33,8 +32,11 @@ public:
     World(int WIDTH, int HEIGHT, int ENERGY);
     ~World();
 
+    int getEnergy();
+
     std::vector<Food *> getFood();
     void addFood(Food * food);
+    bool fillWithFood(const std::function<Food * (int energy)> & f);  // f is iteratively called until energy == ENERGY
 
     std::vector<Individual *> getIndividuals();
     void addIndividual(Individual * individual);

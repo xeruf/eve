@@ -20,7 +20,8 @@ private:
 public:
     Controller(int WIDTH, int HEIGHT, int ENERGY);
 
-    void run();
+    void init();
+    int run();
 };
 
 #endif //EVE_CONTROLLER_H

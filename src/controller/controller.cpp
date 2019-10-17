@@ -7,8 +7,9 @@
 Controller::Controller(int WIDTH, int HEIGHT, int ENERGY) :
     world(World(WIDTH, HEIGHT, ENERGY)) {}
 
-void Controller::run() {
+int Controller::run() {
     while (simulate()) iteration++;
+    return iteration;
 }
 
 bool Controller::simulate() {
