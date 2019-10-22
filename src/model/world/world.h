@@ -19,7 +19,7 @@ class World {
 private:
     int energy = 0;
 
-    std::function<Food * (World * world)> refillFunction;
+    std::function<Food * (World * world)> refillFunction = {};
 
     std::vector<Food *> foods;
     std::vector<Individual *> individuals;
