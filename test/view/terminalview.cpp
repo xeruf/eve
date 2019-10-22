@@ -9,9 +9,9 @@ TEST_CASE("A string table can be created"){
         "—————————————————————————————————————————\n"
         "Food:\n"
         "—————————————————————————————————————————\n"
-        "X:  500 | Y:  689 | Value:  10\n"
-        "X: 1000 | Y: 1000 | Value:  10\n"
-        "X:   43 | Y:  978 | Value:  20\n"
+        "X:  500 | Y:  689 | Energy:  10\n"
+        "X: 1000 | Y: 1000 | Energy:  10\n"
+        "X:   43 | Y:  978 | Energy:  20\n"
         "—————————————————————————————————————————\n"
         "Entities:\n"
         "—————————————————————————————————————————\n"
@@ -26,21 +26,21 @@ TEST_CASE("A string table can be created"){
     Food food1 = Food(500, 689, 10);
     SECTION("stringifyFood can convert a Food object into a string") {
         REQUIRE(
-            terminalView.stringifyFood(food1) == "X:  500 | Y:  689 | Value:  10\n"
+            terminalView.stringifyFood(food1) == "X:  500 | Y:  689 | Energy:  10\n"
         );
     }
 
     Food food2 = Food(1000, 1000, 100);
     SECTION("stringifyFood correctly formats food at max values") {
         REQUIRE(
-            terminalView.stringifyFood(food2) == "X: 1000 | Y: 1000 | Value: 100\n"
+            terminalView.stringifyFood(food2) == "X: 1000 | Y: 1000 | Energy: 100\n"
         );
     }
 
     Food food3 = Food(0, 0, 1);
     SECTION("stringifyFood correctly formats food at minimum values"){
         REQUIRE(
-            terminalView.stringifyFood(food3) == "X:    0 | Y:    0 | Value:   1\n"
+            terminalView.stringifyFood(food3) == "X:    0 | Y:    0 | Energy:   1\n"
         );
     }
 }
