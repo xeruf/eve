@@ -29,3 +29,6 @@ std::vector<Food> World::getFood() {
     return food;
 }
 
+std::vector<Individual> World::getIndividuals() {
+    return individuals;
+}

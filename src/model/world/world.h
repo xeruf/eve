@@ -33,6 +33,7 @@ public:
     World(int WIDTH, int HEIGHT, int ENERGY);
 
     std::vector<Food> getFood();
+    std::vector<Individual> getIndividuals();
 };
 
 #endif //EVE_WORLD_H
