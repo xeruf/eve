@@ -17,17 +17,10 @@ src/model/object/object.cpp
 src/model/object/entity/food/food.h
 src/model/object/entity/food/food.cpp
 src/model/object/entity/entity.h
-<<<<<<< HEAD
-<<<<<<< HEAD
-src/model/object/entity/individual/fred/fred.cpp
-src/model/object/entity/individual/fred/fred.h
-=======
 src/model/object/entity/entity.cpp
->>>>>>> feat(view): add terminalview
-=======
-src/model/object/entity/entity.cpp
->>>>>>> a3a4422efdc38b07a3e47a67ab26c333115509db
 src/model/object/entity/individual/individual.h
+src/model/object/entity/individual/fred/fred.h
+src/model/object/entity/individual/fred/fred.cpp
 src/model/object/entity/individual/individual.cpp
 src/model/object/obstacle/obstacle.cpp
 src/model/object/obstacle/obstacle.h
@@ -50,17 +43,10 @@ src/model/object/object.cpp
 src/model/object/entity/food/food.h
 src/model/object/entity/food/food.cpp
 src/model/object/entity/entity.h
-<<<<<<< HEAD
-<<<<<<< HEAD
-src/model/object/entity/individual/fred/fred.cpp
-src/model/object/entity/individual/fred/fred.h
-=======
 src/model/object/entity/entity.cpp
->>>>>>> feat(view): add terminalview
-=======
-src/model/object/entity/entity.cpp
->>>>>>> a3a4422efdc38b07a3e47a67ab26c333115509db
 src/model/object/entity/individual/individual.h
+src/model/object/entity/individual/fred/fred.h
+src/model/object/entity/individual/fred/fred.cpp
 src/model/object/entity/individual/individual.cpp
 src/model/object/obstacle/obstacle.cpp
 src/model/object/obstacle/obstacle.h
