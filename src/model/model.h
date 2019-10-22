@@ -5,8 +5,6 @@
 #ifndef EVE_MODEL_H
 #define EVE_MODEL_H
 
-#include <exception>
-
 struct Point {
     int x;
     int y;

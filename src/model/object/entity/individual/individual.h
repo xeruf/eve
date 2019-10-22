@@ -13,7 +13,7 @@ private:
     const int ID;
 public:
     Individual(int x, int y, int energy);
-    virtual ~Individual() = 0;
+    ~Individual() override = 0;
 
     int getID();
 };
