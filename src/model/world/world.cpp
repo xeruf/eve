@@ -1,7 +1,3 @@
-//
-// Created by janek on 17.09.19.
-//
-
 #include "world.h"
 
 World::World(int WIDTH, int HEIGHT, int ENERGY) :

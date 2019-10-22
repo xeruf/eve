@@ -1,7 +1,3 @@
-//
-// Created by aaron on 27/09/2019.
-//
-
 #ifndef EVE_INDIVIDUAL_H
 #define EVE_INDIVIDUAL_H
 

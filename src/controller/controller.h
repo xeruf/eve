@@ -1,7 +1,3 @@
-//
-// Created by aaron on 27/09/2019.
-//
-
 #ifndef EVE_CONTROLLER_H
 #define EVE_CONTROLLER_H
 

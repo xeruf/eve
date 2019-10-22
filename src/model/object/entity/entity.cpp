@@ -1,7 +1,3 @@
-//
-// Created by aaron on 26/09/2019.
-//
-
 #include "entity.h"
 
 Entity::Entity(int x, int y, int energy) : Object(x, y), energy{energy} {checkEnergy();}

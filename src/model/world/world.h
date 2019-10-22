@@ -1,7 +1,3 @@
-//
-// Created by janek on 17.09.19.
-//
-
 #ifndef EVE_WORLD_H
 #define EVE_WORLD_H
 
