@@ -20,7 +20,7 @@ TEST_CASE("A string table can be created"){
         "ID:   1 | X:  138 | Y:  153 | Energy:  70\n"
         "ID:   2 | X:  420 | Y:  420 | Energy:   5\n";
 
-    World world = World(1000, 1000, 40);
+    World world = World(1000, 1000, 1000);
     Fred * fred1 = new Fred(123, 321, 100);
     Fred * fred2 = new Fred(138, 153, 70);
     Fred * fred3 = new Fred(420, 420, 5);
