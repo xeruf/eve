@@ -6,6 +6,8 @@
 #define EVE_MAIN_H
 
 #include "controller/controller.h"
+#include "model/world/world.h"
+#include "view/terminalview.h"
 
 #define WIDTH 1000
 #define HEIGHT 1000
