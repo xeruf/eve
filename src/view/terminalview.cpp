@@ -14,13 +14,9 @@ std::string TerminalView::stringifyFood(Food food) {
     int yPos = food.getPosition().y;
     int energy = food.getEnergy();
 
-    std::string formattedXPos;
-    std::string formattedYPos;
-    std::string formattedEnergy;
-
-    formattedXPos = formatNumberSpacing(xPos, 4);
-    formattedYPos = formatNumberSpacing(yPos, 4);
-    formattedEnergy = formatNumberSpacing(energy, 3);
+    std::string formattedXPos = formatNumberSpacing(xPos, 4);
+    std::string formattedYPos = formatNumberSpacing(yPos, 4);
+    std::string formattedEnergy = formatNumberSpacing(energy, 3);
 
     std::string outputString;
     outputString += "X: " + formattedXPos + " | ";
