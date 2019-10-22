@@ -2,16 +2,21 @@
 #include <iostream>
 
 void TerminalView::render(World & world) {
+    std::string table = createTable(world);
+    std::cout << table << std::endl;
+}
+
+std::string TerminalView::createTable(World & world) {
     std::string outputString;
 
     outputString += "—————————————————————————————————————————\n"
                     "Food:\n"
                     "—————————————————————————————————————————\n";
 
-    std::vector<Food> food = world.getFood();
+    std::vector<Food *> food = world.getFood();
 
     for (int i = 0; i < food.size(); ++i) {
-        outputString += stringifyFood(food[i]);
+        outputString += stringifyFood(* food[i]);
     }
 
     outputString += "—————————————————————————————————————————\n"
@@ -23,8 +28,8 @@ void TerminalView::render(World & world) {
         outputString += stringifyIndividual(*individuals[i]);
     }
 
-    std::cout << outputString << std::endl;
-}
+    return outputString;
+};
 
 std::string TerminalView::formatNumberSpacing(int number, int maxLen) {
     std::string formattedString;
@@ -35,6 +40,7 @@ std::string TerminalView::formatNumberSpacing(int number, int maxLen) {
     return formattedString;
 };
 
+// considering refactor into one method
 std::string TerminalView::stringifyFood(Food & food) {
     int xPos = food.getPosition().x;
     int yPos = food.getPosition().y;
