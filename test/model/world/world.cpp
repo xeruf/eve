@@ -8,16 +8,16 @@
 
 SCENARIO("A world can be created and initialised") {
     GIVEN("An empty world is instantiated") {
-        REQUIRE_THROWS_AS(World(-10, -20, 30), std::range_error);
-        REQUIRE_THROWS_AS(World(40, 0, -60), std::range_error);
-        REQUIRE_THROWS_AS(World(40, 50, 0), std::range_error);
+        CHECK_THROWS_AS(World(-10, -20, 30), std::range_error);
+        CHECK_THROWS_AS(World(40, 0, -60), std::range_error);
+        CHECK_THROWS_AS(World(40, 50, 0), std::range_error);
 
         static int worldE = 100;
         World world = World(1000, 1000, worldE);
 
-        REQUIRE(world.getFood().empty());
-        REQUIRE(world.getIndividuals().empty());
-        REQUIRE(not world.getEnergy());
+        CHECK(world.getFood().empty());
+        CHECK(world.getIndividuals().empty());
+        CHECK(not world.getEnergy());
 
         WHEN ("I add entities to the world") {
             static int foodE = 10;
@@ -29,20 +29,21 @@ SCENARIO("A world can be created and initialised") {
             world.addIndividual(new Fred(40, 50, fredE));
 
             THEN ("the object gets stored properly") {
-                REQUIRE(world.getFood().back()->getPosition() == Point(10, 20));
-                REQUIRE(world.getIndividuals().back()->getEnergy() == fredE);
+                CHECK(world.getFood().back()->getPosition() == Point(10, 20));
+                CHECK(world.getIndividuals().back()->getEnergy() == fredE);
 
-                int ID = world.getIndividuals()[0]->getID();
-                for (auto fred : world.getIndividuals()) REQUIRE(fred->getID() == ID++);
+                auto individuals = world.getIndividuals();
+                int ID = individuals[0]->getID();
+                for (auto fred : world.getIndividuals()) CHECK(fred->getID() == ID++);
             }
 
             THEN ("the amount of things in the world increases") {
-                REQUIRE(world.getFood().size() == 1);
-                REQUIRE(world.getIndividuals().size() == 3);
+                CHECK(world.getFood().size() == 1);
+                CHECK(world.getIndividuals().size() == 3);
             }
 
             THEN ("the energy level rises") {
-                REQUIRE(world.getEnergy() == foodE + 3 * fredE);
+                CHECK(world.getEnergy() == foodE + 3 * fredE);
             }
 
             WHEN ("I fill up to max ENERGY") {
@@ -51,40 +52,40 @@ SCENARIO("A world can be created and initialised") {
                 });
 
                 THEN ("the amount of food and energy rises further") {
-                    REQUIRE(world.getIndividuals().size() == 3);
+                    CHECK(world.getIndividuals().size() == 3);
 
-                    REQUIRE(world.getFood().size() > 1);
-                    REQUIRE(world.getEnergy() == world.ENERGY);
+                    CHECK(world.getFood().size() > 1);
+                    CHECK(world.getEnergy() == world.ENERGY);
                 }
 
                 THEN ("adding more entities raises an overflow exception") {
-                    REQUIRE_THROWS_AS(world.addFood(new Food(0, 0, 10)), std::overflow_error);
-                    REQUIRE_THROWS_AS(world.addIndividual(new Fred(0, 0, 10)), std::overflow_error);
+                    CHECK_THROWS_AS(world.addFood(new Food(0, 0, 10)), std::overflow_error);
+                    CHECK_THROWS_AS(world.addIndividual(new Fred(0, 0, 10)), std::overflow_error);
                 }
             }
 
             int sizeI = world.getIndividuals().size();
             int sizeC = world.getCemetery().size();
 
-            REQUIRE(sizeI > 0);
-            REQUIRE(sizeC == 0);
+            CHECK(sizeI > 0);
+            CHECK(sizeC == 0);
 
             WHEN("I kill all individuals again") {
                 for (auto individual : world.getIndividuals()) {
                     world.kill(individual->getID());
 
                     THEN("The individuals get buried in the cemetery") {
-                        REQUIRE(world.getIndividuals().size() == --sizeI);
-                        REQUIRE(world.getCemetery().size() == ++sizeC);
+                        CHECK(world.getIndividuals().size() == --sizeI);
+                        CHECK(world.getCemetery().size() == ++sizeC);
                     }
                 }
 
                 THEN("All individuals reside in the cemetery instead") {
-                    REQUIRE(world.getIndividuals().empty());
+                    CHECK(world.getIndividuals().empty());
                 }
 
                 THEN("The energy level of the world isn't maximised anymore") {
-                    REQUIRE(world.getEnergy() < world.ENERGY);
+                    CHECK(world.getEnergy() < world.ENERGY);
                 }
             }
         }
