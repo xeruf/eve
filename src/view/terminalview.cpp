@@ -1,4 +1,30 @@
 #include "terminalview.h"
+#include <iostream>
+
+void TerminalView::render(World & world) {
+    std::string outputString;
+
+    outputString += "—————————————————————————————————————————\n"
+                    "Food:\n"
+                    "—————————————————————————————————————————\n";
+
+    std::vector<Food> food = world.getFood();
+
+    for (int i = 0; i < food.size(); ++i) {
+        outputString += stringifyFood(food[i]);
+    }
+
+    outputString += "—————————————————————————————————————————\n"
+                    "Entities:\n"
+                    "—————————————————————————————————————————\n";
+
+    std::vector<Individual> individuals = world.getIndividuals();
+    for (int i = 0; i < individuals.size(); ++i) {
+        outputString += stringifyEntity(individuals[i]);
+    }
+
+    std::cout << outputString << std::endl;
+}
 
 std::string TerminalView::formatNumberSpacing(int number, int maxLen) {
     std::string formattedString;
@@ -23,4 +49,8 @@ std::string TerminalView::stringifyFood(Food & food) {
     outputString += "Y: " + formattedYPos + " | ";
     outputString += "Energy: " + formattedEnergy + "\n";
     return outputString;
+};
+
+std::string TerminalView::stringifyEntity(Entity & entity) {
+
 };
