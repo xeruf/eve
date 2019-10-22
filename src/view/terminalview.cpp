@@ -15,12 +15,12 @@ void TerminalView::render(World & world) {
     }
 
     outputString += "—————————————————————————————————————————\n"
-                    "Entities:\n"
+                    "Individuals:\n"
                     "—————————————————————————————————————————\n";
 
-    std::vector<Individual> individuals = world.getIndividuals();
+    std::vector<Individual *> individuals = world.getIndividuals();
     for (int i = 0; i < individuals.size(); ++i) {
-        outputString += stringifyEntity(individuals[i]);
+        outputString += stringifyIndividual(*individuals[i]);
     }
 
     std::cout << outputString << std::endl;
@@ -51,6 +51,19 @@ std::string TerminalView::stringifyFood(Food & food) {
     return outputString;
 };
 
-std::string TerminalView::stringifyEntity(Entity & entity) {
+std::string TerminalView::stringifyIndividual(Individual & individual) {
+    int id = individual.getID();
+    int xPos = individual.getPosition().x;
+    int yPos = individual.getPosition().y;
+    int energy = individual.getEnergy();
 
+    std::string formattedXPos = formatNumberSpacing(xPos, 4);
+    std::string formattedYPos = formatNumberSpacing(yPos, 4);
+    std::string formattedEnergy = formatNumberSpacing(energy, 3);
+
+    std::string outputString;
+    outputString += "X: " + formattedXPos + " | ";
+    outputString += "Y: " + formattedYPos + " | ";
+    outputString += "Energy: " + formattedEnergy + "\n";
+    return outputString;
 };

@@ -13,7 +13,7 @@ TEST_CASE("A string table can be created"){
         "X: 1000 | Y: 1000 | Energy:  10\n"
         "X:   43 | Y:  978 | Energy:  20\n"
         "—————————————————————————————————————————\n"
-        "Entities:\n"
+        "Individuals:\n"
         "—————————————————————————————————————————\n"
         "ID:  23 | X:  123 | Y:  321 | Energy: 100\n"
         "ID:  24 | X:  138 | Y:  153 | Energy:  70\n"

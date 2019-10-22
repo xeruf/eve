@@ -11,7 +11,7 @@ public:
     void render(World & world);
     std::string createTable(World & world);
     std::string stringifyFood(Food & food);
-    std::string stringifyEntity(Entity & entity);
+    std::string stringifyIndividual(Individual & individual);
 };
 
 #endif // EVE_TERMINALVIEW_H
