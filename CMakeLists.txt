@@ -53,6 +53,7 @@ src/model/object/obstacle/obstacle.h
 src/model/object/object.h
 src/model/model.cpp
 src/model/model.h
+test/controller/controller.cpp
 test/view/terminalview.cpp
 test/model/world/world.cpp
 test/main.cpp
