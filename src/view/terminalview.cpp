@@ -16,7 +16,7 @@ std::string TerminalView::createTable(World & world) {
     std::vector<Food *> food = world.getFood();
 
     for (int i = 0; i < food.size(); ++i) {
-        outputString += stringifyFood(* food[i]);
+        outputString += stringifyFood(food[i]);
     }
 
     outputString += "—————————————————————————————————————————\n"
@@ -25,7 +25,7 @@ std::string TerminalView::createTable(World & world) {
 
     std::vector<Individual *> individuals = world.getIndividuals();
     for (int i = 0; i < individuals.size(); ++i) {
-        outputString += stringifyIndividual(*individuals[i]);
+        outputString += stringifyIndividual(individuals[i]);
     }
 
     return outputString;
@@ -41,10 +41,10 @@ std::string TerminalView::formatNumberSpacing(int number, int maxLen) {
 };
 
 // considering refactor into one method
-std::string TerminalView::stringifyFood(Food & food) {
-    int xPos = food.getPosition().x;
-    int yPos = food.getPosition().y;
-    int energy = food.getEnergy();
+std::string TerminalView::stringifyFood(Food * food) {
+    int xPos = food->getPosition().x;
+    int yPos = food->getPosition().y;
+    int energy = food->getEnergy();
 
     std::string formattedXPos = formatNumberSpacing(xPos, 4);
     std::string formattedYPos = formatNumberSpacing(yPos, 4);
@@ -57,11 +57,11 @@ std::string TerminalView::stringifyFood(Food & food) {
     return outputString;
 };
 
-std::string TerminalView::stringifyIndividual(Individual & individual) {
-    int id = individual.getID();
-    int xPos = individual.getPosition().x;
-    int yPos = individual.getPosition().y;
-    int energy = individual.getEnergy();
+std::string TerminalView::stringifyIndividual(Individual * individual) {
+    int id = individual->getID();
+    int xPos = individual->getPosition().x;
+    int yPos = individual->getPosition().y;
+    int energy = individual->getEnergy();
 
     std::string formattedXPos = formatNumberSpacing(xPos, 4);
     std::string formattedYPos = formatNumberSpacing(yPos, 4);
