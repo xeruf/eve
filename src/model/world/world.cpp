@@ -46,14 +46,22 @@ std::vector<Individual *> World::getIndividuals() {
     return individuals;
 }
 
-bool World::fillWithFood(const std::function<Food *(const World * world, int energy)> & f) {
+void World::setRefillFunction(const std::function<Food * (World * world)> & f) {
+    refillFunction = f;
+}
+
+bool World::fillWithFood(const std::function<Food * (World * world)> & f) {
     try {
-        while (energy < ENERGY) addFood(f(this, energy));
+        while (energy < ENERGY) addFood(f(this));
         return true;
     } catch (std::overflow_error & e) {
         std::cerr << e.what() << std::endl;
         return false;
     }
+}
+
+bool World::fillWithFood() {
+    return fillWithFood(refillFunction);
 }
 
 std::list<Individual *> World::getCemetery() {

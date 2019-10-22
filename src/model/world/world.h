@@ -19,6 +19,8 @@ class World {
 private:
     int energy = 0;
 
+    std::function<Food * (World * world)> refillFunction;
+
     std::vector<Food *> foods;
     std::vector<Individual *> individuals;
     std::list<Individual *> cemetery;
@@ -38,7 +40,10 @@ public:
 
     std::vector<Food *> getFood();
     void addFood(Food * food);
-    bool fillWithFood(const std::function<Food * (const World * world, int energy)> & f);  // f is iteratively called until energy == ENERGY
+
+    void setRefillFunction(const std::function<Food * (World * world)> & f);
+    bool fillWithFood(const std::function<Food * (World * world)> & f);
+    bool fillWithFood();
 
     std::vector<Individual *> getIndividuals();
     void addIndividual(Individual * individual);

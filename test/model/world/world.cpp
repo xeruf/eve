@@ -48,8 +48,8 @@ SCENARIO("A world can be created and initialised") {
             }
 
             WHEN ("I fill up to max ENERGY") {
-                world->fillWithFood([](const World * world, int energy) -> Food * {
-                    return new Food(0, 0, std::min(foodE, energy));
+                world->fillWithFood([](World * world) -> Food * {
+                    return new Food(0, 0, std::min(foodE, world->getEnergy()));
                 });
 
                 THEN ("the amount of food and energy rises further") {
@@ -84,6 +84,10 @@ SCENARIO("The world can freely be modified") {
             THEN("All individuals now reside in the cemetery instead") {
                 REQUIRE(world->getIndividuals().empty());
                 REQUIRE(not world->getCemetery().empty());
+            }
+
+            THEN("The energy level of the world isn't maximised anymore") {
+                REQUIRE(world->getEnergy() < world->ENERGY);
             }
         }
     }
