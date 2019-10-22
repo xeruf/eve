@@ -4,19 +4,15 @@ std::string TerminalView::formatNumberSpacing(int number, int maxLen) {
     std::string formattedString;
     formattedString = std::to_string(number);
     while (formattedString.length() < maxLen) {
-        formattedString = " " + formattedString;
+        formattedString = std::string::space(" ").std::string::append(formattedString);
     }
     return formattedString;
 };
 
 std::string TerminalView::stringifyFood(Food food) {
-    int xPos;
-    int yPos;
-    int value;
-
-    xPos = food.getPosition().x;
-    yPos = food.getPosition().y;
-    value = food.getValue();
+    int xPos = food.getPosition().x;
+    int yPos = food.getPosition().y;
+    int value = food.getValue();
 
     std::string formattedXPos;
     std::string formattedYPos;
