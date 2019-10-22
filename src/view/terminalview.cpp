@@ -63,11 +63,13 @@ std::string TerminalView::stringifyIndividual(Individual * individual) {
     int yPos = individual->getPosition().y;
     int energy = individual->getEnergy();
 
+    std::string formattedID = formatNumberSpacing(id, 3);
     std::string formattedXPos = formatNumberSpacing(xPos, 4);
     std::string formattedYPos = formatNumberSpacing(yPos, 4);
     std::string formattedEnergy = formatNumberSpacing(energy, 3);
 
     std::string outputString;
+    outputString += "ID: " + formattedID + " | ";
     outputString += "X: " + formattedXPos + " | ";
     outputString += "Y: " + formattedYPos + " | ";
     outputString += "Energy: " + formattedEnergy + "\n";
