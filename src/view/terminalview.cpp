@@ -9,7 +9,7 @@ std::string TerminalView::formatNumberSpacing(int number, int maxLen) {
     return formattedString;
 };
 
-std::string TerminalView::stringifyFood(Food food) {
+std::string TerminalView::stringifyFood(Food & food) {
     int xPos = food.getPosition().x;
     int yPos = food.getPosition().y;
     int energy = food.getEnergy();
