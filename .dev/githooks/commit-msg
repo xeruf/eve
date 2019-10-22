@@ -1,0 +1,8 @@
+#!/bin/sh
+#res="("; cat scopes.txt | while read a; do res+="$a|"; done; echo "${res%|})"
+cat "$1" | grep -Eq '(fix|feat|docs|style|refactor|test|chore|rework|release)(\([-a-z]+\))?: [a-z]'
+result=$?
+if test $result -ne 0
+then echo "Please check that the commit message adheres to the guidelines: http://karma-runner.github.io/4.0/dev/git-commit-msg.html"
+fi
+exit $result
