@@ -67,7 +67,7 @@ TEST_CASE("A string table can be created"){
     // createTable tests
     SECTION("createTable correctly formats the whole table"){
         REQUIRE(
-            terminalView.createTable(world) == table;
+            terminalView.createTable(world) == table
         );
     }
 }
