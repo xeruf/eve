@@ -20,12 +20,12 @@ World::~World() {
 }
 
 void World::addFood(Food * food) {
-    foods.emplace_back(& * food);
+    foods.push_back(food);
     incEnergy(food);
 }
 
 void World::addIndividual(Individual * individual) {
-    individuals.emplace_back(& * individual);
+    individuals.push_back(individual);
     incEnergy(individual);
 }
 
@@ -56,12 +56,20 @@ bool World::fillWithFood(const std::function<Food *(const World * world, int ene
     }
 }
 
+std::list<Individual *> World::getCemetery() {
+    return cemetery;
+}
+
 bool World::kill(int ID) {
-    for (int i = 0; i < individuals.size(); i++){
-        if (individuals[i]->getID() == ID) {
-            individuals.erase(individuals.begin() + i);
+    unsigned long index = 0;
+    for (auto individual : individuals) {
+        if (individual->getID() == ID) {
+            energy -= individual->getEnergy();
+            cemetery.push_back(individual);
+            individuals.erase(individuals.begin() + index);
             return true;
         }
+        index++;
     }
     return false;
 }

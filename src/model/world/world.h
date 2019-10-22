@@ -13,6 +13,7 @@
 #include <stdexcept>
 #include <experimental/random>
 #include <string>
+#include <list>
 
 class World {
 private:
@@ -20,6 +21,7 @@ private:
 
     std::vector<Food *> foods;
     std::vector<Individual *> individuals;
+    std::list<Individual *> cemetery;
 
     void incEnergy(Entity * entity);
 
@@ -41,6 +43,7 @@ public:
     std::vector<Individual *> getIndividuals();
     void addIndividual(Individual * individual);
 
+    std::list<Individual *> getCemetery();
     bool kill(int ID);
 };
 
