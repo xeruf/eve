@@ -8,11 +8,12 @@
 #include "../entity.h"
 
 #include <iostream>
-#include <exception>
+#include <stdexcept>
 
 class Food : public Entity {
 public:
     Food(Point position, int value);
     Food(int x, int y, int value);
 };
+
 #endif //EVE_FOOD_H

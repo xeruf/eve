@@ -8,22 +8,21 @@
 #include "../object/entity/food/food.h"
 #include "../object/entity/individual/individual.h"
 
+#include <functional>
 #include <vector>
-#include <exception>
+#include <stdexcept>
 #include <experimental/random>
-
-#define MAX_FOOD_SIZE 50
+#include <string>
 
 class World {
 private:
     int energy = 0;
 
-    std::vector<Food> food;
-    std::vector<Individual> individuals;
+    std::vector<Food *> foods;
+    std::vector<Individual *> individuals;
 
-    void addFood(int x, int y, int value);
-    void addFoodRandomly(int value);
-    void fillUpEnergy();
+    void incEnergy(Entity * entity);
+
 public:
     const int WIDTH;
     const int HEIGHT;
@@ -31,9 +30,18 @@ public:
     const int ENERGY;
 
     World(int WIDTH, int HEIGHT, int ENERGY);
+    ~World();
 
-    std::vector<Food> getFood();
-    std::vector<Individual> getIndividuals();
+    int getEnergy();
+
+    std::vector<Food *> getFood();
+    void addFood(Food * food);
+    bool fillWithFood(const std::function<Food * (const World * world, int energy)> & f);  // f is iteratively called until energy == ENERGY
+
+    std::vector<Individual *> getIndividuals();
+    void addIndividual(Individual * individual);
+
+    bool kill(int ID);
 };
 
 #endif //EVE_WORLD_H
