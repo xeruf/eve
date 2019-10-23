@@ -1,7 +1,3 @@
-//
-// Created by janek on 17.09.19.
-//
-
 #include "world.h"
 
 World::World(int WIDTH, int HEIGHT, int ENERGY) :
@@ -20,12 +16,12 @@ World::~World() {
 }
 
 void World::addFood(Food * food) {
-    foods.emplace_back(& * food);
+    foods.push_back(food);
     incEnergy(food);
 }
 
 void World::addIndividual(Individual * individual) {
-    individuals.emplace_back(& * individual);
+    individuals.push_back(individual);
     incEnergy(individual);
 }
 
@@ -46,9 +42,13 @@ std::vector<Individual *> World::getIndividuals() {
     return individuals;
 }
 
-bool World::fillWithFood(const std::function<Food *(const World * world, int energy)> & f) {
+void World::setRefillFunction(const std::function<Food * (World * world)> & f) {
+    refillFunction = f;
+}
+
+bool World::fillWithFood(const std::function<Food * (World * world)> & f) {
     try {
-        while (energy < ENERGY) addFood(f(this, energy));
+        while (energy < ENERGY) addFood(f(this));
         return true;
     } catch (std::overflow_error & e) {
         std::cerr << e.what() << std::endl;
@@ -56,12 +56,24 @@ bool World::fillWithFood(const std::function<Food *(const World * world, int ene
     }
 }
 
+bool World::fillWithFood() {
+    return fillWithFood(refillFunction);
+}
+
+std::list<Individual *> World::getCemetery() {
+    return cemetery;
+}
+
 bool World::kill(int ID) {
-    for (int i = 0; i < individuals.size(); i++){
-        if (individuals[i]->getID() == ID) {
-            individuals.erase(individuals.begin() + i);
+    unsigned long index = 0;
+    for (auto individual : individuals) {
+        if (individual->getID() == ID) {
+            energy -= individual->getEnergy();
+            cemetery.push_back(individual);
+            individuals.erase(individuals.begin() + index);
             return true;
         }
+        index++;
     }
     return false;
 }
