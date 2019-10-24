@@ -1,5 +1,4 @@
 #include "../../src/controller/controller.h"
-#include "../../src/model/world/world.h"
 
 #include <catch2/catch.hpp>
 #include <stdexcept>
