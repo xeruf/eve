@@ -24,7 +24,9 @@ int Controller::run() {
 
 bool Controller::simulate() {
     for (auto individual : world.getIndividuals()) {
-        std::cout << typeid(individual->act(world)).name();
+        auto action = individual->act(world);
+        std::cout << typeid(action).name();
+        delete action;
     }
 
     world.kill(iteration);
