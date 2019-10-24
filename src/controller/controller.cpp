@@ -23,6 +23,10 @@ int Controller::run() {
 }
 
 bool Controller::simulate() {
+    for (auto individual : world.getIndividuals()) {
+        std::cout << typeid(individual->act(world)).name();
+    }
+
     world.kill(iteration);
     return not world.getIndividuals().empty();
 }

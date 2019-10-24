@@ -9,6 +9,7 @@
 #include <vector>
 #include <stdexcept>
 #include <experimental/random>
+#include <typeinfo>
 
 #define MIN_FOOD_SIZE 20
 
