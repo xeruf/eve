@@ -4,7 +4,7 @@ set(CMAKE_CXX_STANDARD 17)
 project(eve)
 
 file(GLOB_RECURSE SRCS ${PROJECT_SOURCE_DIR}/src/*/*.cpp)
-file(GLOB_RECURSE TEST_SRCS ${PROJECT_SOURCE_DIR}/test/*/*.cpp)
+file(GLOB_RECURSE TEST_SRCS ${PROJECT_SOURCE_DIR}/test/*.cpp)
 
 add_executable(eve src/main.cpp ${SRCS})
 
