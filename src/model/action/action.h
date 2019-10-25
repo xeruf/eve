@@ -11,6 +11,7 @@ struct Eat : Action {
 };
 
 struct Sleep : Action {
+    ~Sleep();
 };
 
 struct Move : Action {

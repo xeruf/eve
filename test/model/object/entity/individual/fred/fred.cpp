@@ -11,6 +11,7 @@ SCENARIO("Fred can be created and initialized") {
         WHEN("The individual is requested to act") {
             THEN("The method should not throw an error") {
                 REQUIRE_NOTHROW(fred.act());
+                //Action();
             }
         }
     }

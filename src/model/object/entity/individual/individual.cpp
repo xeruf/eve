@@ -9,3 +9,5 @@ Individual::Individual(int x, int y, int energy) :
 int Individual::getID() {return ID;}
 
 int Individual::getVisionRange() { return visionRange;}
+
+Action * Individual::act() {return new Sleep();}

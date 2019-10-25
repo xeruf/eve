@@ -2,6 +2,7 @@
 #define EVE_INDIVIDUAL_H
 
 #include "../entity.h"
+#include "../../../action/action.h"
 
 class Individual : public Entity {
 private:
@@ -14,6 +15,8 @@ public:
 
     int getID();
     int getVisionRange();
+
+    Action * act();
 };
 
 #endif //EVE_INDIVIDUAL_H
