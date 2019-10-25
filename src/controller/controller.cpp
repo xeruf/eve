@@ -5,7 +5,7 @@ Controller::Controller(int WIDTH, int HEIGHT, int ENERGY) :
 {}
 
 void Controller::init() {
-    for (int i = 0; i < 100; i++) world.addIndividual(new Fred(10 * i, 10 * i, 40));
+    for (int i = 0; i < 10; i++) world.addIndividual(new Fred(10 * i, 10 * i, 40));
     world.fillWithFood([](World * w) -> Food * {
         return new Food(
                 std::experimental::randint(0, w->WIDTH),
