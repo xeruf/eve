@@ -10,6 +10,8 @@ struct Point {
 };
 
 bool operator == (const Point &, const Point &);
-double operator - (const Point &, const Point &);
+double operator / (const Point &, const Point &);
+Point operator - (const Point &, const Point &);
+Point operator + (const Point &, const Point &);
 
 #endif //EVE_MODEL_H
