@@ -7,3 +7,5 @@ Individual::Individual(int x, int y, int energy) :
     {numberOfIndividuals++;}
 
 int Individual::getID() {return ID;}
+
+int Individual::getVisionRange() { return visionRange;}

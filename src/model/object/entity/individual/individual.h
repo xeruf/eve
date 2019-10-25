@@ -7,11 +7,13 @@ class Individual : public Entity {
 private:
     static int numberOfIndividuals;
     const int ID;
+    const int visionRange = 15;
 public:
     Individual(int x, int y, int energy);
     ~Individual() override = 0;
 
     int getID();
+    int getVisionRange();
 };
 
 #endif //EVE_INDIVIDUAL_H
