@@ -2,7 +2,7 @@
 #include <exception>
 #include <cmath>
 
-#include "../../../../../../src/model/object/entity/individual/fred/fred.cpp"
+#include "../../../../../../src/model/object/entity/individual/fred/fred.h"
 
 SCENARIO("Fred can be created and initialized") {
     GIVEN("An individual of class Fred with basic properties is instantiated") {
