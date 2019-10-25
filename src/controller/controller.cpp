@@ -5,12 +5,12 @@ Controller::Controller(int WIDTH, int HEIGHT, int ENERGY) :
 {}
 
 void Controller::init() {
-    for (int i = 0; i < 4; i++) world.addIndividual(new Fred(10 * i, 10 * i, 40));
+    for (int i = 0; i < 100; i++) world.addIndividual(new Fred(10 * i, 10 * i, 40));
     world.fillWithFood([](World * w) -> Food * {
         return new Food(
                 std::experimental::randint(0, w->WIDTH),
                 std::experimental::randint(0, w->HEIGHT),
-                (w->ENERGY - w->getEnergy()) < MIN_FOOD_SIZE ? w->ENERGY - w->getEnergy() : std::experimental::randint(1, MIN_FOOD_SIZE));
+                (w->ENERGY - w->getEnergy()) < MAX_FOOD_SIZE ? w->ENERGY - w->getEnergy() : std::experimental::randint(1, MAX_FOOD_SIZE));
     });
 
     initialised = true;
