@@ -3,7 +3,7 @@
 
 #include "../object.h"
 
-class obstacle : public Object {
+class Obstacle : public Object {
 
 };
 

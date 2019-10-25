@@ -19,6 +19,8 @@ SCENARIO("The Controller can be initialised") {
             THEN ("It ends after a certain amount of generations") {
                 REQUIRE(controller.run() >= 0);
             }
+
+
         }
     }
 }

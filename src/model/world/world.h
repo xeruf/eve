@@ -3,7 +3,9 @@
 
 #include "../object/entity/food/food.h"
 #include "../object/entity/individual/individual.h"
+#include "../object/obstacle/obstacle.h"
 
+#include <cmath>
 #include <functional>
 #include <vector>
 #include <stdexcept>
@@ -17,6 +19,7 @@ private:
 
     std::function<Food * (World * world)> refillFunction = {};
 
+    std::vector<Obstacle *> obstacles;
     std::vector<Food *> foods;
     std::vector<Individual *> individuals;
     std::list<Individual *> cemetery;
@@ -46,6 +49,8 @@ public:
 
     std::list<Individual *> getCemetery();
     bool kill(int ID);
+
+    std::vector<Object *> * getObjectsAround(const Point & position, double radius);
 };
 
 #endif //EVE_WORLD_H

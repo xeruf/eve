@@ -42,6 +42,14 @@ std::vector<Individual *> World::getIndividuals() {
     return individuals;
 }
 
+std::vector<Object *> * World::getObjectsAround(const Point & position, double radius) {
+    auto objects = new std::vector<Object *>();
+    for (auto food : foods) if (std::abs(food->getPosition() - position) < radius) objects->push_back(food);
+    for (auto individual : individuals) if (std::abs(individual->getPosition() - position) < radius) objects->push_back(individual);
+    for (auto obstacle : obstacles) if (std::abs(obstacle->getPosition() - position) < radius) objects->push_back(obstacle);
+    return objects;
+}
+
 void World::setRefillFunction(const std::function<Food * (World * world)> & f) {
     refillFunction = f;
 }
