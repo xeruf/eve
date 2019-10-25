@@ -1,6 +1,8 @@
 #ifndef EVE_MODEL_H
 #define EVE_MODEL_H
 
+#include <cmath>
+
 struct Point {
     int x;
     int y;
@@ -8,5 +10,6 @@ struct Point {
 };
 
 bool operator == (const Point &, const Point &);
+double operator - (const Point &, const Point &);
 
 #endif //EVE_MODEL_H

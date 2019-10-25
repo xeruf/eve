@@ -6,3 +6,7 @@ bool operator == (const Point & a, const Point & b) {
     return a.x == b.x && a.y == b.y;
 }
 
+double operator - (const Point & a, const Point & b) {
+    return sqrt(pow(b.x - a.x, 2.0) + pow(b.y - a.y, 2.0));
+}
+

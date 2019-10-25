@@ -1,5 +1,4 @@
 #include "../../src/controller/controller.h"
-#include "../../src/model/world/world.h"
 
 #include <catch2/catch.hpp>
 #include <stdexcept>
@@ -20,6 +19,8 @@ SCENARIO("The Controller can be initialised") {
             THEN ("It ends after a certain amount of generations") {
                 REQUIRE(controller.run() >= 0);
             }
+
+
         }
     }
 }
