@@ -6,7 +6,7 @@
 
 class TerminalView {
 private:
-    std::string formatNumberSpacing(int number, int maxLen);
+    std::string padIntL(int number, int maxLen);
 public:
     void render(World & world);
     std::string createTable(World & world);

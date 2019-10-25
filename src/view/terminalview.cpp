@@ -31,20 +31,19 @@ std::string TerminalView::createTable(World & world) {
     return outputString;
 };
 
-std::string TerminalView::formatNumberSpacing(int number, int maxLen) {
-    std::string formattedString;
-    formattedString = std::to_string(number);
-    while (formattedString.length() < maxLen) {
-        formattedString = std::string(" ").std::string::append(formattedString);
-    }
-    return formattedString;
+std::string TerminalView::padIntL(int number, int maxLen) {
+    std::string numberString = std::to_string(number);
+    int len = numberString.length();
+    std::string paddedString(maxLen - len, ' ');
+    paddedString += numberString;
+    return paddedString;
 };
 
 std::string TerminalView::stringifyEntity(Individual * individual) {
     int id = individual->getID();
 
     std::string outputString;
-    outputString += "ID: " + formatNumberSpacing(id, 3) + " | ";
+    outputString += "ID: " + padIntL(id, 3) + " | ";
     outputString += stringifyEntity((Entity *) individual);
     return outputString;
 };
@@ -55,9 +54,9 @@ std::string TerminalView::stringifyEntity(Entity * entity) {
     int energy = entity->getEnergy();
 
     std::string outputString;
-    outputString += "X: " + formatNumberSpacing(xPos, 4) + " | ";
-    outputString += "Y: " + formatNumberSpacing(yPos, 4) + " | ";
-    outputString += "Energy: " + formatNumberSpacing(energy, 3) + "\n";
+    outputString += "X: " + padIntL(xPos, 4) + " | ";
+    outputString += "Y: " + padIntL(yPos, 4) + " | ";
+    outputString += "Energy: " + padIntL(energy, 3) + "\n";
     return outputString;
 };
 
