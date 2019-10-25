@@ -23,6 +23,7 @@ int Controller::run() {
 }
 
 bool Controller::simulate() {
+    terminalview.render(world);
     world.kill(iteration);
     return not world.getIndividuals().empty();
 }
