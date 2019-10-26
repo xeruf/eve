@@ -3,14 +3,15 @@
 
 #include "../model/object/entity/food/food.h"
 #include "../model/object/entity/individual/fred/fred.h"
+#include "../model/random/random.h"
 #include "../model/world/world.h"
 
 #include <cmath>
-#include <experimental/random>
 #include <stdexcept>
 #include <typeinfo>
 #include <vector>
 
+#define MIN_FOOD_SIZE 10.0
 #define MAX_FOOD_SIZE 100.0
 
 class Controller {
