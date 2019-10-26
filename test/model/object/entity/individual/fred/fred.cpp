@@ -5,12 +5,13 @@
 #include "../../../../../../src/model/object/entity/individual/fred/fred.h"
 
 SCENARIO("Fred can be created and initialized") {
-    GIVEN("An individual of class Fred with basic properties is instantiated") {
+    GIVEN("A fred and a test list of visible objects is instantiated") {
         Fred fred = Fred(3, 5, 60);
+        std::vector<Object *> list;
 
         WHEN("The individual is requested to act") {
             THEN("The method should not throw an error") {
-                REQUIRE_NOTHROW(fred.act());
+                REQUIRE_NOTHROW(delete fred.act(& list));
                 //Action();
             }
         }

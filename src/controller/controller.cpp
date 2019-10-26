@@ -24,11 +24,11 @@ int Controller::run() {
 
 bool Controller::simulate() {
     for (auto individual : world.getIndividuals()) {
-        /*
-        auto action = individual->act(world.getObjectsAround(individual->getPosition(), individual->getVisionRange()));
-        std::cout << typeid(action).name();
+        auto visibles = world.getObjectsAround(individual->getPosition(), individual->getVisionRange());
+        auto action = individual->act(visibles);
+        std::cout << action->name() << std::endl;
         delete action;
-        */
+        delete visibles;
     }
 
     world.kill(iteration);

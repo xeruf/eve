@@ -8,7 +8,6 @@
 #include <cmath>
 #include <experimental/random>
 #include <stdexcept>
-#include <typeinfo>
 #include <vector>
 
 #define MAX_FOOD_SIZE 100

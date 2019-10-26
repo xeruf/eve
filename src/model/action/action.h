@@ -3,18 +3,19 @@
 
 #include "../object/entity/entity.h"
 
+#include <stdexcept>
+#include <string>
+
+// List of possible actions. SIZE is used for iterative purpose
+enum action {eat, move, sleep, SIZE};
+
 struct Action {
-    virtual ~Action() = 0;
+    const action type;
+    std::string name();
+
+    Action(action type);
 };
 
-struct Eat : Action {
-};
-
-struct Sleep : Action {
-};
-
-struct Move : Action {
-};
-
+std::string actionName(action type);
 
 #endif //EVE_ACTION_H
