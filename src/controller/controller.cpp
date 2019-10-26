@@ -5,9 +5,9 @@ Controller::Controller(double WIDTH, double HEIGHT, double ENERGY) :
 {}
 
 void Controller::init() {
-    static Uniform distX = Uniform<double>(0.0, world.WIDTH);
-    static Uniform distY = Uniform<double>(0.0, world.HEIGHT);
-    static Uniform distE = Uniform<double>(MIN_FOOD_SIZE, MAX_FOOD_SIZE);
+    static Uniform distX = Uniform(0.0, world.WIDTH);
+    static Uniform distY = Uniform(0.0, world.HEIGHT);
+    static Uniform distE = Uniform(MIN_FOOD_SIZE, MAX_FOOD_SIZE);
 
     for (int i = 0; i < 10; i++) world.addIndividual(new Fred(10 * i, 10 * i, 40));
     world.fillWithFood([](World * w) -> Food * {

@@ -3,9 +3,8 @@
 
 #include "../distribution.h"
 
-template <typename T>
 struct Uniform : Distribution {
-    std::uniform_real_distribution<T> realDistribution;
+    std::uniform_real_distribution<double> realDistribution;
 
     const double LOWER_BOUND;
     const double UPPER_BOUND;
@@ -20,7 +19,7 @@ struct Uniform : Distribution {
             realDistribution(LOWER_BOUND, UPPER_BOUND)
     {}
 
-    T rand() {return realDistribution(mt);}
+    double rand() {return realDistribution(mt);}
 };
 
 
