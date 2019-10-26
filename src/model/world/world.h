@@ -15,7 +15,7 @@
 
 class World {
 private:
-    int energy = 0;
+    double energy = 0;
 
     std::function<Food * (World * world)> refillFunction = {};
 
@@ -27,15 +27,15 @@ private:
     void incEnergy(Entity * entity);
 
 public:
-    const int WIDTH;
-    const int HEIGHT;
+    const double WIDTH;
+    const double HEIGHT;
 
-    const int ENERGY;
+    const double ENERGY;
 
-    World(int WIDTH, int HEIGHT, int ENERGY);
+    World(double WIDTH, double HEIGHT, double ENERGY);
     ~World();
 
-    int getEnergy();
+    double getEnergy();
 
     std::vector<Food *> getFood();
     void addFood(Food * food);
@@ -48,7 +48,7 @@ public:
     void addIndividual(Individual * individual);
 
     std::list<Individual *> getCemetery();
-    bool kill(int ID);
+    bool kill(long ID);
 
     std::vector<Object *> * getObjectsAround(const Point & position, double radius);
 };

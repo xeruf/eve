@@ -1,6 +1,6 @@
 #include "controller.h"
 
-Controller::Controller(int WIDTH, int HEIGHT, int ENERGY) :
+Controller::Controller(double WIDTH, double HEIGHT, double ENERGY) :
     world(World(WIDTH, HEIGHT, ENERGY))
 {}
 
@@ -8,15 +8,16 @@ void Controller::init() {
     for (int i = 0; i < 10; i++) world.addIndividual(new Fred(10 * i, 10 * i, 40));
     world.fillWithFood([](World * w) -> Food * {
         return new Food(
-                std::experimental::randint(0, w->WIDTH),
-                std::experimental::randint(0, w->HEIGHT),
-                (w->ENERGY - w->getEnergy()) < MAX_FOOD_SIZE ? w->ENERGY - w->getEnergy() : std::experimental::randint(1, MAX_FOOD_SIZE));
+                //TODO: Reintroduce randomness
+                0,
+                0,
+                (w->ENERGY - w->getEnergy()) < MAX_FOOD_SIZE ? w->ENERGY - w->getEnergy() : MAX_FOOD_SIZE);
     });
 
     initialised = true;
 }
 
-int Controller::run() {
+long Controller::run() {
     if (not initialised) throw(std::logic_error("Controller::run(): .init() must be run first"));
     while (simulate()) iteration++;
     return iteration;

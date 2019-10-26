@@ -8,8 +8,8 @@
 
 class Food : public Entity {
 public:
-    Food(Point position, int value);
-    Food(int x, int y, int value);
+    Food(Point position, double value);
+    Food(double x, double y, double value);
 };
 
 #endif //EVE_FOOD_H

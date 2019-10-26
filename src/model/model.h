@@ -4,9 +4,9 @@
 #include <cmath>
 
 struct Point {
-    int x;
-    int y;
-    Point(int x, int y);
+    double x;
+    double y;
+    Point(double x, double y);
 };
 
 bool operator == (const Point &, const Point &);

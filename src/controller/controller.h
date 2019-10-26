@@ -11,21 +11,21 @@
 #include <typeinfo>
 #include <vector>
 
-#define MAX_FOOD_SIZE 100
+#define MAX_FOOD_SIZE 100.0
 
 class Controller {
 private:
-    int iteration = 0;
+    double iteration = 0;
     bool initialised = false;
 
     bool simulate();
 public:
     World world;
 
-    Controller(int WIDTH, int HEIGHT, int ENERGY);
+    Controller(double WIDTH, double HEIGHT, double ENERGY);
 
     void init();
-    int run();
+    long run();
 };
 
 #endif //EVE_CONTROLLER_H

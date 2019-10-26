@@ -8,18 +8,18 @@
 class Entity : public Object {
 private:
     void setPosition(Point position);
-    void setPosition(int x, int y);
+    void setPosition(double x, double y);
 
 protected:
-    int energy;
+    double energy;
 
     void checkEnergy();
 
 public:
-    Entity(int x, int y, int energy);
+    Entity(double x, double y, double energy);
     ~Entity() override = 0;
 
-    int getEnergy();
+    double getEnergy();
 };
 
 

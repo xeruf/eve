@@ -5,7 +5,7 @@
 
 class Fred : public Individual {
 public:
-    Fred(int x, int y, int energy);
+    Fred(double x, double y, double energy);
 };
 
 #endif //EVE_FRED_H

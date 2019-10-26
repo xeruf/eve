@@ -12,7 +12,7 @@ SCENARIO("A world can be created and initialised") {
         CHECK_THROWS_AS(World(40, 0, -60), std::range_error);
         CHECK_THROWS_AS(World(40, 50, 0), std::range_error);
 
-        static int worldE = 100;
+        static double worldE = 100;
         World world = World(1000, 1000, worldE);
 
         CHECK(world.getFood().empty());
@@ -20,8 +20,8 @@ SCENARIO("A world can be created and initialised") {
         CHECK(not world.getEnergy());
 
         WHEN ("I add entities to the world") {
-            static int foodE = 10;
-            static int fredE = 20;
+            static double foodE = 10;
+            static double fredE = 20;
 
             world.addFood(new Food(10, 20, foodE));
             world.addIndividual(new Fred(40, 50, fredE));
@@ -33,7 +33,7 @@ SCENARIO("A world can be created and initialised") {
                 CHECK(world.getIndividuals().back()->getEnergy() == fredE);
 
                 auto individuals = world.getIndividuals();
-                int ID = individuals[0]->getID();
+                long ID = individuals[0]->getID();
                 for (auto fred : world.getIndividuals()) CHECK(fred->getID() == ID++);
             }
 
@@ -64,8 +64,8 @@ SCENARIO("A world can be created and initialised") {
                 }
             }
 
-            int sizeI = world.getIndividuals().size();
-            int sizeC = world.getCemetery().size();
+            double sizeI = world.getIndividuals().size();
+            double sizeC = world.getCemetery().size();
 
             CHECK(sizeI > 0);
             CHECK(sizeC == 0);
