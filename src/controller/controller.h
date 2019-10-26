@@ -15,7 +15,7 @@
 
 class Controller {
 private:
-    double iteration = 0;
+    long iteration = 0;
     bool initialised = false;
 
     bool simulate();
