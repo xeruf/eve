@@ -23,6 +23,7 @@ int Controller::run() {
 }
 
 bool Controller::simulate() {
+    terminalview.render(world);
     for (auto individual : world.getIndividuals()) {
         auto visibles = world.getObjectsAround(individual->getPosition(), individual->getVisionRange());
         auto action = individual->act(visibles);
@@ -30,7 +31,6 @@ bool Controller::simulate() {
         delete action;
         delete visibles;
     }
-
     world.kill(iteration);
     return not world.getIndividuals().empty();
 }
