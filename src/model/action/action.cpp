@@ -2,14 +2,12 @@
 
 Action::Action(action type) : type{type} {}
 
-std::string Action::name() {return actionName(type);}
+Eat::Eat() : Action(EAT) {}
+std::string Eat::toString() {return std::string("eat");}
 
-std::string actionName(action type) {
-    switch(type) {
-        case 0: return "eat";
-        case 1: return "move";
-        case 2: return "sleep";
-        default: throw std::range_error("Invalid type of action");
-    }
-}
+Move::Move() : Action(MOVE) {}
+std::string Move::toString() {return std::string("move");}
+
+Sleep::Sleep() : Action(SLEEP) {}
+std::string Sleep::toString() {return std::string("sleep");}
 
