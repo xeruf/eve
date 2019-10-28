@@ -9,6 +9,8 @@ struct Action {
     const action type;
 
     explicit Action(action type);
+    virtual ~Action() = 0;
+
     virtual std::string toString() = 0;
 };
 

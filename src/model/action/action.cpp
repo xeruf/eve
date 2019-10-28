@@ -1,6 +1,7 @@
 #include "action.h"
 
 Action::Action(action type) : type{type} {}
+Action::~Action() = default;
 
 Eat::Eat() : Action(EAT) {}
 std::string Eat::toString() {return std::string("eat");}
