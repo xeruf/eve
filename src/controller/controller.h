@@ -4,11 +4,11 @@
 #include "../model/object/entity/food/food.h"
 #include "../model/object/entity/individual/fred/fred.h"
 #include "../model/random/random.h"
+#include "../view/terminalview.h"
 #include "../model/world/world.h"
 
 #include <cmath>
 #include <stdexcept>
-#include <typeinfo>
 #include <vector>
 
 #define MIN_FOOD_SIZE 10.0
@@ -22,6 +22,7 @@ private:
     bool simulate();
 public:
     World world;
+    TerminalView terminalview;
 
     Controller(double WIDTH, double HEIGHT, double ENERGY);
 

@@ -19,9 +19,11 @@ private:
 
     std::function<Food * (World * world)> refillFunction = {};
 
-    std::vector<Obstacle *> obstacles;
+    std::vector<Object *> * objectLists[3];
+
     std::vector<Food *> foods;
     std::vector<Individual *> individuals;
+    std::vector<Obstacle *> obstacles;
     std::list<Individual *> cemetery;
 
     void incEnergy(Entity * entity);
