@@ -3,17 +3,30 @@
 
 #include "../object/entity/entity.h"
 
+enum action {EAT, MOVE, SLEEP, SIZE};
+
 struct Action {
+    const action type;
+
+    explicit Action(action type);
     virtual ~Action() = 0;
+
+    virtual std::string toString() = 0;
 };
 
 struct Eat : Action {
-};
-
-struct Sleep : Action {
+    Eat();
+    std::string toString();
 };
 
 struct Move : Action {
+    Move();
+    std::string toString();
+};
+
+struct Sleep : Action {
+    Sleep();
+    std::string toString();
 };
 
 

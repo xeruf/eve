@@ -25,9 +25,11 @@ int Controller::run() {
 bool Controller::simulate() {
     terminalview.render(world);
     for (auto individual : world.getIndividuals()) {
-        auto action = individual->act(world.getObjectsAround(individual->getPosition(), individual->getVisionRange()));
-        std::cout << typeid(action).name() << std::endl;
+        auto visibles = world.getObjectsAround(individual->getPosition(), individual->getVisionRange());
+        auto action = individual->act(visibles);
+        std::cout << action->toString() << std::endl;
         delete action;
+        delete visibles;
     }
     world.kill(iteration);
     return not world.getIndividuals().empty();
