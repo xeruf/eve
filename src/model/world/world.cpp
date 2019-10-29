@@ -8,6 +8,10 @@ World::World(int WIDTH, int HEIGHT, int ENERGY) :
     if (WIDTH <= 0) throw std::range_error("World(): WIDTH must be positive");
     if (HEIGHT <= 0) throw std::range_error("World(): HEIGHT must be positive");
     if (ENERGY <= 0) throw std::range_error("World(): ENERGY must be positive");
+
+    objectLists[0] = (std::vector<Object *> *) & foods;
+    objectLists[1] = (std::vector<Object *> *) & individuals;
+    objectLists[2] = (std::vector<Object *> *) & obstacles;
 }
 
 World::~World() {
@@ -43,11 +47,13 @@ std::vector<Individual *> World::getIndividuals() {
 }
 
 std::vector<Object *> * World::getObjectsAround(const Point & position, double radius) {
-    auto objects = new std::vector<Object *>();
-    for (auto food : foods) if (std::abs(food->getPosition() - position) < radius) objects->push_back(food);
-    for (auto individual : individuals) if (std::abs(individual->getPosition() - position) < radius) objects->push_back(individual);
-    for (auto obstacle : obstacles) if (std::abs(obstacle->getPosition() - position) < radius) objects->push_back(obstacle);
-    return objects;
+    auto visibles = new std::vector<Object *>();
+    for (auto objects : objectLists) {
+        for (auto & object : * objects) {
+            if (std::abs(object->getPosition() / position) < radius) visibles->push_back(std::move(object));
+        }
+    }
+    return visibles;
 }
 
 void World::setRefillFunction(const std::function<Food * (World * world)> & f) {
