@@ -6,15 +6,15 @@
 
 class Individual : public Entity {
 private:
-    static int numberOfIndividuals;
-    const int ID;
-    const int visionRange = 15;
+    static long numberOfIndividuals;
+    const long ID;
+    const double visionRange = 15;
 public:
-    Individual(int x, int y, int energy);
+    Individual(double x, double y, double energy);
     ~Individual() override = 0;
 
-    int getID();
-    int getVisionRange();
+    long getID();
+    double getVisionRange();
 
     virtual Action * act(std::vector<Object *> * visibles) = 0;
 };

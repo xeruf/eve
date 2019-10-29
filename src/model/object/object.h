@@ -11,7 +11,7 @@ protected:
     Point position;
 
 public:
-    Object(int x, int y);
+    Object(double x, double y);
     virtual ~Object() = 0;
 
     Point getPosition();

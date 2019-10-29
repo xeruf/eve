@@ -1,6 +1,6 @@
 #include "food.h"
 
-Food::Food(int x, int y, int energy) : Entity(x, y, energy) {}
-Food::Food(Point position, int energy) : Entity(position.x, position.y, energy) {}
+Food::Food(double x, double y, double energy) : Entity(x, y, energy) {}
+Food::Food(Point position, double energy) : Entity(position.x, position.y, energy) {}
 
 Food::Entity::~Entity() = default;

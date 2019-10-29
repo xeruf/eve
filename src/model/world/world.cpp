@@ -1,6 +1,6 @@
 #include "world.h"
 
-World::World(int WIDTH, int HEIGHT, int ENERGY) :
+World::World(double WIDTH, double HEIGHT, double ENERGY) :
     WIDTH{WIDTH},
     HEIGHT{HEIGHT},
     ENERGY{ENERGY}
@@ -34,7 +34,7 @@ void World::incEnergy(Entity * entity) {
     energy += entity->getEnergy();
 }
 
-int World::getEnergy() {
+double World::getEnergy() {
     return energy;
 }
 
@@ -78,7 +78,7 @@ std::list<Individual *> World::getCemetery() {
     return cemetery;
 }
 
-bool World::kill(int ID) {
+bool World::kill(long ID) {
     unsigned long index = 0;
     for (auto individual : individuals) {
         if (individual->getID() == ID) {
