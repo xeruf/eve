@@ -14,5 +14,4 @@ struct Point {
     Point operator + (const Point & a);
 };
 
-
 #endif //EVE_MODEL_H

@@ -16,7 +16,7 @@ public:
     int getID();
     int getVisionRange();
 
-    Action * act();
+    Action * act(std::vector<Object *> * visibles);
 };
 
 #endif //EVE_INDIVIDUAL_H
