@@ -7,11 +7,11 @@ struct Point {
     double x;
     double y;
     Point(double x, double y);
-};
 
-bool operator == (const Point &, const Point &);
-double operator / (const Point &, const Point &);
-Point operator - (const Point &, const Point &);
-Point operator + (const Point &, const Point &);
+    bool operator == (const Point &);
+    double operator / (const Point & a);
+    Point operator - (const Point & a);
+    Point operator + (const Point & a);
+};
 
 #endif //EVE_MODEL_H

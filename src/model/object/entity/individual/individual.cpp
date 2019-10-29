@@ -8,6 +8,4 @@ Individual::Individual(double x, double y, double energy) :
 
 long Individual::getID() {return ID;}
 
-double Individual::getVisionRange() { return visionRange;}
-
-Action * Individual::act(std::vector<Object *> * visibles) {return new Sleep();}
+int Individual::getVisionRange() { return visionRange;}

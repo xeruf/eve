@@ -2,7 +2,7 @@
 
 Point::Point(double x, double y) : x{x}, y{y} {}
 
-bool operator == (const Point & a, const Point & b) {return a.x == b.x && a.y == b.y;}
-double operator / (const Point & a, const Point & b) {return sqrt(pow(b.x - a.x, 2.0) + pow(b.y - a.y, 2.0));}
-Point operator - (const Point & a, const Point & b) {return Point(a.x - b.x, a.y - b.y);}
-Point operator + (const Point & a, const Point & b) {return Point(a.x + b.x, a.y + b.y);}
+bool Point::operator == (const Point & p) {return x == p.x && y == p.y;}
+double Point::operator / (const Point & p) {return sqrt(pow(p.x - x, 2.0) + pow(p.y - y, 2.0));}
+Point Point::operator - (const Point & p) {return Point(x - p.x, y - p.y);}
+Point Point::operator + (const Point & p) {return Point(x + p.x, y + p.y);}
