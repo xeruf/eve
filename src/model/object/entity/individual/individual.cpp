@@ -8,4 +8,4 @@ Individual::Individual(double x, double y, double energy) :
 
 long Individual::getID() {return ID;}
 
-int Individual::getVisionRange() { return visionRange;}
+double Individual::getVisionRange() { return visionRange;}

@@ -8,7 +8,7 @@
 class Fred : public Individual {
 public:
     Fred(double x, double y, double energy);
-
+  
     Action * act(std::vector<Object *> * visibles);
 };
 

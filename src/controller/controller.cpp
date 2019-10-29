@@ -5,13 +5,16 @@ Controller::Controller(double WIDTH, double HEIGHT, double ENERGY) :
 {}
 
 void Controller::init() {
+    static Uniform distX = Uniform(0.0, world.WIDTH);
+    static Uniform distY = Uniform(0.0, world.HEIGHT);
+    static Uniform distE = Uniform(MIN_FOOD_SIZE, MAX_FOOD_SIZE);
+
     for (int i = 0; i < 10; i++) world.addIndividual(new Fred(10 * i, 10 * i, 40));
     world.fillWithFood([](World * w) -> Food * {
         return new Food(
-                //TODO: Reintroduce randomness
-                0,
-                0,
-                (w->ENERGY - w->getEnergy()) < MAX_FOOD_SIZE ? w->ENERGY - w->getEnergy() : MAX_FOOD_SIZE);
+                distX.rand(),
+                distY.rand(),
+                (w->ENERGY - w->getEnergy()) < MAX_FOOD_SIZE ? w->ENERGY - w->getEnergy() : distE.rand());
     });
 
     initialised = true;
@@ -26,6 +29,7 @@ long Controller::run() {
 bool Controller::simulate() {
     terminalview.render(world);
     for (auto individual : world.getIndividuals()) {
+
         auto visibles = world.getObjectsAround(individual->getPosition(), individual->getVisionRange());
         auto action = individual->act(visibles);
         std::cout << action->toString() << std::endl;

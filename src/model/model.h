@@ -8,10 +8,10 @@ struct Point {
     double y;
     Point(double x, double y);
 
-    bool operator == (const Point &);
-    double operator / (const Point & a);
-    Point operator - (const Point & a);
-    Point operator + (const Point & a);
+    bool operator == (const Point & p);
+    double operator / (const Point & p);
+    Point operator - (const Point & p);
+    Point operator + (const Point & p);
 };
 
 #endif //EVE_MODEL_H
