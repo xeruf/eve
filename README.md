@@ -11,7 +11,7 @@ This project aims to simulate basic lifeforms evolving and getting smarter, in a
    HTTPS: `git clone https://github.com/Xerus2000/eve`  
    SSH: `git clone git@github.com:Xerus2000/eve.git`
 3. Build 'eve' via CLion so that all tasks become available for running
-4. In CLion go to `Settings > Editor > File and Code Templates` 
+4. In CLion go to `Settings > Editor > File and Code Templates` and remove the "Created by" header in c/cpp files
 5. Execute this to set up the git commit message hooks:  
    `git config core.hooksPath .dev/githooks`
 
