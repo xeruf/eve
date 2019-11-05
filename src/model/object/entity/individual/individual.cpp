@@ -6,6 +6,8 @@ Individual::Individual(double x, double y, double energy) :
     ID(numberOfIndividuals)
 {numberOfIndividuals++;}
 
+Individual::~Individual() = default;
+
 long Individual::getID() {return ID;}
 
 double Individual::getVisionRange() { return visionRange;}
