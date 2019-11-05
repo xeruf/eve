@@ -14,4 +14,6 @@ double Entity::getEnergy() {return energy;}
 void Entity::setPosition(Point p) { position = p;}
 void Entity::setPosition(double x, double y) { position = Point(x, y);}
 
+double Entity::getRadius() { return sqrt(energy) / M_PI; }
+
 Entity::Object::~Object() = default;

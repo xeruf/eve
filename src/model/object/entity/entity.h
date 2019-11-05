@@ -4,6 +4,7 @@
 #include "../object.h"
 
 #include <stdexcept>
+#include <cmath>
 
 class Entity : public Object {
 private:
@@ -20,6 +21,7 @@ public:
     ~Entity() override = 0;
 
     double getEnergy();
+    double getRadius();
 };
 
 
