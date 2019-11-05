@@ -1,7 +1,7 @@
 #include <textstyle.h>
 #include "piercy.h"
 
-Piercy::Piercy(double x, double y, double energy) : Individual(x, y, energy) {}
+Piercy::Piercy(double x, double y, double a, double energy) : Individual(x, y, a, energy) {}
 
 Action * Piercy::act(std::vector<Object *> * visibles) {
     while (true) {
