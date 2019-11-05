@@ -5,8 +5,6 @@ Entity::Entity(double x, double y, double energy) :
     energy{energy}
 {checkEnergy();}
 
-Entity::~Entity() = default;
-
 void Entity::checkEnergy() {
     if (energy <= 0) throw std::range_error("Entity::checkEnergy(): Energy has to be positive");
 }
