@@ -7,6 +7,8 @@ Individual::Individual(double x, double y, double a, double energy) :
     ID{numberOfIndividuals++}
 {}
 
+Individual::~Individual() = default;
+
 long Individual::getID() {return ID;}
 
 double Individual::getDirection() {return direction;}
