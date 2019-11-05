@@ -1,0 +1,8 @@
+#ifndef EVE_CONFIG_H
+#define EVE_CONFIG_H
+
+#define MIN_FOOD_SIZE 5.0
+#define MAX_FOOD_SIZE 20.0
+#define SURVIVAL_THRESHOLD MAX_FOOD_SIZE
+
+#endif //EVE_CONFIG_H
