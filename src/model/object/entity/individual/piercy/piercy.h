@@ -1,9 +1,12 @@
-#ifndef EVE_FRED_H
-#define EVE_FRED_H
+#ifndef EVE_PIERCY_H
+#define EVE_PIERCY_H
 
 #include "../individual.h"
 #include "../../../object.h"
 #include "../../../../action/action.h"
+
+#include <iostream>
+#include <limits>
 
 class Piercy : public Individual {
 public:
@@ -12,4 +15,4 @@ public:
     Action * act(std::vector<Object *> * visibles);
 };
 
-#endif //EVE_FRED_H
+#endif //EVE_PIERCY_H

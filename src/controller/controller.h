@@ -4,6 +4,7 @@
 #include "../config.h"
 #include "../model/object/entity/food/food.h"
 #include "../model/object/entity/individual/fred/fred.h"
+#include "../model/object/entity/individual/piercy/piercy.h"
 #include "../model/random/random.h"
 #include "../view/terminalview.h"
 #include "../model/world/world.h"
