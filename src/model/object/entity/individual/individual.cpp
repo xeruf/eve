@@ -1,11 +1,14 @@
 #include "individual.h"
 
 long Individual::numberOfIndividuals = 0;
-Individual::Individual(double x, double y, double energy) :
+Individual::Individual(double x, double y, double a, double energy) :
     Entity(x, y, energy),
-    ID(numberOfIndividuals)
-{numberOfIndividuals++;}
+    direction{a},
+    ID{numberOfIndividuals++}
+{}
 
 long Individual::getID() {return ID;}
+
+double Individual::getDirection() {return direction;}
 
 double Individual::getVisionRange() { return visionRange;}

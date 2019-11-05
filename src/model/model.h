@@ -8,7 +8,7 @@ struct Point {
     double y;
     Point(double x, double y);
 
-    bool operator == (const Point & p);
+    bool operator == (const Point & p) const;
     double operator / (const Point & p);
     Point operator - (const Point & p);
     Point operator + (const Point & p);

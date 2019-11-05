@@ -24,9 +24,9 @@ SCENARIO("A world can be created and initialised") {
             static double fredE = 20;
 
             world.addFood(new Food(10, 20, foodE));
-            world.addIndividual(new Fred(40, 50, fredE));
-            world.addIndividual(new Fred(40, 50, fredE));
-            world.addIndividual(new Fred(40, 50, fredE));
+            world.addIndividual(new Fred(40, 50, 0, fredE));
+            world.addIndividual(new Fred(40, 50, 0, fredE));
+            world.addIndividual(new Fred(40, 50, 0, fredE));
 
             THEN ("the object gets stored properly") {
                 CHECK(world.getFood().back()->getPosition() == Point(10, 20));
@@ -60,7 +60,7 @@ SCENARIO("A world can be created and initialised") {
 
                 THEN ("adding more entities raises an overflow exception") {
                     CHECK_THROWS_AS(world.addFood(new Food(0, 0, 10)), std::overflow_error);
-                    CHECK_THROWS_AS(world.addIndividual(new Fred(0, 0, 10)), std::overflow_error);
+                    CHECK_THROWS_AS(world.addIndividual(new Fred(0, 0, 0, 10)), std::overflow_error);
                 }
             }
 
