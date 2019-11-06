@@ -11,19 +11,19 @@ TEST_CASE("A string table can be created"){
         "Food:\n"
         "—————————————————————————————————————————\n"
         "X:  500 | Y:  689 | Energy:  10\n"
-        "X: 1000 | Y: 1000 | Energy:  10\n"
+        "X: 1000 | Y: 1000 | Energy: 100\n"
         "X:    0 | Y:    0 | Energy:   1\n"
         "—————————————————————————————————————————\n"
         "Individuals:\n"
         "—————————————————————————————————————————\n"
-        "ID:   0 | X:  123 | Y:  321 | Energy: 100\n"
-        "ID:   1 | X:  138 | Y:  153 | Energy:  70\n"
-        "ID:   2 | X:  420 | Y:  420 | Energy:   5\n";
+        "ID:  58 | X:  123 | Y:  321 | Energy: 100\n"
+        "ID:  59 | X:  138 | Y:  153 | Energy:  70\n"
+        "ID:  60 | X:  420 | Y:  420 | Energy:   5\n";
 
     World world = World(1000, 1000, 1000);
-    Fred * fred1 = new Fred(123, 321, 100);
-    Fred * fred2 = new Fred(138, 153, 70);
-    Fred * fred3 = new Fred(420, 420, 5);
+    Fred * fred1 = new Fred(123, 321, 0,  100);
+    Fred * fred2 = new Fred(138, 153, 0, 70);
+    Fred * fred3 = new Fred(420, 420, 0, 5);
 
     Food * food1 = new Food(500, 689, 10);
     Food * food2 = new Food(1000, 1000, 100);
@@ -41,26 +41,26 @@ TEST_CASE("A string table can be created"){
     // Food tests
     SECTION("stringifyFood can convert a Food object into a string") {
         REQUIRE(
-            terminalView.stringifyFood(food1) == "X:  500 | Y:  689 | Energy:  10\n"
+            terminalView.stringifyEntity(food1) == "X:  500 | Y:  689 | Energy:  10\n"
         );
     }
 
     SECTION("stringifyFood correctly formats food at max values") {
         REQUIRE(
-            terminalView.stringifyFood(food2) == "X: 1000 | Y: 1000 | Energy: 100\n"
+            terminalView.stringifyEntity(food2) == "X: 1000 | Y: 1000 | Energy: 100\n"
         );
     }
 
     SECTION("stringifyFood correctly formats food at minimum values"){
         REQUIRE(
-            terminalView.stringifyFood(food3) == "X:    0 | Y:    0 | Energy:   1\n"
+            terminalView.stringifyEntity(food3) == "X:    0 | Y:    0 | Energy:   1\n"
         );
     }
 
     // Individual tests
     SECTION("stringifyIndividual can convert an individual object into a string") {
         REQUIRE(
-            terminalView.stringifyIndividual(fred1) == "ID:   0 | X:  123 | Y:  321 | Energy: 100\n"
+            terminalView.stringifyEntity(fred1) == "ID:  55 | X:  123 | Y:  321 | Energy: 100\n"
         );
     }
 

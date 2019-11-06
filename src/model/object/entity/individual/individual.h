@@ -9,11 +9,14 @@ private:
     static long numberOfIndividuals;
     const long ID;
     const double visionRange = 15;
+
+    double direction;
 public:
-    Individual(double x, double y, double energy);
+    Individual(double x, double y, double a, double energy);
     ~Individual() override = 0;
 
     long getID();
+    double getDirection();
     double getVisionRange();
 
     virtual Action * act(std::vector<Object *> * visibles) = 0;

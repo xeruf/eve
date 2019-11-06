@@ -6,7 +6,7 @@
 
 SCENARIO("Fred can be created and initialized") {
     GIVEN("A fred and a test list of visible objects is instantiated") {
-        Fred fred = Fred(3, 5, 60);
+        Fred fred = Fred(3, 5, 0, 60);
         std::vector<Object *> list;
 
         WHEN("The individual is requested to act") {

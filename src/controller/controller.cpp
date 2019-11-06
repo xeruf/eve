@@ -9,7 +9,7 @@ void Controller::init() {
     static Uniform distY = Uniform(0.0, world.HEIGHT);
     static Uniform distE = Uniform(MIN_FOOD_SIZE, MAX_FOOD_SIZE);
 
-    for (int i = 0; i < 10; i++) world.addIndividual(new Fred(10 * i, 10 * i, 40));
+    for (int i = 0; i < 10; i++) world.addIndividual(new Fred(10 * i, 10 * i, 0, 40));
     world.fillWithFood([](World * w) -> Food * {
         return new Food(
                 distX.rand(),
