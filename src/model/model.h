@@ -29,7 +29,7 @@ struct Vector {
     double angle;
     double length;
 
-    Vector (Point p);
+    explicit Vector (Point p);
     Vector (double angle, double length);
     Vector (int angle, double length);
 
