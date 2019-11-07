@@ -34,6 +34,7 @@ struct Vector {
     Vector (int angle, double length);
 
     bool operator == (const Vector & v) const;
+    bool operator == (const Point & p) const;       // Compares 'this' with ORIGIN >> p
 
     Vector operator + (const Vector & v) const;
 

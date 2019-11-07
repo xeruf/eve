@@ -26,6 +26,7 @@ Vector::Vector(Point p) : Vector(atan(p.y / p.x), ORIGIN / p) {}
 Vector::Vector(int a, double l) : Vector(((double) a / 180 * M_PI), l) {}
 
 bool Vector::operator == (const Vector & v) const {return (long) angle == (long) v.angle && (long) length == (long) v.length;}
+bool Vector::operator == (const Point & p) const {return * this == (ORIGIN >> p);}
 
 Vector Vector::operator + (const Vector & v) const {return Vector(ORIGIN + * this + v);}
 

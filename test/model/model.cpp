@@ -11,6 +11,7 @@ SCENARIO("A plane and *MATH*") {
         Point C = Point (-5, -10);
         Point D = Point (1, 11);
 
+        Vector OD = Vector(D);
         Vector r = Vector (180, 10);
         Vector s = Vector (M_PI, 10);
         Vector t = Vector (90, 10);
@@ -22,7 +23,10 @@ SCENARIO("A plane and *MATH*") {
         CHECK(ORIGIN / (A + B) == 5);
 
         CHECK((A >> D) == t);
-        CHECK((A << C) == (C >> A));
+        CHECK((C >> A) == (A << C));
+        CHECK((B >> B) == ORIGIN);
+
+        CHECK(OD == (ORIGIN >> D));
 
         CHECK(r == s);
         CHECK(rt == RT);
