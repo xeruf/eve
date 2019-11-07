@@ -1,12 +1,12 @@
 #include "terminalview.h"
 #include <iostream>
 
-void TerminalView::render(World & world) {
+void TerminalView::render(const World & world) const {
     std::string table = createTable(world);
     std::cout << table << std::endl;
 }
 
-std::string TerminalView::createTable(World & world) {
+std::string TerminalView::createTable(const World & world) const {
     std::string outputString;
 
     outputString += "—————————————————————————————————————————\n"
@@ -31,14 +31,14 @@ std::string TerminalView::createTable(World & world) {
     return outputString;
 };
 
-std::string TerminalView::padIntL(int number, int maxLen) {
+std::string TerminalView::padIntL(int number, int maxLen) const {
     std::string numberString = std::to_string(number);
     std::string paddedString(maxLen - numberString.length(), ' ');
     paddedString += numberString;
     return paddedString;
 };
 
-std::string TerminalView::stringifyEntity(Individual * individual) {
+std::string TerminalView::stringifyEntity(const Individual * individual) const {
     int id = individual->getID();
 
     std::string outputString;
@@ -47,7 +47,7 @@ std::string TerminalView::stringifyEntity(Individual * individual) {
     return outputString;
 };
 
-std::string TerminalView::stringifyEntity(Entity * entity) {
+std::string TerminalView::stringifyEntity(const Entity * entity) const {
     int xPos = entity->getPosition().x;
     int yPos = entity->getPosition().y;
     int energy = entity->getEnergy();
