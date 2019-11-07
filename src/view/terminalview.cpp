@@ -15,8 +15,8 @@ std::string TerminalView::createTable(const World & world) const {
 
     std::vector<Food *> food = world.getFood();
 
-    for (int i = 0; i < food.size(); ++i) {
-        outputString += stringifyEntity(food[i]);
+    for (auto f : food) {
+        outputString += stringifyEntity(f);
     }
 
     outputString += "—————————————————————————————————————————\n"
@@ -24,8 +24,8 @@ std::string TerminalView::createTable(const World & world) const {
                     "—————————————————————————————————————————\n";
 
     std::vector<Individual *> individuals = world.getIndividuals();
-    for (int i = 0; i < individuals.size(); ++i) {
-        outputString += stringifyEntity(individuals[i]);
+    for (auto i : individuals) {
+        outputString += stringifyEntity(i);
     }
 
     return outputString;
