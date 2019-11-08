@@ -1,7 +1,3 @@
-//
-// Created by aaron on 09/10/2019.
-//
-
 #ifndef EVE_QUEUE_H
 #define EVE_QUEUE_H
 
@@ -12,11 +8,13 @@ template <class T>
 class Queue {
     Container<T> * back = nullptr;
     Container<T> * front = nullptr;
+
+    int elements = 0;
 public:
     virtual void push(const Task_e & task);
-    virtual Task_e pop();
-    virtual int size();
-    virtual bool empty();
+    virtual Task_e pop() const;
+    virtual int size() const;
+    virtual bool empty() const;
 };
 
 #endif //EVE_QUEUE_H

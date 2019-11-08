@@ -1,6 +1,7 @@
 #include "thread.h"
 
 Thread::Thread(Queue<Container<Task_e>> & queue) : queue{queue} {}
+Thread::Thread(Thread && other) noexcept : queue(other.queue) {}
 Thread::~Thread() {
     stopThread = true;
     thread.join();

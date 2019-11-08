@@ -10,13 +10,14 @@
 
 class Thread {
 private:
-    Queue<Container<Task_e>> & queue;
+    const Queue<Container<Task_e>> & queue;
     std::thread thread;
     volatile bool stopThread = false;
 
     void run();
 public:
     explicit Thread(Queue<Container<Task_e>> & queue);
+    Thread(Thread && other) noexcept;
     ~Thread();
 };
 

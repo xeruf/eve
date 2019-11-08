@@ -10,6 +10,7 @@ private:
     Thread thread;
 public:
     Worker();
+    Worker(Worker && other) noexcept;
 };
 
 

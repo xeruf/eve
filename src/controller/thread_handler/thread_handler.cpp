@@ -3,8 +3,11 @@
 int ThreadHandler::threadAmount = DEFAULT_THREADS;
 
 ThreadHandler::ThreadHandler() : ThreadHandler(calcThreadAmount()) {}
-ThreadHandler::ThreadHandler(int threads) : workers{new Worker[threads]} {}
-
+ThreadHandler::ThreadHandler(int threads) {
+    threadAmount = threads;
+    for (int i = 0; i < threads; i++) workers.emplace_back();
+    workers.shrink_to_fit();
+}
 int ThreadHandler::calcThreadAmount() {
     int threadsSupported = (int) std::thread::hardware_concurrency();
     if (threadsSupported) threadAmount = threadsSupported;

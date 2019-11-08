@@ -8,13 +8,15 @@
 #include <functional>
 #include <cmath>
 #include <thread>
+#include <vector>
 
 class ThreadHandler {
 private:
-    Worker * workers;
+    std::vector<Worker> workers;
     static int threadAmount;
 
     static int calcThreadAmount();
+
 public:
     ThreadHandler();
     explicit ThreadHandler(int threads);
