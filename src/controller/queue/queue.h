@@ -5,6 +5,8 @@
 #include "../thread_handler/task/task.h"
 #include "../promise/promise.h"
 
+#include <stdexcept>
+
 template <class T>
 class Queue {
     Container<T> * back = nullptr;
@@ -19,17 +21,28 @@ public:
             Container<T> newItem(item, nullptr, back);
             back->prev = & newItem;
             back = & newItem;
+            elements++;
         }
         return item.promise();
     }
 
     virtual T pop() {
+        while (!elements);
+
         Container<T> * node;
         // LOCK HERE
         {
             node = front;
-            front = front->prev;
-            front->next = nullptr;
+
+            if (elements == 1) {
+                front = nullptr;
+                back = nullptr;
+            }
+            else {
+                front = front->prev;
+                front->next = nullptr;
+            }
+            elements--;
         }
         return node->item;
     }
