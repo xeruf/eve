@@ -1,10 +1,10 @@
 #include "queue.h"
 
 template <class T>
-void Queue<T>::push(const Task_e & task) {}
+void Queue<T>::push(const T & item) {}
 
 template <class T>
-Task_e Queue<T>::pop() {}
+T Queue<T>::pop() {}
 
 template <class T>
 int Queue<T>::size() const {

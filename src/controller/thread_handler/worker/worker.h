@@ -11,6 +11,7 @@ private:
 public:
     Worker();
     Worker(Worker && other) noexcept;
+    
 };
 
 

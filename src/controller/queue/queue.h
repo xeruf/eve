@@ -12,8 +12,8 @@ class Queue {
     int elements = 0;
 
 public:
-    virtual void push(const Task_e & task);
-    virtual Task_e pop();
+    virtual void push(const T & item);
+    virtual T pop();
     [[nodiscard]] virtual int size() const;
     [[nodiscard]] virtual bool empty() const;
 };
