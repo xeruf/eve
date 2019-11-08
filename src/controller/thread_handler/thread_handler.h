@@ -5,11 +5,9 @@
 #ifndef EVE_THREAD_HANDLER_H
 #define EVE_THREAD_HANDLER_H
 
-#define DEFAULT_THREADS 1
-
 #include "worker/worker.h"
-
 #include "task/task.h"
+#include "../../config.h"
 
 #include <functional>
 #include <cmath>
