@@ -5,7 +5,7 @@
 
 #include <functional>
 
-struct Task_e {virtual void run() {};};
+struct Task_e {virtual void operator () () {}};
 
 template <class R, class... Args>
 class Task : Task_e {
