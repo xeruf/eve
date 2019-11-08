@@ -21,8 +21,8 @@ struct Point {
     Point operator - (const Point & p) const;
     Point operator - (const Vector & v) const;
 
-    Vector operator >> (const Point & p) const;     // Returns the vector from 'this' to p
-    Vector operator << (const Point & p) const;     // Returns the vector from p to 'this'
+    Vector operator > (const Point & p) const;      // Returns the vector from 'this' to p
+    Vector operator < (const Point & p) const;      // Returns the vector from p to 'this'
 };
 
 struct Vector {
