@@ -5,7 +5,10 @@
 
 #include <functional>
 
-struct Task_e {virtual void operator () () {}};
+struct Task_e {
+    virtual void operator () () {}
+    virtual void * promise() {return nullptr;}
+};
 
 template <class R, class... Args>
 class Task : Task_e {
@@ -15,7 +18,7 @@ class Task : Task_e {
 public:
     explicit Task(std::function<R(Args... args)> f);
 
-    const Promise<R> * promise();
+    Promise<R> * promise() override;
 
     void operator () ();
 };

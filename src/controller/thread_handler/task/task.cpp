@@ -4,7 +4,7 @@ template <class R, class... Args>
 Task<R, Args...>::Task(std::function<R(Args... args)> f) : f{f} {}
 
 template <class R, class... Args>
-const Promise<R> * Task<R, Args...>::promise() {
+Promise<R> * Task<R, Args...>::promise() {
     return val;
 }
 

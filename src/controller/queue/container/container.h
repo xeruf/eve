@@ -1,7 +1,3 @@
-//
-// Created by aaron on 11/10/2019.
-//
-
 #ifndef EVE_CONTAINER_H
 #define EVE_CONTAINER_H
 
@@ -9,7 +5,13 @@
 
 template <class T>
 struct Container : Container_e {
-    T & item;
+    const T & item;
+
+    explicit Container(const T & item) :
+        item{item} {}
+    Container(const T & item, Container * prev, Container * next) :
+        Container_e(prev, next),
+        item{item} {}
 };
 
 #endif //EVE_CONTAINER_H

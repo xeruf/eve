@@ -1,7 +1,3 @@
-//
-// Created by aaron on 11/10/2019.
-//
-
 #ifndef EVE_CONTAINER__EH
 #define EVE_CONTAINER__EH
 

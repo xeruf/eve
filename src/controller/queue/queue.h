@@ -3,6 +3,7 @@
 
 #include "container/container.h"
 #include "../thread_handler/task/task.h"
+#include "../promise/promise.h"
 
 template <class T>
 class Queue {
@@ -12,9 +13,26 @@ class Queue {
     int elements = 0;
 
 public:
-    virtual void push(const T & item) {}
+    virtual void * push(T & item) {
+        // LOCK HERE
+        {
+            Container<T> newItem(item, nullptr, back);
+            back->prev = & newItem;
+            back = & newItem;
+        }
+        return item.promise();
+    }
 
-    virtual T pop() {}
+    virtual T pop() {
+        Container<T> * node;
+        // LOCK HERE
+        {
+            node = front;
+            front = front->prev;
+            front->next = nullptr;
+        }
+        return node->item;
+    }
 
     [[nodiscard]] virtual int size() const {
         return elements;
