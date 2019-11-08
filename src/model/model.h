@@ -3,6 +3,8 @@
 
 #include <cmath>
 
+#define CONST_MODIFIER 1000
+
 struct Point;
 struct Vector;
 
@@ -10,6 +12,8 @@ struct Point {
     double x;
     double y;
     Point (double x, double y);
+
+    Point & operator = (const Vector & v);
 
     bool operator == (const Point & p) const;
 
@@ -21,9 +25,10 @@ struct Point {
     Point operator - (const Point & p) const;
     Point operator - (const Vector & v) const;
 
-    Vector operator , (const Point & p) const;       // Calls >=
-    Vector operator >= (const Point & p) const;      // Returns the vector from 'this' to p
-    Vector operator <= (const Point & p) const;      // Returns the vector from p to 'this'
+    /* Operators to calculate the vector between two points */
+    Vector operator , (const Point & p) const;
+    Vector operator >= (const Point & p) const;
+    Vector operator <= (const Point & p) const;
 };
 
 struct Vector {
@@ -33,6 +38,8 @@ struct Vector {
     explicit Vector (Point p);
     Vector (double angle, double length);
     Vector (int angle, double length);
+
+    Vector & operator = (const Point & p);
 
     bool operator == (const Vector & v) const;
     bool operator == (const Point & p) const;       // Compares 'this' with ORIGIN >> p
