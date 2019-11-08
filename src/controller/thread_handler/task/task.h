@@ -20,7 +20,7 @@ public:
 
     Promise<R> * promise() override;
 
-    void operator () ();
+    void operator () () override;
 };
 
 #endif //EVE_TASK_H

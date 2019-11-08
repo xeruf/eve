@@ -5,9 +5,9 @@ template <class T>
 struct Container {
     Container<T> * prev = nullptr;
     Container<T> * next = nullptr;
-    const T & item;
+    T item;
 
-    explicit Container(const T & item, Container * prev = nullptr, Container * next = nullptr) :
+    explicit Container(T item, Container * prev = nullptr, Container * next = nullptr) :
         item{item},
         prev{prev},
         next{next} {}

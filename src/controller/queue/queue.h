@@ -13,7 +13,7 @@ class Queue {
     int elements = 0;
 
 public:
-    virtual void * push(T & item) {
+    virtual void * push(T item) {
         // LOCK HERE
         {
             Container<T> newItem(item, nullptr, back);
