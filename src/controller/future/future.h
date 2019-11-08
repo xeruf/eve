@@ -1,13 +1,21 @@
-//
-// Created by aaron on 14/10/2019.
-//
-
 #ifndef EVE_FUTURE_H
 #define EVE_FUTURE_H
 
+#include "../promise/promise.h"
+#include "../thread_handler/task/task.h"
+
 template <class R>
 class Future {
+private:
+    const Promise<R> * val;
+    const volatile bool & done = val->isDone();
 
+public:
+    explicit Future(const Promise<R> * promise);
+    ~Future();
+
+    [[nodiscard]] bool isDone() const;
+    R await();
 };
 
 

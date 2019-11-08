@@ -1,22 +1,23 @@
-//
-// Created by aaron on 11/10/2019.
-//
-
 #ifndef EVE_TASK_H
 #define EVE_TASK_H
 
-#include "../../future/future.h"
+#include "../../promise/promise.h"
 
 #include <functional>
 
 struct Task_e {virtual void run() {};};
 
 template <class R, class... Args>
-struct Task : Task_e {
-    Future<R> future;
-    bool done = false;
+class Task : Task_e {
+    std::function<R(Args... args)> f;
+    Promise<R> * val = new Promise<R>();
 
-    void run(std::function<R(Args... args)> f);
+public:
+    explicit Task(std::function<R(Args... args)> f);
+
+    const Promise<R> * promise();
+
+    void operator () ();
 };
 
 #endif //EVE_TASK_H
