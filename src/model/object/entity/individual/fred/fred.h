@@ -9,7 +9,7 @@ class Fred : public Individual {
 public:
     Fred(double x, double y, double a, double energy);
   
-    Action * act(std::vector<Object *> * visibles);
+    Action * act(std::vector<Object *> * visibles) override;
 };
 
 #endif //EVE_FRED_H

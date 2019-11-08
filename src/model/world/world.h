@@ -37,22 +37,22 @@ public:
     World(double WIDTH, double HEIGHT, double ENERGY);
     ~World();
 
-    double getEnergy();
+    [[nodiscard]] double getEnergy() const;
 
-    std::vector<Food *> getFood();
+    [[nodiscard]] std::vector<Food *> getFood() const;
     void addFood(Food * food);
 
     void setRefillFunction(const std::function<Food * (World * world)> & f);
     bool fillWithFood(const std::function<Food * (World * world)> & f);
     bool fillWithFood();
 
-    std::vector<Individual *> getIndividuals();
+    [[nodiscard]] std::vector<Individual *> getIndividuals() const;
     void addIndividual(Individual * individual);
 
-    std::list<Individual *> getCemetery();
+    std::list<Individual *> getCemetery() const;
     bool kill(long ID);
 
-    std::vector<Object *> * getObjectsAround(const Point & position, double radius);
+    [[nodiscard]] std::vector<Object *> * getObjectsAround(const Point & position, double radius) const;
 };
 
 #endif //EVE_WORLD_H

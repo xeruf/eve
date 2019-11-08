@@ -34,19 +34,19 @@ void World::incEnergy(Entity * entity) {
     energy += entity->getEnergy();
 }
 
-double World::getEnergy() {
+double World::getEnergy() const {
     return energy;
 }
 
-std::vector<Food *> World::getFood() {
+std::vector<Food *> World::getFood() const {
     return foods;
 }
 
-std::vector<Individual *> World::getIndividuals() {
+std::vector<Individual *> World::getIndividuals() const {
     return individuals;
 }
 
-std::vector<Object *> * World::getObjectsAround(const Point & position, double radius) {
+std::vector<Object *> * World::getObjectsAround(const Point & position, double radius) const {
     auto visibles = new std::vector<Object *>();
     for (auto objects : objectLists) {
         for (auto & object : * objects) {
@@ -74,7 +74,7 @@ bool World::fillWithFood() {
     return fillWithFood(refillFunction);
 }
 
-std::list<Individual *> World::getCemetery() {
+std::list<Individual *> World::getCemetery() const {
     return cemetery;
 }
 

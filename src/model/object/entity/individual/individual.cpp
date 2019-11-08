@@ -7,8 +7,8 @@ Individual::Individual(double x, double y, double a, double energy) :
     ID{numberOfIndividuals++}
 {}
 
-long Individual::getID() {return ID;}
+long Individual::getID() const {return ID;}
 
-double Individual::getDirection() {return direction;}
+double Individual::getDirection() const {return direction;}
 
-double Individual::getVisionRange() { return visionRange;}
+double Individual::getVisionRange() const {return visionRange;}

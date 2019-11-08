@@ -14,7 +14,7 @@ public:
     Object(double x, double y);
     virtual ~Object() = 0;
 
-    Point getPosition();
+    [[nodiscard]] Point getPosition() const;
 };
 
 
