@@ -14,7 +14,7 @@ private:
     std::thread thread;
     volatile bool stopThread = false;
 
-    void run();
+    void operator () ();
 public:
     explicit Thread(Queue<Task_e> & queue);
     Thread(Thread && other) noexcept;
