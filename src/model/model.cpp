@@ -31,4 +31,5 @@ bool Vector::operator == (const Point & p) const {return * this == (ORIGIN, p);}
 
 Vector Vector::operator + (const Vector & v) const {return Vector(ORIGIN + * this + v);}
 
-Vector Vector::operator - (const Vector & v) const {return * this + Vector(ORIGIN - v);}
+Vector Vector::operator - () const {return Vector(ORIGIN - * this);}
+Vector Vector::operator - (const Vector & v) const {return * this + -v;}
