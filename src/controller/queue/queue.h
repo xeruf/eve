@@ -10,6 +10,7 @@ class Queue {
     Container<T> * front = nullptr;
 
     int elements = 0;
+
 public:
     virtual void push(const Task_e & task);
     virtual Task_e pop();

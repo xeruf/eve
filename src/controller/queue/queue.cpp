@@ -7,8 +7,12 @@ template <class T>
 Task_e Queue<T>::pop() {}
 
 template <class T>
-int Queue<T>::size() const {}
+int Queue<T>::size() const {
+    return elements;
+}
 
 template <class T>
-bool Queue<T>::empty() const {}
+bool Queue<T>::empty() const {
+    return !elements;
+}
 

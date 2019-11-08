@@ -5,7 +5,7 @@
 #include "thread/thread.h"
 #include "../task/task.h"
 
-class Worker : public Queue<Container<Task_e>> {
+class Worker : public Queue<Task_e> {
 private:
     Thread thread;
 public:
