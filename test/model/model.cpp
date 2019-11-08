@@ -22,11 +22,11 @@ SCENARIO("A plane and *MATH*") {
         CHECK(C + A == Point(-4, -9));
         CHECK(ORIGIN / (A + B) == 5);
 
-        CHECK((A >> D) == t);
-        CHECK((C >> A) == (A << C));
-        CHECK((B >> B) == ORIGIN);
+        CHECK((A >= D) == t);
+        CHECK((C >= A) == (A <= C));
+        CHECK((B >= B) == ORIGIN);
 
-        CHECK(OD == (ORIGIN >> D));
+        CHECK(OD == (ORIGIN >= D));
 
         CHECK(r == s);
         CHECK(rt == RT);
