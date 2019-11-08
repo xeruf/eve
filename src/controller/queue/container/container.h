@@ -1,17 +1,21 @@
 #ifndef EVE_CONTAINER_H
 #define EVE_CONTAINER_H
 
-#include "container_e.h"
-
 template <class T>
-struct Container : Container_e {
+struct Container {
+    Container<T> * prev = nullptr;
+    Container<T> * next = nullptr;
     const T & item;
 
-    explicit Container(const T & item) :
-        item{item} {}
-    Container(const T & item, Container * prev, Container * next) :
-        Container_e(prev, next),
-        item{item} {}
+    explicit Container(const T & item, Container * prev = nullptr, Container * next = nullptr) :
+        item{item},
+        prev{prev},
+        next{next} {}
+
+    ~Container() {
+        delete prev;
+        delete next;
+    }
 };
 
 #endif //EVE_CONTAINER_H
