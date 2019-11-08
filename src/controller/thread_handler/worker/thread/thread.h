@@ -10,7 +10,7 @@
 
 class Thread {
 private:
-    const Queue<Container<Task_e>> & queue;
+    Queue<Container<Task_e>> & queue;
     std::thread thread;
     volatile bool stopThread = false;
 

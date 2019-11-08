@@ -12,9 +12,9 @@ class Queue {
     int elements = 0;
 public:
     virtual void push(const Task_e & task);
-    virtual Task_e pop() const;
-    virtual int size() const;
-    virtual bool empty() const;
+    virtual Task_e pop();
+    [[nodiscard]] virtual int size() const;
+    [[nodiscard]] virtual bool empty() const;
 };
 
 #endif //EVE_QUEUE_H
