@@ -15,9 +15,9 @@ public:
     Individual(double x, double y, double a, double energy);
     ~Individual() override = 0;
 
-    long getID();
-    double getDirection();
-    double getVisionRange();
+    [[nodiscard]] long getID() const;
+    [[nodiscard]] double getDirection() const;
+    [[nodiscard]] double getVisionRange() const;
 
     virtual Action * act(std::vector<Object *> * visibles) = 0;
 };
