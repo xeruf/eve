@@ -26,7 +26,6 @@ struct Point {
     Point operator - (const Vector & v) const;
 
     /* Operators to calculate the vector between two points */
-    Vector operator , (const Point & p) const;
     Vector operator >= (const Point & p) const;
     Vector operator <= (const Point & p) const;
 };

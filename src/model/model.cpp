@@ -18,12 +18,11 @@ Point Point::operator + (const Vector & v) const {return Point(x + v.length * co
 Point Point::operator - (const Point & p) const {return Point(x - p.x, y - p.y);}
 Point Point::operator - (const Vector & v) const {return * this + -v;}
 
-Vector Point::operator , (const Point & p) const {
+Vector Point::operator >= (const Point & p) const {
     const Point q(* this - p);
     return Vector(atan(q.y / q.x), ORIGIN / q);
 }
-Vector Point::operator >= (const Point & p) const {return * this, p;}
-Vector Point::operator <= (const Point & p) const {return p, * this;}
+Vector Point::operator <= (const Point & p) const {return p >= * this;}
 
 /* Vector Math */
 Vector::Vector(double a, double l) : angle{(a < 0) ? a + M_PI : a}, length{fabs(l)} {}
