@@ -7,6 +7,7 @@
 #include "../model/random/random.h"
 #include "../view/terminalview.h"
 #include "../model/world/world.h"
+#include "thread_handler/thread_handler.h"
 
 #include <cmath>
 #include <stdexcept>
@@ -18,6 +19,7 @@ private:
     bool initialised = false;
 
     bool simulate();
+
 public:
     World world;
     TerminalView terminalview;

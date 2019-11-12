@@ -5,7 +5,9 @@
 #include "../task/task.h"
 #include "../promise/promise.h"
 
+#include <mutex>
 #include <stdexcept>
+
 
 template <class T>
 class Queue {
@@ -14,14 +16,18 @@ class Queue {
 
     int elements = 0;
 
+    std::mutex mtx;
+
 public:
     virtual void * push(T item) {
-        // LOCK HERE
         {
+            mtx.lock();
             Container<T> newItem(item, nullptr, back);
             back->prev = & newItem;
             back = & newItem;
             elements++;
+
+            mtx.unlock();
         }
         return item.promise();
     }
@@ -30,8 +36,9 @@ public:
         while (!elements);
 
         Container<T> * node;
-        // LOCK HERE
         {
+            mtx.lock();
+
             node = front;
 
             if (elements == 1) {
@@ -43,6 +50,8 @@ public:
                 front->next = nullptr;
             }
             elements--;
+
+            mtx.unlock();
         }
         return node->item;
     }
