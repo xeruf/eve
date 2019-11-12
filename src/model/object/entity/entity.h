@@ -14,14 +14,14 @@ private:
 protected:
     double energy;
 
-    void checkEnergy();
+    void checkEnergy() const ;
 
 public:
     Entity(double x, double y, double energy);
     ~Entity() override = 0;
 
-    double getEnergy();
-    double getRadius();
+    [[nodiscard]] double getEnergy() const ;
+    [[nodiscard]] double getRadius() const ;
 };
 
 
