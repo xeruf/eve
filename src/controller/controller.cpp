@@ -1,8 +1,7 @@
 #include "controller.h"
 
 Controller::Controller(double WIDTH, double HEIGHT, double ENERGY) :
-    world(World(WIDTH, HEIGHT, ENERGY))
-{}
+    world(World(WIDTH, HEIGHT, ENERGY)) {}
 
 void Controller::init() {
     static Uniform distX = Uniform(0.0, world.WIDTH);
@@ -27,9 +26,8 @@ long Controller::run() {
 }
 
 bool Controller::simulate() {
-    terminalview.render(world);
+    terminalView.render(world);
     for (auto individual : world.getIndividuals()) {
-
         auto visibles = world.getObjectsAround(individual->getPosition(), individual->getVisionRange());
         auto action = individual->act(visibles);
         std::cout << action->toString() << std::endl;

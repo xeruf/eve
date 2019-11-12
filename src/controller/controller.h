@@ -22,7 +22,7 @@ private:
 
 public:
     World world;
-    TerminalView terminalview;
+    TerminalView terminalView;
 
     Controller(double WIDTH, double HEIGHT, double ENERGY);
 
