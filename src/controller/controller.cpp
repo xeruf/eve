@@ -27,7 +27,8 @@ long Controller::run() {
 }
 
 bool Controller::simulate() {
-    //terminalview.render(world);
+    if (RENDER_TERMINALVIEW) terminalview.render(world);
+
     for (auto individual : world.getIndividuals()) {
 
         auto visibles = world.getObjectsAround(individual->getPosition(), individual->getVisionRange());
