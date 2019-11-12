@@ -14,12 +14,12 @@ private:
     std::thread thread;
     volatile bool stopThread = false;
 
-    void operator () ();
-
 public:
     explicit Thread(Queue<Task_e> & queue);
     Thread(Thread && other) noexcept;
     ~Thread();
+
+    void run();
 };
 
 

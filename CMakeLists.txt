@@ -14,3 +14,8 @@ target_link_libraries(tests Catch2::Catch2)
 include(CTest)
 include(Catch)
 catch_discover_tests(tests)
+
+set(THREADS_PREFER_PTHREAD_FLAG ON)
+find_package(Threads REQUIRED)
+target_link_libraries(eve Threads::Threads)
+target_link_libraries(tests Threads::Threads)
