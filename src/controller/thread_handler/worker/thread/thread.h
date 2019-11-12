@@ -15,6 +15,7 @@ private:
     volatile bool stopThread = false;
 
     void operator () ();
+
 public:
     explicit Thread(Queue<Task_e> & queue);
     Thread(Thread && other) noexcept;

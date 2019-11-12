@@ -16,11 +16,13 @@ class Task : Task_e {
     Promise<R> * val = new Promise<R>();
 
 public:
-    explicit Task(std::function<R(Args... args)> f);
+    explicit Task(std::function<R(Args... args)> f) : f{f} {};
 
-    Promise<R> * promise() override;
+    Promise<R> * promise() override {return val;};
 
-    void operator () () override;
+    void operator () () override {
+        * val = f();
+    };
 };
 
 #endif //EVE_TASK_H
