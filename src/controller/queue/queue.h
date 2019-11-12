@@ -2,7 +2,7 @@
 #define EVE_QUEUE_H
 
 #include "container/container.h"
-#include "../thread_handler/task/task.h"
+#include "../task/task.h"
 #include "../promise/promise.h"
 
 #include <stdexcept>

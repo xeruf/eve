@@ -3,7 +3,7 @@
 
 #include "../../queue/queue.h"
 #include "thread/thread.h"
-#include "../task/task.h"
+#include "../../task/task.h"
 
 class Worker : public Queue<Task_e> {
 private:

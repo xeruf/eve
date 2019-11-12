@@ -2,7 +2,7 @@
 #define EVE_THREAD_HANDLER_H
 
 #include "worker/worker.h"
-#include "task/task.h"
+#include "../task/task.h"
 #include "../../config.h"
 
 #include <functional>

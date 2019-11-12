@@ -2,7 +2,7 @@
 #define EVE_FUTURE_H
 
 #include "../promise/promise.h"
-#include "../thread_handler/task/task.h"
+#include "../task/task.h"
 
 template <class R>
 class Future {

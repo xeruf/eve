@@ -1,7 +1,7 @@
 #ifndef EVE_TASK_H
 #define EVE_TASK_H
 
-#include "../../promise/promise.h"
+#include "../promise/promise.h"
 
 #include <functional>
 

@@ -2,7 +2,7 @@
 #define EVE_THREAD_H
 
 #include "../../../queue/queue.h"
-#include "../../task/task.h"
+#include "../../../task/task.h"
 
 #include <utility>
 #include <thread>
