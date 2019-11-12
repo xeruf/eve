@@ -8,4 +8,7 @@
 /* DEBUG CONSTANTS */
 #define RENDER_TERMINALVIEW false
 
+#define AMOUNT_OF_FREDS 0
+#define AMOUNT_OF_PIERCIES 1
+
 #endif //EVE_CONFIG_H
