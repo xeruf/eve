@@ -15,6 +15,8 @@
 
 class Controller {
 private:
+    ThreadHandler th = ThreadHandler(2);
+
     long iteration = 0;
     bool initialised = false;
 

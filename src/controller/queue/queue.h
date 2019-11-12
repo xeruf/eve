@@ -19,7 +19,7 @@ class Queue {
     std::mutex mtx;
 
 public:
-    virtual void * push(T item) {
+    virtual void push(T item) {
         {
             mtx.lock();
             Container<T> newItem(item, nullptr, back);
@@ -29,7 +29,6 @@ public:
 
             mtx.unlock();
         }
-        return item.promise();
     }
 
     virtual T pop() {

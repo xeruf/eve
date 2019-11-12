@@ -5,6 +5,8 @@
 #include "../task/task.h"
 #include "../../config.h"
 
+#include <iostream>
+
 #include <functional>
 #include <cmath>
 #include <thread>
@@ -18,7 +20,7 @@ enum Priority {
 
 class ThreadHandler {
 private:
-    static std::vector<Worker> workers;
+    std::vector<Worker> workers;
     static int threadAmount;
 
     static int calcThreadAmount();
@@ -29,9 +31,7 @@ public:
 
     static int getThreadAmount();
 
-    static void schedule (Task_e & task, Priority priority = DEFAULT);
+    void schedule (Task_e & task, Priority priority = DEFAULT);
 };
-
-void async (Task_e & task);
 
 #endif //EVE_THREAD_HANDLER_H

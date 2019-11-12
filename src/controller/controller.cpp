@@ -20,13 +20,14 @@ void Controller::init() {
 }
 
 long Controller::run() {
+
     if (not initialised) throw(std::logic_error("Controller::run(): .init() must be run first"));
     while (simulate()) iteration++;
     return iteration;
 }
 
 bool Controller::simulate() {
-    terminalView.render(world);
+    //terminalView.render(world);
     for (auto individual : world.getIndividuals()) {
         auto visibles = world.getObjectsAround(individual->getPosition(), individual->getVisionRange());
         auto action = individual->act(visibles);

@@ -8,11 +8,15 @@
 #include <thread>
 #include <functional>
 
+#include <iostream>
+
 class Thread {
 private:
     Queue<Task_e> & queue;
     std::thread thread;
-    volatile bool stopThread = false;
+    bool stopThread = false;
+
+    void join();
 
 public:
     explicit Thread(Queue<Task_e> & queue);
