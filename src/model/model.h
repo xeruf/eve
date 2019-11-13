@@ -29,6 +29,8 @@ struct Point {
     /** Operators to calculate the vector between two points */
     Vector operator >= (const Point & p) const;
     Vector operator <= (const Point & p) const;
+
+    [[nodiscard]] bool withinCone(const Point & origin, const Vector & center, double angle) const;
 };
 
 struct Vector {
@@ -52,5 +54,8 @@ struct Vector {
 };
 
 static const Point ORIGIN = Point(0, 0);
+
+double radians(int angle);
+int degrees(double angle);
 
 #endif //EVE_MODEL_H

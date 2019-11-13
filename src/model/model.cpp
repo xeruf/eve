@@ -24,10 +24,16 @@ Vector Point::operator >= (const Point & p) const {
 }
 Vector Point::operator <= (const Point & p) const {return p >= * this;}
 
+bool Point::withinCone (const Point & origin, const Vector & center, double angle) const {
+    return (* this / origin <= center.length) &&
+            (fabs(center.angle - (* this >= origin).angle) <= 0.5 * angle);
+}
+/* ==== */
+
 /* Vector Math */
 Vector::Vector(double a, double l) : angle{(a < 0) ? a + M_PI : a}, length{fabs(l)} {}
 Vector::Vector(Point p) : Vector(atan(p.y / p.x), ORIGIN / p) {}
-Vector::Vector(int a, double l) : Vector(((double) a / 180 * M_PI), l) {}
+Vector::Vector(int a, double l) : Vector(radians(a), l) {}
 
 Vector & Vector::operator = (const Point & p) {
     * this = Vector(p);
@@ -41,3 +47,7 @@ Vector Vector::operator + (const Vector & v) const {return Vector(ORIGIN + * thi
 
 Vector Vector::operator - () const {return Vector(ORIGIN - * this);}
 Vector Vector::operator - (const Vector & v) const {return * this + -v;}
+/* ==== */
+
+double radians (int angle) {return (double) angle / 180 * M_PI;}
+int degrees (double angle) {return (int) round(angle / M_PI * 180);}
