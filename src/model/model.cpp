@@ -49,5 +49,25 @@ Vector Vector::operator - () const {return Vector(ORIGIN - * this);}
 Vector Vector::operator - (const Vector & v) const {return * this + -v;}
 /* ==== */
 
-double radians (int angle) {return (double) angle / 180 * M_PI;}
-int degrees (double angle) {return (int) round(angle / M_PI * 180);}
+/* Angle Math */
+Angle::Angle (const Vector & v) : a{v.angle} {}
+Angle::Angle (double angle) : a{normalise(angle)} {}
+Angle::Angle (int angle) : a{toRadians(normalise(angle))} {}
+
+double Angle::normalise (double angle) {
+    return (angle < 0) ? normalise(angle + 2 * M_PI) : fmod(angle, 2 * M_PI);
+}
+int Angle::normalise (int angle) {
+    return (angle < 0) ? normalise(angle + 360) : angle % 360;
+}
+
+double Angle::radians() const {return a;}
+int Angle::degrees() const {return toDegrees(a);}
+
+void Angle::update (double angle) {a = angle;}
+void Angle::update (int angle) {update(toRadians(angle));}
+
+double Angle::toRadians (int angle) {return (double) angle / 180 * M_PI;}
+int Angle::toDegrees (double angle) {return (int) round(angle / M_PI * 180);}
+/* ==== */
+

@@ -53,9 +53,28 @@ struct Vector {
     Vector operator - (const Vector & v) const;
 };
 
-static const Point ORIGIN = Point(0, 0);
+struct Angle {
+private:
+    double a{};
 
-double radians(int angle);
-int degrees(double angle);
+    static double normalise (double angle);
+    static int normalise (int angle);
+
+public:
+    explicit Angle (const Vector & v);
+    explicit Angle (double angle);
+    explicit Angle (int angle);
+
+    [[nodiscard]] double radians() const;
+    [[nodiscard]] int degrees() const;
+
+    void update (double angle);
+    void update (int angle);
+
+    static double toRadians (int angle);
+    static int toDegrees (double angle);
+};
+
+static const Point ORIGIN = Point(0, 0);
 
 #endif //EVE_MODEL_H
