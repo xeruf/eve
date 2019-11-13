@@ -8,7 +8,7 @@
 #include <cmath>
 
 struct Vector {
-    double angle;
+    Angle angle;
     double length;
 
     explicit Vector (Point p);

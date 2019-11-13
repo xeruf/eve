@@ -5,6 +5,7 @@
 
 #include <cmath>
 
+/* Guaranteed to be between 0 and 2 PI */
 struct Angle {
 private:
     double a{};
@@ -24,6 +25,34 @@ public:
 
     static double toRadians (int angle);
     static int toDegrees (double angle);
+
+    /* Overloaded operators */
+    Angle & operator = (double val);
+
+    double  operator - () const;
+
+    double  operator +  (const Angle & angle) const;
+    double  operator +  (double val)          const;
+
+    double  operator -  (const Angle & angle) const;
+    double  operator -  (double val)          const;
+
+    double  operator *  (const Angle & angle) const;
+    double  operator *  (double val)          const;
+
+    double  operator /  (const Angle & angle) const;
+    double  operator /  (double val)          const;
+
+    bool    operator == (const Angle & angle) const;
+    bool    operator == (double val)          const;
+
+    bool    operator <  (const Angle & angle) const;
+    bool    operator <  (double val)          const;
+
+    bool    operator >  (const Angle & angle) const;
+    bool    operator >  (double val)          const;
+
+    bool    operator ! () const;
 };
 
 #endif //EVE_ANGLE_H

@@ -12,7 +12,7 @@ bool Point::operator == (const Point & p) const {return round(CONST_MULTIPLIER *
 double Point::operator / (const Point & p) const {return sqrt(pow(p.x - x, 2.0) + pow(p.y - y, 2.0));}
 
 Point Point::operator + (const Point & p) const {return Point(x + p.x, y + p.y);}
-Point Point::operator + (const Vector & v) const {return Point(x + v.length * cos(v.angle), y + v.length * sin(v.angle));}
+Point Point::operator + (const Vector & v) const {return Point(x + v.length * cos(v.angle.radians()), y + v.length * sin(v.angle.radians()));}
 
 Point Point::operator - (const Point & p) const {return Point(x - p.x, y - p.y);}
 Point Point::operator - (const Vector & v) const {return * this + -v;}

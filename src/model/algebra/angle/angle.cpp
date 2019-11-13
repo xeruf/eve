@@ -18,3 +18,34 @@ void Angle::update (int angle) {update(toRadians(angle));}
 
 double Angle::toRadians (int angle) {return (double) angle / 180 * M_PI;}
 int Angle::toDegrees (double angle) {return (int) round(angle / M_PI * 180);}
+
+
+Angle & Angle::operator = (double val) {
+    update(val);
+    return * this;
+}
+
+double  Angle::operator - () const {return - a;}
+
+double  Angle::operator +  (const Angle & angle) const {return a + angle.a;}
+double  Angle::operator +  (double val)          const {return a + val;}
+
+double  Angle::operator -  (const Angle & angle) const {return a - angle.a;}
+double  Angle::operator -  (double val)          const {return a - val;}
+
+double  Angle::operator *  (const Angle & angle) const {return a * angle.a;}
+double  Angle::operator *  (double val)          const {return a * val;}
+
+double  Angle::operator /  (const Angle & angle) const {return a / angle.a;}
+double  Angle::operator /  (double val)          const {return a / val;}
+
+bool    Angle::operator == (const Angle & angle) const {return a == angle.a;}
+bool    Angle::operator == (double val)          const {return a == val;}
+
+bool    Angle::operator <  (const Angle & angle) const {return a < angle.a;}
+bool    Angle::operator <  (double val)          const {return a < val;}
+
+bool    Angle::operator >  (const Angle & angle) const {return a > angle.a;}
+bool    Angle::operator >  (double val)          const {return a > val;}
+
+bool    Angle::operator ! () const {return not (bool) a;}
