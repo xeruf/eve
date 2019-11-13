@@ -1,4 +1,4 @@
-#include "../../src/model/model.h"
+#include "../../src/model/algebra/algebra.h"
 
 #include <catch2/catch.hpp>
 #include <exception>

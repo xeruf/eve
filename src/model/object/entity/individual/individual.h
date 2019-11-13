@@ -4,7 +4,7 @@
 #include "../entity.h"
 
 #include "../../../../config.h"
-#include "../../../model.h"
+#include "../../../algebra/algebra.h"
 #include "../../../action/action.h"
 
 class Individual : public Entity {

@@ -1,6 +1,6 @@
 #include "../../../src/model/world/world.h"
 #include "../../../src/model/object/entity/individual/fred/fred.h"
-#include "../../../src/model/model.h"
+#include "../../../src/model/algebra/algebra.h"
 
 #include <catch2/catch.hpp>
 #include <exception>
