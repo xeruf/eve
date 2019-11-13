@@ -38,7 +38,7 @@ bool Controller::simulate() {
 
     for (auto individual : world.getIndividuals()) {
 
-        auto visibles = world.getObjectsAround(individual->getPosition(), individual->getVisionRange());
+        auto visibles = world.getObjectsAround(individual->getPosition(), individual->getVision().length);
         auto action = individual->act(visibles);
         std::cout << action->toString() << std::endl;
         delete action;
