@@ -10,8 +10,8 @@ Vector & Vector::operator = (const Point & p) {
 }
 
 bool Vector::operator == (const Vector & v) const {
-    return round(angle * CONST_MULTIPLIER) == round(v.angle * CONST_MULTIPLIER)
-    && round(CONST_MULTIPLIER * length) == round(CONST_MULTIPLIER * v.length);
+    return compare(angle.radians(), v.angle.radians()) &&
+        compare(length, v.length);
 }
 bool Vector::operator == (const Point & p) const {return * this == Vector(p);}
 
