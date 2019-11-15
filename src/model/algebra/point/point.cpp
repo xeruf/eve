@@ -25,5 +25,5 @@ Vector Point::operator <= (const Point & p) const {return p >= * this;}
 
 bool Point::withinCone (const Point & origin, const Vector & center, double angle) const {
     return (* this / origin <= center.length) &&
-            (fabs(center.angle - (* this >= origin).angle) <= 0.5 * angle);
+            (fabs((center.angle - (* this >= origin).angle).radians()) <= 0.5 * angle);
 }

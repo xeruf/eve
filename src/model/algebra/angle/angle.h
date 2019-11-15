@@ -20,8 +20,8 @@ public:
     [[nodiscard]] double radians() const;
     [[nodiscard]] int degrees() const;
 
-    void update (double angle);
-    void update (int angle);
+    Angle & update (double angle);
+    Angle & update (int angle);
 
     static double toRadians (int angle);
     static int toDegrees (double angle);
@@ -29,30 +29,30 @@ public:
     /* Overloaded operators */
     Angle & operator = (double val);
 
-    double  operator - () const;
+    Angle operator - () const;
 
-    double  operator +  (const Angle & angle) const;
-    double  operator +  (double val)          const;
+    Angle operator +  (const Angle & angle) const;
+    Angle operator +  (double val)          const;
 
-    double  operator -  (const Angle & angle) const;
-    double  operator -  (double val)          const;
+    Angle operator -  (const Angle & angle) const;
+    Angle operator -  (double val)          const;
 
-    double  operator *  (const Angle & angle) const;
-    double  operator *  (double val)          const;
+    Angle operator *  (const Angle & angle) const;
+    Angle operator *  (double val)          const;
 
-    double  operator /  (const Angle & angle) const;
-    double  operator /  (double val)          const;
+    Angle operator /  (const Angle & angle) const;
+    Angle operator /  (double val)          const;
 
-    bool    operator == (const Angle & angle) const;
-    bool    operator == (double val)          const;
+    bool  operator == (const Angle & angle) const;
+    bool  operator == (double val)          const;
 
-    bool    operator <  (const Angle & angle) const;
-    bool    operator <  (double val)          const;
+    bool  operator <  (const Angle & angle) const;
+    bool  operator <  (double val)          const;
 
-    bool    operator >  (const Angle & angle) const;
-    bool    operator >  (double val)          const;
+    bool  operator >  (const Angle & angle) const;
+    bool  operator >  (double val)          const;
 
-    bool    operator ! () const;
+    bool  operator ! () const;
 };
 
 #endif //EVE_ANGLE_H

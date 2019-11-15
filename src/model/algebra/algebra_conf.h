@@ -5,7 +5,7 @@
 
 #include <cmath>
 
-bool compare (double a, double b) {return fabs(b - a) < fabs(EPSILON);}
+bool compare (double a, double b);
 
 struct Angle;
 struct Point;

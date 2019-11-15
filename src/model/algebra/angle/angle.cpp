@@ -13,8 +13,11 @@ int Angle::normalise (int angle) {
 double Angle::radians() const {return a;}
 int Angle::degrees() const {return toDegrees(a);}
 
-void Angle::update (double angle) {a = normalise(angle);}
-void Angle::update (int angle) {update(toRadians(angle));}
+Angle & Angle::update (double angle) {
+    a = normalise(angle);
+    return * this;
+}
+Angle & Angle::update (int angle) {return update(toRadians(angle));}
 
 double Angle::toRadians (int angle) {return normalise((double) angle / 180 * M_PI);}
 int Angle::toDegrees (double angle) {return normalise((int) round(angle / M_PI * 180));}
@@ -25,27 +28,27 @@ Angle & Angle::operator = (double val) {
     return * this;
 }
 
-double  Angle::operator - () const {return normalise(- a);}
+Angle Angle::operator - () const {return Angle(- a);}
 
-double  Angle::operator +  (const Angle & angle) const {return normalise(a + angle.a);}
-double  Angle::operator +  (double val)          const {return normalise(a + val);}
+Angle Angle::operator +  (const Angle & angle) const {return Angle(a + angle.a);}
+Angle Angle::operator +  (double val)          const {return Angle(a + val);}
 
-double  Angle::operator -  (const Angle & angle) const {return normalise(a - angle.a);}
-double  Angle::operator -  (double val)          const {return normalise(a - val);}
+Angle Angle::operator -  (const Angle & angle) const {return Angle(a - angle.a);}
+Angle Angle::operator -  (double val)          const {return Angle(a - val);}
 
-double  Angle::operator *  (const Angle & angle) const {return normalise(a * angle.a);}
-double  Angle::operator *  (double val)          const {return normalise(a * val);}
+Angle Angle::operator *  (const Angle & angle) const {return Angle(a * angle.a);}
+Angle Angle::operator *  (double val)          const {return Angle(a * val);}
 
-double  Angle::operator /  (const Angle & angle) const {return normalise(a / angle.a);}
-double  Angle::operator /  (double val)          const {return normalise(a / val);}
+Angle Angle::operator /  (const Angle & angle) const {return Angle(a / angle.a);}
+Angle Angle::operator /  (double val)          const {return Angle(a / val);}
 
-bool    Angle::operator == (const Angle & angle) const {return normalise(compare(a, angle.a));}
-bool    Angle::operator == (double val)          const {return normalise(compare(a, val));}
+bool  Angle::operator == (const Angle & angle) const {return normalise(compare(a, angle.a));}
+bool  Angle::operator == (double val)          const {return normalise(compare(a, val));}
 
-bool    Angle::operator <  (const Angle & angle) const {return normalise(a < angle.a);}
-bool    Angle::operator <  (double val)          const {return normalise(a < val);}
+bool  Angle::operator <  (const Angle & angle) const {return normalise(a < angle.a);}
+bool  Angle::operator <  (double val)          const {return normalise(a < val);}
 
-bool    Angle::operator >  (const Angle & angle) const {return normalise(a > angle.a);}
-bool    Angle::operator >  (double val)          const {return normalise(a > val);}
+bool  Angle::operator >  (const Angle & angle) const {return normalise(a > angle.a);}
+bool  Angle::operator >  (double val)          const {return normalise(a > val);}
 
-bool    Angle::operator ! () const {return not (bool) normalise(a);}
+bool  Angle::operator ! () const {return not (bool) normalise(a);}
