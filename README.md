@@ -46,6 +46,6 @@ This project aims to simulate a two-dimensional environment with basic individua
 
 ### About
 
-**Authors**: [Xerus2000](https://github.com/Xerus2000), [AtomToast](https://github.com/AtomToast), [szudemj](https://github.com/szudemj), **[anarchuser](https://github.com/anarchuser)**
+**Authors**: [Xerus2000](https://github.com/Xerus2000), [AtomToast](https://github.com/AtomToast), [szudemj](https://github.com/szudemj), [anarchuser](https://github.com/anarchuser)
 
 **Company**: [CODE University of Applied Sciences](https://code.berlin/en/)
