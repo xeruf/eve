@@ -1,68 +1,51 @@
+
 # EVE
 
-This project aims to simulate basic lifeforms evolving and getting smarter, in a simplified manner.
+[![experimental](http://badges.github.io/stability-badges/dist/experimental.svg)](http://github.com/badges/stability-badges)[![unstable](http://badges.github.io/stability-badges/dist/unstable.svg)](http://github.com/badges/stability-badges)
 
-## Development
+##### Simulate simple, artificial lifeforms as they learn and evolve
+
+----
+
+#### Table of Content
+
+1. Setup
+2. Description
+3. Collaboration
+4. About
+
+----
 
 ### Setup
 
-1. Install cmake & [Catch2](https://github.com/catchorg/Catch2) on your OS
-2. Clone this repository:  
-   HTTPS: `git clone https://github.com/Xerus2000/eve`  
-   SSH: `git clone git@github.com:Xerus2000/eve.git`
-3. Build 'eve' via CLion so that all tasks become available for running
-4. In CLion go to `Settings > Editor > File and Code Templates` and remove the "Created by" header in c/cpp files
-5. Execute this to set up the git commit message hooks:  
-   `git config core.hooksPath .dev/githooks`
+* **Requirements:** Build tools: `cmake`, `make`, an ISO C++17 Compiler
+* **Download**: ``` git clone https://github.com/Xerus2000/eve```
+* **Build:** Run `cmake` and then `make`
+* **Run:** Start the simulation by executing `eve`
 
-### Structure
+----
 
-All production code goes into [src](src), separated into [model](src/model), [view](src/view) and [controller](src/controller).  
-[test](test) contains the tests and mirrors the source file structure.
+### Description
 
-### Classes and Inheritance
+This project aims to simulate a two-dimensional environment with basic individuals; circles with a set of extremities (limbs, mouths, eyes). They shall eat randomly generated food and evolve through breeding. Throughout their life, individuals shall become smarter through reinforcement learning based on their own perception.
 
-The folder structure should represent classes and inheritance.
+----
 
-Therefore,
+### Collaboration (through pull requests)
 
-- every class belongs in its own folder with the same name
-- every sub-class belongs within its parents folder
+* **Pull requests:** One reviewer required, always [squash and merge](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-request-merges#squash-and-merge-your-pull-request-commits)
 
-Thus, as of currently we have the following directory tree:
+* **Commit guidelines:** see [Karma Runner](http://karma-runner.github.io/4.0/dev/git-commit-msg.html)
+  * `git config core.hooksPath .dev/githooks` for style enforcement
+* **Architecture:** Model-View-Controller
+  * Code is divided into `src/` and `test/`, with sub-folders `model/`, `view/` and `controller/` each
 
-    object
-    ├── entity
-    │   ├── food
-    │   └── individual
-    │       ├── species1
-    │       ├── species2
-    │       └── ...
-    └── obstacle
+* **Testing framework:** [Catch2](https://github.com/catchorg/Catch2), Using Behaviour-Driven Development (see [Catch2: BDD](https://github.com/catchorg/Catch2/blob/master/docs/tutorial.md#bdd-style))
 
-Representing the following Inheritance Diagram:
+----
 
-            Object
-              │
-       +------+------+
-    Obstacle       Entity
-                     │
-              +------+------+
-              Food      Individual
-                            │
-                     +------+------+
-                    Sp1    Sp2    ...
+### About
 
-## Testing
+**Authors**: [Janek (Xerus2000)](https://github.com/Xerus2000), [Kjell (AtomToast)](https://github.com/AtomToast), [Simon (szudemj)](https://github.com/szudemj), **[Aaron (anarchuser)](https://github.com/anarchuser)**
 
-We use [Catch2](https://github.com/catchorg/Catch2) for testing.
-
-The tests should be in [BDD style](https://github.com/catchorg/Catch2/blob/master/docs/tutorial.md#bdd-style), except for simple functions & data structures where it is usually more appropriate to use [test cases and sections](https://github.com/catchorg/Catch2/blob/master/docs/tutorial.md#test-cases-and-sections).
-
-## Git Guidelines
-
-Commit messages use the type-scope format as seen in [Karma Runner](http://karma-runner.github.io/4.0/dev/git-commit-msg.html).
-
-Please save this git hook as *commit-msg* into *.git/hooks/* to automatically enforce the style: [commit-msg](https://www.notion.so/65a89aab035d4315bca4f2c68647fb45#4f25ab81102444bcbaba77e945712add)
-
-Branch names should roughly follow this convention as well, so a branch adding an individual called Fred should be called something like `feat/fred` while a branch fixing a bug in the list of individuals in the world could be named `fix/world-individuals`.
+**Company**: [CODE University of Applied Sciences](https://code.berlin/en/)
