@@ -8,7 +8,7 @@
 /* Guaranteed to be between 0 and 2 PI */
 struct Angle {
 private:
-    double a{};
+    double a;
 
     static double normalise (double angle);
     static int normalise (int angle);
