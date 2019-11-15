@@ -40,25 +40,22 @@ TEST_CASE("Angles can substitute doubles while keeping between [0; 2 * PI)") {
 
     Angle & d = D[0];
 
-    SECTION ("All angles are the same and within [0; 2 * PI)") {
-        for (auto & angle : A) {
-            CHECK (angle == a);
-            CHECK (angle == 0.0);
-            CHECK (angle >= 0.0);
-            CHECK (angle < 2 * M_PI);
+    std::vector<std::vector<Angle>> ANGLES;
+    ANGLES.push_back(A);
+    ANGLES.push_back(B);
+    ANGLES.push_back(C);
+    ANGLES.push_back(D);
 
-        }
-        for (auto & angle : B) {
-            CHECK (angle == b);
-            CHECK (angle == 0.5 * M_PI);
-        }
-        for (auto & angle : C) {
-            CHECK (angle == c);
-            CHECK (angle == 1.0 * M_PI);
-        }
-        for (auto & angle : D) {
-            CHECK (angle == d);
-            CHECK (angle == 1.5 * M_PI);
+    SECTION ("All angles are the same and within [0; 2 * PI)") {
+        double iter_angle = 0.0;
+        for (auto & angles : ANGLES) {
+            for (auto & angle : angles) {
+                CHECK (angle == angles[0]);
+                CHECK (angle == iter_angle);
+                CHECK (angle >= 0.0);
+                CHECK (angle < 2 * M_PI);
+            }
+            iter_angle += 0.5 * M_PI;
         }
     }
 

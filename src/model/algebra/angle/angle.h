@@ -46,6 +46,12 @@ public:
     bool  operator == (const Angle & angle) const;
     bool  operator == (double val)          const;
 
+    bool  operator >= (const Angle & angle) const;
+    bool  operator >= (double val)          const;
+
+    bool  operator <= (const Angle & angle) const;
+    bool  operator <= (double val)          const;
+
     bool  operator <  (const Angle & angle) const;
     bool  operator <  (double val)          const;
 
