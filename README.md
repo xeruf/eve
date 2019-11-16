@@ -22,6 +22,7 @@ This project aims to simulate a two-dimensional environment with basic individua
 ### Setup
 
 * **Requirements:** Build tools: `cmake`, `make`, an ISO C++17 Compiler
+  * [Catch2](https://github.com/catchorg/Catch2) for testing
 * **Download**: ``` git clone https://github.com/Xerus2000/eve```
 * **Build:** Run `cmake` and then `make`
 * **Run:** Start the simulation by executing `eve`
