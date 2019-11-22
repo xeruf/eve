@@ -9,7 +9,14 @@ void Controller::init() {
     static Uniform distY = Uniform(0.0, world.HEIGHT);
     static Uniform distE = Uniform(MIN_FOOD_SIZE, MAX_FOOD_SIZE);
 
-    world.addIndividual(new Piercy(0, 0, 0, 0.2 * world.ENERGY));
+    for (int i = 0; i < AMOUNT_OF_FREDS; i++) {
+        world.addIndividual(new Fred(0 + i, 0 + i, 0, 0.2 * world.ENERGY));
+    }
+
+    for (int i = 0; i < AMOUNT_OF_PIERCIES; i++) {
+        world.addIndividual(new Piercy(0 - i, 0 - i, 0, 0.2 * world.ENERGY));
+    }
+  
     world.fillWithFood([](World * w) -> Food * {
         return new Food(
                 distX.rand(),
@@ -27,7 +34,8 @@ long Controller::run() {
 }
 
 bool Controller::simulate() {
-    //terminalview.render(world);
+    if (RENDER_TERMINALVIEW) terminalview.render(world);
+
     for (auto individual : world.getIndividuals()) {
 
         auto visibles = world.getObjectsAround(individual->getPosition(), individual->getVisionRange());
