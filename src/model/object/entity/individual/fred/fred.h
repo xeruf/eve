@@ -1,4 +1,4 @@
-#ifndef EVE_PIERCY_H
+#ifndef EVE_FRED_H
 #define EVE_FRED_H
 
 #include "../individual.h"
@@ -12,4 +12,4 @@ public:
     Action * act(std::vector<Object *> * visibles) override;
 };
 
-#endif //EVE_PIERCY_H
+#endif //EVE_FRED_H
