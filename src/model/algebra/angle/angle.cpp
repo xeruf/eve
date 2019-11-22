@@ -42,8 +42,11 @@ Angle Angle::operator *  (double val)          const {return Angle(a * val);}
 Angle Angle::operator /  (const Angle & angle) const {return Angle(a / angle.a);}
 Angle Angle::operator /  (double val)          const {return Angle(a / val);}
 
-bool  Angle::operator == (const Angle & angle) const {return normalise(compare(a, angle.a));}
-bool  Angle::operator == (double val)          const {return normalise(compare(a, val));}
+bool  Angle::operator == (const Angle & angle) const {return compare(a, angle.a);}
+bool  Angle::operator == (double val)          const {return compare(a, val);}
+
+bool  Angle::operator != (const Angle & angle) const {return !compare(a, angle.a);}
+bool  Angle::operator != (double val)          const {return !compare(a, val);}
 
 bool  Angle::operator >= (const Angle & angle) const {return * this > angle || * this == angle;}
 bool  Angle::operator >= (double val)          const {return * this > val || * this == val;}
@@ -57,4 +60,3 @@ bool  Angle::operator <  (double val)          const {return normalise(a < val);
 bool  Angle::operator >  (const Angle & angle) const {return normalise(a > angle.a);}
 bool  Angle::operator >  (double val)          const {return normalise(a > val);}
 
-bool  Angle::operator ! () const {return not (bool) normalise(a);}

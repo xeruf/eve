@@ -46,6 +46,9 @@ public:
     bool  operator == (const Angle & angle) const;
     bool  operator == (double val)          const;
 
+    bool  operator != (const Angle & angle) const;
+    bool  operator != (double val)          const;
+
     bool  operator >= (const Angle & angle) const;
     bool  operator >= (double val)          const;
 
@@ -57,8 +60,6 @@ public:
 
     bool  operator >  (const Angle & angle) const;
     bool  operator >  (double val)          const;
-
-    bool  operator ! () const;
 };
 
 #endif //EVE_ANGLE_H

@@ -59,6 +59,12 @@ TEST_CASE("Angles can substitute doubles while keeping between [0; 2 * PI)") {
         }
     }
 
+    SECTION ("Angles can be compared with each other") {
+        CHECK (a == a);
+        CHECK (a != b);
+        CHECK (!(a != a));
+    }
+
     SECTION ("Simple algebra behaves the same as with doubles") {
         CHECK (b + c == d);
         CHECK (a - b == d);
