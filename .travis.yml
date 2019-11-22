@@ -2,6 +2,10 @@ dist: bionic
 language: cpp
 compiler: gcc
 
+addons:
+        apt:
+                update: true
+                packages: cmake
 git:
         depth: 3
 
