@@ -17,7 +17,8 @@ struct Point {
 
     bool operator == (const Point & p) const;
 
-    double operator / (const Point & p) const;      // Evaluates the distance between the two points
+    /** Returns the distance between the two points */
+    double operator / (const Point & p) const;
 
     Point operator + (const Point & p) const;
     Point operator + (const Vector & v) const;
@@ -25,7 +26,7 @@ struct Point {
     Point operator - (const Point & p) const;
     Point operator - (const Vector & v) const;
 
-    /* Operators to calculate the vector between two points */
+    /** Operators to calculate the vector between two points */
     Vector operator >= (const Point & p) const;
     Vector operator <= (const Point & p) const;
 };
@@ -40,8 +41,9 @@ struct Vector {
 
     Vector & operator = (const Point & p);
 
+    /** Compares 'this' with ORIGIN >= p */
+    bool operator == (const Point & p) const;
     bool operator == (const Vector & v) const;
-    bool operator == (const Point & p) const;       // Compares 'this' with ORIGIN >> p
 
     Vector operator + (const Vector & v) const;
 
