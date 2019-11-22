@@ -1,9 +1,10 @@
 #include "../../../../src/model/algebra/angle/angle.h"
 
 #include <catch2/catch.hpp>
+#include <iostream>
 #include <vector>
 
-std::vector<std::vector<Angle>> getAngles();
+static std::vector<std::vector<Angle>> getAngles();
 
 TEST_CASE("Angles can substitute doubles while keeping between [0; 2 * PI)") {
     auto ANGLES = getAngles();
@@ -44,15 +45,23 @@ TEST_CASE("Angles can substitute doubles while keeping between [0; 2 * PI)") {
         CHECK (-c == c);
         CHECK (- - d == d);
     }
+
+    SECTION ("Angles can be converted between radians and degrees") {
+        CHECK (a.degrees() == 0);
+        CHECK (a.radians() == 0.0);
+        CHECK (a.radians() == Angle::toRadians(a.degrees()));
+    }
+
+    SECTION ("Angles can be updated with new angles in radians and degrees") {
+        CHECK (a.update(90) == b);
+        CHECK (b.update(M_PI) == c);
+    }
 }
 
-TEST_CASE("Angles can be updated and converted between radians and degrees") {
 
-}
-
-std::vector<std::vector<Angle>> getAngles() {
+static std::vector<std::vector<Angle>> getAngles() {
     // 0 degrees ANGLES
-    std::vector<Angle> A;
+    static std::vector<Angle> A;
     A.emplace_back(0.0);
     A.emplace_back(0);
     A.emplace_back(-360);
@@ -62,7 +71,7 @@ std::vector<std::vector<Angle>> getAngles() {
 
 
     // 90 degrees ANGLES
-    std::vector<Angle> B;
+    static std::vector<Angle> B;
     B.emplace_back(0.5 * M_PI);
     B.emplace_back(90);
     B.emplace_back(450);
@@ -70,20 +79,20 @@ std::vector<std::vector<Angle>> getAngles() {
 
 
     // 180 degrees ANGLES
-    std::vector<Angle> C;
+    static std::vector<Angle> C;
     C.emplace_back(M_PI);
     C.emplace_back(180);
     C.emplace_back(-180);
 
 
     // 270 degrees ANGLES
-    std::vector<Angle> D;
+    static std::vector<Angle> D;
     D.emplace_back(1.5 * M_PI);
     D.emplace_back(270);
     D.emplace_back(-90);
 
 
-    std::vector<std::vector<Angle>> ANGLES;
+    static std::vector<std::vector<Angle>> ANGLES;
     ANGLES.push_back(A);
     ANGLES.push_back(B);
     ANGLES.push_back(C);
