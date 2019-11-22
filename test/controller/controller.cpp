@@ -10,17 +10,10 @@ SCENARIO("The Controller can be initialised") {
         WHEN ("I start the controller") {
             WHEN ("The controller isn't initialised yet") {
                 THEN ("the controller throws an exception") {
-                    REQUIRE_THROWS_AS(controller.run(), std::logic_error);
+                    CHECK_THROWS_AS(controller.run(), std::logic_error);
                 }
             }
-
-            controller.init();
-
-            THEN ("It ends after a certain amount of generations") {
-                REQUIRE(controller.run() >= 0);
-            }
-
-
+            CHECK_NOTHROW(controller.init());
         }
     }
 }
