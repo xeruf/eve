@@ -5,7 +5,7 @@
 
 #include <cmath>
 
-bool compare (double a, double b);
+bool coarseEquals (double a, double b);
 
 struct Angle;
 struct Point;

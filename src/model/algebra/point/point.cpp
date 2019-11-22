@@ -7,7 +7,7 @@ Point & Point::operator = (const Vector & v) {
     return * this;
 }
 
-bool Point::operator == (const Point & p) const {return compare(x, p.x) && compare(y, p.y);}
+bool Point::operator == (const Point & p) const {return coarseEquals(x, p.x) && coarseEquals(y, p.y);}
 
 double Point::operator / (const Point & p) const {return sqrt(pow(p.x - x, 2.0) + pow(p.y - y, 2.0));}
 

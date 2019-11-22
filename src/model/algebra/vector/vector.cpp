@@ -10,8 +10,8 @@ Vector & Vector::operator = (const Point & p) {
 }
 
 bool Vector::operator == (const Vector & v) const {
-    return compare(angle.radians(), v.angle.radians()) &&
-        compare(length, v.length);
+    return coarseEquals(angle.radians(), v.angle.radians()) &&
+           coarseEquals(length, v.length);
 }
 bool Vector::operator == (const Point & p) const {return * this == Vector(p);}
 
