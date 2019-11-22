@@ -1,4 +1,11 @@
+dist: bionic
 language: cpp
 compiler: gcc
-install: make get-deps catch2
+
+addons:
+        apt:
+                update: true
+                packages: catch2
+git:
+        depth: 3
 
