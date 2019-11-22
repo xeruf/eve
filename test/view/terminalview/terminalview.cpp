@@ -1,4 +1,4 @@
-#include "../../../src/view/terminalview/terminalview/terminalview.h"
+#include "../../../src/view/terminalview/terminalview/terminalview/terminalview.h"
 #include "../../../src/model/object/entity/individual/fred/fred.h"
 #include <catch2/catch.hpp>
 #include <exception>
