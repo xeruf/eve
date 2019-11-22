@@ -35,7 +35,7 @@ long Controller::run() {
 
 bool Controller::simulate() {
     if (RENDER_TERMINALVIEW) terminalview.render(world);
-
+    if(sdlview.render(world)) return false;
     for (auto individual : world.getIndividuals()) {
 
         auto visibles = world.getObjectsAround(individual->getPosition(), individual->getVision().length);
