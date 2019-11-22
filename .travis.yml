@@ -10,4 +10,9 @@ git:
         depth: 3
 
 before_install:
-        - git clone https://github.com/catchorg/Catch2.git && cd Catch2 && cmake -Bbuild -H. -DBUILD_TESTING=OFF && sudo cmake --build build/ --target install
+        - wd="$PWD" && echo $wd && cd .. && git clone https://github.com/catchorg/Catch2.git && cd Catch2 && cmake -Bbuild -H. -DBUILD_TESTING=OFF && sudo cmake --build build/ --target install && cd $wd
+
+
+script:
+        - cmake --target eve
+        - cmake --target tests
