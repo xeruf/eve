@@ -1,7 +1,6 @@
 #include "../../../../src/model/algebra/angle/angle.h"
 
 #include <catch2/catch.hpp>
-#include <iostream>
 #include <vector>
 
 static std::vector<std::vector<Angle>> getAngles();
