@@ -1,10 +1,20 @@
 #include "../../../src/model/algebra/algebra.h"
+#include "../../../src/model/random/random.h"
 
 #include <catch2/catch.hpp>
+#include <iostream>
 #include <vector>
 
+#define DIST_EXTREMES 10000.0
+
 TEST_CASE("Points and Vectors can be used interchangeably") {
-    Point p (1, 1);
+    Uniform dist = Uniform (- DIST_EXTREMES, DIST_EXTREMES, 1208015009);
+    double x = dist.rand();
+    double y = dist.rand();
+    std::cout << "SEED: " << dist.SEED << std::endl;
+    std::cout << "P (" << x << "|" << y << ")\n";
+
+    Point p (x, y);
     Vector vp (p);
     Point pvp (vp);
 
