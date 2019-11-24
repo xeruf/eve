@@ -8,6 +8,10 @@ Point & Point::operator = (const Vector & v) {
 }
 
 bool Point::operator == (const Point & p) const {return coarseEquals(x, p.x) && coarseEquals(y, p.y);}
+bool Point::operator == (const Vector & v) const {return v == * this;}
+
+bool Point::operator != (const Point & p) const {return !(p == * this);}
+bool Point::operator != (const Vector & v) const {return v != * this;}
 
 double Point::operator / (const Point & p) const {return sqrt(pow(p.x - x, 2.0) + pow(p.y - y, 2.0));}
 

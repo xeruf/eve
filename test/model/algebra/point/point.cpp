@@ -18,6 +18,17 @@ TEST_CASE("Points can be used for calculations and simple arithmetic") {
         CHECK (POINTS[3].y == -1.0);
     }
 
+    GIVEN ("All points in 'POINTS' are distinctive") {
+        SECTION ("Points can be compared") {
+            for (unsigned long i = 0; i < POINTS.size(); i++) {
+                for (unsigned long j = 0; j < POINTS.size(); j++) {
+                    if (i == j) CHECK (POINTS[i] == POINTS[j]);
+                    else CHECK (POINTS[i] != POINTS[j]);
+                }
+            }
+        }
+    }
+
     SECTION ("Points can be added and subtracted") {
         CHECK (POINTS[0] + POINTS[0] == POINTS[1]);
         CHECK (POINTS[3] + POINTS[0] == ORIGIN);

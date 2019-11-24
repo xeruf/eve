@@ -13,6 +13,11 @@ struct Point {
     Point & operator = (const Vector & v);
 
     bool operator == (const Point & p) const;
+    bool operator == (const Vector & v) const;
+
+    bool operator != (const Point & p) const;
+    bool operator != (const Vector & v) const;
+
 
     double operator / (const Point & p) const;      // Evaluates the distance between the two points
 
