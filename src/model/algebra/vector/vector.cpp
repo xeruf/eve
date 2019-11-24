@@ -1,6 +1,6 @@
 #include "vector.h"
 
-Vector::Vector(double a, double l) : angle{(a < 0) ? a + M_PI : a}, length{fabs(l)} {}
+Vector::Vector(double a, double l) : angle{(l < 0) ? M_PI + a : a}, length{fabs(l)} {}
 Vector::Vector(Point p) : Vector(atan(p.y / p.x), ORIGIN / p) {}
 Vector::Vector(int a, double l) : Vector(Angle::toRadians(a), l) {}
 
