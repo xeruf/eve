@@ -11,9 +11,9 @@ struct Vector {
     Angle angle;
     double length;
 
-    explicit Vector (Point p);
     Vector (double angle, double length);
     Vector (int angle, double length);
+    explicit Vector (Point p);
 
     Vector & operator = (const Point & p);
 

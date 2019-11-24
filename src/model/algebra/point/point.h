@@ -9,6 +9,7 @@ struct Point {
     double x;
     double y;
     Point (double x, double y);
+    Point (const Vector & v);
 
     Point & operator = (const Vector & v);
 

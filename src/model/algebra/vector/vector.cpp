@@ -1,8 +1,8 @@
 #include "vector.h"
 
 Vector::Vector(double a, double l) : angle{(l < 0) ? M_PI + a : a}, length{fabs(l)} {}
-Vector::Vector(Point p) : Vector(atan(p.y / p.x), ORIGIN / p) {}
 Vector::Vector(int a, double l) : Vector(Angle::toRadians(a), l) {}
+Vector::Vector(Point p) : Vector(atan((p.x == 0) ? 0 : p.y / p.x), ORIGIN / p) {}
 
 Vector & Vector::operator = (const Point & p) {
     * this = Vector(p);
