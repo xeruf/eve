@@ -20,6 +20,9 @@ struct Vector {
     bool operator == (const Vector & v) const;
     bool operator == (const Point & p) const;
 
+    bool operator != (const Vector & v) const;
+    bool operator != (const Point & p) const;
+
     Vector operator + (const Vector & v) const;
 
     Vector operator - () const;

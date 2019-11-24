@@ -21,4 +21,11 @@ TEST_CASE("Vectors can be used for calculations and simple arithmetic") {
         CHECK (VECTORS[5].length == 1.5);
     }
 
+    SECTION ("Vectors can be compared") {
+        for (auto & v : VECTORS) CHECK (v == v);
+        CHECK (VECTORS[0] == VECTORS[1]);
+
+        CHECK (VECTORS[2] != VECTORS[3]);
+        CHECK (VECTORS[4] != VECTORS[5]);
+    }
 }

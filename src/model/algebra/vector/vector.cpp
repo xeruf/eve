@@ -15,6 +15,9 @@ bool Vector::operator == (const Vector & v) const {
 }
 bool Vector::operator == (const Point & p) const {return * this == Vector(p);}
 
+bool Vector::operator != (const Vector & v) const {return !(* this == v);}
+bool Vector::operator != (const Point & p) const {return !(* this == Vector(p));}
+
 Vector Vector::operator + (const Vector & v) const {return Vector(ORIGIN + * this + v);}
 
 Vector Vector::operator - () const {return Vector(ORIGIN - * this);}
