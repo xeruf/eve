@@ -20,5 +20,5 @@ bool Vector::operator != (const Point & p) const {return !(* this == Vector(p));
 
 Vector Vector::operator + (const Vector & v) const {return Vector(ORIGIN + * this + v);}
 
-Vector Vector::operator - () const {return Vector(ORIGIN - * this);}
+Vector Vector::operator - () const {return Vector (- angle.radians(), length);}
 Vector Vector::operator - (const Vector & v) const {return * this + -v;}

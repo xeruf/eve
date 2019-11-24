@@ -3,6 +3,8 @@
 #include <catch2/catch.hpp>
 #include <vector>
 
+#include <iostream>
+
 // TODO
 TEST_CASE("Vectors can be used for calculations and simple arithmetic") {
     std::vector<Vector> VECTORS;
@@ -27,5 +29,19 @@ TEST_CASE("Vectors can be used for calculations and simple arithmetic") {
 
         CHECK (VECTORS[2] != VECTORS[3]);
         CHECK (VECTORS[4] != VECTORS[5]);
+    }
+
+    SECTION ("Vectors can be negated") {
+        for (auto & v : VECTORS) CHECK (v == - - v);
+        CHECK (VECTORS[4] == - VECTORS[5]);
+    }
+
+    SECTION ("Vectors can be added and subtracted") {
+        CHECK ((VECTORS[0] + VECTORS[1]).angle.degrees() == 90);
+        CHECK ((VECTORS[0] + VECTORS[1]).length == 3.0);
+
+        CHECK (VECTORS[4] + VECTORS[5] == ORIGIN);
+
+        CHECK (VECTORS[0] - VECTORS[1] == ORIGIN);
     }
 }
