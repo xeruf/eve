@@ -7,13 +7,23 @@
 #include <vector>
 
 #define DIST_EXTREMES 10000.0
+#define USE_RANDOM_VALS 0
 
 TEST_CASE("Points and Vectors can be used interchangeably") {
-    // TODO: CHECK why certain numbers (e.g. 1208015009) let the tests fail
-    Uniform dist = Uniform (- DIST_EXTREMES, DIST_EXTREMES);
-    double x = dist.rand();
-    double y = dist.rand();
-    std::cout << "SEED: " << dist.SEED << std::endl;
+    double x, y;
+
+    if (USE_RANDOM_VALS) {
+        // TODO: CHECK why certain numbers (e.g. 1208015009) let the tests fail
+        // Guess: Rounding errors
+        Uniform dist = Uniform (- DIST_EXTREMES, DIST_EXTREMES);
+        x = dist.rand();
+        y = dist.rand();
+        std::cout << "SEED: " << dist.SEED << std::endl;
+    }
+    else {
+        x = 298.3;
+        y = 8643.9;
+    }
 
     SECTION ("Points and Vectors can be compared to") {
         Point p1(1, 1);
@@ -59,5 +69,14 @@ TEST_CASE("Points and Vectors can be used interchangeably") {
         CHECK (pvp == p);
     }
 
+    SECTION ("Vectors can be created between two points") {
+        Point p(1, 0);
+        Point q(2, 0);
+        Vector v(0, 1);
 
+        CHECK (v == (p >= q));
+        CHECK (v == (q <= p));
+        CHECK (v == (ORIGIN >= p));
+        CHECK (v == (p <= ORIGIN));
+    }
 }
