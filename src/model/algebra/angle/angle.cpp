@@ -1,4 +1,5 @@
 #include "angle.h"
+#include "../algebra.h"
 
 Angle::Angle (double angle) : a{normalise(angle)} {}
 Angle::Angle (int angle) : a{toRadians(normalise(angle))} {}
@@ -13,6 +14,10 @@ int Angle::normalise (int angle) {
 double Angle::radians() const {return a;}
 int Angle::degrees() const {return toDegrees(a);}
 
+Angle & Angle::update (const Angle & angle) {
+    * this = angle;
+    return * this;
+}
 Angle & Angle::update (double angle) {
     a = normalise(angle);
     return * this;
@@ -23,7 +28,11 @@ double Angle::toRadians (int angle) {return normalise((double) angle / 180 * M_P
 int Angle::toDegrees (double angle) {return normalise((int) round(angle / M_PI * 180));}
 
 Angle & Angle::operator = (double val) {
-    update(val);
+    update (val);
+    return * this;
+}
+Angle & Angle::operator = (const Vector & v) {
+    update (v.angle);
     return * this;
 }
 
@@ -41,21 +50,27 @@ Angle Angle::operator *  (double val)          const {return Angle(a * val);}
 Angle Angle::operator /  (const Angle & angle) const {return Angle(a / angle.a);}
 Angle Angle::operator /  (double val)          const {return Angle(a / val);}
 
+bool  Angle::operator == (const Vector & vec)  const {return * this == vec.angle;}
 bool  Angle::operator == (const Angle & angle) const {return coarseEquals(a, angle.a);}
 bool  Angle::operator == (double val)          const {return coarseEquals(a, val);}
 
+bool  Angle::operator != (const Vector & vec)  const {return * this != vec.angle;}
 bool  Angle::operator != (const Angle & angle) const {return !coarseEquals(a, angle.a);}
 bool  Angle::operator != (double val)          const {return !coarseEquals(a, val);}
 
+bool  Angle::operator >= (const Vector & vec)  const {return * this >= vec.angle;}
 bool  Angle::operator >= (const Angle & angle) const {return * this > angle || * this == angle;}
 bool  Angle::operator >= (double val)          const {return * this > val || * this == val;}
 
+bool  Angle::operator <= (const Vector & vec)  const {return * this <= vec.angle;}
 bool  Angle::operator <= (const Angle & angle) const {return * this < angle || * this == angle;}
 bool  Angle::operator <= (double val)          const {return * this < val || * this == val;}
 
+bool  Angle::operator <  (const Vector & vec)  const {return * this < vec.angle;}
 bool  Angle::operator <  (const Angle & angle) const {return normalise(a < angle.a);}
 bool  Angle::operator <  (double val)          const {return normalise(a < val);}
 
+bool  Angle::operator >  (const Vector & vec)  const {return * this > vec.angle;}
 bool  Angle::operator >  (const Angle & angle) const {return normalise(a > angle.a);}
 bool  Angle::operator >  (double val)          const {return normalise(a > val);}
 

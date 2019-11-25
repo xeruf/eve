@@ -20,6 +20,7 @@ public:
     [[nodiscard]] double radians() const;
     [[nodiscard]] int degrees() const;
 
+    Angle & update (const Angle & angle);
     Angle & update (double angle);
     Angle & update (int angle);
 
@@ -28,6 +29,7 @@ public:
 
     /* Overloaded operators */
     Angle & operator = (double val);
+    Angle & operator = (const Vector & v);
 
     Angle operator - () const;
 
@@ -43,21 +45,27 @@ public:
     Angle operator /  (const Angle & angle) const;
     Angle operator /  (double val)          const;
 
+    bool  operator == (const Vector & vec)  const;
     bool  operator == (const Angle & angle) const;
     bool  operator == (double val)          const;
 
+    bool  operator != (const Vector & vec)  const;
     bool  operator != (const Angle & angle) const;
     bool  operator != (double val)          const;
 
+    bool  operator >= (const Vector & vec)  const;
     bool  operator >= (const Angle & angle) const;
     bool  operator >= (double val)          const;
 
+    bool  operator <= (const Vector & vec)  const;
     bool  operator <= (const Angle & angle) const;
     bool  operator <= (double val)          const;
 
+    bool  operator <  (const Vector & vec)  const;
     bool  operator <  (const Angle & angle) const;
     bool  operator <  (double val)          const;
 
+    bool  operator >  (const Vector & vec)  const;
     bool  operator >  (const Angle & angle) const;
     bool  operator >  (double val)          const;
 };

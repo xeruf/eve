@@ -11,15 +11,18 @@ struct Vector {
     Angle angle;
     double length;
 
+    Vector (const Angle & angle, double length);
     Vector (double angle, double length);
     Vector (int angle, double length);
     explicit Vector (Point p);
 
     Vector & operator = (const Point & p);
 
+    bool operator == (const Angle & a) const;
     bool operator == (const Vector & v) const;
     bool operator == (const Point & p) const;
 
+    bool operator != (const Angle & a) const;
     bool operator != (const Vector & v) const;
     bool operator != (const Point & p) const;
 

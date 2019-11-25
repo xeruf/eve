@@ -86,6 +86,8 @@ TEST_CASE("Points and Vectors can be used interchangeably") {
         Vector v(0, 1);
 
         CHECK (p + v == q);
+
+        Point r(q-v);
         CHECK (q - v == p);
     }
 }
