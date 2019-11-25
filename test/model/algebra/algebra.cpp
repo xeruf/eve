@@ -2,6 +2,7 @@
 #include "../../../src/model/random/random.h"
 
 #include <catch2/catch.hpp>
+#include <cmath>
 #include <iostream>
 #include <vector>
 
@@ -14,10 +15,28 @@ TEST_CASE("Points and Vectors can be used interchangeably") {
     double y = dist.rand();
     std::cout << "SEED: " << dist.SEED << std::endl;
 
-    SECTION ("Points and Vectors can be created from each other") {
-        Point p (x, y);
-        Vector vp (p);
-        Point pvp (vp);
+    SECTION ("Points and Vectors can be compared to") {
+        Point p1(1, 1);
+        Point p2(3, 4);
+
+        Vector v1(45, sqrt(2.0));
+        Vector v2(acos(0.6), 5);
+
+        CHECK (p1 == v1);
+        CHECK (v1 == p1);
+        CHECK (p2 == v2);
+        CHECK (v2 == p2);
+
+        CHECK (p1 != v2);
+        CHECK (v2 != p1);
+        CHECK (p2 != v1);
+        CHECK (v1 != p2);
+    }
+
+    SECTION ("Points and Vectors can be constructed from each other") {
+        Point p(x, y);
+        Vector vp(p);
+        Point pvp(vp);
 
         CHECK (p == vp);
         CHECK (p == pvp);
@@ -25,10 +44,20 @@ TEST_CASE("Points and Vectors can be used interchangeably") {
         CHECK (vp == pvp);
         CHECK (pvp == p);
         CHECK (pvp == vp);
+    }
 
-        p = vp;
-        vp = pvp;
+    SECTION ("Points and Vectors can be assigned to each other") {
+        Point p(x, y);
+        Vector vp(ORIGIN);
+        Point pvp(ORIGIN);
+
+        vp = p;
+        pvp = vp;
+
         CHECK (p == vp);
         CHECK (vp == pvp);
+        CHECK (pvp == p);
     }
+
+
 }
