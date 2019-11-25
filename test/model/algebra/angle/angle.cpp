@@ -1,5 +1,5 @@
 #include "../../../../src/model/algebra/angle/angle.h"
-#include "../algebra.h"
+#include "../angle-vector.h"
 
 #include <catch2/catch.hpp>
 #include <vector>

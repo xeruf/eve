@@ -1,5 +1,5 @@
-#ifndef EVE_ALGEBRA_H
-#define EVE_ALGEBRA_H
+#ifndef EVE_ANGLE_VECTOR_H
+#define EVE_ANGLE_VECTOR_H
 
 #include <vector>
 
@@ -45,4 +45,4 @@ static std::vector<std::vector<Angle>> getAngles() {
     return ANGLES;
 }
 
-#endif //EVE_ALGEBRA_H
+#endif //EVE_ANGLE_VECTOR_H
