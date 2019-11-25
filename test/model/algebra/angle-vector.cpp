@@ -22,4 +22,27 @@ TEST_CASE ("Angles and Vectors can be used together for arithmetic and logic ope
         CHECK (w != a);
         CHECK (a != w);
     }
+
+    SECTION ("Angles can be added to and subtracted from Vectors") {
+        std::vector<Vector> vectors;
+        vectors.emplace_back (0, 10);
+        vectors.emplace_back (90, 10);
+        vectors.emplace_back (180, 10);
+        vectors.emplace_back (270, 10);
+
+        std::vector<Angle> angles;
+        angles.emplace_back (0);
+        angles.emplace_back (90);
+        angles.emplace_back (180);
+        angles.emplace_back (270);
+
+        unsigned long I = vectors.size();
+        unsigned long J = angles.size();
+        for (unsigned long i = 0; i < I; i++) {
+            for (unsigned long j = 0; j < J; j++) {
+                CHECK (vectors[i] + angles[j] == vectors[(i + j) % I]);
+                CHECK (vectors[i] - angles[j] == vectors[(I + i - j) % I]);
+            }
+        }
+    }
 }
