@@ -24,6 +24,8 @@ public:
     Angle & update (double angle);
     Angle & update (int angle);
 
+    [[nodiscard]] double angleTo (const Angle & angle) const;
+
     static double toRadians (int angle);
     static int toDegrees (double angle);
 

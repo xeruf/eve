@@ -24,6 +24,11 @@ Angle & Angle::update (double angle) {
 }
 Angle & Angle::update (int angle) {return update(toRadians(angle));}
 
+double Angle::angleTo (const Angle & angle) const {
+    double distance = fabs (a - angle.radians());
+    return (distance > M_PI) ? distance - M_PI : distance;
+}
+
 double Angle::toRadians (int angle) {return normalise((double) angle / 180 * M_PI);}
 int Angle::toDegrees (double angle) {return normalise((int) round(angle / M_PI * 180));}
 

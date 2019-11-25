@@ -4,12 +4,13 @@
 #include "../algebra_conf.h"
 
 #include <cmath>
+#include <iostream>
 
 struct Point {
     double x;
     double y;
     Point (double x, double y);
-    Point (const Vector & v);
+    explicit Point (const Vector & v);
 
     Point & operator = (const Vector & v);
 
@@ -32,7 +33,7 @@ struct Point {
     Vector operator >= (const Point & p) const;
     Vector operator <= (const Point & p) const;
 
-    [[nodiscard]] bool withinCone(const Point & origin, const Vector & center, double angle) const;
+    [[nodiscard]] bool withinCone(const Point & apex, const Vector & centre, const Angle & angle) const;
 };
 
 static const Point ORIGIN = Point(0, 0);

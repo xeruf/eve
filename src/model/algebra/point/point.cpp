@@ -24,11 +24,15 @@ Point Point::operator - (const Vector & v) const {return * this + -v;}
 
 Vector Point::operator >= (const Point & p) const {
     const Point q(* this - p);
-    return Vector(atan(q.y / q.x), ORIGIN / q);
+    double angle = atan (q.y / q.x);
+    if (p.x < 0 && p.y < 0) angle += M_PI;
+    return Vector(angle, ORIGIN / q);
 }
 Vector Point::operator <= (const Point & p) const {return p >= * this;}
 
-bool Point::withinCone (const Point & origin, const Vector & center, double angle) const {
-    return (* this / origin <= center.length) &&
-            (fabs((center.angle - (* this >= origin).angle).radians()) <= 0.5 * angle);
+bool Point::withinCone (const Point & apex, const Vector & centre, const Angle & angle) const {
+    Vector v = apex >= * this;
+    double enclosedAngle = v.angle.angleTo(centre.angle);
+
+    return (v.length <= centre.length && enclosedAngle <= 0.5 * angle.radians());
 }

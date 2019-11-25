@@ -1,6 +1,7 @@
-#include "../../../../src/model/algebra/point/point.h"
+#include "../../../../src/model/algebra/algebra.h"
 
 #include <catch2/catch.hpp>
+#include <iostream>
 #include <vector>
 
 TEST_CASE("Points can be used for calculations and simple arithmetic") {
@@ -39,5 +40,41 @@ TEST_CASE("Points can be used for calculations and simple arithmetic") {
 
     SECTION ("Dividing Points returns their distance") {
         CHECK (POINTS[2] / POINTS[1] == 2);
+    }
+}
+
+TEST_CASE ("A Point can check if it's within a cone") {
+    GIVEN ("A Cone represented by a Point, Vector and Angle") {
+        Point apex = ORIGIN;
+        Vector centre (45, 4);
+        Angle angle (90);
+
+        std::vector<Point> valid;
+        valid.emplace_back (1, 1);
+        valid.emplace_back (0, 2);
+        valid.emplace_back (4, 0);
+        valid.emplace_back (3, 2);
+
+        std::vector<Point> invalid;
+        invalid.emplace_back (-2, -10);
+        invalid.emplace_back (-1, -1);
+        invalid.emplace_back (-2, -2);
+        invalid.emplace_back (3, 3);
+        invalid.emplace_back (2, 4);
+        invalid.emplace_back (10, 10);
+        invalid.emplace_back (1, -1);
+        invalid.emplace_back (-1, 1);
+
+        Vector t1 (ORIGIN >= invalid[1]);
+        Vector t2 (ORIGIN >= invalid[2]);
+
+        for (auto & point : valid) {
+            bool isWithinCone = point.withinCone (apex, centre, angle);
+            CHECK (isWithinCone);
+        }
+        for (auto & point : invalid) {
+            bool isWithinCone = point.withinCone (apex, centre, angle);
+            CHECK (! isWithinCone);
+        }
     }
 }
