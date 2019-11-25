@@ -79,4 +79,13 @@ TEST_CASE("Points and Vectors can be used interchangeably") {
         CHECK (v == (ORIGIN >= p));
         CHECK (v == (p <= ORIGIN));
     }
+
+    SECTION ("Vectors can be added onto Points to result in new Points") {
+        Point p(1, 0);
+        Point q(2, 0);
+        Vector v(0, 1);
+
+        CHECK (p + v == q);
+        CHECK (q - v == p);
+    }
 }
