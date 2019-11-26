@@ -12,7 +12,7 @@
 
 class Piercy : public Individual {
 public:
-    Piercy(double x, double y, double a, double energy);
+    Piercy(long ID, double x, double y, double a, double energy);
 
     Action * act(std::vector<Object *> * visibles) override;
 };

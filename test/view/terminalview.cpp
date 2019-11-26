@@ -17,9 +17,9 @@ TEST_CASE("A string table can be created"){
         "—————————————————————————————————————————\n"
         "Individuals:\n"
         "—————————————————————————————————————————\n"
-        "ID:  58 | X:  123 | Y:  321 | Energy: 100\n"
-        "ID:  59 | X:  138 | Y:  153 | Energy:  70\n"
-        "ID:  60 | X:  420 | Y:  420 | Energy:   5\n";
+        "ID:   0 | X:  123 | Y:  321 | Energy: 100\n"
+        "ID:   1 | X:  138 | Y:  153 | Energy:  70\n"
+        "ID:   2 | X:  420 | Y:  420 | Energy:   5\n";
 
     World world = World(1000, 1000, 1000);
     Fred * fred1 = new Fred(123, 321, 0,  100);
