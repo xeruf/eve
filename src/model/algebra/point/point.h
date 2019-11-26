@@ -13,6 +13,7 @@ struct Point {
     explicit Point (const Vector & v);
 
     [[nodiscard]] double distanceTo (const Point & p) const;
+    [[nodiscard]] Vector vectorTo (const Point & p) const;
 
     Point & operator = (const Vector & v);
 
@@ -27,10 +28,6 @@ struct Point {
 
     Point operator - (const Point & p) const;
     Point operator - (const Vector & v) const;
-
-    /* Operators to calculate the vector between two points */
-    Vector operator >= (const Point & p) const;
-    Vector operator <= (const Point & p) const;
 
     [[nodiscard]] bool withinCone(const Point & apex, const Vector & centre, const Angle & angle) const;
 };

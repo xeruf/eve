@@ -64,16 +64,14 @@ TEST_CASE ("A Point can check if it's within a cone") {
         invalid.emplace_back (1, -1);
         invalid.emplace_back (-1, 1);
 
-        Vector t1 (ORIGIN >= invalid[1]);
-        Vector t2 (ORIGIN >= invalid[2]);
+        Vector t1 (ORIGIN.vectorTo(invalid[1]));
+        Vector t2 (ORIGIN.vectorTo(invalid[2]));
 
         for (auto & point : valid) {
-            bool isWithinCone = point.withinCone (apex, centre, angle);
-            CHECK (isWithinCone);
+            CHECK (point.withinCone (apex, centre, angle));
         }
         for (auto & point : invalid) {
-            bool isWithinCone = point.withinCone (apex, centre, angle);
-            CHECK (! isWithinCone);
+            CHECK (! point.withinCone (apex, centre, angle));
         }
     }
 }
