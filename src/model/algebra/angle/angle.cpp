@@ -1,8 +1,12 @@
 #include "angle.h"
 #include "../algebra.h"
 
-Angle::Angle (double angle) : a{normalise(angle)} {}
-Angle::Angle (int angle) : a{toRadians(normalise(angle))} {}
+Angle::Angle (double angle) :
+    a{normalise(angle)} {}
+
+Angle::Angle (int angle) :
+    a{toRadians(normalise(angle))} {}
+
 
 double Angle::normalise (double angle) {
     return (angle < 0) ? normalise(angle + 2 * M_PI) : fmod(angle, 2 * M_PI);
@@ -31,6 +35,7 @@ double Angle::angleTo (const Angle & angle) const {
 
 double Angle::toRadians (int angle) {return normalise((double) angle / 180 * M_PI);}
 int Angle::toDegrees (double angle) {return normalise((int) round(angle / M_PI * 180));}
+
 
 Angle & Angle::operator = (double val) {
     update (val);
