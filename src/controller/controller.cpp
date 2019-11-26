@@ -43,7 +43,8 @@ long Controller::run() {
 bool Controller::simulate() {
     world.fillWithFood();
 
-    if (RENDER_TERMINALVIEW) terminalview.render(world);
+    if (RENDER_TERMINALVIEW)
+        terminalview.render(world);
     if (RENDER_SDLVIEW) {
         int keysm = sdlview.render(world);
         if (keysm == -1) return false;
@@ -51,8 +52,9 @@ bool Controller::simulate() {
 
     std::cout << std::endl << "======== " << iteration << " ========" << std::endl;
     int i = 0;
+
     for (auto individual : world.getIndividuals()) {
-                std::cout << "Ind. " << i++ << ":\t";
+    std::cout << "Ind. " << i++ << ":\t";
         auto action = applyAction(* individual);
         update (* individual, action);
         std::cout << std::endl;
