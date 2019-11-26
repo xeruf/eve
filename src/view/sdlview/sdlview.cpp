@@ -8,8 +8,9 @@ void SDLView::setupsdl(const World & world) {
         error_msg += SDL_Error;
         throw std::runtime_error(error_msg);
     }
-
-    window = SDL_CreateWindow("Eve", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, world.WIDTH, world.HEIGHT, SDL_WINDOW_OPENGL);
+    float dimensions = world.WIDTH / world.HEIGHT;
+    SDL_GetCurrentDisplayMode(0, &DM);
+    window = SDL_CreateWindow("Eve", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, DM.h * dimensions, DM.h, SDL_WINDOW_OPENGL);
     if (window == NULL) {
         SDL_Quit();
         std::string error_msg = "SDL_Init Error: ";
@@ -28,20 +29,28 @@ void SDLView::setupsdl(const World & world) {
     }
 }
 
+Point SDLView::getRelativePosition(const Point & position, const double worldWidth, const double worldHeight) const {
+    double x = position.x * (DM.h / worldWidth);
+    double y = position.x * (DM.h / worldHeight);
+    Point relativePosition = {x, y};
+    return relativePosition;
+}
+
 void SDLView::draw(const World &world) {
    SDL_SetRenderDrawColor(renderer, 0, 0, 0xFF, 0xFF);
    SDL_RenderClear(renderer);
 
    for (auto individual : world.getIndividuals()) {
-       circleColor(renderer, individual->getPosition().x, individual->getPosition().y, individual->getRadius()*3, 0xFF00FFFF);
+       Point relativePosition = getRelativePosition(individual->getPosition(), world.WIDTH, world.HEIGHT);
+       circleColor(renderer, relativePosition.x, relativePosition.y, individual->getRadius() * SCALE_FACTOR, 0xFF00FFFF);
    }
 
    for (auto food : world.getFood()) {
-       circleColor(renderer, food->getPosition().x, food->getPosition().y, food->getRadius()*3, 0xFF0000FF);
+       circleColor(renderer, food->getPosition().x, food->getPosition().y, food->getRadius() * SCALE_FACTOR, 0xFF0000FF);
    }
 
    SDL_RenderPresent(renderer);
-   SDL_Delay(100);
+   SDL_Delay(RENDER_DELAY);
 }
 
 void SDLView::stop() {
@@ -69,5 +78,6 @@ int SDLView::render(const World &world) {
     draw(world);
     return 0;
 }
+
 
 
