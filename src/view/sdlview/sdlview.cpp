@@ -33,7 +33,7 @@ void SDLView::draw(const World &world) {
    SDL_RenderClear(renderer);
 
    for (auto individual : world.getIndividuals()) {
-       circleColor(renderer, individual->getPosition().x, individual->getPosition().y, individual->getRadius(), 0xFF00FFFF);
+       circleColor(renderer, individual->getPosition().x, individual->getPosition().y, individual->getRadius()*3, 0xFF00FFFF);
    }
 
    for (auto food : world.getFood()) {
@@ -50,18 +50,24 @@ void SDLView::stop() {
     SDL_Quit();
 };
 
-bool SDLView::render(const World &world) {
+int SDLView::render(const World &world) {
     if (!renderer) setupsdl(world);
-
     SDL_Event event;
-    if (SDL_PollEvent(&event)) {
+
+    if (SDL_PollEvent(& event)) {
         if (event.type == SDL_QUIT) {
             stop();
-            return false;
+            return -1;
+        } else if (event.type == SDL_KEYDOWN) {
+            if (event.key.keysym.sym == 113) {
+                stop();
+                return -1;
+            }
+            return event.key.keysym.sym;
         }
     }
     draw(world);
-    return true;
+    return 0;
 }
 
 
