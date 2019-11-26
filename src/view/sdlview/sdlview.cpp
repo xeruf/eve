@@ -40,6 +40,7 @@ void SDLView::draw(const World &world) {
    SDL_RenderClear(renderer);
 
    for (auto individual : world.getIndividuals()) {
+       circleColor(renderer, individual->getPosition().x, individual->getPosition().y, individual->getRadius()*3, 0xFF00FFFF);
        Point relativePosition = getRelativePosition(individual->getPosition(), world.WIDTH, world.HEIGHT, DM.w, DM.h);
        filledCircleColor(renderer, relativePosition.x, relativePosition.y, individual->getRadius() * SCALE_FACTOR, 0xFF00FFFF);
        Point relativeVision = getRelativePosition(individual->getPosition() + individual->getVision(), world.WIDTH, world.HEIGHT, DM.w, DM.h);
@@ -48,10 +49,6 @@ void SDLView::draw(const World &world) {
 
    for (auto food : world.getFood()) {
        aacircleColor(renderer, food->getPosition().x, food->getPosition().y, food->getRadius() * SCALE_FACTOR, 0xFF0000FF);
-   }
-
-   for (auto food : world.getFood()) {
-       circleColor(renderer, food->getPosition().x, food->getPosition().y, food->getRadius()*3, 0xFF0000FF);
    }
 
    SDL_RenderPresent(renderer);
@@ -64,7 +61,7 @@ void SDLView::stop() {
     SDL_Quit();
 };
 
-bool SDLView::render(const World &world) {
+int SDLView::render(const World &world) {
     if (!renderer) setupsdl(world);
     SDL_Event event;
 
@@ -81,7 +78,7 @@ bool SDLView::render(const World &world) {
         }
     }
     draw(world);
-    return true;
+    return 0;
 }
 
 
