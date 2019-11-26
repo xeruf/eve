@@ -7,7 +7,7 @@
 
 class Fred : public Individual {
 public:
-    Fred(double x, double y, double a, double energy);
+    Fred(long ID, double x, double y, double a, double energy);
   
     Action * act(std::vector<Object *> * visibles) override;
 };

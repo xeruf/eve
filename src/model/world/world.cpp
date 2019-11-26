@@ -24,11 +24,6 @@ void World::addFood(Food * food) {
     incEnergy(food);
 }
 
-void World::addIndividual(Individual * individual) {
-    individuals.push_back(individual);
-    incEnergy(individual);
-}
-
 void World::incEnergy(Entity * entity) {
     if (energy + entity->getEnergy() > ENERGY) throw std::overflow_error("World::incEnergy(): operation exceeds ENERGY");
     energy += entity->getEnergy();
