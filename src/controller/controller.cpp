@@ -10,11 +10,11 @@ void Controller::init() {
     static Uniform distE = Uniform(MIN_FOOD_SIZE, MAX_FOOD_SIZE);
 
     for (int i = 0; i < AMOUNT_OF_FREDS; i++) {
-        world.addIndividual(new Fred(0 + i, 0 + i, 0, 0.2 * world.ENERGY));
+        world.addIndividual(new Fred(0 + i, 0 + i, 0, 200));
     }
 
     for (int i = 0; i < AMOUNT_OF_PIERCIES; i++) {
-        world.addIndividual(new Piercy(0 - i, 0 - i, 0, 0.2 * world.ENERGY));
+        world.addIndividual(new Piercy(0 - i, 0 - i, 0, 200));
     }
 
     world.fillWithFood([](World * w) -> Food * {
@@ -44,5 +44,6 @@ bool Controller::simulate() {
         delete action;
         delete visibles;
     }
+    world.kill(world.getIndividuals()[0]->getID());
     return not world.getIndividuals().empty();
 }
