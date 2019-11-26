@@ -36,6 +36,10 @@ void SDLView::draw(const World &world) {
        circleColor(renderer, individual->getPosition().x, individual->getPosition().y, individual->getRadius(), 0xFF00FFFF);
    }
 
+   for (auto food : world.getFood()) {
+       circleColor(renderer, food->getPosition().x, food->getPosition().y, food->getRadius()*3, 0xFF0000FF);
+   }
+
    SDL_RenderPresent(renderer);
    SDL_Delay(100);
 }
