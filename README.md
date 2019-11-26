@@ -1,4 +1,4 @@
-# EVE
+# EVE [![Build Status](https://travis-ci.com/Xerus2000/eve.svg?branch=master)](https://travis-ci.com/Xerus2000/eve)
 
 This project aims to simulate basic lifeforms evolving and getting smarter, in a simplified manner.
 

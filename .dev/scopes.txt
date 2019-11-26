@@ -6,4 +6,5 @@ controller
 cmake
 readme
 git
+ci
 threading

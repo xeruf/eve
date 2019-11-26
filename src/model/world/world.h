@@ -6,12 +6,14 @@
 #include "../object/obstacle/obstacle.h"
 
 #include <cmath>
+#include <cstdarg>
 #include <functional>
 #include <vector>
 #include <stdexcept>
 #include <experimental/random>
 #include <string>
 #include <list>
+#include <utility>
 
 class World {
 private:
@@ -47,12 +49,18 @@ public:
     bool fillWithFood();
 
     [[nodiscard]] std::vector<Individual *> getIndividuals() const;
-    void addIndividual(Individual * individual);
 
-    std::list<Individual *> getCemetery() const;
+    [[nodiscard]] std::list<Individual *> getCemetery() const;
     bool kill(long ID);
 
     [[nodiscard]] std::vector<Object *> * getObjectsAround(const Point & position, double radius) const;
+
+    template <class Species>
+    void addIndividual(double x, double y, double angle, double energy) {
+        Species * individual = new Species(individuals.size(), x, y, angle, energy);
+        individuals.push_back(individual);
+        incEnergy(individual);
+    }
 };
 
 #endif //EVE_WORLD_H
