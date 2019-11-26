@@ -7,8 +7,8 @@ addons:
     update: true
     packages:
         - cmake
-        - libsdl2-2.0
-        - libsdl2-gfx-1.0
+        - libsdl2-2.0-0
+        - libsdl2-gfx-1.0-0
 git:
   depth: 3
 
