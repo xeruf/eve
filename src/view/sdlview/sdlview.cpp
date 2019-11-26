@@ -46,18 +46,18 @@ void SDLView::stop() {
     SDL_Quit();
 };
 
-int SDLView::render(const World &world) {
+bool SDLView::render(const World &world) {
     if (!renderer) setupsdl(world);
 
     SDL_Event event;
     if (SDL_PollEvent(&event)) {
         if (event.type == SDL_QUIT) {
             stop();
-            return 1;
+            return false;
         }
     }
     draw(world);
-    return 0;
+    return true;
 }
 
 
