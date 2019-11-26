@@ -14,6 +14,6 @@ private:
     SDL_Window * window;
     SDL_Renderer * renderer;
 public:
-    bool render(const World & world);
+    int render(const World & world);
 };
 #endif //EVE_SDLVIEW_H
