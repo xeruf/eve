@@ -12,6 +12,8 @@ struct Point {
     Point (double x, double y);
     explicit Point (const Vector & v);
 
+    [[nodiscard]] double distanceTo (const Point & p) const;
+
     Point & operator = (const Vector & v);
 
     bool operator == (const Point & p) const;
@@ -19,9 +21,6 @@ struct Point {
 
     bool operator != (const Point & p) const;
     bool operator != (const Vector & v) const;
-
-
-    double operator / (const Point & p) const;      // Evaluates the distance between the two points
 
     Point operator + (const Point & p) const;
     Point operator + (const Vector & v) const;

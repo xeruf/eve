@@ -50,7 +50,9 @@ std::vector<Object *> * World::getObjectsAround(const Point & position, double r
     auto visibles = new std::vector<Object *>();
     for (auto objects : objectLists) {
         for (auto & object : * objects) {
-            if (std::abs(object->getPosition() / position) < radius) visibles->push_back(object);
+            if (std::abs(object->getPosition().distanceTo(position)) < radius) {
+                visibles->push_back(object);
+            }
         }
     }
     return visibles;

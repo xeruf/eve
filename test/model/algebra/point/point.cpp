@@ -38,7 +38,7 @@ TEST_CASE("Points can be used for calculations and simple arithmetic") {
     }
 
     SECTION ("Dividing Points returns their distance") {
-        CHECK (POINTS[2] / POINTS[1] == 2);
+        CHECK (POINTS[2].distanceTo(POINTS[1]) == 2);
     }
 }
 
