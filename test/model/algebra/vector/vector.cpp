@@ -3,9 +3,6 @@
 #include <catch2/catch.hpp>
 #include <vector>
 
-#include <iostream>
-
-// TODO
 TEST_CASE("Vectors can be used for calculations and simple arithmetic") {
     std::vector<Vector> VECTORS;
     VECTORS.emplace_back(90, 1.5);

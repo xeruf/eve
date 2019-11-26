@@ -1,7 +1,6 @@
 #include "../../../../src/model/algebra/algebra.h"
 
 #include <catch2/catch.hpp>
-#include <iostream>
 #include <vector>
 
 TEST_CASE("Points can be used for calculations and simple arithmetic") {
