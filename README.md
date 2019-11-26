@@ -1,4 +1,5 @@
-# EVE [![Build Status](https://travis-ci.com/Xerus2000/eve.svg?branch=master)](https://travis-ci.com/Xerus2000/eve) [![experimental](http://badges.github.io/stability-badges/dist/experimental.svg)](http://github.com/badges/stability-badges)[![unstable](http://badges.github.io/stability-badges/dist/unstable.svg)](http://github.com/badges/stability-badges)
+# EVE [![Build Status](https://travis-ci.com/Xerus2000/eve.svg?branch=master)](https://travis-ci.com/Xerus2000/eve)
+[![experimental](http://badges.github.io/stability-badges/dist/experimental.svg)](http://github.com/badges/stability-badges)
 
 ##### Simulate simple, artificial lifeforms as they learn and evolve
 
