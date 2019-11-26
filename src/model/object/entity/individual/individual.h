@@ -2,22 +2,26 @@
 #define EVE_INDIVIDUAL_H
 
 #include "../entity.h"
+
+#include "../../../../config.h"
+#include "../../../algebra/algebra.h"
 #include "../../../action/action.h"
 
 class Individual : public Entity {
 private:
+    Individual(double x, double y, Vector vision, double energy);
+
     static long numberOfIndividuals;
     const long ID;
-    const double visionRange = 15;
 
-    double direction;
+    Vector vision;
+
 public:
-    Individual(double x, double y, double a, double energy);
+    Individual(double x, double y, double angle, double energy);
     ~Individual() override = 0;
 
     [[nodiscard]] long getID() const;
-    [[nodiscard]] double getDirection() const;
-    [[nodiscard]] double getVisionRange() const;
+    [[nodiscard]] Vector getVision() const;
 
     virtual Action * act(std::vector<Object *> * visibles) = 0;
 };
