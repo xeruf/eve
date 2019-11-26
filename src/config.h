@@ -7,9 +7,6 @@
 #define VISION_RANGE 10.0
 #define MOUTH_ANGLE 59
 
-#define AMOUNT_OF_FREDS 10
-#define AMOUNT_OF_PIERCIES 0
-
 /* SDL RENDER PARAMETERS */
 #define SCALE_FACTOR 3      // scaling of individuals and food for easier identification
 #define RENDER_DELAY 100    // delay between drawn frames in ms

@@ -40,7 +40,8 @@ void SDLView::draw(const World &world) {
    SDL_RenderClear(renderer);
 
    for (auto individual : world.getIndividuals()) {
-       circleColor(renderer, individual->getPosition().x, individual->getPosition().y, individual->getRadius()*3, 0xFF00FFFF);
+       Point relativePosition = getRelativePosition(individual->getPosition(), world.WIDTH, world.HEIGHT);
+       circleColor(renderer, relativePosition.x, relativePosition.y, individual->getRadius() * SCALE_FACTOR, 0xFF00FFFF);
        Point relativePosition = getRelativePosition(individual->getPosition(), world.WIDTH, world.HEIGHT, DM.w, DM.h);
        filledCircleColor(renderer, relativePosition.x, relativePosition.y, individual->getRadius() * SCALE_FACTOR, 0xFF00FFFF);
        Point relativeVision = getRelativePosition(individual->getPosition() + individual->getVision(), world.WIDTH, world.HEIGHT, DM.w, DM.h);
