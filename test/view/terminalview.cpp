@@ -1,3 +1,4 @@
+/*
 #include "../../src/view/terminalview.h"
 #include "../../src/model/object/entity/individual/fred/fred.h"
 #include <catch2/catch.hpp>
@@ -71,3 +72,4 @@ TEST_CASE("A string table can be created"){
         );
     }
 }
+*/
