@@ -48,7 +48,6 @@ bool Controller::simulate() {
         int keysm = sdlview.render(world);
         if (keysm == -1) return false;
     }
-
     for (auto individual : world.getIndividuals()) {
         auto action = applyAction(* individual);
         update (* individual, action);
