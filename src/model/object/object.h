@@ -1,7 +1,7 @@
 #ifndef EVE_OBJECT_H
 #define EVE_OBJECT_H
 
-#include "../model.h"
+#include "../algebra/algebra.h"
 
 #include <vector>
 
