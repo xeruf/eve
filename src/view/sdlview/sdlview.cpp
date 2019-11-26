@@ -60,7 +60,7 @@ void SDLView::stop() {
     SDL_Quit();
 };
 
-int SDLView::render(const World &world) {
+bool SDLView::render(const World &world) {
     if (!renderer) setupsdl(world);
     SDL_Event event;
 
@@ -77,7 +77,7 @@ int SDLView::render(const World &world) {
         }
     }
     draw(world);
-    return 0;
+    return true;
 }
 
 
