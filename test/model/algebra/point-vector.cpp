@@ -74,10 +74,8 @@ TEST_CASE("Points and Vectors can be used interchangeably") {
         Point q(2, 0);
         Vector v(0, 1);
 
-        CHECK (v == (p >= q));
-        CHECK (v == (q <= p));
-        CHECK (v == (ORIGIN >= p));
-        CHECK (v == (p <= ORIGIN));
+        CHECK (v == (p.vectorTo(q)));
+        CHECK (v == (ORIGIN.vectorTo(p)));
     }
 
     SECTION ("Vectors can be added onto Points to result in new Points") {
