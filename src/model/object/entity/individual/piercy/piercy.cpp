@@ -7,12 +7,10 @@ Action * Piercy::act(std::vector<Object *> * visibles) {
     while (true) {
         std::cin.ignore(FLUSH_AMOUNT, '\n');
         switch (std::getchar()) {
-            case 'e':
-                return new Eat();
             case 'm':
-                return new Move();
+                return new Action(MOVE);
             case 's':
-                return new Sleep();
+                return new Action(SLEEP);
         }
     }
 }
