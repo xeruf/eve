@@ -43,13 +43,15 @@ long Controller::run() {
 bool Controller::simulate() {
     world.fillWithFood();
 
-    if (RENDER_TERMINALVIEW) terminalview.render(world);
+    if (RENDER_TERMINALVIEW)
+        terminalview.render(world);
     if (RENDER_SDLVIEW) {
         int keysm = sdlview.render(world);
         if (keysm == -1) return false;
     }
+
     for (auto individual : world.getIndividuals()) {
-        auto action = applyAction(* individual);
+                auto action = applyAction(* individual);
         update (* individual, action);
     }
 
