@@ -9,15 +9,14 @@
 
 class Individual : public Entity {
 private:
-    Individual(double x, double y, Vector vision, double energy);
+    Individual(long ID, double x, double y, Vector vision, double energy);
 
-    static long numberOfIndividuals;
     const long ID;
 
     Vector vision;
 
 public:
-    Individual(double x, double y, double angle, double energy);
+    Individual(long ID, double x, double y, double angle, double energy);
     ~Individual() override = 0;
 
     [[nodiscard]] long getID() const;
