@@ -1,4 +1,3 @@
-#include <textstyle.h>
 #include "piercy.h"
 
 Piercy::Piercy(double x, double y, double a, double energy) : Individual(x, y, a, energy) {}
