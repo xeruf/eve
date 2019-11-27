@@ -24,7 +24,7 @@ public:
     [[nodiscard]] long getID() const;
     [[nodiscard]] Vector getVision() const;
 
-    virtual Action * act(const std::unique_ptr<std::vector<Object *>> & visibles) = 0;
+    virtual Action act(const std::unique_ptr<std::vector<Object *>> & visibles) = 0;
 };
 
 #endif //EVE_INDIVIDUAL_H

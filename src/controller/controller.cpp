@@ -40,7 +40,7 @@ bool Controller::simulate() {
 
         auto visibles = world.getObjectsAround(individual->getPosition(), individual->getVision().length);
         auto action = individual->act(visibles);
-        std::cout << action->toString() << std::endl;
+        std::cout << action.toString() << std::endl;
     }
     return not world.getIndividuals().empty();
 }
