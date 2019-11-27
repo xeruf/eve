@@ -8,10 +8,6 @@ World::World(double WIDTH, double HEIGHT, double ENERGY) :
     if (WIDTH <= 0) throw std::range_error("World(): WIDTH must be positive");
     if (HEIGHT <= 0) throw std::range_error("World(): HEIGHT must be positive");
     if (ENERGY <= 0) throw std::range_error("World(): ENERGY must be positive");
-
-    objectLists[0] = (std::vector<Object *> *) & foods;
-    objectLists[1] = (std::vector<Object *> *) & individuals;
-    objectLists[2] = (std::vector<Object *> *) & obstacles;
 }
 
 World::~World() {
@@ -43,11 +39,19 @@ std::vector<Individual *> World::getIndividuals() const {
 
 std::unique_ptr<std::vector<Object *>> World::getObjectsAround(const Point & position, double radius) const {
     std::unique_ptr<std::vector<Object *>> visibles(new std::vector<Object *>);
-    for (auto objects : objectLists) {
-        for (auto & object : * objects) {
-            if (std::abs(object->getPosition().distanceTo(position)) < radius) {
-                visibles->push_back(object);
-            }
+    for (auto & object : foods) {
+        if (std::abs(object->getPosition().distanceTo(position)) < radius) {
+            visibles->push_back(object);
+        }
+    }
+    for (auto & object : individuals) {
+        if (std::abs(object->getPosition().distanceTo(position)) < radius) {
+            visibles->push_back(object);
+        }
+    }
+    for (auto & object : obstacles) {
+        if (std::abs(object->getPosition().distanceTo(position)) < radius) {
+            visibles->push_back(object);
         }
     }
     return visibles;
