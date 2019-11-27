@@ -14,6 +14,7 @@ World::~World() {
     for (auto food : foods) delete food;
     for (auto individual : individuals) delete individual;
     for (auto obstacle : obstacles) delete obstacle;
+    for (auto corpse : cemetery) delete corpse;
 }
 
 void World::addFood(Food * food) {
