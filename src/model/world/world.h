@@ -14,6 +14,7 @@
 #include <string>
 #include <list>
 #include <utility>
+#include <memory>
 
 class World {
 private:
@@ -53,7 +54,7 @@ public:
     [[nodiscard]] std::list<Individual *> getCemetery() const;
     bool kill(long ID);
 
-    [[nodiscard]] std::vector<Object *> * getObjectsAround(const Point & position, double radius) const;
+    [[nodiscard]] std::unique_ptr<std::vector<Object *>> getObjectsAround(const Point & position, double radius) const;
 
     template <class Species>
     void addIndividual(double x, double y, double angle, double energy) {

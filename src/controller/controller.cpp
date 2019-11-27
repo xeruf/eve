@@ -41,8 +41,6 @@ bool Controller::simulate() {
         auto visibles = world.getObjectsAround(individual->getPosition(), individual->getVision().length);
         auto action = individual->act(visibles);
         std::cout << action->toString() << std::endl;
-        delete action;
-        delete visibles;
     }
     return not world.getIndividuals().empty();
 }
