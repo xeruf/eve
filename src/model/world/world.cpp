@@ -41,8 +41,8 @@ std::vector<Individual *> World::getIndividuals() const {
     return individuals;
 }
 
-std::vector<Object *> * World::getObjectsAround(const Point & position, double radius) const {
-    auto visibles = new std::vector<Object *>();
+std::unique_ptr<std::vector<Object *>> World::getObjectsAround(const Point & position, double radius) const {
+    std::unique_ptr<std::vector<Object *>> visibles(new std::vector<Object *>);
     for (auto objects : objectLists) {
         for (auto & object : * objects) {
             if (std::abs(object->getPosition().distanceTo(position)) < radius) {
