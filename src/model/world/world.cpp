@@ -13,6 +13,7 @@ World::World(double WIDTH, double HEIGHT, double ENERGY) :
 World::~World() {
     for (auto food : foods) delete food;
     for (auto individual : individuals) delete individual;
+    for (auto obstacle : obstacles) delete obstacle;
 }
 
 void World::addFood(Food * food) {
