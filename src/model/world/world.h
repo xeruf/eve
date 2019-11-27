@@ -22,8 +22,6 @@ private:
 
     std::function<Food * (World * world)> refillFunction = {};
 
-    std::vector<Object *> * objectLists[3];
-
     std::vector<Food *> foods;
     std::vector<Individual *> individuals;
     std::vector<Obstacle *> obstacles;
