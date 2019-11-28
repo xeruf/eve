@@ -1,9 +1,11 @@
 #include "entity.h"
 
 Entity::Entity(double x, double y, double energy) :
-    Object(x, y),
-    energy{energy}
-{checkEnergy();}
+    Entity(Point(x, y), energy) {}
+
+Entity::Entity(Point position, double energy) :
+    Object(position),
+    energy{energy} {checkEnergy();}
 
 void Entity::checkEnergy() const {
     if (energy <= 0) throw std::range_error("Entity::checkEnergy(): Energy has to be positive");

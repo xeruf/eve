@@ -18,6 +18,7 @@ protected:
 
 public:
     Entity(double x, double y, double energy);
+    Entity(Point position, double energy);
     ~Entity() override = 0;
 
     [[nodiscard]] double getEnergy() const ;
