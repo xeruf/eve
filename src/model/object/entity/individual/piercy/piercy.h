@@ -14,6 +14,7 @@
 class Piercy : public Individual {
 public:
     Piercy(long ID, double x, double y, double a, double energy);
+    Piercy(long ID, Point position, double a, double energy);
 
     Action act(const std::unique_ptr<std::vector<Object *>> & visibles) override;
 };
