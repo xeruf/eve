@@ -55,10 +55,15 @@ public:
     [[nodiscard]] std::unique_ptr<std::vector<Object *>> getObjectsAround(const Point & position, double radius) const;
 
     template <class Species>
-    void addIndividual(double x, double y, double angle, double energy) {
-        Species * individual = new Species(individuals.size(), x, y, angle, energy);
+    void addIndividual(Point position, double angle, double energy) {
+        Species * individual = new Species(individuals.size(), position, angle, energy);
         individuals.push_back(individual);
         incEnergy(individual);
+    }
+
+    template <class Species>
+    void addIndividual(double x, double y, double angle, double energy) {
+        addIndividual<Species>(Point(x, y), angle, energy);
     }
 };
 
