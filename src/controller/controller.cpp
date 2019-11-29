@@ -1,27 +1,34 @@
 #include "controller.h"
 
 Controller::Controller(double WIDTH, double HEIGHT, double ENERGY) :
-    world(World(WIDTH, HEIGHT, ENERGY))
-{}
+    world(World(WIDTH, HEIGHT, ENERGY)) {
+}
 
 void Controller::init() {
-    static Uniform distX = Uniform(0.0, world.WIDTH);
-    static Uniform distY = Uniform(0.0, world.HEIGHT);
-    static Uniform distE = Uniform(MIN_FOOD_SIZE, MAX_FOOD_SIZE);
 
     for (int i = 0; i < AMOUNT_OF_FREDS; i++) {
-        world.addIndividual<Fred>(0 + i, 0 + i, 0, 200);
+        world.addIndividual<Fred>(
+                world.rand(X_d),
+                world.rand(Y_d),
+                world.rand(DIRECTION_d),
+                world.rand(ENERGY_d));
     }
 
     for (int i = 0; i < AMOUNT_OF_PIERCIES; i++) {
-        world.addIndividual<Piercy>(0 - i, 0 - i, 0, 200);
+        world.addIndividual<Piercy>(
+                world.rand(X_d),
+                world.rand(Y_d),
+                world.rand(DIRECTION_d),
+                world.rand(ENERGY_d));
     }
 
-    world.fillWithFood([](World * w) -> Food * {
+    world.setRefillFunction([](World * w) -> Food * {
         return new Food(
-                distX.rand(),
-                distY.rand(),
-                (w->ENERGY - w->getEnergy()) < MAX_FOOD_SIZE ? w->ENERGY - w->getEnergy() : distE.rand());
+                w->rand(X_d),
+                w->rand(Y_d),
+                (w->ENERGY - w->getEnergy()) < MAX_FOOD_SIZE ?
+                    w->ENERGY - w->getEnergy() :
+                    w->rand(ENERGY_d));
     });
 
     initialised = true;
@@ -34,6 +41,8 @@ long Controller::run() {
 }
 
 bool Controller::simulate() {
+    world.fillWithFood();
+
     if (RENDER_TERMINALVIEW) terminalview.render(world);
     if (RENDER_SDLVIEW) {
         int keysm = sdlview.render(world);
