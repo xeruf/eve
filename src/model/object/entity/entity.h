@@ -19,6 +19,9 @@ private:
     void setPosition(Point position);
     void setPosition(double x, double y);
 
+    void setPosition(Point position);
+    void setPosition(double x, double y);
+
 public:
     Entity(double x, double y, double energy);
     Entity(Point position, double energy);
