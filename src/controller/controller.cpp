@@ -53,6 +53,7 @@ bool Controller::simulate() {
                 auto action = applyAction(* individual);
         update (* individual, action);
     }
+
     if(world.getIndividuals().size() > 0) world.kill(world.getIndividuals().front()->getID());
     return RENDER_SDLVIEW || not world.getIndividuals().empty();
 }
