@@ -2,6 +2,7 @@
 #define EVE_ENTITY_H
 
 #include "../object.h"
+#include "../../algebra/algebra.h"
 
 #include <stdexcept>
 #include <cmath>
@@ -10,7 +11,9 @@ class Entity : public Object {
 private:
     double energy;
 
-    void checkEnergy() const ;
+    Vector speed = Vector (0.0, 0.0);
+
+    void checkEnergy() const;
 
     void setPosition(Point position);
     void setPosition(double x, double y);
