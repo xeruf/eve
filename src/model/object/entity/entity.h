@@ -28,6 +28,8 @@ public:
 
     const Vector & applyForce (const Vector & v);
     const Vector & applyFriction ();
+
+    Point updatePosition ();
 };
 
 
