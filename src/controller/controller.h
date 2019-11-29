@@ -21,8 +21,8 @@ private:
     bool initialised = false;
 
     bool simulate();
-    void update (Individual & individual);
-    void applyAction (Individual & individual);
+    Action applyAction (Individual & individual);
+    void update (Individual & individual, Action action);
 
 public:
     World world;

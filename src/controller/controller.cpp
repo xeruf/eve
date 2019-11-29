@@ -50,20 +50,35 @@ bool Controller::simulate() {
     }
 
     for (auto individual : world.getIndividuals()) {
-        applyAction(* individual);
-        update (* individual);
+        auto action = applyAction(* individual);
+        update (* individual, action);
     }
 
     if(world.getIndividuals().size() > 0) world.kill(world.getIndividuals().front()->getID());
     return RENDER_SDLVIEW || not world.getIndividuals().empty();
 }
 
-void Controller::applyAction (Individual & individual) {
+Action Controller::applyAction (Individual & individual) {
     auto visibles = world.getObjectsInCone(individual.getPosition(), individual.getVision(), Angle(MOUTH_ANGLE));
     Action action = individual.act(visibles);
     std::cout << action.toString() << ": ";
+
+    switch (action.type) {
+        case SLEEP:
+            break;
+        case MOVE:
+            individual.applyForce(Vector(individual.getVision().angle, individual.getEnergy()));
+            break;
+        case TURN_LEFT:
+            individual.turnBy(Angle((int) - individual.getEnergy()));
+            break;
+        case TURN_RIGHT:
+            individual.turnBy(Angle((int) individual.getEnergy()));
+            break;
+    }
+    return action;
 }
 
-void Controller::update (Individual & individual) {
+void Controller::update (Individual & individual, Action action) {
     std::cout << individual.applyFriction().length << std::endl;
 }

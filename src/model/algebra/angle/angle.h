@@ -30,10 +30,12 @@ public:
     static int toDegrees (double angle);
 
     /* Overloaded operators */
+    Angle operator - () const;
+
     Angle & operator = (double val);
     Angle & operator = (const Vector & v);
 
-    Angle operator - () const;
+    Angle & operator += (const Angle & angle);
 
     Angle operator +  (const Angle & angle) const;
     Angle operator +  (double val)          const;
