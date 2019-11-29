@@ -18,3 +18,10 @@ void Entity::setPosition(double x, double y) { position = Point(x, y);}
 
 double Entity::getRadius() const { return sqrt(energy) / M_PI; }
 
+const Vector & Entity::applyForce(const struct Vector & v) {
+    return speed += v;
+}
+
+const Vector & Entity::applyFriction() {
+    return speed = Vector(speed.angle, 0.5 * speed.length);
+}

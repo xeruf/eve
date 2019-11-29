@@ -25,6 +25,9 @@ public:
 
     [[nodiscard]] double getEnergy() const ;
     [[nodiscard]] double getRadius() const ;
+
+    const Vector & applyForce (const Vector & v);
+    const Vector & applyFriction ();
 };
 
 
