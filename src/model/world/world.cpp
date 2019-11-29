@@ -77,6 +77,7 @@ std::unique_ptr<std::vector<Object *>> World::getObjectsInCone(const Point & ape
             visibles->push_back(object);
         }
     }
+    return visibles;
 }
 
 void World::setRefillFunction(const std::function<Food * (World * world)> & f) {
