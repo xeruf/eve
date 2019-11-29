@@ -8,13 +8,12 @@
 
 class Entity : public Object {
 private:
-    void setPosition(Point position);
-    void setPosition(double x, double y);
-
-protected:
     double energy;
 
     void checkEnergy() const ;
+
+    void setPosition(Point position);
+    void setPosition(double x, double y);
 
 public:
     Entity(double x, double y, double energy);
