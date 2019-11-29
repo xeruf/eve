@@ -20,6 +20,9 @@ private:
     bool initialised = false;
 
     bool simulate();
+    void update (Individual & individual);
+    void applyAction (Individual & individual);
+
 public:
     World world;
     TerminalView terminalview;

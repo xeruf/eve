@@ -46,10 +46,17 @@ bool Controller::simulate() {
     if (RENDER_TERMINALVIEW) terminalview.render(world);
 
     for (auto individual : world.getIndividuals()) {
-
-        auto visibles = world.getObjectsAround(individual->getPosition(), individual->getVision().length);
-        auto action = individual->act(visibles);
-        std::cout << action.toString() << std::endl;
+        applyAction(* individual);
+        update (* individual);
     }
+
     return not world.getIndividuals().empty();
+}
+
+void Controller::applyAction (Individual & individual) {
+    auto visibles = world.getObjectsAround(individual.getPosition(), individual.getVision().length);
+    Action action = individual.act(visibles);
+}
+
+void Controller::update (Individual & individual) {
 }
