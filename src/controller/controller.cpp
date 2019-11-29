@@ -50,10 +50,18 @@ bool Controller::simulate() {
     }
 
     for (auto individual : world.getIndividuals()) {
-        auto visibles = world.getObjectsAround(individual->getPosition(), individual->getVision().length);
-        auto action = individual->act(visibles);
-        std::cout << action.toString() << std::endl;
+        applyAction(* individual);
+        update (* individual);
     }
+
     if(world.getIndividuals().size() > 0) world.kill(world.getIndividuals().front()->getID());
     return RENDER_SDLVIEW || not world.getIndividuals().empty();
+}
+
+void Controller::applyAction (Individual & individual) {
+    auto visibles = world.getObjectsAround(individual.getPosition(), individual.getVision().length);
+    Action action = individual.act(visibles);
+}
+
+void Controller::update (Individual & individual) {
 }
