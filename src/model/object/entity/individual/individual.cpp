@@ -17,4 +17,3 @@ Individual::~Individual() = default;
 long Individual::getID() const {return ID;}
 
 Vector Individual::getVision() const {return vision;}
-
