@@ -25,3 +25,7 @@ const Vector & Entity::applyForce(const struct Vector & v) {
 const Vector & Entity::applyFriction() {
     return speed = Vector(speed.angle, 0.5 * speed.length);
 }
+
+Point Entity::updatePosition() {
+    return getPosition() += speed;
+}
