@@ -92,3 +92,35 @@ SCENARIO("A world can be created and initialised") {
     }
 }
 
+SCENARIO("Objects in a World can be retrieved through range / position checks") {
+    GIVEN ("A fully instantiated World") {
+        double X, Y, E = 1000;
+        X = Y = 100;
+        World world (X, Y, E);
+
+        WHEN ("I add equally spaced Individuals") {
+            for (int y = 5; y < Y; y += 10) {
+                for (int x = 5; x < X; x += 10) {
+                    world.addIndividual<Fred>(x, y, 0, 5);
+                }
+            }
+
+            // Fill with Food outside the world
+            world.fillWithFood([](World * w) {return new Food (-10, -10, 1);});
+
+            THEN ("Only an expected amount of entities is found around the centre of the map") {
+                Point centre (0.5 * X, 0.5 * Y);
+
+                CHECK (world.getObjectsAround(centre, 15)->size() == 4);
+                CHECK (world.getObjectsAround(centre, 20)->size() == 12);
+            }
+
+            THEN ("Only an expected amount of entities is found in a specific cone rooted at the corner of the map") {
+                Point corner = ORIGIN;
+
+                CHECK (world.getObjectsInCone(corner, Vector (45, 20), Angle (90))->size() == 3);
+                CHECK (world.getObjectsInCone(corner, Vector (45, 40), Angle (90))->size() == 13);
+            }
+        }
+    }
+}
