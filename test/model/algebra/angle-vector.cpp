@@ -45,4 +45,16 @@ TEST_CASE ("Angles and Vectors can be used together for arithmetic and logic ope
             }
         }
     }
+
+    SECTION ("Angles can be added and assigned in a single statement") {
+        Vector v (0, 10);
+
+        v += Angle (45);
+        CHECK (v.angle.degrees() == 45);
+        CHECK (coarseEquals(v.length, 10.0));
+
+        v += Angle (15);
+        CHECK (v.angle.degrees() == 60);
+        CHECK (coarseEquals(v.length, 10.0));
+    }
 }
