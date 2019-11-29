@@ -8,6 +8,11 @@ World::World(double WIDTH, double HEIGHT, double ENERGY) :
     if (WIDTH <= 0) throw std::range_error("World(): WIDTH must be positive");
     if (HEIGHT <= 0) throw std::range_error("World(): HEIGHT must be positive");
     if (ENERGY <= 0) throw std::range_error("World(): ENERGY must be positive");
+
+    distributions.emplace_back(0.0, WIDTH);
+    distributions.emplace_back(0.0, HEIGHT);
+    distributions.emplace_back(0.0, 2 * M_PI);
+    distributions.emplace_back(MIN_FOOD_SIZE, MAX_FOOD_SIZE);
 }
 
 World::~World() {
@@ -25,6 +30,11 @@ void World::addFood(Food * food) {
 void World::incEnergy(Entity * entity) {
     if (energy + entity->getEnergy() > ENERGY) throw std::overflow_error("World::incEnergy(): operation exceeds ENERGY");
     energy += entity->getEnergy();
+}
+
+double World::rand(Distribution_e d) {
+    if (d >= 0 && d < distributions.size()) return distributions[d].rand();
+    throw std::range_error("World::rand: Choose Y_d, X_d, DIRECTION_d or ENERGY_d");
 }
 
 double World::getEnergy() const {
