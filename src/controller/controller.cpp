@@ -54,8 +54,9 @@ bool Controller::simulate() {
 }
 
 void Controller::applyAction (Individual & individual) {
-    auto visibles = world.getObjectsAround(individual.getPosition(), individual.getVision().length);
+    auto visibles = world.getObjectsInCone(individual.getPosition(), individual.getVision(), Angle(MOUTH_ANGLE));
     Action action = individual.act(visibles);
+    std::cout << action.toString() << std::endl;
 }
 
 void Controller::update (Individual & individual) {
