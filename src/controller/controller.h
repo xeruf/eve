@@ -12,6 +12,7 @@
 #include <cmath>
 #include <stdexcept>
 #include <vector>
+#include <map>
 
 class Controller {
 private:
