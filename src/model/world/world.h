@@ -63,6 +63,7 @@ public:
     bool kill(long ID);
 
     [[nodiscard]] std::unique_ptr<std::vector<Object *>> getObjectsAround(const Point & position, double radius) const;
+    [[nodiscard]] std::unique_ptr<std::vector<Object *>> getObjectsInCone(const Point & apex, Vector centre, Angle angle) const;
 
     template <class Species>
     void addIndividual(Point position, double angle, double energy) {
