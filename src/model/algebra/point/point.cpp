@@ -24,6 +24,10 @@ Point & Point::operator = (const Vector & v) {
     return * this;
 }
 
+Point & Point::operator += (const Vector & v) {
+    return * this = * this + v;
+}
+
 bool Point::operator == (const Point & p) const {
     return coarseEquals(x, p.x) && coarseEquals(y, p.y);
 }
