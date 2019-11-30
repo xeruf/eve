@@ -54,6 +54,7 @@ public:
 
         //T * ptr = reallocate(n);
         //if (ptr) return ptr;
+        T * ptr;
 
         if (increment (n)) {
             ptr = iterator;
