@@ -34,6 +34,7 @@ TEST_CASE ("I can allocate objects always located close to each other") {
         CHECK_NOTHROW (delete allocator);
     }
 
+    // TODO: implement missing test
     SECTION ("I can allocate and deallocate space for several objects at a time") {
         auto allocator = new Allocator<float>();
         auto & alloc = * allocator;
@@ -41,6 +42,7 @@ TEST_CASE ("I can allocate objects always located close to each other") {
 
     }
 
+    // TODO: fix problem of reusability
     SECTION ("I can reuse deallocated space to postpone a heap overflow") {
 
         std::cout << "Start new test:" << std::endl;

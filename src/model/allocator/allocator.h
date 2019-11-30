@@ -52,8 +52,8 @@ public:
 
         std::cout << "Allocs: \t" << allocs.size() << std::endl;
 
-        T * ptr = reallocate(n);
-        if (ptr) return ptr;
+        //T * ptr = reallocate(n);
+        //if (ptr) return ptr;
 
         if (increment (n)) {
             ptr = iterator;
