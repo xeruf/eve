@@ -49,6 +49,9 @@ Angle & Angle::operator = (const Vector & v) {
 Angle & Angle::operator += (const Angle & angle) {
     return * this = * this + angle;
 }
+Angle & Angle::operator -= (const Angle & angle) {
+    return * this = * this - angle;
+}
 
 Angle Angle::operator - () const {return Angle(- a);}
 

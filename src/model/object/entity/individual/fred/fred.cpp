@@ -7,5 +7,5 @@ Fred::Fred(long ID, Point position, double a, double energy) :
     Individual(ID, position, a, energy) {}
 
 Action Fred::act(const std::unique_ptr<std::vector<Object *>> & visibles) {
-    return Action(SLEEP);
+    return Action((action) floor(Uniform(0, 4).rand()));
 }
