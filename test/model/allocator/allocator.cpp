@@ -34,12 +34,17 @@ TEST_CASE ("I can allocate objects always located close to each other") {
         CHECK_NOTHROW (delete allocator);
     }
 
-    // TODO: implement missing test
     SECTION ("I can allocate and deallocate space for several objects at a time") {
         auto allocator = new Allocator<float>();
         auto & alloc = * allocator;
 
-
+        int I = 20;
+        float * array = alloc.allocate (I);
+        for (int i = 0; i < I; i++) {
+            array [i] = (float) i;
+            CHECK (* (array + i) == (float) i);
+        }
+        CHECK_NOTHROW (alloc.deallocate (array, I));
     }
 
     SECTION ("I can reuse deallocated space to postpone a heap overflow") {

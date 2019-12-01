@@ -52,7 +52,6 @@ public:
         if (n <= 0) throw std::range_error("Allocator::allocate: Can't allocate non-zero amounts of objects");
         if (n >= AMOUNT_ALLOCATED_OBJECTS) throw std::bad_alloc();
 
-
         T * ptr = reallocate(n);
         if (ptr) {
             return ptr;
