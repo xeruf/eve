@@ -17,5 +17,6 @@ include(CTest)
 include(Catch)
 catch_discover_tests(tests)
 
-target_link_libraries(eve /usr/lib/x86_64-linux-gnu/libSDL2.so /usr/lib/x86_64-linux-gnu/libSDL2_gfx.so)
-target_link_libraries(tests /usr/lib/x86_64-linux-gnu/libSDL2.so /usr/lib/x86_64-linux-gnu/libSDL2_gfx.so)
+set(LIB_SDL2 /usr/lib/x86_64-linux-gnu/libSDL2.so /usr/lib/x86_64-linux-gnu/libSDL2_gfx.so)
+target_link_libraries(eve ${LIB_SDL2})
+target_link_libraries(tests ${LIB_SDL2})
