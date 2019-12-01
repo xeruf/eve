@@ -4,12 +4,9 @@
 #include "../../config.h"
 
 #include <memory>
-#include <vector>
 #include <unordered_map>
 
 #include <stdlib.h>
-
-#include <iostream>
 
 template <class T>
 class Allocator {
