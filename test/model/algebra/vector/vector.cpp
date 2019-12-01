@@ -43,14 +43,11 @@ TEST_CASE("Vectors can be used for calculations and simple arithmetic") {
     }
 
     SECTION ("Angles and Vectors can be added onto a Vector") {
-        std::cout << "\nDebug" << std::endl;
         Vector v(0, 0);
         for (int i = 0; i < 360; i += 10) {
             Vector w (i, 10);
             Vector r = v + w;
-//            std::cout << v.angle.degrees() << " v " << v.length << std::endl;
-//            std::cout << w.angle.degrees() << " v " << w.length << std::endl;
-            std::cout << r.angle.degrees() << "\tv " << i << std::endl;
+            CHECK (r == w);
         }
 
 
