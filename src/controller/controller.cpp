@@ -83,8 +83,5 @@ void Controller::update (Individual & individual, Action action) {
     std::cout << individual.applyFriction().length << std::endl;
 
     Point p = individual.getPosition();
-    std::cout << "\tOld Position: (" << p.x << "|" << p.y << ")" << std::endl;
-
-    p = individual.updatePosition();
-    std::cout << "\tNew Position: (" << p.x << "|" << p.y << ")" << std::endl;
+    p = individual.updatePosition(std::bind(& World::normalisePosition, & world, std::placeholders::_1));
 }

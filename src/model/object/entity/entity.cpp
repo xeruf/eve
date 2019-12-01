@@ -27,5 +27,8 @@ const Vector & Entity::applyFriction() {
 }
 
 Point Entity::updatePosition() {
-    return getPosition() += speed;
+    return position += speed;
+}
+Point Entity::updatePosition(const std::function<Point(Point)> & normalise) {
+    return position = normalise(position + speed);
 }
