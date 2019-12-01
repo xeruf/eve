@@ -59,8 +59,9 @@ bool Controller::simulate() {
         std::cout << std::endl;
     }
 
-    if(world.getIndividuals().size() > 0) world.kill(world.getIndividuals().front()->getID());
-    return RENDER_SDLVIEW || not world.getIndividuals().empty();
+    if(world.getIndividuals().empty()) return false;
+//    world.kill(world.getIndividuals().front()->getID());
+    return true;
 }
 
 Action Controller::applyAction (Individual & individual) {
