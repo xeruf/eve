@@ -77,6 +77,9 @@ public:
     void addIndividual(double x, double y, double angle, double energy) {
         addIndividual<Species>(Point(x, y), angle, energy);
     }
+
+    Point normalisePosition (Point position);
+    //static Point normalisePosition (Point position, Point maxVals);
 };
 
 #endif //EVE_WORLD_H
