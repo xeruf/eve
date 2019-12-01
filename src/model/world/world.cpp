@@ -115,3 +115,13 @@ bool World::kill(long ID) {
     }
     return false;
 }
+
+Point World::normalisePosition (Point position) {
+    while (position.x < 0.0) position.x += WIDTH;
+    position.x = fmod (position.x, WIDTH);
+
+    while (position.y < 0.0) position.y += HEIGHT;
+    position.y = fmod (position.y, HEIGHT);
+
+    return position;
+}

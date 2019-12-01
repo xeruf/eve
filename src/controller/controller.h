@@ -14,6 +14,7 @@
 #include <stdexcept>
 #include <vector>
 #include <map>
+#include <functional>
 
 class Controller {
 private:
