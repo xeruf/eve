@@ -13,6 +13,7 @@
 
 template <class T>
 class Allocator {
+public:
     T * objects = (T *) malloc (AMOUNT_ALLOCATED_OBJECTS);
     T * iterator = objects;
     std::unordered_map<T *, int> allocs;
@@ -27,10 +28,10 @@ class Allocator {
         for (auto iter = deallocs.begin(); iter != deallocs.end(); iter++) {
             if (iter->first && iter->second >= n) {
                 if (iter->second == n || not exact) {
-                    allocs.insert (* iter);
-                    std::cout << iter->first << ", " << iter->second << std::endl;
+                    T * ptr = iter->first;
+                    allocs.insert ({ptr, n});
                     deallocs.erase (iter);
-                    return iter->first;
+                    return ptr;
                 }
             }
         }
@@ -50,6 +51,8 @@ public:
     T * allocate (size_t n = 1) {
         if (n <= 0) throw std::range_error("Allocator::allocate: Can't allocate non-zero amounts of objects");
         if (n >= AMOUNT_ALLOCATED_OBJECTS) throw std::bad_alloc();
+
+
         T * ptr = reallocate(n);
         if (ptr) {
             return ptr;
@@ -64,12 +67,11 @@ public:
     }
 
     void deallocate (T * ptr, size_t n = 1) {
-
         auto item = allocs.find(ptr);
         if (item != allocs.end()) {
             if (item->second == n) {
                 allocs.erase(item);
-                deallocs.insert (* item);
+                deallocs.insert ({ptr, n});
                 return;
             }
         }
@@ -80,6 +82,7 @@ public:
         std::cout << "| " << allocs.size() << "\t| " << deallocs.size() << "\t|" << std::endl;
     }
     void print_hdr () {
+        std::cout <<std::endl;
         std::cout << "| A\t| D\t|" << std::endl;
         std::cout << "|---|---|" << std::endl;
     }
