@@ -42,8 +42,10 @@ Vector & Vector::operator -= (const Vector & v) {return * this = * this - v;}
 
 bool   Vector::operator == (const Angle & a)  const {return a == * this;}
 bool   Vector::operator == (const Vector & v) const {
-    return coarseEquals(angle.radians(), v.angle.radians()) &&
-           coarseEquals(length, v.length);
+    return (coarseEquals(angle.radians(), v.angle.radians()) &&
+            coarseEquals(length, v.length)) ||
+           (coarseEquals(0.0, this->length) &&
+            coarseEquals(0.0, v.length));
 }
 bool   Vector::operator == (const Point & p)  const {return * this == Vector(p);}
 
