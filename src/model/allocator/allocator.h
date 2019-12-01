@@ -25,9 +25,10 @@ class Allocator {
 
     T * reallocate (size_t n = 1, bool exact = true) {
         for (auto iter = deallocs.begin(); iter != deallocs.end(); iter++) {
-            if (iter->second >= n) {
+            if (iter->first && iter->second >= n) {
                 if (iter->second == n || not exact) {
                     allocs.insert (* iter);
+                    std::cout << iter->first << ", " << iter->second << std::endl;
                     deallocs.erase (iter);
                     return iter->first;
                 }
@@ -49,24 +50,20 @@ public:
     T * allocate (size_t n = 1) {
         if (n <= 0) throw std::range_error("Allocator::allocate: Can't allocate non-zero amounts of objects");
         if (n >= AMOUNT_ALLOCATED_OBJECTS) throw std::bad_alloc();
-
-        std::cout << "Allocs: \t" << allocs.size() << std::endl;
-
-        //T * ptr = reallocate(n);
-        //if (ptr) return ptr;
-        T * ptr;
+        T * ptr = reallocate(n);
+        if (ptr) {
+            return ptr;
+        }
 
         if (increment (n)) {
             ptr = iterator;
             allocs.insert({ptr, n});
             return ptr;
         }
-
         throw std::bad_alloc();
     }
 
     void deallocate (T * ptr, size_t n = 1) {
-        std::cout << "Deallocs: \t" << deallocs.size() << std::endl;
 
         auto item = allocs.find(ptr);
         if (item != allocs.end()) {
@@ -77,6 +74,14 @@ public:
             }
         }
         throw std::bad_weak_ptr();
+    }
+
+    void print () {
+        std::cout << "| " << allocs.size() << "\t| " << deallocs.size() << "\t|" << std::endl;
+    }
+    void print_hdr () {
+        std::cout << "| A\t| D\t|" << std::endl;
+        std::cout << "|---|---|" << std::endl;
     }
 };
 
