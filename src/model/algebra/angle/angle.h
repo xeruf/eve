@@ -36,6 +36,7 @@ public:
     Angle & operator = (const Vector & v);
 
     Angle & operator += (const Angle & angle);
+    Angle & operator -= (const Angle & angle);
 
     Angle operator +  (const Angle & angle) const;
     Angle operator +  (double val)          const;
