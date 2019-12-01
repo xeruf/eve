@@ -10,6 +10,7 @@ file(GLOB_RECURSE TEST_SRCS ${PROJECT_SOURCE_DIR}/test/*.cpp)
 
 find_package(SDL2 REQUIRED)
 add_executable(eve src/main.cpp ${SRCS})
+target_link_libraries(eve /usr/lib/x86_64-linux-gnu/libSDL2.so /usr/lib/x86_64-linux-gnu/libSDL2_gfx.so)
 
 add_executable(tests ${TEST_SRCS} ${SRCS})
 find_package(Catch2 REQUIRED)
