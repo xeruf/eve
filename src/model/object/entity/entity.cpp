@@ -18,7 +18,8 @@ void Entity::setPosition(double x, double y) { position = Point(x, y);}
 
 double Entity::getRadius() const { return sqrt(energy) / M_PI; }
 
-const Vector & Entity::applyForce(const struct Vector & v) {
+const Vector & Entity::applyForce(const Vector & v) {
+    std::cout << "(" << speed.angle.degrees() << "|" << speed.length << ") + (" << v.angle.degrees() << "|" << v.length << ") => (" << (speed+v).angle.degrees() << "|" << (speed+v).length << ")";
     return speed += v;
 }
 
