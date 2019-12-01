@@ -67,6 +67,7 @@ public:
 
     template <class Species>
     void addIndividual(Point position, double angle, double energy) {
+        std::cout << "(" << position.x << "|" << position.y << "), " << angle << ", " << energy << std::endl;
         Species * individual = new Species(individuals.size(), position, angle, energy);
         individuals.push_back(individual);
         incEnergy(individual);
