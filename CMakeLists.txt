@@ -8,6 +8,7 @@ project(eve)
 file(GLOB_RECURSE SRCS ${PROJECT_SOURCE_DIR}/src/*/*.cpp)
 file(GLOB_RECURSE TEST_SRCS ${PROJECT_SOURCE_DIR}/test/*.cpp)
 
+find_package(SDL2 REQUIRED)
 add_executable(eve src/main.cpp ${SRCS})
 
 add_executable(tests ${TEST_SRCS} ${SRCS})

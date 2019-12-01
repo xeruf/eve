@@ -1,5 +1,4 @@
 #include "sdlview.h"
-#include <stdexcept>
 
 void SDLView::setupsdl(const World & world) {
     if (SDL_Init(SDL_INIT_VIDEO)) {
