@@ -37,9 +37,11 @@ TEST_CASE("Vectors can be used for calculations and simple arithmetic") {
         CHECK ((VECTORS[0] + VECTORS[1]).angle.degrees() == 90);
         CHECK ((VECTORS[0] + VECTORS[1]).length == 3.0);
 
-        CHECK (VECTORS[4] + VECTORS[5] == Vector(ORIGIN));
+        Vector v = VECTORS[4] + VECTORS[5];
+        CHECK (v == Vector(ORIGIN));
 
-        CHECK (VECTORS[0] - VECTORS[1] == Vector(ORIGIN));
+        v = VECTORS[0] - VECTORS[1];
+        CHECK (v == Vector(ORIGIN));
     }
 
     SECTION ("Angles and Vectors can be added onto a Vector") {
