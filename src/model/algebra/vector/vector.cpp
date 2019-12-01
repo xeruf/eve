@@ -10,7 +10,7 @@ Vector::Vector(int a, double l) :
     Vector(Angle::toRadians(a), l) {}
 
 Vector::Vector(Point p) :
-    Vector(atan(p.x ? p.y / p.x : 0), ORIGIN.distanceTo(p)) {}
+    Vector(atan(p.x ? p.y / p.x : 0) + (p.x < 0 ? M_PI : 0), ORIGIN.distanceTo(p)) {}
 
 
 Vector & Vector::operator = (const Point & p) {
