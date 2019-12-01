@@ -76,15 +76,6 @@ public:
         }
         throw std::bad_weak_ptr();
     }
-
-    void print () {
-        std::cout << "| " << allocs.size() << "\t| " << deallocs.size() << "\t|" << std::endl;
-    }
-    void print_hdr () {
-        std::cout <<std::endl;
-        std::cout << "| A\t| D\t|" << std::endl;
-        std::cout << "|---|---|" << std::endl;
-    }
 };
 
 #endif //EVE_ALLOCATOR_H
