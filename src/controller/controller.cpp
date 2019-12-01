@@ -11,7 +11,7 @@ void Controller::init() {
                 world.rand(X_d),
                 world.rand(Y_d),
                 world.rand(DIRECTION_d),
-                world.rand(ENERGY_d));
+                world.rand(ENERGY_d) * INDIVIDUAL_FOOD_FACTOR);
     }
 
     for (int i = 0; i < AMOUNT_OF_PIERCIES; i++) {
@@ -19,7 +19,7 @@ void Controller::init() {
                 world.rand(X_d),
                 world.rand(Y_d),
                 world.rand(DIRECTION_d),
-                world.rand(ENERGY_d));
+                world.rand(ENERGY_d) * INDIVIDUAL_FOOD_FACTOR);
     }
 
     world.setRefillFunction([](World * w) -> Food * {
@@ -71,10 +71,10 @@ Action Controller::applyAction (Individual & individual) {
             individual.applyForce(Vector(individual.getVision().angle, individual.getEnergy()));
             break;
         case TURN_LEFT:
-            individual.turnBy(Angle((int) - individual.getEnergy()));
+            individual.turnBy(Angle(- individual.getEnergy() / MAX_FOOD_SIZE / INDIVIDUAL_FOOD_FACTOR * 0.1 * M_PI));
             break;
         case TURN_RIGHT:
-            individual.turnBy(Angle((int) individual.getEnergy()));
+            individual.turnBy(Angle(individual.getEnergy() / MAX_FOOD_SIZE / INDIVIDUAL_FOOD_FACTOR * 0.1 * M_PI));
             break;
     }
     return action;
