@@ -6,6 +6,7 @@
 
 #include <stdexcept>
 #include <cmath>
+#include <functional>
 
 class Entity : public Object {
 private:
@@ -30,6 +31,7 @@ public:
     const Vector & applyFriction ();
 
     Point updatePosition ();
+    Point updatePosition (const std::function<Point(Point)> & normalise);
 };
 
 
