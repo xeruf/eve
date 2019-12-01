@@ -56,7 +56,6 @@ bool Controller::simulate() {
     std::cout << "Ind. " << i++ << ":\t";
         auto action = applyAction(* individual);
         update (* individual, action);
-        std::cout << std::endl;
     }
 
     if(world.getIndividuals().empty()) return false;
@@ -67,8 +66,6 @@ bool Controller::simulate() {
 Action Controller::applyAction (Individual & individual) {
     auto visibles = world.getObjectsInCone(individual.getPosition(), individual.getVision(), Angle(MOUTH_ANGLE));
     Action action = individual.act(visibles);
-//    std::cout << action.toString() << ": ";
-
     switch (action.type) {
         case SLEEP:
             break;
@@ -88,7 +85,5 @@ Action Controller::applyAction (Individual & individual) {
 void Controller::update (Individual & individual, Action action) {
 //    std::cout << individual.applyFriction().length << std::endl;
     individual.applyFriction();
-
-    Point p = individual.getPosition();
-    p = individual.updatePosition(std::bind(& World::normalisePosition, & world, std::placeholders::_1));
+    individual.updatePosition(std::bind(& World::normalisePosition, & world, std::placeholders::_1));
 }
