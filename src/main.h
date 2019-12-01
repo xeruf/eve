@@ -3,8 +3,8 @@
 
 #include "controller/controller.h"
 
-#define WIDTH  1600.0
-#define HEIGHT 900.0
+#define WIDTH  1920.0
+#define HEIGHT 1080.0
 #define ENERGY 30000.0
 
 #endif //EVE_MAIN_H
