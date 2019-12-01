@@ -30,8 +30,8 @@ void SDLView::setupsdl(const World & world) {
 }
 
 Point SDLView::getRelativePosition(const Point & position, const double worldWidth, const double worldHeight) const {
-    double x = position.x * (DM.h / worldWidth);
-    double y = position.x * (DM.h / worldHeight);
+    double x = position.x * (DM.w / worldWidth);
+    double y = position.y * (DM.h / worldHeight);
     Point relativePosition = {x, y};
     return relativePosition;
 }
@@ -43,6 +43,7 @@ void SDLView::draw(const World &world) {
    for (auto individual : world.getIndividuals()) {
        Point relativePosition = getRelativePosition(individual->getPosition(), world.WIDTH, world.HEIGHT);
        filledCircleColor(renderer, relativePosition.x, relativePosition.y, individual->getRadius() * SCALE_FACTOR, 0xFF00FFFF);
+
        Point relativeVision = getRelativePosition(individual->getPosition() + individual->getVision(), world.WIDTH, world.HEIGHT);
        thickLineColor(renderer, relativePosition.x, relativePosition.y, relativeVision.x, relativeVision.y, 3, 0xFF000000);
    }
