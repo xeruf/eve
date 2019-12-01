@@ -4,6 +4,7 @@
 #include "../individual.h"
 #include "../../../object.h"
 #include "../../../../action/action.h"
+#include "../../../../random/random.h"
 
 class Fred : public Individual {
 public:
