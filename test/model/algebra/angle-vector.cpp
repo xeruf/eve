@@ -1,8 +1,6 @@
 #include "../../../src/model/algebra/algebra.h"
 
 #include <catch2/catch.hpp>
-#include <cmath>
-#include <iostream>
 #include <vector>
 
 TEST_CASE ("Angles and Vectors can be used together for arithmetic and logic operations") {
