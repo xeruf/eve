@@ -5,6 +5,7 @@
 
 #include <cmath>
 
+/** Checks if two doubles are close to each other. The standard deviation is read from EPSILON */
 bool coarseEquals (double a, double b);
 
 struct Angle;
