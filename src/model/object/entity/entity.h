@@ -41,6 +41,9 @@ public:
 
     /** Multiply this Entity's energy value by the given multipliert */
     double updateEnergy (double multiplier);
+
+    /** Add the given amount of energy to this Entity's internal enery level */
+    double addEnergy (double energy);
 };
 
 
