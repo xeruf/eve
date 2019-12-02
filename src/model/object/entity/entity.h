@@ -41,6 +41,9 @@ public:
     Point updatePosition ();
     /** Updates this Entity's position based on its speed and normalises this position using the function given */
     Point updatePosition (const std::function<Point(Point)> & normalise);
+
+    /** Multiply this Entity's energy value by the given multipliert */
+    double updateEnergy (double multiplier);
 };
 
 
