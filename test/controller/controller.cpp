@@ -5,7 +5,7 @@
 
 SCENARIO("The Controller can be initialised") {
     GIVEN("An instance of a controller") {
-        Controller controller = Controller(1000, 1000, 1000);
+        Controller controller = Controller(1000, 1000, 10000);
 
         WHEN ("I start the controller") {
             WHEN ("The controller isn't initialised yet") {
