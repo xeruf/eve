@@ -13,9 +13,6 @@ void Entity::checkEnergy() const {
 
 double Entity::getEnergy() const {return energy;}
 
-void Entity::setPosition(Point p) { position = p;}
-void Entity::setPosition(double x, double y) { position = Point(x, y);}
-
 double Entity::getRadius() const { return sqrt(energy) / M_PI; }
 
 const Vector & Entity::applyForce(const Vector & v) {

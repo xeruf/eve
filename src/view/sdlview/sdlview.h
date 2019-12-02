@@ -10,7 +10,7 @@
 class SDLView {
 private:
     void setupsdl(const World & world);
-    [[nodiscard]]Point getRelativePosition(const Point & position, const double worldWidth, const double worldHeight) const;
+    [[nodiscard]]Point getRelativePosition(const Point & position, double worldWidth, double worldHeight) const;
     void draw(const World & world);
     void stop();
     SDL_Window * window{};

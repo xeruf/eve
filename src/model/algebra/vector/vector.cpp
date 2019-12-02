@@ -29,17 +29,6 @@ Vector & Vector::operator -= (const Angle & a) {
 }
 Vector & Vector::operator -= (const Vector & v) {return * this = * this - v;}
 
-Vector & Vector::operator += (const Angle & a) {
-    this->angle += a;
-    return * this;
-}
-Vector & Vector::operator += (const Vector & v) {return * this = * this + v;}
-Vector & Vector::operator -= (const Angle & a) {
-    this->angle -= a;
-    return * this;
-}
-Vector & Vector::operator -= (const Vector & v) {return * this = * this - v;}
-
 bool   Vector::operator == (const Angle & a)  const {return a == * this;}
 bool   Vector::operator == (const Vector & v) const {
     return (coarseEquals(angle.radians(), v.angle.radians()) &&
