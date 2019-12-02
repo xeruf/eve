@@ -120,6 +120,7 @@ void Controller::eatNearbyFood (Individual & individual) {
             individual.getRadius() + sqrt(MAX_FOOD_SIZE) / M_PI);
 
     for (auto & food : Foods) {
+        individual.eat(food);
         world.remove (& food);
     }
 }
