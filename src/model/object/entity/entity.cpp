@@ -37,6 +37,6 @@ double Entity::updateEnergy (double multiplier) {
     return energy *= multiplier;
 }
 
-double Entity::addEnergy (double energy) {
-    return energy += energy;
+double Entity::addEnergy (double e) {
+    return energy += e;
 }
