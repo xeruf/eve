@@ -24,13 +24,19 @@ public:
     Entity(Point position, double energy);
     ~Entity() override = 0;
 
+    /** Returns the internal energy value */
     [[nodiscard]] double getEnergy() const ;
+    /** Returns the radius of this Entity which is based on its energy value */
     [[nodiscard]] double getRadius() const ;
 
+    /** Adds the given Vector as force to this Entity, changing its speed */
     const Vector & applyForce (const Vector & v);
+     /** Applys friction as a force to this Entity, slowing its speed */
     const Vector & applyFriction ();
 
+    /** Updates this Entity's position based on its speed */
     Point updatePosition ();
+    /** Updates this Entity's position based on its speed and normalises this position using the function given */
     Point updatePosition (const std::function<Point(Point)> & normalise);
 };
 
