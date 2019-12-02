@@ -75,13 +75,13 @@ action Controller::applyAction (Individual & individual) {
         case SLEEP:
             break;
         case MOVE:
-            individual.applyForce(Vector(individual.getVision().angle, individual.getEnergy()));
+            individual.applyForce(Vector(individual.getVision().angle, 10.0 + ACTION_FACTOR_MOVE * individual.getEnergy()));
             break;
         case TURN_LEFT:
-            individual.turnBy(Angle(- individual.getEnergy() / MAX_FOOD_SIZE / INDIVIDUAL_FOOD_FACTOR * 0.1 * M_PI));
+            individual.turnBy(Angle(- individual.getEnergy() * ACTION_FACTOR_TURN / MAX_FOOD_SIZE / INDIVIDUAL_FOOD_FACTOR * M_PI));
             break;
         case TURN_RIGHT:
-            individual.turnBy(Angle(individual.getEnergy() / MAX_FOOD_SIZE / INDIVIDUAL_FOOD_FACTOR * 0.1 * M_PI));
+            individual.turnBy(Angle(individual.getEnergy() * ACTION_FACTOR_TURN / MAX_FOOD_SIZE / INDIVIDUAL_FOOD_FACTOR * M_PI));
             break;
     }
     return action;
@@ -99,18 +99,22 @@ void Controller::updateEnergy (Individual & individual, action action) {
     double multiplier;
     switch (action) {
         case SLEEP:
-            multiplier = SLEEP_FACTOR;
+            multiplier = ENERGY_FACTOR_SLEEP;
             break;
         case MOVE:
-            multiplier = MOVE_FACTOR;
+            multiplier = ENERGY_FACTOR_MOVE;
             break;
         case TURN_RIGHT:
         case TURN_LEFT:
-            multiplier = TURN_FACTOR;
+            multiplier = ENERGY_FACTOR_TURN;
             break;
     }
-    if (individual.updateEnergy (multiplier) < SURVIVAL_THRESHOLD) {
+    double energyLevel = individual.updateEnergy (multiplier);
+    if (energyLevel < SURVIVAL_THRESHOLD) {
         world.kill (individual.getID());
+    }
+    if (energyLevel > REPRODUCTION_THRESHOLD) {
+        switch (typeid(individual).hash_code()) {}
     }
 }
 
