@@ -12,6 +12,7 @@ protected:
 
 public:
     Object(double x, double y);
+    explicit Object(Point position);
     virtual ~Object() = 0;
 
     [[nodiscard]] Point getPosition() const;

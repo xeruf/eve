@@ -14,14 +14,13 @@
 #include <string>
 #include <list>
 #include <utility>
+#include <memory>
 
 class World {
 private:
     double energy = 0;
 
     std::function<Food * (World * world)> refillFunction = {};
-
-    std::vector<Object *> * objectLists[3];
 
     std::vector<Food *> foods;
     std::vector<Individual *> individuals;
@@ -53,13 +52,18 @@ public:
     [[nodiscard]] std::list<Individual *> getCemetery() const;
     bool kill(long ID);
 
-    [[nodiscard]] std::vector<Object *> * getObjectsAround(const Point & position, double radius) const;
+    [[nodiscard]] std::unique_ptr<std::vector<Object *>> getObjectsAround(const Point & position, double radius) const;
+
+    template <class Species>
+    void addIndividual(Point position, double angle, double energy) {
+        Species * individual = new Species(individuals.size(), position, angle, energy);
+        individuals.push_back(individual);
+        incEnergy(individual);
+    }
 
     template <class Species>
     void addIndividual(double x, double y, double angle, double energy) {
-        Species * individual = new Species(individuals.size(), x, y, angle, energy);
-        individuals.push_back(individual);
-        incEnergy(individual);
+        addIndividual<Species>(Point(x, y), angle, energy);
     }
 };
 
