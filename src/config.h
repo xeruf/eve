@@ -8,6 +8,11 @@
 #define VISION_RANGE 20.0
 #define MOUTH_ANGLE 59
 
+/* Energy consumption multiplier per action */
+#define SLEEP_FACTOR 0.995
+#define  MOVE_FACTOR 0.975
+#define  TURN_FACTOR 0.98
+
 /* SDL RENDER PARAMETERS */
 #define SCALE_FACTOR 3      // scaling of individuals and food for easier identification
 #define RENDER_DELAY 10     // delay between drawn frames in ms

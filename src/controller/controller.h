@@ -26,10 +26,13 @@ private:
     bool simulate();
 
     /** Requests an action of Individual and reacts to that. */
-    Action applyAction (Individual & individual);
+    action applyAction (Individual & individual);
 
     /** Updates the physical properties of individuals. */
-    void update (Individual & individual, Action action);
+    void update (Individual & individual, action action);
+
+    /** Update the energy level of the individuals */
+    void updateEnergy (Individual & individual, action action);
 
 public:
     World world;
