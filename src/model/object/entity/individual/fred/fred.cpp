@@ -13,6 +13,8 @@ Fred::Fred(long ID, Point position, double a, double energy) :
 
 Action Fred::act(const std::unique_ptr<std::vector<Object *>> & visibles) {
     double currentEnergy = getEnergy();
+    std::cout << currentEnergy << " - " << previousEnergy << std::endl;
+    std::cout << memory[previousActions] << std::endl;
     if (currentEnergy < previousEnergy) {
         memory[previousActions] = memory[previousActions] - 10;
     } else if (currentEnergy > previousEnergy) {
