@@ -18,6 +18,12 @@ Vector & Vector::operator = (const Point & p) {
     return * this;
 }
 
+Vector & Vector::operator += (const Angle & a) {
+    this->angle += a;
+    return * this;
+}
+Vector & Vector::operator += (const Vector & v) {return * this = * this + v;}
+
 bool   Vector::operator == (const Angle & a)  const {return a == * this;}
 bool   Vector::operator == (const Vector & v) const {
     return coarseEquals(angle.radians(), v.angle.radians()) &&
@@ -31,6 +37,7 @@ bool   Vector::operator != (const Point & p)  const {return !(* this == Vector(p
 
 Vector Vector::operator +  (const Angle & a)  const {return Vector(a + angle, length);}
 Vector Vector::operator +  (const Vector & v) const {return Vector(ORIGIN + * this + v);}
+
 
 Vector Vector::operator -  (const Angle & a)  const {return Vector(angle - a.radians(), length);}
 Vector Vector::operator -  (const Vector & v) const {return * this + -v;}

@@ -4,6 +4,8 @@
 #include "../object/entity/food/food.h"
 #include "../object/entity/individual/individual.h"
 #include "../object/obstacle/obstacle.h"
+#include "../algebra/algebra.h"
+#include "../random/random.h"
 
 #include <cmath>
 #include <cstdarg>
@@ -16,6 +18,10 @@
 #include <utility>
 #include <memory>
 
+enum Distribution_e {
+    X_d, Y_d, DIRECTION_d, ENERGY_d
+};
+
 class World {
 private:
     double energy = 0;
@@ -27,6 +33,8 @@ private:
     std::vector<Obstacle *> obstacles;
     std::list<Individual *> cemetery;
 
+    std::vector<Uniform> distributions;
+
     void incEnergy(Entity * entity);
 
 public:
@@ -37,6 +45,8 @@ public:
 
     World(double WIDTH, double HEIGHT, double ENERGY);
     ~World();
+
+    [[nodiscard]] double rand(Distribution_e d);
 
     [[nodiscard]] double getEnergy() const;
 
@@ -53,6 +63,7 @@ public:
     bool kill(long ID);
 
     [[nodiscard]] std::unique_ptr<std::vector<Object *>> getObjectsAround(const Point & position, double radius) const;
+    [[nodiscard]] std::unique_ptr<std::vector<Object *>> getObjectsInCone(const Point & apex, Vector centre, Angle angle) const;
 
     template <class Species>
     void addIndividual(Point position, double angle, double energy) {

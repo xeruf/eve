@@ -25,6 +25,8 @@ public:
     [[nodiscard]] long getID() const;
     [[nodiscard]] Vector getVision() const;
 
+    void turnBy (Angle angle);
+
     virtual Action act(const std::unique_ptr<std::vector<Object *>> & visibles) = 0;
 };
 

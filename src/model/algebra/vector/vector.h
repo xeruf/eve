@@ -18,6 +18,9 @@ struct Vector {
 
     Vector & operator = (const Point & p);
 
+    Vector & operator += (const Angle & a);
+    Vector & operator += (const Vector & v);
+
     bool operator == (const Angle & a) const;
     bool operator == (const Vector & v) const;
     bool operator == (const Point & p) const;

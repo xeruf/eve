@@ -13,6 +13,7 @@
 #include <cmath>
 #include <stdexcept>
 #include <vector>
+#include <map>
 
 class Controller {
 private:
@@ -20,6 +21,9 @@ private:
     bool initialised = false;
 
     bool simulate();
+    Action applyAction (Individual & individual);
+    void update (Individual & individual, Action action);
+
 public:
     World world;
     TerminalView terminalview;

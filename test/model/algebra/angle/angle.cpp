@@ -39,6 +39,15 @@ TEST_CASE("Angles can substitute doubles while keeping between [0; 2 * PI)") {
         CHECK (c / 2.0 == b);
     }
 
+    SECTION ("Add'n assignment works as expected") {
+        Angle alpha (15);
+        Angle beta (30);
+        Angle gamma = alpha += beta;
+
+        CHECK (alpha.degrees() == 45);
+        CHECK (alpha == gamma);
+    }
+
     SECTION ("Angles can be inverted") {
         CHECK (-b == d);
         CHECK (-c == c);

@@ -17,6 +17,8 @@ struct Point {
 
     Point & operator = (const Vector & v);
 
+    Point & operator += (const Vector & v);
+
     bool operator == (const Point & p) const;
     bool operator == (const Vector & v) const;
 

@@ -37,6 +37,14 @@ TEST_CASE("Points can be used for calculations and simple arithmetic") {
         CHECK (POINTS[1] - POINTS[0] == POINTS[0]);
     }
 
+    SECTION ("Points can be updated from a vector in one operation") {
+        Point p = ORIGIN;
+        p += Vector (Point (3, 4));
+
+        CHECK (coarseEquals(p.x, 3.0));
+        CHECK (coarseEquals(p.y, 4.0));
+    }
+
     SECTION ("Dividing Points returns their distance") {
         CHECK (POINTS[2].distanceTo(POINTS[1]) == 2);
     }

@@ -18,3 +18,6 @@ long Individual::getID() const {return ID;}
 
 Vector Individual::getVision() const {return vision;}
 
+void Individual::turnBy(Angle angle) {
+    vision += angle;
+}
