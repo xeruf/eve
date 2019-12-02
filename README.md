@@ -63,6 +63,6 @@ The tests should be in [BDD style](https://github.com/catchorg/Catch2/blob/maste
 
 Commit messages use the type-scope format as seen in [Karma Runner](http://karma-runner.github.io/4.0/dev/git-commit-msg.html).
 
-Please save this git hook as *commit-msg* into *.git/hooks/* to automatically enforce the style: [commit-msg](https://www.notion.so/65a89aab035d4315bca4f2c68647fb45#4f25ab81102444bcbaba77e945712add)
-
 Branch names should roughly follow this convention as well, so a branch adding an individual called Fred should be called something like `feat/fred` while a branch fixing a bug in the list of individuals in the world could be named `fix/world-individuals`.
+
+More detailed Collaboration Guidelines are being worked on in [Notion](https://www.notion.so/xerus/Kull-Convention-7666158f2c2245c5abde4be960d288ba).

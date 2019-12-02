@@ -6,7 +6,8 @@
 #include "../model/object/entity/individual/fred/fred.h"
 #include "../model/object/entity/individual/piercy/piercy.h"
 #include "../model/random/random.h"
-#include "../view/terminalview.h"
+#include "../view/terminalview/terminalview.h"
+#include "../view/sdlview/sdlview.h"
 #include "../model/world/world.h"
 
 #include <cmath>
@@ -26,6 +27,7 @@ private:
 public:
     World world;
     TerminalView terminalview;
+    SDLView sdlview;
 
     Controller(double WIDTH, double HEIGHT, double ENERGY);
 
