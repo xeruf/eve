@@ -10,7 +10,7 @@
 
 /* SDL RENDER PARAMETERS */
 #define SCALE_FACTOR 3      // scaling of individuals and food for easier identification
-#define RENDER_DELAY 100    // delay between drawn frames in ms
+#define RENDER_DELAY 10     // delay between drawn frames in ms
 
 /* DEBUG CONSTANTS */
 #define RENDER_TERMINALVIEW false
