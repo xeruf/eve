@@ -34,6 +34,9 @@ private:
     /** Update the energy level of the individuals */
     void updateEnergy (Individual & individual, action action);
 
+    /** Have the given individual eat all food touching it */
+    void eatNearbyFood (Individual & individual);
+
 public:
     World world;
     TerminalView terminalview;

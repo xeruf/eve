@@ -3,6 +3,7 @@
 
 #include "../entity.h"
 
+#include "../food/food.h"
 #include "../../../../config.h"
 #include "../../../algebra/algebra.h"
 #include "../../../action/action.h"
@@ -29,6 +30,9 @@ public:
 
     /** Turns the Individual by the angle given */
     void turnBy (Angle angle);
+
+    /** Eat the given Food item */
+    double eat (const Food & food);
 
     virtual Action act(const std::unique_ptr<std::vector<Object *>> & visibles) = 0;
 };

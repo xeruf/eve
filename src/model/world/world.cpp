@@ -49,6 +49,16 @@ std::vector<Individual *> World::getIndividuals() const {
     return individuals;
 }
 
+std::unique_ptr<std::vector<Food>> World::getFoodsAround(const Point & position, double radius) const {
+    std::unique_ptr<std::vector<Food>> Foods(new std::vector<Food>);
+    for (auto food : foods) {
+        if (std::abs(food->getPosition().distanceTo(position)) < radius + food->getRadius()) {
+            Foods->push_back(* food);
+        }
+    }
+    return Foods;
+}
+
 std::unique_ptr<std::vector<Object *>> World::getObjectsAround(const Point & position, double radius) const {
     std::unique_ptr<std::vector<Object *>> visibles(new std::vector<Object *>);
     for (auto & object : foods) {
@@ -109,6 +119,19 @@ bool World::kill(long ID) {
             energy -= individual->getEnergy();
             cemetery.push_back(individual);
             individuals.erase(individuals.begin() + index);
+            return true;
+        }
+        index++;
+    }
+    return false;
+}
+
+bool World::remove (const Food * ptr) {
+    unsigned long index = 0;
+    for (auto food : foods) {
+        if (food == ptr) {
+            foods.erase (foods.begin() + index);
+            energy -=food->getEnergy();
             return true;
         }
         index++;
