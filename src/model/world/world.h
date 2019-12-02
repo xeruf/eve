@@ -78,7 +78,6 @@ public:
     }
 
     Point normalisePosition (Point position);
-    //static Point normalisePosition (Point position, Point maxVals);
 };
 
 #endif //EVE_WORLD_H
