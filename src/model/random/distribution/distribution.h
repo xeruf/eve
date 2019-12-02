@@ -11,6 +11,7 @@ struct Distribution {
     std::mt19937 mt;
 };
 
+/** Returns a Seed guaranteed to be random */
 unsigned int generateSeed();
 
 #endif //EVE_DISTRIBUTION_H
