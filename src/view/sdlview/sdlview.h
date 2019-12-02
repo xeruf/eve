@@ -3,6 +3,7 @@
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL2_gfxPrimitives.h>
+#include <stdexcept>
 
 #include "../../config.h"
 #include "../../model/world/world.h"
