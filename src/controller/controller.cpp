@@ -6,29 +6,35 @@ Controller::Controller(double WIDTH, double HEIGHT, double ENERGY) :
 
 void Controller::init() {
 
-    for (int i = 0; i < AMOUNT_OF_FREDS; i++) {
-        world.addIndividual<Fred>(
-                world.rand(X_d),
-                world.rand(Y_d),
-                world.rand(DIRECTION_d),
-                world.rand(ENERGY_d) * INDIVIDUAL_FOOD_FACTOR);
-    }
+    {
+        int i, j;
+        try {for (i = 0; i < AMOUNT_OF_FREDS; i++) {
+                world.addIndividual<Fred>(
+                        world.rand(X_d),
+                        world.rand(Y_d),
+                        world.rand(DIRECTION_d),
+                        world.rand(ENERGY_d) * INDIVIDUAL_FOOD_FACTOR);
+            }
 
-    for (int i = 0; i < AMOUNT_OF_PIERCIES; i++) {
-        world.addIndividual<Piercy>(
-                world.rand(X_d),
-                world.rand(Y_d),
-                world.rand(DIRECTION_d),
-                world.rand(ENERGY_d) * INDIVIDUAL_FOOD_FACTOR);
+            for (j = 0; j < AMOUNT_OF_PIERCIES; j++) {
+                world.addIndividual<Piercy>(
+                        world.rand(X_d),
+                        world.rand(Y_d),
+                        world.rand(DIRECTION_d),
+                        world.rand(ENERGY_d) * INDIVIDUAL_FOOD_FACTOR);
+            }
+        } catch (std::range_error & e) {
+            std::cerr << e.what() << std::endl;
+        }
+        std::cout << "Initialised with " << i << " Freds and " << j << "Piercies" << std::endl;
     }
-
     world.setRefillFunction([](World * w) -> Food * {
         return new Food(
                 w->rand(X_d),
                 w->rand(Y_d),
                 (w->ENERGY - w->getEnergy()) < MAX_FOOD_SIZE ?
-                    w->ENERGY - w->getEnergy() :
-                    w->rand(ENERGY_d));
+                w->ENERGY - w->getEnergy() :
+                w->rand(ENERGY_d));
     });
 
     initialised = true;
