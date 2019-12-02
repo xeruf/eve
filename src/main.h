@@ -5,6 +5,6 @@
 
 #define WIDTH  1920.0
 #define HEIGHT 1080.0
-#define ENERGY 30000.0
+#define ENERGY 300000.0
 
 #endif //EVE_MAIN_H

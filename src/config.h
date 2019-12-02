@@ -14,7 +14,7 @@
 #define  TURN_FACTOR 0.98
 
 /* SDL RENDER PARAMETERS */
-#define SCALE_FACTOR 3      // scaling of individuals and food for easier identification
+#define SCALE_FACTOR 1      // scaling of individuals and food for easier identification
 #define RENDER_DELAY 10     // delay between drawn frames in ms
 
 /* DEBUG CONSTANTS */

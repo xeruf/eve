@@ -40,17 +40,17 @@ void SDLView::draw(const World &world) {
    SDL_SetRenderDrawColor(renderer, 0, 0, 0xFF, 0xFF);
    SDL_RenderClear(renderer);
 
-   for (auto individual : world.getIndividuals()) {
+    for (auto food : world.getFood()) {
+        Point relativePosition = getRelativePosition(food->getPosition(), world.WIDTH, world.HEIGHT);
+        aacircleColor(renderer, relativePosition.x, relativePosition.y, food->getRadius() * SCALE_FACTOR, 0xFF0000FF);
+    }
+
+    for (auto individual : world.getIndividuals()) {
        Point relativePosition = getRelativePosition(individual->getPosition(), world.WIDTH, world.HEIGHT);
        filledCircleColor(renderer, relativePosition.x, relativePosition.y, individual->getRadius() * SCALE_FACTOR, 0xFF00FFFF);
 
        Point relativeVision = getRelativePosition(individual->getPosition() + individual->getVision(), world.WIDTH, world.HEIGHT);
        thickLineColor(renderer, relativePosition.x, relativePosition.y, relativeVision.x, relativeVision.y, 3, 0xFF000000);
-   }
-
-   for (auto food : world.getFood()) {
-       Point relativePosition = getRelativePosition(food->getPosition(), world.WIDTH, world.HEIGHT);
-       aacircleColor(renderer, relativePosition.x, relativePosition.y, food->getRadius() * SCALE_FACTOR, 0xFF0000FF);
    }
 
    SDL_RenderPresent(renderer);
