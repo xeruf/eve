@@ -1,11 +1,12 @@
 #include "../../src/controller/controller.h"
+#include "../../src/main.h"
 
 #include <catch2/catch.hpp>
 #include <stdexcept>
 
 SCENARIO("The Controller can be initialised") {
     GIVEN("An instance of a controller") {
-        Controller controller = Controller(1000, 1000, 1000);
+        Controller controller = Controller(WIDTH, HEIGHT, 1000);
 
         WHEN ("I start the controller") {
             WHEN ("The controller isn't initialised yet") {
