@@ -9,9 +9,9 @@
 #define MOUTH_ANGLE 59
 
 /* Energy consumption multiplier per action */
-#define SLEEP_FACTOR 0.995
-#define  MOVE_FACTOR 0.975
-#define  TURN_FACTOR 0.98
+#define SLEEP_FACTOR 0.999
+#define  MOVE_FACTOR 0.996
+#define  TURN_FACTOR 0.995
 
 /* SDL RENDER PARAMETERS */
 #define SCALE_FACTOR 3      // scaling of individuals and food for easier identification
