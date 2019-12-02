@@ -2,9 +2,9 @@ cmake_minimum_required(VERSION 3.10)
 set(CMAKE_CXX_STANDARD 17)
 
 set(CMAKE_CXX_FLAGS "-lSDL2 -lSDL2_gfx")
-execute_process(COMMAND cat /etc/os-release
+execute_process(COMMAND "cat /etc/os-release | head -n 1"
         OUTPUT_VARIABLE UNAME)
-if("${UNAME}" MATCHES "buntu")
+if(${UNAME} MATCHES "buntu")
     set(UBUNTU 1)
 endif()
 
