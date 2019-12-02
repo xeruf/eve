@@ -17,6 +17,6 @@ before_install:
   - apt list --installed
 
 script:
-  - cmake -v -H. -Bbuild
-  - cmake -v --build build --target eve
-  - cmake -v --build build --target tests && ./build/tests
+  - cmake -H. -Bbuild
+  - cmake --build build --target eve
+  - cmake --build build --target tests && ./build/tests
