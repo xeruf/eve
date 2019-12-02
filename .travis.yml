@@ -7,7 +7,6 @@ addons:
     update: true
     packages:
         - cmake
-        - cut
         - libsdl2-dev
         - libsdl2-gfx-dev
 git:
