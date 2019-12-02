@@ -71,7 +71,7 @@ action Controller::applyAction (Individual & individual) {
         case SLEEP:
             break;
         case MOVE:
-            individual.applyForce(Vector(individual.getVision().angle, individual.getEnergy()));
+            individual.applyForce(Vector(individual.getVision().angle, individual.getEnergy() * 0.1));
             break;
         case TURN_LEFT:
             individual.turnBy(Angle(- individual.getEnergy() / MAX_FOOD_SIZE / INDIVIDUAL_FOOD_FACTOR * 0.1 * M_PI));

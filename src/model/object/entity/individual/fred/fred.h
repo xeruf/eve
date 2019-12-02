@@ -6,8 +6,16 @@
 #include "../../../../action/action.h"
 #include "../../../../random/random.h"
 
+#include <unordered_map>
+
 /** NPC Species supposedly acting *smart**/
 class Fred : public Individual {
+private:
+    action previousActions;
+    double previousEnergy;
+    std::unordered_map<action, double> memory;
+
+    action think(const std::unique_ptr<std::vector<Object *>> & visibles);
 public:
     /** Constructs a new individual of species Fred
      * @param ID is unique and set automatically by the World
