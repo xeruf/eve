@@ -21,3 +21,7 @@ Vector Individual::getVision() const {return vision;}
 void Individual::turnBy(Angle angle) {
     vision += angle;
 }
+
+double Individual::eat (const Food & food) {
+    return addEnergy (food.getEnergy());
+}

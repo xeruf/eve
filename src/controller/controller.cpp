@@ -91,8 +91,8 @@ void Controller::update (Individual & individual, action action) {
 //    std::cout << individual.applyFriction().length << std::endl;
     individual.applyFriction();
     individual.updatePosition(std::bind(& World::normalisePosition, & world, std::placeholders::_1));
-
     updateEnergy (individual, action);
+    eatNearbyFood (individual);
 }
 
 void Controller::updateEnergy (Individual & individual, action action) {
@@ -111,5 +111,16 @@ void Controller::updateEnergy (Individual & individual, action action) {
     }
     if (individual.updateEnergy (multiplier) < SURVIVAL_THRESHOLD) {
         world.kill (individual.getID());
+    }
+}
+
+void Controller::eatNearbyFood (Individual & individual) {
+    std::vector<Food> Foods = * world.getFoodsAround(
+            individual.getPosition(),
+            individual.getRadius() + sqrt(MAX_FOOD_SIZE) / M_PI);
+
+    for (auto & food : Foods) {
+        individual.eat (food);
+        world.remove (& food);
     }
 }
