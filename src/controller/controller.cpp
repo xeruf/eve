@@ -61,15 +61,13 @@ bool Controller::simulate() {
         update (* individual, action);
     }
 
-    if(world.getIndividuals().empty()) return false;
-//    world.kill(world.getIndividuals().front()->getID());
-    return true;
+    return not world.getIndividuals().empty();
 }
 
-Action Controller::applyAction (Individual & individual) {
+action Controller::applyAction (Individual & individual) {
     auto visibles = world.getObjectsInCone(individual.getPosition(), individual.getVision(), Angle(MOUTH_ANGLE));
-    Action action = individual.act(visibles);
-    switch (action.type) {
+    action action = individual.act(visibles).type;
+    switch (action) {
         case SLEEP:
             break;
         case MOVE:
@@ -85,8 +83,29 @@ Action Controller::applyAction (Individual & individual) {
     return action;
 }
 
-void Controller::update (Individual & individual, Action action) {
+void Controller::update (Individual & individual, action action) {
 //    std::cout << individual.applyFriction().length << std::endl;
     individual.applyFriction();
     individual.updatePosition(std::bind(& World::normalisePosition, & world, std::placeholders::_1));
+
+    updateEnergy (individual, action);
+}
+
+void Controller::updateEnergy (Individual & individual, action action) {
+    double multiplier;
+    switch (action) {
+        case SLEEP:
+            multiplier = SLEEP_FACTOR;
+            break;
+        case MOVE:
+            multiplier = MOVE_FACTOR;
+            break;
+        case TURN_RIGHT:
+        case TURN_LEFT:
+            multiplier = TURN_FACTOR;
+            break;
+    }
+    if (individual.updateEnergy (multiplier) < SURVIVAL_THRESHOLD) {
+        world.kill (individual.getID());
+    }
 }
