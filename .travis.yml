@@ -5,7 +5,10 @@ compiler: gcc
 addons:
   apt:
     update: true
-    packages: cmake
+    packages:
+        - cmake
+        - libsdl2-dev
+        - libsdl2-gfx-dev
 git:
   depth: 3
 
