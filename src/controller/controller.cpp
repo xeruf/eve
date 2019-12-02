@@ -7,8 +7,9 @@ Controller::Controller(double WIDTH, double HEIGHT, double ENERGY) :
 void Controller::init() {
 
     {
-        int i, j;
-        try {for (i = 0; i < AMOUNT_OF_FREDS; i++) {
+        int i, j = 0;
+        try {
+            for (i = 0; i < AMOUNT_OF_FREDS; i++) {
                 world.addIndividual<Fred>(
                         world.rand(X_d),
                         world.rand(Y_d),
@@ -23,10 +24,10 @@ void Controller::init() {
                         world.rand(DIRECTION_d),
                         world.rand(ENERGY_d) * INDIVIDUAL_FOOD_FACTOR);
             }
-        } catch (std::range_error & e) {
+        } catch (std::overflow_error & e) {
             std::cerr << e.what() << std::endl;
         }
-        std::cout << "Initialised with " << i << " Freds and " << j << "Piercies" << std::endl;
+        std::cout << "Initialised with " << i << " Freds and " << j << " Piercies" << std::endl;
     }
     world.setRefillFunction([](World * w) -> Food * {
         return new Food(
