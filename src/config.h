@@ -11,10 +11,8 @@
 #define AMOUNT_OF_PIERCIES 0
 
 /* SDL RENDER PARAMETERS */
-/** scaling of individuals and food for easier identification */
-#define SCALE_FACTOR 3
-/** delay between drawn frames in ms */
-#define RENDER_DELAY 100
+#define SCALE_FACTOR 3      // scaling of individuals and food for easier identification
+#define RENDER_DELAY 100    // delay between drawn frames in ms
 
 /* DEBUG CONSTANTS */
 #define RENDER_TERMINALVIEW false
