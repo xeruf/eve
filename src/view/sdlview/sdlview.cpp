@@ -28,9 +28,9 @@ void SDLView::setupsdl(const World & world) {
     }
 }
 
-Point SDLView::getRelativePosition(const Point & position, const double worldWidth, const double worldHeight, const int windowHeight, const int windowWidth) const {
-    double x = position.x * (windowWidth / worldWidth);
-    double y = position.y * (windowHeight / worldHeight);
+Point SDLView::getRelativePosition(const Point & position, double worldWidth, double worldHeight) const {
+    double x = position.x * (DM.w / worldWidth);
+    double y = position.y * (DM.h / worldHeight);
     Point relativePosition = {x, y};
     return relativePosition;
 }

@@ -9,9 +9,13 @@
 #define VISION_RANGE 25.0
 #define MOUTH_ANGLE 59
 
-/* Action multipliert */
-#define ACTION_FACTOR_TURN 0.01
-#define ACTION_FACTOR_MOVE 0.001
+/* Action constants */
+#define TURN_RATE 10
+#define MOVE_RATE 10
+
+/* Action multiplier */
+#define ACTION_FACTOR_MOVE 0.0001
+#define ACTION_FACTOR_TURN 0.0001
 
 /* Energy consumption multiplier per action */
 #define ENERGY_FACTOR_SLEEP 0.995

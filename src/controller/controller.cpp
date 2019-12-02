@@ -5,7 +5,6 @@ Controller::Controller(double WIDTH, double HEIGHT, double ENERGY) :
 }
 
 void Controller::init() {
-
     {
         int i, j = 0;
         try {
@@ -56,11 +55,7 @@ bool Controller::simulate() {
         if (keysm == -1) return false;
     }
 
-    std::cout << std::endl << "======== " << iteration << " ========" << std::endl;
-    int i = 0;
-
     for (auto individual : world.getIndividuals()) {
-    std::cout << "Ind. " << i++ << ":\t";
         auto action = applyAction(* individual);
         update (* individual, action);
     }
@@ -75,20 +70,19 @@ action Controller::applyAction (Individual & individual) {
         case SLEEP:
             break;
         case MOVE:
-            individual.applyForce(Vector(individual.getVision().angle, 10.0 + ACTION_FACTOR_MOVE * individual.getEnergy()));
+            individual.applyForce(Vector(individual.getVision().angle, MOVE_RATE + ACTION_FACTOR_MOVE * individual.getEnergy()));
             break;
         case TURN_LEFT:
-            individual.turnBy(Angle(- individual.getEnergy() * ACTION_FACTOR_TURN / MAX_FOOD_SIZE / INDIVIDUAL_FOOD_FACTOR * M_PI));
+            individual.turnBy(Angle(- (int) (TURN_RATE + ACTION_FACTOR_TURN * individual.getEnergy())));
             break;
         case TURN_RIGHT:
-            individual.turnBy(Angle(individual.getEnergy() * ACTION_FACTOR_TURN / MAX_FOOD_SIZE / INDIVIDUAL_FOOD_FACTOR * M_PI));
+            individual.turnBy(Angle((int) (TURN_RATE + ACTION_FACTOR_TURN * individual.getEnergy())));
             break;
     }
     return action;
 }
 
 void Controller::update (Individual & individual, action action) {
-//    std::cout << individual.applyFriction().length << std::endl;
     individual.applyFriction();
     individual.updatePosition(std::bind(& World::normalisePosition, & world, std::placeholders::_1));
     updateEnergy (individual, action);
