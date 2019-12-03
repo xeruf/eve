@@ -28,17 +28,17 @@ class World {
 private:
     double energy = 0;
 
-    std::function<Food * (World * world)> refillFunction = {};
+    std::function <Food * (World * world)> refillFunction = {};
 
-    std::vector<Food *> foods;
-    std::vector<Individual *> individuals;
-    std::vector<Obstacle *> obstacles;
-    std::list<Individual *> cemetery;
+    std::vector <Food       *> foods;
+    std::vector <Individual *> individuals;
+    std::vector <Obstacle   *> obstacles;
+    std::list   <Individual *> cemetery;
 
-    std::vector<Uniform> distributions;
+    std::vector <Uniform> distributions;
 
     /** Increases the internal energy level by the level of the given entity */
-    void incEnergy(const Entity * entity);
+    void incEnergy (const Entity * entity);
 
 public:
     /** The width of the world */
@@ -52,7 +52,7 @@ public:
      * @param WIDTH of the world
      * @param HEIGHT of the world
      * @param ENERGY (maximum level of energy from all objects) */
-    World(double WIDTH, double HEIGHT, double ENERGY);
+    World (double WIDTH, double HEIGHT, double ENERGY);
     ~World();
 
     /** Returns a random number based on the Distribution enum:
@@ -60,35 +60,35 @@ public:
      * @Y_d         a number along the height of the world
      * @DIRECTION_d an angle in radians between [0; 2xPI)
      * @ENERGY_d    a number between minimum and maximum Food level */
-    [[nodiscard]] double rand(Distribution_e d);
+    [[nodiscard]] double rand (Distribution_e d);
 
     /** Returns the current level of energy, the sum of all entities within */
     [[nodiscard]] double getEnergy() const;
 
     /** Returns an array containing all Food items */
-    [[nodiscard]] std::vector<Food *> getFood() const;
+    [[nodiscard]] std::vector <Food *> getFood() const;
     /** Adds the Food vector given to the world */
-    void addFood(Food * food);
+    void addFood (Food * food);
 
     /** Sets the function the world uses to refill itself,
      *  should the energy level fall below the maximum energy value.
      *  The function gets a pointer to this world and should return a pointer to a Food item on the heap.
-     * @param f(x) is the function invoked by the world until the energy level equals the maximum level */
-    void setRefillFunction(const std::function<Food * (World * world)> & f);
+     * @param f (x) is the function invoked by the world until the energy level equals the maximum level */
+    void setRefillFunction (const std::function <Food * (World * world)> & f);
     /** Fills the world using a temporary refill function.
      *  The function gets a pointer to this world and should return a pointer to a Food item on the heap.
-     * @param f(x) is the function invoked by the world until the energy level equals the maximum level */
-    bool fillWithFood(const std::function<Food * (World * world)> & f);
+     * @param f (x) is the function invoked by the world until the energy level equals the maximum level */
+    bool fillWithFood (const std::function <Food * (World * world)> & f);
     /** Refills the world using the set refill function until the internal energy level equals the maximum value */
     bool fillWithFood();
 
     /** Returns an array containing all Individuals currently living in the world */
-    [[nodiscard]] std::vector<Individual *> getIndividuals() const;
+    [[nodiscard]] std::vector <Individual *> getIndividuals() const;
 
     /** Returns a list containing all Individuals which deceased already */
-    [[nodiscard]] std::list<Individual *> getCemetery() const;
+    [[nodiscard]] std::list <Individual *> getCemetery() const;
     /** Kills the Individual with the given ID. Returns whether this operation was successful */
-    bool kill(long ID);
+    bool kill (long ID);
 
     /** Copies the given Individual into the world */
     void addChild (Individual * individual);
@@ -97,27 +97,27 @@ public:
     bool remove (const Food * food);
 
     /** Returns a pointer to an array containing all food items within the given radius around the given Position */
-    [[nodiscard]] std::unique_ptr<std::vector<Food *>> getFoodsAround(const Point & position, double radius) const;
+    [[nodiscard]] std::unique_ptr <std::vector <Food *>> getFoodsAround (const Point & position, double radius) const;
     /** Returns a pointer to an array containing all objects within the given radius around the given Position */
-    [[nodiscard]] std::unique_ptr<std::vector<Object *>> getObjectsAround(const Point & position, double radius) const;
+    [[nodiscard]] std::unique_ptr <std::vector <Object *>> getObjectsAround (const Point & position, double radius) const;
     /** Returns a pointer to an array containing all objects within the given cone
      * @param apex is the peak of the cone, where the angle is located in
      * @param centre is the Vector from the apex through the middle of the cone
      * @param angle is the overall angle of the cone */
-    [[nodiscard]] std::unique_ptr<std::vector<Object *>> getObjectsInCone(const Point & apex, Vector centre, Angle angle) const;
+    [[nodiscard]] std::unique_ptr <std::vector <Object *>> getObjectsInCone (const Point & apex, Vector centre, Angle angle) const;
 
     /** Constructs an Individual of the given Species with the given parameters in the world */
     template <class Species>
-    void addIndividual(Point position, double angle, double energy) {
-        Species * individual = new Species(individuals.size(), position, angle, energy);
-        individuals.push_back(individual);
-        incEnergy(individual);
+    void addIndividual (Point position, double angle, double energy) {
+        Species * individual = new Species (individuals.size(), position, angle, energy);
+        individuals.push_back (individual);
+        incEnergy (individual);
     }
 
     /** Constructs an Individual of the given Species with the given parameters in the world */
     template <class Species>
-    void addIndividual(double x, double y, double angle, double energy) {
-        addIndividual<Species>(Point(x, y), angle, energy);
+    void addIndividual (double x, double y, double angle, double energy) {
+        addIndividual<Species> (Point (x, y), angle, energy);
     }
 
     /** Returns the given position, ensuring it's within the boundaries of the world */
