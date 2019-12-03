@@ -3,6 +3,7 @@
 
 #include "../distribution.h"
 
+/** Normal probabilistic distribution CURRENTLY NOT WORKING! */
 struct Normal : Distribution {
     std::normal_distribution<double> normalDistribution;
 
