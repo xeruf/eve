@@ -5,30 +5,36 @@ Controller::Controller(double WIDTH, double HEIGHT, double ENERGY) :
 }
 
 void Controller::init() {
+    {
+        int i, j = 0;
+        try {
+            for (i = 0; i < AMOUNT_OF_FREDS; i++) {
+                world.addIndividual<Fred>(
+                        world.rand(X_d),
+                        world.rand(Y_d),
+                        world.rand(DIRECTION_d),
+                        world.rand(ENERGY_d) * INDIVIDUAL_FOOD_FACTOR);
+            }
 
-    for (int i = 0; i < AMOUNT_OF_FREDS; i++) {
-        world.addIndividual<Fred>(
-                world.rand(X_d),
-                world.rand(Y_d),
-                world.rand(DIRECTION_d),
-                world.rand(ENERGY_d));
+            for (j = 0; j < AMOUNT_OF_PIERCIES; j++) {
+                world.addIndividual<Piercy>(
+                        world.rand(X_d),
+                        world.rand(Y_d),
+                        world.rand(DIRECTION_d),
+                        world.rand(ENERGY_d) * INDIVIDUAL_FOOD_FACTOR);
+            }
+        } catch (std::overflow_error & e) {
+            std::cerr << e.what() << std::endl;
+        }
+        std::cout << "Initialised with " << i << " Freds and " << j << " Piercies" << std::endl;
     }
-
-    for (int i = 0; i < AMOUNT_OF_PIERCIES; i++) {
-        world.addIndividual<Piercy>(
-                world.rand(X_d),
-                world.rand(Y_d),
-                world.rand(DIRECTION_d),
-                world.rand(ENERGY_d));
-    }
-
     world.setRefillFunction([](World * w) -> Food * {
         return new Food(
                 w->rand(X_d),
                 w->rand(Y_d),
                 (w->ENERGY - w->getEnergy()) < MAX_FOOD_SIZE ?
-                    w->ENERGY - w->getEnergy() :
-                    w->rand(ENERGY_d));
+                w->ENERGY - w->getEnergy() :
+                w->rand(ENERGY_d));
     });
 
     initialised = true;
@@ -57,33 +63,62 @@ bool Controller::simulate() {
     return not world.getIndividuals().empty();
 }
 
-Action Controller::applyAction (Individual & individual) {
+action Controller::applyAction (Individual & individual) {
     auto visibles = world.getObjectsInCone(individual.getPosition(), individual.getVision(), Angle(MOUTH_ANGLE));
-    Action action = individual.act(visibles);
-    std::cout << action.toString() << ": ";
-
-    switch (action.type) {
+    action action = individual.act(visibles).type;
+    switch (action) {
         case SLEEP:
             break;
         case MOVE:
-            individual.applyForce(Vector(individual.getVision().angle, individual.getEnergy()));
+            individual.applyForce(Vector(individual.getVision().angle, MOVE_RATE + ACTION_FACTOR_MOVE * individual.getEnergy()));
             break;
         case TURN_LEFT:
-            individual.turnBy(Angle((int) - individual.getEnergy()));
+            individual.turnBy(Angle(- (int) (TURN_RATE + ACTION_FACTOR_TURN * individual.getEnergy())));
             break;
         case TURN_RIGHT:
-            individual.turnBy(Angle((int) individual.getEnergy()));
+            individual.turnBy(Angle((int) (TURN_RATE + ACTION_FACTOR_TURN * individual.getEnergy())));
             break;
     }
     return action;
 }
 
-void Controller::update (Individual & individual, Action action) {
-    std::cout << individual.applyFriction().length << std::endl;
+void Controller::update (Individual & individual, action action) {
+    individual.applyFriction();
+    individual.updatePosition(std::bind(& World::normalisePosition, & world, std::placeholders::_1));
+    updateEnergy (individual, action);
+    eatNearbyFood (individual);
+}
 
-    Point p = individual.getPosition();
-    std::cout << "\tOld Position: (" << p.x << "|" << p.y << ")" << std::endl;
+void Controller::updateEnergy (Individual & individual, action action) {
+    double multiplier;
+    switch (action) {
+        case SLEEP:
+            multiplier = ENERGY_FACTOR_SLEEP;
+            break;
+        case MOVE:
+            multiplier = ENERGY_FACTOR_MOVE;
+            break;
+        case TURN_RIGHT:
+        case TURN_LEFT:
+            multiplier = ENERGY_FACTOR_TURN;
+            break;
+    }
+    double energyLevel = individual.updateEnergy (multiplier);
+    if (energyLevel < SURVIVAL_THRESHOLD) {
+        world.kill (individual.getID());
+    }
+    if (energyLevel > REPRODUCTION_THRESHOLD) {
+        switch (typeid(individual).hash_code()) {}
+    }
+}
 
-    p = individual.updatePosition();
-    std::cout << "\tNew Position: (" << p.x << "|" << p.y << ")" << std::endl;
+void Controller::eatNearbyFood (Individual & individual) {
+    std::vector<Food> Foods = * world.getFoodsAround(
+            individual.getPosition(),
+            individual.getRadius() + sqrt(MAX_FOOD_SIZE) / M_PI);
+
+    for (auto & food : Foods) {
+        individual.eat(food);
+        world.remove (& food);
+    }
 }

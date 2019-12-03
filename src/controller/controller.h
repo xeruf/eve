@@ -14,15 +14,28 @@
 #include <stdexcept>
 #include <vector>
 #include <map>
+#include <functional>
 
 class Controller {
 private:
     long iteration = 0;
     bool initialised = false;
 
+    /** Calculates a new tick of the world.
+     * @return Whether to continue running */
     bool simulate();
-    Action applyAction (Individual & individual);
-    void update (Individual & individual, Action action);
+
+    /** Requests an action of Individual and reacts to that. */
+    action applyAction (Individual & individual);
+
+    /** Updates the physical properties of individuals. */
+    void update (Individual & individual, action action);
+
+    /** Update the energy level of the individuals */
+    void updateEnergy (Individual & individual, action action);
+
+    /** Have the given individual eat all food touching it */
+    void eatNearbyFood (Individual & individual);
 
 public:
     World world;
@@ -31,7 +44,13 @@ public:
 
     Controller(double WIDTH, double HEIGHT, double ENERGY);
 
+     /** Adds objects to the world and prepares simulation. must be invoked before run() */
     void init();
+
+    /** Starts the simulation. Runs as long as simulate returns true.
+     *  Invokes applyAction() and update() for every Individual and their respective Action.
+     *  Requires the Controller to be initialised.
+     *  @return number of total iterations */
     long run();
 };
 
