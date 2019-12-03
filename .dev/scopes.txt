@@ -8,3 +8,4 @@ readme
 git
 ci
 threading
+config
