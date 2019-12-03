@@ -4,7 +4,7 @@
 #include <random>
 
 struct Distribution {
-    Distribution(unsigned int SEED);
+    Distribution (unsigned int SEED);
     virtual ~Distribution() = 0;
 
     const unsigned long SEED;

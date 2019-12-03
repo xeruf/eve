@@ -5,12 +5,12 @@
 
 /** Normal probabilistic distribution CURRENTLY NOT WORKING! */
 struct Normal : Distribution {
-    std::normal_distribution<double> normalDistribution;
+    std::normal_distribution <double> normalDistribution;
 
-    Normal() : Normal(generateSeed()) {}
-    Normal(unsigned int SEED) : Distribution(SEED), normalDistribution() {}
+    Normal () : Normal (generateSeed()) {}
+    Normal (unsigned int SEED) : Distribution (SEED), normalDistribution() {}
 
-    double rand() {return normalDistribution(mt);}
+    double rand() {return normalDistribution (mt);}
 };
 
 #endif //EVE_NORMAL_H
