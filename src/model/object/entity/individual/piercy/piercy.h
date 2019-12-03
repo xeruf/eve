@@ -28,7 +28,7 @@ public:
     Piercy(long ID, Point position, double a, double energy);
 
     /** Methods giving birth to an offspring */
-    Piercy * reproduce (long ID);
+    Piercy * reproduce (long ID) override;
 
     /** Returns an Action using Neural Networks, and Machine, Deep and Reinforcement Learning
      * @param visibles is a pointer to an array holding all objects within its vision
