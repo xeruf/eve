@@ -11,6 +11,7 @@
 #include <limits>
 #include <memory>
 
+/** Player-controller Species */
 class Piercy : public Individual {
 public:
     /** Constructs a new individual of species Species
