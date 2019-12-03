@@ -6,7 +6,7 @@
 #include <iostream>
 #include <stdexcept>
 
-/** Subclass of Entity representing all Food items */
+/** Entity representing a Food item */
 class Food : public Entity {
 public:
     /** Constructs an object with the given x- and y-coordinate */
