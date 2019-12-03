@@ -79,13 +79,33 @@ TEST_CASE("Points and Vectors can be used interchangeably") {
     }
 
     SECTION ("Vectors can be added onto Points to result in new Points") {
-        Point p(1, 0);
-        Point q(2, 0);
-        Vector v(0, 1);
+        Point p(0, 0);
 
-        CHECK (p + v == q);
+        std::vector<Vector> vectors;
+        vectors.emplace_back(0, 1);
+        vectors.emplace_back(45, sqrt(2));
+        vectors.emplace_back(90, 1);
+        vectors.emplace_back(135, sqrt(2));
+        vectors.emplace_back(180, 1);
+        vectors.emplace_back(225, sqrt(2));
+        vectors.emplace_back(270, 1);
+        vectors.emplace_back(315, sqrt(2));
 
-        Point r(q-v);
-        CHECK (q - v == p);
+        std::vector<Point> points;
+        points.emplace_back(1,0);
+        points.emplace_back(1,1);
+        points.emplace_back(0,1);
+        points.emplace_back(-1,1);
+        points.emplace_back(-1, 0);
+        points.emplace_back(-1, -1);
+        points.emplace_back(0, -1);
+        points.emplace_back(1, -1);
+
+        int i = 0;
+        for (auto & v : vectors) {
+            CHECK (p + v == points[i]);
+            CHECK (p - v == points[(4 + i) % 8]);
+            i++;
+        }
     }
 }

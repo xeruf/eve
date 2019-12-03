@@ -16,7 +16,7 @@ TEST_CASE("Vectors can be used for calculations and simple arithmetic") {
         CHECK (VECTORS[4].angle == 1.5 * M_PI);
         CHECK (VECTORS[4].length == 1.5);
 
-        CHECK (VECTORS[5].angle == 0.5 * M_PI);
+        CHECK (VECTORS[5].angle.radians() == 0.5 * M_PI);
         CHECK (VECTORS[5].length == 1.5);
     }
 
@@ -37,16 +37,21 @@ TEST_CASE("Vectors can be used for calculations and simple arithmetic") {
         CHECK ((VECTORS[0] + VECTORS[1]).angle.degrees() == 90);
         CHECK ((VECTORS[0] + VECTORS[1]).length == 3.0);
 
-        CHECK (VECTORS[4] + VECTORS[5] == Vector(ORIGIN));
+        Vector v = VECTORS[4] + VECTORS[5];
+        CHECK (v == Vector(ORIGIN));
 
-        CHECK (VECTORS[0] - VECTORS[1] == Vector(ORIGIN));
+        v = VECTORS[0] - VECTORS[1];
+        CHECK (v == Vector(ORIGIN));
     }
 
     SECTION ("Angles and Vectors can be added onto a Vector") {
-        Vector v (0, 10);
-        v += Vector (90, 10);
+        Vector v(0, 0);
+        for (int i = 0; i < 360; i += 10) {
+            Vector w (i, 10);
+            Vector r = v + w;
+            CHECK (r == w);
+        }
 
-        CHECK (v.angle.degrees() == 45);
-        CHECK (coarseEquals(v.length, sqrt(200)));
+
     }
 }
