@@ -10,7 +10,7 @@
 
 template <class T>
 class Allocator {
-public:
+private:
     T * objects = (T *) malloc (PREALLOCATED_OBJECTS);
     T * iterator = objects;
     std::unordered_map<T *, int> allocs;
