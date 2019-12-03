@@ -10,13 +10,13 @@
 class SDLView {
 private:
     void setupsdl(const World & world);
-    [[nodiscard]]Point getRelativePosition(const Point & position, double worldWidth, double worldHeight) const;
     void draw(const World & world);
     void stop();
     SDL_Window * window{};
     SDL_Renderer * renderer{};
     SDL_DisplayMode DM;
 public:
+    [[nodiscard]]Point getRelativePosition(const Point & position, double worldWidth, double worldHeight, double windowWidth, double windowHeight) const;
     int render(const World & world);
 };
 #endif //EVE_SDLVIEW_H

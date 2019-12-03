@@ -28,9 +28,9 @@ void SDLView::setupsdl(const World & world) {
     }
 }
 
-Point SDLView::getRelativePosition(const Point & position, double worldWidth, double worldHeight) const {
-    double x = position.x * (DM.w / worldWidth);
-    double y = position.y * (DM.h / worldHeight);
+Point SDLView::getRelativePosition(const Point & position, double worldWidth, double worldHeight, double windowWidth, double windowHeight) const {
+    double x = position.x * (windowWidth / worldWidth);
+    double y = position.y * (windowHeight / worldHeight);
     Point relativePosition = {x, y};
     return relativePosition;
 }
@@ -40,19 +40,19 @@ void SDLView::draw(const World &world) {
    SDL_RenderClear(renderer);
 
     for (auto food : world.getFood()) {
+        aacircleColor(renderer, food->getPosition().x, food->getPosition().y, food->getRadius() * SCALE_FACTOR, 0xFF0000FF);
+    }
+
+    for (auto food : world.getFood()) {
         aacircleColor(renderer, food->getPosition().x, food->getPosition().y, food->getRadius() * SCALE_FACTOR, FOOD_COLOR);
     }
 
     for (auto individual : world.getIndividuals()) {
-       Point relativePosition = getRelativePosition(individual->getPosition(), world.WIDTH, world.HEIGHT);
+       Point relativePosition = getRelativePosition(individual->getPosition(), world.WIDTH, world.HEIGHT, DM.w, DM.h);
        filledCircleColor(renderer, relativePosition.x, relativePosition.y, individual->getRadius() * SCALE_FACTOR, INDIVIDUAL_COLOR);
 
-       Point relativeVision = getRelativePosition(individual->getPosition() + individual->getVision(), world.WIDTH, world.HEIGHT);
+       Point relativeVision = getRelativePosition(individual->getPosition() + individual->getVision(), world.WIDTH, world.HEIGHT, DM.w, DM.h);
        thickLineColor(renderer, relativePosition.x, relativePosition.y, relativeVision.x, relativeVision.y, 3, POINTER_COLOR);
-   }
-
-   for (auto food : world.getFood()) {
-       aacircleColor(renderer, food->getPosition().x, food->getPosition().y, food->getRadius() * SCALE_FACTOR, 0xFF0000FF);
    }
 
    SDL_RenderPresent(renderer);
