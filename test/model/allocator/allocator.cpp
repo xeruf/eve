@@ -2,7 +2,7 @@
 
 #include <catch2/catch.hpp>
 
-TEST_CASE ("I can allocate objects always located close to each other") {
+TEST_CASE ("I can allocate Objects within a confined space for less overhead") {
     SECTION ("I can easily allocate and deallocate a primitive data type") {
         auto allocator = new Allocator<int>();
         auto & alloc = * allocator;
@@ -22,8 +22,8 @@ TEST_CASE ("I can allocate objects always located close to each other") {
         }
 
         WHEN ("I allocate too many objects") {
-            CHECK_THROWS_AS (alloc.allocate(AMOUNT_ALLOCATED_OBJECTS), std::bad_alloc);
-            alloc.allocate(AMOUNT_ALLOCATED_OBJECTS - 1);
+            CHECK_THROWS_AS (alloc.allocate(PREALLOCATED_OBJECTS), std::bad_alloc);
+            alloc.allocate(PREALLOCATED_OBJECTS - 1);
 
             THEN ("I get an exception on all allocate calls") {
                 CHECK_THROWS_AS (alloc.allocate(1), std::bad_alloc);
@@ -53,8 +53,8 @@ TEST_CASE ("I can allocate objects always located close to each other") {
 
         for (int i = 0; i < 10; i++) {
             std::string * ptr;
-            CHECK_NOTHROW (ptr = alloc.allocate (0.2 * AMOUNT_ALLOCATED_OBJECTS));
-            CHECK_NOTHROW (alloc.deallocate(ptr, 0.2 * AMOUNT_ALLOCATED_OBJECTS));
+            CHECK_NOTHROW (ptr = alloc.allocate (0.2 * PREALLOCATED_OBJECTS));
+            CHECK_NOTHROW (alloc.deallocate(ptr, 0.2 * PREALLOCATED_OBJECTS));
         }
     }
 }

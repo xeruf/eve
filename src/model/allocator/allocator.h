@@ -11,14 +11,14 @@
 template <class T>
 class Allocator {
 public:
-    T * objects = (T *) malloc (AMOUNT_ALLOCATED_OBJECTS);
+    T * objects = (T *) malloc (PREALLOCATED_OBJECTS);
     T * iterator = objects;
     std::unordered_map<T *, int> allocs;
     std::unordered_map<T *, int> deallocs;
 
     bool increment (size_t n) {
         iterator += n;
-        return (iterator - objects <=  AMOUNT_ALLOCATED_OBJECTS);
+        return (iterator - objects <= PREALLOCATED_OBJECTS);
     }
 
     T * reallocate (size_t n = 1, bool exact = true) {
@@ -47,7 +47,7 @@ public:
 
     T * allocate (size_t n = 1) {
         if (n <= 0) throw std::range_error("Allocator::allocate: Can't allocate non-zero amounts of objects");
-        if (n >= AMOUNT_ALLOCATED_OBJECTS) throw std::bad_alloc();
+        if (n >= PREALLOCATED_OBJECTS) throw std::bad_alloc();
 
         T * ptr = reallocate(n);
         if (ptr) {
