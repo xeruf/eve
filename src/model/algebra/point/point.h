@@ -55,7 +55,7 @@ struct Point {
     Point operator - (const Vector & v) const;
 };
 
-/** This is the Origin, the Point (0|0). 'tis used for Vector calculations */
+/** Origin of the coordinate system, Point (0|0). Used for Vector calculations. */
 static const Point ORIGIN = Point(0, 0);
 
 #endif //EVE_POINT_H
