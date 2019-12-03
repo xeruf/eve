@@ -1,5 +1,6 @@
 #ifndef EVE_FRED_H
 #define EVE_FRED_H
+#define MEMORY_SIZE 100
 
 #include "../individual.h"
 #include "../../../object.h"
@@ -8,12 +9,13 @@
 
 #include <unordered_map>
 
-/** NPC Species supposedly acting *smart**/
+/** NPC Species with Reinforcement Learning */
 class Fred : public Individual {
 private:
-    action previousActions;
-    double previousEnergy;
     std::unordered_map<action, double> memory;
+    std::vector<action> previousActions = std::vector<action>(MEMORY_SIZE, SLEEP);
+    double previousEnergy;
+    int actionCounter = 0;
 
     action think(const std::unique_ptr<std::vector<Object *>> & visibles);
 public:

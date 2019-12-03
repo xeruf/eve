@@ -34,7 +34,7 @@
 #define RENDER_TERMINALVIEW false
 #define RENDER_SDLVIEW true
 
-#define AMOUNT_OF_FREDS 10
+#define AMOUNT_OF_FREDS 50
 #define AMOUNT_OF_PIERCIES 0
 
 /* COLOR constants */
