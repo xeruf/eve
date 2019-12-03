@@ -14,8 +14,8 @@ class Allocator {
 private:
     T * objects = (T *) malloc (PREALLOCATED_OBJECTS);
     T * iterator = objects;
-    std::unordered_map<T *, int> allocs;
-    std::unordered_map<T *, int> deallocs;
+    std::unordered_map <T *, int> allocs;
+    std::unordered_map <T *, int> deallocs;
 
     bool increment (size_t n) {
         iterator += n;
@@ -38,8 +38,8 @@ private:
     }
 
 public:
-    Allocator () = default;
-    ~Allocator () {
+    Allocator() = default;
+    ~Allocator() {
         for (auto iter = allocs.begin(); iter != allocs.end(); iter++) {
             ~(* iter->first);
         }
@@ -48,17 +48,17 @@ public:
 
     /** Returns a pointer to one or 'n' objects of the templated type */
     T * allocate (size_t n = 1) {
-        if (n <= 0) throw std::range_error("Allocator::allocate: Can't allocate non-zero amounts of objects");
+        if (n <= 0) throw std::range_error ("Allocator::allocate: Can't allocate non-zero amounts of objects");
         if (n >= PREALLOCATED_OBJECTS) throw std::bad_alloc();
 
-        T * ptr = reallocate(n);
+        T * ptr = reallocate (n);
         if (ptr) {
             return ptr;
         }
 
         if (increment (n)) {
             ptr = iterator;
-            allocs.insert({ptr, n});
+            allocs.insert ({ptr, n});
             return ptr;
         }
         throw std::bad_alloc();
@@ -68,10 +68,10 @@ public:
      * @param ptr should point to memory previously allocated from this object
      * @param n should have the same size as how many objects got allocated */
     void deallocate (T * ptr, size_t n = 1) {
-        auto item = allocs.find(ptr);
+        auto item = allocs.find (ptr);
         if (item != allocs.end()) {
             if (item->second == n) {
-                allocs.erase(item);
+                allocs.erase (item);
                 deallocs.insert ({ptr, n});
                 return;
             }

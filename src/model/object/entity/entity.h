@@ -19,8 +19,8 @@ private:
     void checkEnergy() const;
 
 public:
-    Entity(double x, double y, double energy);
-    Entity(Point position, double energy);
+    Entity (double x, double y, double energy);
+    Entity (Point position, double energy);
     ~Entity() override = 0;
 
     /** Returns the internal energy value */
@@ -31,12 +31,12 @@ public:
     /** Adds the given Vector as force to this Entity, changing its speed */
     const Vector & applyForce (const Vector & v);
      /** Applys friction as a force to this Entity, slowing its speed */
-    const Vector & applyFriction ();
+    const Vector & applyFriction();
 
     /** Updates this Entity's position based on its speed */
-    Point updatePosition ();
+    Point updatePosition();
     /** Updates this Entity's position based on its speed and normalises this position using the function given */
-    Point updatePosition (const std::function<Point(Point)> & normalise);
+    Point updatePosition (const std::function<Point (Point)> & normalise);
 
     /** Multiply this Entity's energy value by the given multipliert */
     double updateEnergy (double multiplier);

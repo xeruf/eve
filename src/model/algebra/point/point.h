@@ -26,7 +26,7 @@ struct Point {
      * @param apex is the peak of the cone, where the angle is located in
      * @param centre is the Vector from the apex through the middle of the cone
      * @param angle is the overall angle of the cone */
-    [[nodiscard]] bool withinCone(const Point & apex, const Vector & centre, const Angle & angle) const;
+    [[nodiscard]] bool withinCone (const Point & apex, const Vector & centre, const Angle & angle) const;
 
     /** Returns the Point the given Vector is pointing to from Origin */
     Point & operator = (const Vector & v);
@@ -56,6 +56,6 @@ struct Point {
 };
 
 /** Origin of the coordinate system, Point (0|0). Used for Vector calculations. */
-static const Point ORIGIN = Point(0, 0);
+static const Point ORIGIN = Point (0, 0);
 
 #endif //EVE_POINT_H

@@ -64,7 +64,7 @@ struct Vector {
     Vector operator - (const Vector & v) const;
 
     /** Returns a Vector with same length but reversed direction */
-    Vector operator - () const;
+    Vector operator -() const;
 };
 
 #endif //EVE_VECTOR_H

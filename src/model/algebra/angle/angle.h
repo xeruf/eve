@@ -42,7 +42,7 @@ public:
     static int toDegrees (double angle);
 
     /** Returns an Angle in the opposite direction */
-    Angle operator - () const;
+    Angle operator -() const;
 
     /** Sets this Angle to the one given in radians */
     Angle & operator = (double val);

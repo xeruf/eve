@@ -10,9 +10,9 @@
 class Food : public Entity {
 public:
     /** Constructs an object with the given x- and y-coordinate */
-    Food(Point position, double value);
+    Food (Point position, double value);
     /** Constructs an object with the given position */
-    Food(double x, double y, double value);
+    Food (double x, double y, double value);
 };
 
 #endif //EVE_FOOD_H

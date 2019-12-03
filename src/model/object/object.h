@@ -11,9 +11,9 @@ protected:
     Point position;
 
 public:
-    Object(double x, double y);
-    explicit Object(Point position);
-    virtual ~Object() = 0;
+    Object (double x, double y);
+    explicit Object (Point position);
+    virtual ~Object () = 0;
 
     /** Returns the current position of the object */
     [[nodiscard]] Point getPosition() const;
