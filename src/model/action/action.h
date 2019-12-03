@@ -13,7 +13,7 @@ struct Action {
     const action type;
 
     /** Constructs an Action based on the given type (an action enum) */
-    explicit Action(action type);
+    explicit Action (action type);
 
     /** Returns a string representation of the action */
     std::string toString();;
