@@ -27,7 +27,7 @@ void World::addFood(Food * food) {
     incEnergy(food);
 }
 
-void World::incEnergy(Entity * entity) {
+void World::incEnergy(const Entity * entity) {
     if (energy + entity->getEnergy() > ENERGY) throw std::overflow_error("World::incEnergy(): operation exceeds ENERGY");
     energy += entity->getEnergy();
 }
@@ -47,6 +47,10 @@ std::vector<Food *> World::getFood() const {
 
 std::vector<Individual *> World::getIndividuals() const {
     return individuals;
+}
+
+void World::addChild(Individual * individual) {
+    individuals.emplace_back(individual);
 }
 
 std::unique_ptr<std::vector<Food *>> World::getFoodsAround(const Point & position, double radius) const {

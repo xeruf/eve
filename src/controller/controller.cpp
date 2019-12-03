@@ -104,11 +104,12 @@ void Controller::updateEnergy (Individual & individual, action action) {
             break;
     }
     double energyLevel = individual.updateEnergy (multiplier);
+
     if (energyLevel < SURVIVAL_THRESHOLD) {
         world.kill (individual.getID());
     }
     if (energyLevel > REPRODUCTION_THRESHOLD) {
-//        world.addChild (individual);
+        world.addChild (individual.reproduce(world.getIndividuals().size()));
     }
 }
 

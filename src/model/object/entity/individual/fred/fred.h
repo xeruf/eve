@@ -31,6 +31,9 @@ public:
      * @param energy is its life source */
     Fred(long ID, Point position, double a, double energy);
 
+    /** Methods giving birth to an offspring */
+    Fred * reproduce (long ID);
+
     /** Returns an Action using Neural Networks, and Machine, Deep and Reinforcement Learning
      * @param visibles is a pointer to an array holding all objects within its vision
      * @return the chosen Action */
