@@ -1,6 +1,7 @@
 #ifndef EVE_ENTITY_H
 #define EVE_ENTITY_H
 
+#include "../../../config.h"
 #include "../object.h"
 #include "../../algebra/algebra.h"
 

@@ -20,7 +20,7 @@ const Vector & Entity::applyForce(const Vector & v) {
 }
 
 const Vector & Entity::applyFriction() {
-    return speed = Vector(speed.angle, 0.5 * speed.length);
+    return speed = Vector(speed.angle, (1 - FRICTION) * speed.length);
 }
 
 Point Entity::updatePosition() {

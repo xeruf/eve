@@ -7,12 +7,13 @@
 #define SURVIVAL_THRESHOLD MAX_FOOD_SIZE
 #define REPRODUCTION_THRESHOLD 6 * SURVIVAL_THRESHOLD
 #define REPRODUCTION_CHILD_FRACTION 0.2
-#define VISION_RANGE 25.0
+#define VISION_RANGE 30
 #define MOUTH_ANGLE 59
 
 /* Action constants */
-#define TURN_RATE 10
-#define MOVE_RATE 10
+#define FRICTION 0.3
+#define TURN_RATE 5
+#define MOVE_RATE 5
 
 /* Action multiplier */
 #define ACTION_FACTOR_MOVE 0.0001
@@ -20,8 +21,8 @@
 
 /* Energy consumption multiplier per action */
 #define ENERGY_FACTOR_SLEEP 0.995
-#define ENERGY_FACTOR_TURN  0.991
-#define ENERGY_FACTOR_MOVE  0.990
+#define ENERGY_FACTOR_TURN  0.997 * ENERGY_FACTOR_SLEEP
+#define ENERGY_FACTOR_MOVE  0.995 * ENERGY_FACTOR_SLEEP
 
 /* SDL RENDER PARAMETERS */
 /** scaling of individuals and food for easier identification */
