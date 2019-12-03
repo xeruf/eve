@@ -37,7 +37,7 @@ private:
 
     std::vector<Uniform> distributions;
 
-    /** Increases the internal energy level by the entity's one */
+    /** Increases the internal energy level by the level of the given entity */
     void incEnergy(const Entity * entity);
 
 public:
