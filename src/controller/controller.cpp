@@ -12,9 +12,9 @@ void Controller::init() {
             int counter;
             try {
                 switch (i) {
-                    case 0: std::cout << "Freds: \t"; break;
-                    case 1: std::cout << "Brandies: \t"; break;
-                    case 2: std::cout << "Piercies: \t"; break;
+                    case 0: std::cout << "Freds:    "; break;
+                    case 1: std::cout << "Brandies: "; break;
+                    case 2: std::cout << "Piercies: "; break;
                 }
                 for (counter = 0; counter < amounts[i]; counter++) {
                     switch (i) {
