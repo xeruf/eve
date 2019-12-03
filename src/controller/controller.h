@@ -5,6 +5,7 @@
 #include "../model/object/entity/food/food.h"
 #include "../model/object/entity/individual/fred/fred.h"
 #include "../model/object/entity/individual/piercy/piercy.h"
+#include "../model/object/entity/individual/brandy/brandy.h"
 #include "../model/random/random.h"
 #include "../view/terminalview/terminalview.h"
 #include "../view/sdlview/sdlview.h"

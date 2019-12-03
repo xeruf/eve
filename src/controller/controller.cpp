@@ -6,15 +6,19 @@ Controller::Controller(double WIDTH, double HEIGHT, double ENERGY) :
 
 void Controller::init() {
     {
-        int amounts[3] = {AMOUNT_OF_FREDS, AMOUNT_OF_BRANDIES, AMOUNT_OF_PIERCIES};
-        for (int i = 0; i < sizeof(amounts); i++) {
+        int amounts[] = {AMOUNT_OF_FREDS, AMOUNT_OF_BRANDIES, AMOUNT_OF_PIERCIES};
+        for (int i = 0; i < 3; i++) {
             std::cout << "Amount of ";
             int counter;
             try {
+                switch (i) {
+                    case 0: std::cout << "Freds: \t"; break;
+                    case 1: std::cout << "Brandies: \t"; break;
+                    case 2: std::cout << "Piercies: \t"; break;
+                }
                 for (counter = 0; counter < amounts[i]; counter++) {
                     switch (i) {
                         case 0:
-                            std::cout << "Freds: ";
                             world.addIndividual<Fred>(
                                     world.rand(X_d),
                                     world.rand(Y_d),
@@ -22,16 +26,14 @@ void Controller::init() {
                                     world.rand(ENERGY_d) * INDIVIDUAL_FOOD_FACTOR);
                             break;
                         case 1:
-                            std::cout << "Brandies: ";
-                            world.addIndividual<Fred>(
+                            world.addIndividual<Brandy>(
                                     world.rand(X_d),
                                     world.rand(Y_d),
                                     world.rand(DIRECTION_d),
                                     world.rand(ENERGY_d) * INDIVIDUAL_FOOD_FACTOR);
                             break;
                         case 2:
-                            std::cout << "Piercies: ";
-                            world.addIndividual<Fred>(
+                            world.addIndividual<Piercy>(
                                     world.rand(X_d),
                                     world.rand(Y_d),
                                     world.rand(DIRECTION_d),
