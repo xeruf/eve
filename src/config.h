@@ -23,8 +23,10 @@
 #define ENERGY_FACTOR_MOVE  0.990
 
 /* SDL RENDER PARAMETERS */
-#define SCALE_FACTOR 1      // scaling of individuals and food for easier identification
-#define RENDER_DELAY 10     // delay between drawn frames in ms
+/** scaling of individuals and food for easier identification */
+#define SCALE_FACTOR 1
+/** delay between drawn frames in ms */
+#define RENDER_DELAY 10
 
 /* DEBUG CONSTANTS */
 #define RENDER_TERMINALVIEW false
