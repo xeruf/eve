@@ -85,7 +85,7 @@ std::unique_ptr <std::vector <Object *>> World::getObjectsAround (const Point & 
 
 std::unique_ptr <std::vector <Object *>> World::getObjectsInCone (const Point & apex, Vector centre, Angle angle) const {
     auto surroundings = getObjectsAround (apex, centre.length);
-    std::unique_ptr <std::vector <Object *>> visibles (new std::vector<Object *>);
+    std::unique_ptr <std::vector <Object *>> visibles (new std::vector <Object *>);
     for (auto & object : * surroundings) {
         if (object->getPosition().withinCone (apex, centre, angle)) {
             visibles->push_back (object);

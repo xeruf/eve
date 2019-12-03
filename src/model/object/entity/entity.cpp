@@ -5,7 +5,8 @@ Entity::Entity (double x, double y, double energy) :
 
 Entity::Entity (Point position, double energy) :
     Object (position),
-    energy{energy} {checkEnergy();}
+    energy {energy}
+    {checkEnergy();}
 
 void Entity::checkEnergy() const {
     if (energy <= 0) throw std::range_error ("Entity::checkEnergy(): Energy has to be positive");
@@ -13,7 +14,7 @@ void Entity::checkEnergy() const {
 
 double Entity::getEnergy() const {return energy;}
 
-double Entity::getRadius() const { return sqrt (energy) / M_PI; }
+double Entity::getRadius() const {return sqrt (energy) / M_PI; }
 
 const Vector & Entity::applyForce (const Vector & v) {
     return speed += v;

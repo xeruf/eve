@@ -22,8 +22,8 @@ struct Uniform : Distribution {
      * @param SEED is determining the resulting numbers; the same SEED always results in the same numbers */
     Uniform (double LOWER_BOUND, double UPPER_BOUND, unsigned int SEED) :
             Distribution (SEED),
-            LOWER_BOUND{LOWER_BOUND},
-            UPPER_BOUND{UPPER_BOUND},
+            LOWER_BOUND {LOWER_BOUND},
+            UPPER_BOUND {UPPER_BOUND},
             realDistribution (LOWER_BOUND, UPPER_BOUND) {}
 
     /** Returns a double randomly generated between the two bounds, based on the internal seed of the distribution */

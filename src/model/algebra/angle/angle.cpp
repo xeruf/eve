@@ -2,10 +2,10 @@
 #include "../algebra.h"
 
 Angle::Angle (double angle) :
-    a{normalise (angle)} {}
+    a {normalise (angle)} {}
 
 Angle::Angle (int angle) :
-    a{toRadians (normalise (angle))} {}
+    a {toRadians (normalise (angle))} {}
 
 
 double Angle::normalise (double angle) {
