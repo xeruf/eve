@@ -108,17 +108,17 @@ void Controller::updateEnergy (Individual & individual, action action) {
         world.kill (individual.getID());
     }
     if (energyLevel > REPRODUCTION_THRESHOLD) {
-        switch (typeid(individual).hash_code()) {}
+//        world.addChild (individual);
     }
 }
 
 void Controller::eatNearbyFood (Individual & individual) {
-    std::vector<Food> Foods = * world.getFoodsAround(
+    std::vector<Food *> Foods = * world.getFoodsAround(
             individual.getPosition(),
             individual.getRadius() + sqrt(MAX_FOOD_SIZE) / M_PI);
 
-    for (auto & food : Foods) {
-        individual.eat(food);
-        world.remove (& food);
+    for (auto food : Foods) {
+        individual.eat(* food);
+        world.remove (food);
     }
 }
