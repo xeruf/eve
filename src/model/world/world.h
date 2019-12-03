@@ -94,7 +94,7 @@ public:
     bool remove (const Food * food);
 
     /** Returns a pointer to an array containing all food items within the given radius around the given Position */
-    [[nodiscard]] std::unique_ptr<std::vector<Food>> getFoodsAround(const Point & position, double radius) const;
+    [[nodiscard]] std::unique_ptr<std::vector<Food *>> getFoodsAround(const Point & position, double radius) const;
     /** Returns a pointer to an array containing all objects within the given radius around the given Position */
     [[nodiscard]] std::unique_ptr<std::vector<Object *>> getObjectsAround(const Point & position, double radius) const;
     /** Returns a pointer to an array containing all objects within the given cone

@@ -49,11 +49,11 @@ std::vector<Individual *> World::getIndividuals() const {
     return individuals;
 }
 
-std::unique_ptr<std::vector<Food>> World::getFoodsAround(const Point & position, double radius) const {
-    std::unique_ptr<std::vector<Food>> Foods(new std::vector<Food>);
+std::unique_ptr<std::vector<Food *>> World::getFoodsAround(const Point & position, double radius) const {
+    std::unique_ptr<std::vector<Food *>> Foods(new std::vector<Food *>);
     for (auto food : foods) {
         if (std::abs(food->getPosition().distanceTo(position)) < radius + food->getRadius()) {
-            Foods->push_back(* food);
+            Foods->push_back(food);
         }
     }
     return Foods;
@@ -127,14 +127,13 @@ bool World::kill(long ID) {
 }
 
 bool World::remove (const Food * ptr) {
-    unsigned long index = 0;
-    for (auto food : foods) {
-        if (food == ptr) {
-            foods.erase (foods.begin() + index);
-            energy -=food->getEnergy();
+    for (unsigned long i = 0; i < foods.size(); i++) {
+        if (foods[i] == ptr) {
+            energy -= ptr->getEnergy();
+            foods.erase (foods.begin() + i);
+            delete ptr;
             return true;
         }
-        index++;
     }
     return false;
 }
