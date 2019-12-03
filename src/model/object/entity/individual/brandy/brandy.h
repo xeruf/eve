@@ -6,6 +6,7 @@
 #include "../../../../action/action.h"
 #include "../../../../random/random.h"
 
+/** Non-Player-controlled Species performing completely random actions */
 class Brandy : public Individual {
 public:
     /** Constructs a new individual of species Species

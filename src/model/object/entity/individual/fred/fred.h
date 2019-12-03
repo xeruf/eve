@@ -8,7 +8,7 @@
 
 #include <unordered_map>
 
-/** NPC Species supposedly acting *smart**/
+/** Non-Player-controlled Species using a basic reinforcement algorithm to supposedly act *smart**/
 class Fred : public Individual {
 private:
     action previousActions;

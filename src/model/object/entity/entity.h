@@ -9,6 +9,7 @@
 #include <cmath>
 #include <functional>
 
+/** Child of Object. Base for all movable objects in the world */
 class Entity : public Object {
 private:
     double energy;
