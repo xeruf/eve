@@ -13,12 +13,9 @@ void Entity::checkEnergy() const {
 
 double Entity::getEnergy() const {return energy;}
 
-void Entity::setPosition(Point p) { position = p;}
-void Entity::setPosition(double x, double y) { position = Point(x, y);}
-
 double Entity::getRadius() const { return sqrt(energy) / M_PI; }
 
-const Vector & Entity::applyForce(const struct Vector & v) {
+const Vector & Entity::applyForce(const Vector & v) {
     return speed += v;
 }
 
@@ -27,5 +24,16 @@ const Vector & Entity::applyFriction() {
 }
 
 Point Entity::updatePosition() {
-    return getPosition() += speed;
+    return position += speed;
+}
+Point Entity::updatePosition(const std::function<Point(Point)> & normalise) {
+    return position = normalise(position + speed);
+}
+
+double Entity::updateEnergy (double multiplier) {
+    return energy *= multiplier;
+}
+
+double Entity::addEnergy (double e) {
+    return energy += e;
 }

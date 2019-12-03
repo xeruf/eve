@@ -5,7 +5,7 @@
 
 #include <vector>
 
-/* Abstract base class for all objects in the world */
+/** Abstract base class for all objects in the world */
 class Object {
 protected:
     Point position;
@@ -15,6 +15,7 @@ public:
     explicit Object(Point position);
     virtual ~Object() = 0;
 
+    /** Returns the current position of the object */
     [[nodiscard]] Point getPosition() const;
 };
 
