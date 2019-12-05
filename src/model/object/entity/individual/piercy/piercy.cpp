@@ -1,15 +1,15 @@
 #include "piercy.h"
 
-Piercy::Piercy (long ID, double x, double y, double a, double energy) :
-    Individual (ID, x, y, a, energy) {}
-
 Piercy::Piercy (long ID, Point position, double a, double energy) :
-    Individual (ID, position, a, energy) {}
+    Individual (ID, position, a, energy, DEFAULT_COLOR) {}
+
+Piercy::Piercy (long ID, Point position, double a, double energy, int color) :
+    Individual (ID, position, a, energy, color) {}
 
 Piercy * Piercy::reproduce (long ID) {
     double energy = getEnergy();
     updateEnergy (1 - REPRODUCTION_CHILD_FRACTION);
-    return new Piercy (ID, position, getVision().angle.radians(), REPRODUCTION_CHILD_FRACTION * energy);
+    return new Piercy (ID, position, getVision().angle.radians(), REPRODUCTION_CHILD_FRACTION * energy, darken (color));
 }
 
 Action Piercy::act (const std::unique_ptr<std::vector<Object *>> & visibles) {
