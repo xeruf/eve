@@ -10,6 +10,7 @@
 
 #include <memory>
 
+/** Abstract base of all kinds of different species */
 class Individual : public Entity {
 private:
     Individual(long ID, Point position, Vector vision, double energy);
