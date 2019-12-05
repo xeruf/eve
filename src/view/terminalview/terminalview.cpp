@@ -31,14 +31,14 @@ std::string TerminalView::createTable(const World & world) const {
     return outputString;
 };
 
-std::string TerminalView::padIntL(int number, int maxLen) const {
+std::string TerminalView::padIntL(int number, int maxLen) {
     std::string numberString = std::to_string(number);
     std::string paddedString(maxLen - numberString.length(), ' ');
     paddedString += numberString;
     return paddedString;
 };
 
-std::string TerminalView::stringifyEntity(const Individual * individual) const {
+std::string TerminalView::stringifyEntity(const Individual * individual) {
     int id = individual->getID();
 
     std::string outputString;
@@ -47,7 +47,7 @@ std::string TerminalView::stringifyEntity(const Individual * individual) const {
     return outputString;
 };
 
-std::string TerminalView::stringifyEntity(const Entity * entity) const {
+std::string TerminalView::stringifyEntity(const Entity * entity) {
     int xPos = entity->getPosition().x;
     int yPos = entity->getPosition().y;
     int energy = entity->getEnergy();

@@ -6,12 +6,12 @@
 
 class TerminalView {
 private:
-    [[nodiscard]] std::string padIntL(int number, int maxLen) const;
+    [[nodiscard]] static std::string padIntL(int number, int maxLen);
 public:
     void render(const World & world) const;
     [[nodiscard]] std::string createTable(const World & world) const;
-    [[nodiscard]] std::string stringifyEntity(const Entity * entity) const;
-    [[nodiscard]] std::string stringifyEntity(const Individual * individual) const;
+    [[nodiscard]] static std::string stringifyEntity(const Entity * entity);
+    [[nodiscard]] static std::string stringifyEntity(const Individual * individual);
 };
 
 #endif // EVE_TERMINALVIEW_H
