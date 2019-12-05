@@ -26,7 +26,7 @@ public:
      * @param energy is its life source */
     Brandy(long ID, Point position, double a, double energy);
 
-    int getColor () override {return color;}
+    int getColor () override;
 
     Brandy * reproduce (long ID) override;
 

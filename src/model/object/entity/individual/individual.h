@@ -37,7 +37,7 @@ public:
     double eat (const Food & food);
 
     /** Color of the individual */
-    virtual int getColor () {return color;}
+    virtual int getColor ();
 
     /** Gives birth to an offspring */
     virtual Individual * reproduce (long ID) = 0;
