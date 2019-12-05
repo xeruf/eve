@@ -39,7 +39,8 @@ private:
 
     /** Increases the internal energy level by the level of the given entity */
     void incEnergy(const Entity * entity);
-
+    /** Removes the food at the specified index and returns its value */
+    double removeFoodAt(unsigned int foodIndex, const Food *food);
 public:
     /** The width of the world */
     const double WIDTH;
@@ -96,6 +97,8 @@ public:
     /** Removes the given food from the list of foods */
     bool remove (const Food * food);
 
+    /** Removes all food items within the given radius around the given Position and returns their accumulated value */
+    [[nodiscard]] double removeFoodsAround(const Point & position, double radius);
     /** Returns a pointer to an array containing all food items within the given radius around the given Position */
     [[nodiscard]] std::unique_ptr<std::vector<Food *>> getFoodsAround(const Point & position, double radius) const;
     /** Returns a pointer to an array containing all objects within the given radius around the given Position */

@@ -134,12 +134,8 @@ void Controller::updateEnergy (Individual & individual, action action) {
 }
 
 void Controller::eatNearbyFood (Individual & individual) {
-    std::vector<Food *> Foods = * world.getFoodsAround(
+    double energy = world.removeFoodsAround(
             individual.getPosition(),
             individual.getRadius() + sqrt(MAX_FOOD_SIZE) / M_PI);
-
-    for (auto food : Foods) {
-        individual.eat(* food);
-        world.remove (food);
-    }
+    individual.addEnergy(energy);
 }
