@@ -28,14 +28,17 @@ public:
     /** Returns the Vision Vector of this Individual */
     [[nodiscard]] Vector getVision() const;
 
-    /** Turns the Individual by the angle given */
+    /** Turns the Individual by the given angle */
     void turnBy (Angle angle);
 
-    /** Eat the given Food item */
+    /** Eats the given Food item */
     double eat (const Food & food);
 
+    /** Gives birth to an offspring */
     virtual Individual * reproduce (long ID) = 0;
 
+    /**@param visibles is a pointer to an array holding all objects within its vision
+     * @return the Action to execute */
     virtual Action act(const std::unique_ptr<std::vector<Object *>> & visibles) = 0;
 };
 

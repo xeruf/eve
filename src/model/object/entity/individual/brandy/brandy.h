@@ -22,12 +22,9 @@ public:
      * @param energy is its life source */
     Brandy(long ID, Point position, double a, double energy);
 
-    /** Methods giving birth to an offspring */
     Brandy * reproduce (long ID) override;
 
-    /** Returns an Action using Neural Networks, and Machine, Deep and Reinforcement Learning
-     * @param visibles is a pointer to an array holding all objects within its vision
-     * @return the chosen Action */
+    /** Returns a random Action. */
     Action act(const std::unique_ptr<std::vector<Object *>> & visibles) override;
 };
 
