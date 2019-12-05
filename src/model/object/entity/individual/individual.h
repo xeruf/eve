@@ -34,6 +34,8 @@ public:
     /** Eat the given Food item */
     double eat (const Food & food);
 
+    virtual Individual * reproduce (long ID) = 0;
+
     virtual Action act(const std::unique_ptr<std::vector<Object *>> & visibles) = 0;
 };
 

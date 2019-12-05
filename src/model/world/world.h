@@ -38,7 +38,7 @@ private:
     std::vector<Uniform> distributions;
 
     /** Increases the internal energy level by the entity's one */
-    void incEnergy(Entity * entity);
+    void incEnergy(const Entity * entity);
 
 public:
     /** The width of the world */
@@ -89,6 +89,9 @@ public:
     [[nodiscard]] std::list<Individual *> getCemetery() const;
     /** Kills the Individual with the given ID. Returns whether this operation was successful */
     bool kill(long ID);
+
+    /** Copies the given Individual into the world */
+    void addChild (Individual * individual);
 
     /** Removes the given food from the list of foods */
     bool remove (const Food * food);

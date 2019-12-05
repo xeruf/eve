@@ -6,27 +6,47 @@ Controller::Controller(double WIDTH, double HEIGHT, double ENERGY) :
 
 void Controller::init() {
     {
-        int i, j = 0;
-        try {
-            for (i = 0; i < AMOUNT_OF_FREDS; i++) {
-                world.addIndividual<Fred>(
-                        world.rand(X_d),
-                        world.rand(Y_d),
-                        world.rand(DIRECTION_d),
-                        world.rand(ENERGY_d) * INDIVIDUAL_FOOD_FACTOR);
+        int amounts[] = {AMOUNT_OF_FREDS, AMOUNT_OF_BRANDIES, AMOUNT_OF_PIERCIES};
+        for (int i = 0; i < 3; i++) {
+            std::cout << "Amount of ";
+            int counter;
+            try {
+                switch (i) {
+                    case 0: std::cout << "Freds:    "; break;
+                    case 1: std::cout << "Brandies: "; break;
+                    case 2: std::cout << "Piercies: "; break;
+                }
+                for (counter = 0; counter < amounts[i]; counter++) {
+                    switch (i) {
+                        case 0:
+                            world.addIndividual<Fred>(
+                                    world.rand(X_d),
+                                    world.rand(Y_d),
+                                    world.rand(DIRECTION_d),
+                                    world.rand(ENERGY_d) * INDIVIDUAL_FOOD_FACTOR);
+                            break;
+                        case 1:
+                            world.addIndividual<Brandy>(
+                                    world.rand(X_d),
+                                    world.rand(Y_d),
+                                    world.rand(DIRECTION_d),
+                                    world.rand(ENERGY_d) * INDIVIDUAL_FOOD_FACTOR);
+                            break;
+                        case 2:
+                            world.addIndividual<Piercy>(
+                                    world.rand(X_d),
+                                    world.rand(Y_d),
+                                    world.rand(DIRECTION_d),
+                                    world.rand(ENERGY_d) * INDIVIDUAL_FOOD_FACTOR);
+                            break;
+                    }
+                }
             }
-
-            for (j = 0; j < AMOUNT_OF_PIERCIES; j++) {
-                world.addIndividual<Piercy>(
-                        world.rand(X_d),
-                        world.rand(Y_d),
-                        world.rand(DIRECTION_d),
-                        world.rand(ENERGY_d) * INDIVIDUAL_FOOD_FACTOR);
+            catch (std::overflow_error & e) {
+                    std::cerr << e.what() << std::endl;
             }
-        } catch (std::overflow_error & e) {
-            std::cerr << e.what() << std::endl;
+            std::cout << counter << std::endl;
         }
-        std::cout << "Initialised with " << i << " Freds and " << j << " Piercies" << std::endl;
     }
     world.setRefillFunction([](World * w) -> Food * {
         return new Food(
@@ -104,11 +124,12 @@ void Controller::updateEnergy (Individual & individual, action action) {
             break;
     }
     double energyLevel = individual.updateEnergy (multiplier);
+
     if (energyLevel < SURVIVAL_THRESHOLD) {
         world.kill (individual.getID());
     }
     if (energyLevel > REPRODUCTION_THRESHOLD) {
-//        world.addChild (individual);
+        world.addChild (individual.reproduce(world.getIndividuals().size()));
     }
 }
 
