@@ -5,13 +5,14 @@
 #include "../../../object.h"
 #include "../../../../action/action.h"
 #include "../../../../random/random.h"
+#include "../../../../color//color.h"
 
 #include <unordered_map>
 
 /** Species using a basic reinforcement algorithm */
 class Fred : public Individual {
 private:
-    static const int color = FRED_COLOR;
+    static const int DEFAULT_COLOR = FRED_COLOR;
 
     action previousActions;
     double previousEnergy;
@@ -21,17 +22,16 @@ private:
 public:
     /** Constructs a new individual of species Fred
      * @param ID is unique and set automatically by the World
-     * @param x is the latitude of the object
-     * @param y is the longitude of the object
+     * @param position sets the coordinates of Fred
      * @param a is the direction it's looking
      * @param energy is its life source */
-    Fred(long ID, double x, double y, double a, double energy);
+    Fred(long ID, Point position, double a, double energy);
     /** Constructs a new individual of species Fred
      * @param ID is unique and set automatically by the World
      * @param position sets the coordinates of Fred
      * @param a is the direction it's looking
      * @param energy is its life source */
-    Fred(long ID, Point position, double a, double energy);
+    Fred(long ID, Point position, double a, double energy, int color);
 
     int getColor () override;
 

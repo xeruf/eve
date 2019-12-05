@@ -1,16 +1,17 @@
 #include "individual.h"
 
 
-Individual::Individual(long ID, double x, double y, double angle, double energy) :
-        Individual(ID, Point(x, y), Vector(angle, VISION_RANGE), energy) {}
+Individual::Individual(long ID, Point position, double angle, double energy, int color) :
+        Individual(ID, position, Vector(angle, VISION_RANGE), energy, color) {}
 
 Individual::Individual(long ID, Point position, double angle, double energy) :
-    Individual(ID, position, Vector(angle, VISION_RANGE), energy) {}
+    Individual(ID, position, Vector(angle, VISION_RANGE), energy, DEFAULT_COLOR) {}
 
-Individual::Individual(long ID, Point position, Vector vision, double energy) :
+Individual::Individual(long ID, Point position, Vector vision, double energy, int color) :
     Entity(position, energy),
     vision{vision},
-    ID{ID} {}
+    ID{ID},
+    color {color} {}
 
 Individual::~Individual() = default;
 

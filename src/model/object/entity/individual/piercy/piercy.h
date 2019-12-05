@@ -6,6 +6,7 @@
 #include "../individual.h"
 #include "../../../object.h"
 #include "../../../../action/action.h"
+#include "../../../../color//color.h"
 
 #include <iostream>
 #include <limits>
@@ -13,22 +14,21 @@
 
 /** Player-controller Species */
 class Piercy : public Individual {
-    static const int color = PIERCY_COLOR;
+    static const int DEFAULT_COLOR = PIERCY_COLOR;
 
 public:
-    /** Constructs a new individual of species Piercy
-     * @param ID is unique and set automatically by the World
-     * @param x is the latitude of the object
-     * @param y is the longitude of the object
-     * @param a is the direction it's looking
-     * @param energy is its life source */
-    Piercy(long ID, double x, double y, double a, double energy);
     /** Constructs a new individual of species Piercy
      * @param ID is unique and set automatically by the World
      * @param position sets the coordinates of Piercy
      * @param a is the direction it's looking
      * @param energy is its life source */
     Piercy(long ID, Point position, double a, double energy);
+    /** Constructs a new individual of species Piercy
+     * @param ID is unique and set automatically by the World
+     * @param position sets the coordinates of Piercy
+     * @param a is the direction it's looking
+     * @param energy is its life source */
+    Piercy(long ID, Point position, double a, double energy, int color);
 
     int getColor () override;
 

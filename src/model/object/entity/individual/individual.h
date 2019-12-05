@@ -13,15 +13,18 @@
 /** Abstract base of all kinds of different species */
 class Individual : public Entity {
 private:
-    Individual(long ID, Point position, Vector vision, double energy);
+    Individual(long ID, Point position, Vector vision, double energy, int color);
 
     const long ID;
-    static const int color = INDIVIDUAL_COLOR;
+    static const int DEFAULT_COLOR = INDIVIDUAL_COLOR;
 
     Vector vision;
 
+protected:
+    const int color;
+
 public:
-    Individual(long ID, double x, double y, double angle, double energy);
+    Individual(long ID, Point position, double angle, double energy, int color);
     Individual(long ID, Point position, double angle, double energy);
     ~Individual() override = 0;
 
