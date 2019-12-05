@@ -23,21 +23,21 @@ void Controller::init() {
                                     world.rand(X_d),
                                     world.rand(Y_d),
                                     world.rand(DIRECTION_d),
-                                    world.rand(ENERGY_d) * INDIVIDUAL_FOOD_FACTOR);
+                                    INDIVIDUAL_START_SIZE);
                             break;
                         case 1:
                             world.addIndividual<Brandy>(
                                     world.rand(X_d),
                                     world.rand(Y_d),
                                     world.rand(DIRECTION_d),
-                                    world.rand(ENERGY_d) * INDIVIDUAL_FOOD_FACTOR);
+                                    INDIVIDUAL_START_SIZE);
                             break;
                         case 2:
                             world.addIndividual<Piercy>(
                                     world.rand(X_d),
                                     world.rand(Y_d),
                                     world.rand(DIRECTION_d),
-                                    world.rand(ENERGY_d) * INDIVIDUAL_FOOD_FACTOR);
+                                    INDIVIDUAL_START_SIZE);
                             break;
                     }
                 }

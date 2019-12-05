@@ -1,14 +1,14 @@
 #ifndef EVE_CONFIG_H
 #define EVE_CONFIG_H
 
-#define PREALLOCATED_OBJECTS 10000
-
 #define MIN_FOOD_SIZE 100.0
-#define MAX_FOOD_SIZE 400.0
-#define INDIVIDUAL_FOOD_FACTOR 5.0
+#define MAX_FOOD_SIZE 500.0
+
 #define SURVIVAL_THRESHOLD MAX_FOOD_SIZE
+#define INDIVIDUAL_START_SIZE 5 * SURVIVAL_THRESHOLD
 #define REPRODUCTION_THRESHOLD 20 * SURVIVAL_THRESHOLD
-#define REPRODUCTION_CHILD_FRACTION 0.2
+#define REPRODUCTION_CHILD_FRACTION 0.3
+
 #define VISION_RANGE 30
 #define MOUTH_ANGLE 59
 
@@ -18,13 +18,13 @@
 #define MOVE_RATE 5
 
 /* Action multiplier */
-#define ACTION_FACTOR_MOVE -0.001
-#define ACTION_FACTOR_TURN -0.001
+#define ACTION_FACTOR_MOVE -0.0002
+#define ACTION_FACTOR_TURN -0.0002
 
 /* Energy consumption multiplier per action */
-#define ENERGY_FACTOR_SLEEP 0.997
-#define ENERGY_FACTOR_TURN  0.997 * ENERGY_FACTOR_SLEEP
-#define ENERGY_FACTOR_MOVE  0.995 * ENERGY_FACTOR_SLEEP
+#define ENERGY_FACTOR_SLEEP 0.9996
+#define ENERGY_FACTOR_TURN  0.9995 * ENERGY_FACTOR_SLEEP
+#define ENERGY_FACTOR_MOVE  0.9985 * ENERGY_FACTOR_SLEEP
 
 /* SDL RENDER PARAMETERS */
 /** scaling of individuals and food for easier identification */
@@ -36,27 +36,21 @@
 #define RENDER_TERMINALVIEW false
 #define RENDER_SDLVIEW true
 
-#define AMOUNT_OF_FREDS    2
+#define AMOUNT_OF_FREDS    12
 #define AMOUNT_OF_BRANDIES 8
 #define AMOUNT_OF_PIERCIES 0
 
 /* COLOR constants */
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-#define POINTER_COLOR    0xFFAAAAAA
+#define POINTER_COLOR    0xAAAAAAAA
 #define BACKGROUND_COLOR 0xFF000000
 #define FOOD_COLOR       0xFF0000FF
 #define INDIVIDUAL_COLOR 0xFF00FFFF
 #define FRED_COLOR       0xFF22FFFF
 #define BRANDY_COLOR     0xFFFFFF00
 #define PIERCY_COLOR     0xFFFF00FF
-=======
-=======
->>>>>>> Stashed changes
-#define POINTER_COLOR    0xAAAAAAAA
-#define BACKGROUND_COLOR 0xFF333300
-#define INDIVIDUAL_COLOR 0xFF22FFFF
-#define FOOD_COLOR       0xFF00BB00
->>>>>>> Stashed changes
+
+#define COLOR_CHANGE_FRACTION 0.2
+
+#define PREALLOCATED_OBJECTS 10000
 
 #endif //EVE_CONFIG_H
