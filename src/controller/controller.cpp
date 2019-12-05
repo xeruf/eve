@@ -1,7 +1,8 @@
 #include "controller.h"
 
 Controller::Controller(double WIDTH, double HEIGHT, double ENERGY) :
-    world(World(WIDTH, HEIGHT, ENERGY)) {
+    world(World(WIDTH, HEIGHT, ENERGY)), view{new SDLView()} {
+    view->init(world);
 }
 
 void Controller::init() {
@@ -62,18 +63,19 @@ void Controller::init() {
 
 long Controller::run() {
     if (not initialised) throw(std::logic_error("Controller::run(): .init() must be run first"));
-    while (simulate()) iteration++;
+    std::chrono::milliseconds tickDelay = std::chrono::milliseconds(TICK_DELAY);
+    std::chrono::time_point nextTick = std::chrono::system_clock::now();
+    while (simulate()) {
+        iteration++;
+        nextTick += tickDelay;
+        std::this_thread::sleep_until(nextTick);
+    }
+    view->stop();
     return iteration;
 }
 
 bool Controller::simulate() {
     world.fillWithFood();
-
-    if (RENDER_TERMINALVIEW) terminalview.render(world);
-    if (RENDER_SDLVIEW) {
-        int keysm = sdlview.render(world);
-        if (keysm == -1) return false;
-    }
 
     for (auto individual : world.getIndividuals()) {
         auto action = applyAction(* individual);

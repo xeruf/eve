@@ -1,7 +1,18 @@
 #ifndef EVE_CONFIG_H
 #define EVE_CONFIG_H
 
-#define PREALLOCATED_OBJECTS 10000
+/** delay between ticks in ms */
+#define TICK_DELAY 10
+
+/* SDL RENDER PARAMETERS */
+/** scaling of individuals and food for easier identification */
+#define SCALE_FACTOR 1
+/** delay between drawn frames in ms */
+#define RENDER_DELAY 100
+
+#define AMOUNT_OF_FREDS    2
+#define AMOUNT_OF_BRANDIES 8
+#define AMOUNT_OF_PIERCIES 0
 
 #define MIN_FOOD_SIZE 100.0
 #define MAX_FOOD_SIZE 400.0
@@ -26,24 +37,12 @@
 #define ENERGY_FACTOR_TURN  0.997 * ENERGY_FACTOR_SLEEP
 #define ENERGY_FACTOR_MOVE  0.995 * ENERGY_FACTOR_SLEEP
 
-/* SDL RENDER PARAMETERS */
-/** scaling of individuals and food for easier identification */
-#define SCALE_FACTOR 1
-/** delay between drawn frames in ms */
-#define RENDER_DELAY 10
-
-/* DEBUG CONSTANTS */
-#define RENDER_TERMINALVIEW false
-#define RENDER_SDLVIEW true
-
-#define AMOUNT_OF_FREDS    2
-#define AMOUNT_OF_BRANDIES 8
-#define AMOUNT_OF_PIERCIES 0
-
 /* COLOR constants */
 #define POINTER_COLOR    0xFFAAAAAA
 #define BACKGROUND_COLOR 0xFF333300
 #define INDIVIDUAL_COLOR 0xFF22FFFF
 #define FOOD_COLOR       0xFF00BB00
+
+#define PREALLOCATED_OBJECTS 0
 
 #endif //EVE_CONFIG_H

@@ -34,3 +34,9 @@ if(UBUNTU)
     target_link_libraries(eve ${LIB_SDL2})
     target_link_libraries(tests ${LIB_SDL2})
 endif()
+
+find_package(Threads REQUIRED)
+set(THREADS_PREFER_PTHREAD_FLAG ON)
+target_link_libraries(eve Threads::Threads)
+target_link_libraries(tests Threads::Threads)
+

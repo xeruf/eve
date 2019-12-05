@@ -23,6 +23,10 @@ private:
     long iteration = 0;
     bool initialised = false;
 
+    World world;
+
+    View * view;
+
     /** Calculates a new tick of the world.
      * @return Whether to continue running */
     bool simulate();
@@ -40,10 +44,6 @@ private:
     void eatNearbyFood (Individual & individual);
 
 public:
-    World world;
-    TerminalView terminalview;
-    SDLView sdlview;
-
     /** Constructs a World with the given parameters. They represent its dimension and max energy level */
     Controller(double WIDTH, double HEIGHT, double ENERGY);
 
