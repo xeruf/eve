@@ -8,6 +8,9 @@
 
 /** Species performing completely random actions */
 class Brandy : public Individual {
+private:
+    static const int color = BRANDY_COLOR;
+
 public:
     /** Constructs a new individual of species Brandy
      * @param ID is unique and set automatically by the World
@@ -22,6 +25,8 @@ public:
      * @param a is the direction it's looking
      * @param energy is its life source */
     Brandy(long ID, Point position, double a, double energy);
+
+    int getColor () override {return color;}
 
     Brandy * reproduce (long ID) override;
 

@@ -18,8 +18,8 @@
 #define MOVE_RATE 5
 
 /* Action multiplier */
-#define ACTION_FACTOR_MOVE 0.0001
-#define ACTION_FACTOR_TURN 0.0001
+#define ACTION_FACTOR_MOVE -0.001
+#define ACTION_FACTOR_TURN -0.001
 
 /* Energy consumption multiplier per action */
 #define ENERGY_FACTOR_SLEEP 0.997
@@ -41,9 +41,19 @@
 #define AMOUNT_OF_PIERCIES 0
 
 /* COLOR constants */
+<<<<<<< Updated upstream
 #define POINTER_COLOR    0xFFAAAAAA
+#define BACKGROUND_COLOR 0xFF000000
+#define FOOD_COLOR       0xFF0000FF
+#define INDIVIDUAL_COLOR 0xFF00FFFF
+#define FRED_COLOR       0xFF22FFFF
+#define BRANDY_COLOR     0xFFFFFF00
+#define PIERCY_COLOR     0xFFFF00FF
+=======
+#define POINTER_COLOR    0xAAAAAAAA
 #define BACKGROUND_COLOR 0xFF333300
 #define INDIVIDUAL_COLOR 0xFF22FFFF
 #define FOOD_COLOR       0xFF00BB00
+>>>>>>> Stashed changes
 
 #endif //EVE_CONFIG_H
