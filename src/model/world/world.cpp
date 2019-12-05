@@ -46,6 +46,10 @@ std::vector<Food *> World::getFood() const {
     return foods;
 }
 
+void World::usedEnergy(double usage) {
+    energy -= usage;
+}
+
 std::vector<Individual *> World::getIndividuals() const {
     return individuals;
 }

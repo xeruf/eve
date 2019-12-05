@@ -110,25 +110,27 @@ void Controller::update (Individual & individual, action action) {
 }
 
 void Controller::updateEnergy (Individual & individual, action action) {
-    double multiplier;
+    double energy = individual.getEnergy();
+    double usage = energy * IDLE_ENERGY_USE;
     switch (action) {
-        case SLEEP:
-            multiplier = ENERGY_FACTOR_SLEEP;
-            break;
         case MOVE:
-            multiplier = ENERGY_FACTOR_MOVE;
+            usage += MOVE_COST;
             break;
-        case TURN_RIGHT:
         case TURN_LEFT:
-            multiplier = ENERGY_FACTOR_TURN;
+        case TURN_RIGHT:
+            usage += TURN_COST;
+            break;
+        case SLEEP:
             break;
     }
-    double energyLevel = individual.updateEnergy (multiplier);
+    individual.updateEnergy(energy - usage);
+    world.usedEnergy(usage);
 
-    if (energyLevel < SURVIVAL_THRESHOLD) {
+    energy = individual.getEnergy();
+    if (energy < SURVIVAL_THRESHOLD) {
         world.kill (individual.getID());
     }
-    if (energyLevel > REPRODUCTION_THRESHOLD) {
+    if (energy > REPRODUCTION_THRESHOLD) {
         world.addChild (individual.reproduce(world.getIndividuals().size()));
     }
 }

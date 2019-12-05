@@ -23,6 +23,8 @@ private:
 protected:
     const int color;
 
+    double reproductionSplit();
+
 public:
     Individual(long ID, Point position, double angle, double energy, int color);
     Individual(long ID, Point position, double angle, double energy);

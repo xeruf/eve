@@ -30,8 +30,8 @@ Point Entity::updatePosition(const std::function<Point(Point)> & normalise) {
     return position = normalise(position + speed);
 }
 
-double Entity::updateEnergy (double multiplier) {
-    return energy *= multiplier;
+void Entity::updateEnergy (double newEnergy) {
+    energy = newEnergy;
 }
 
 double Entity::addEnergy (double e) {

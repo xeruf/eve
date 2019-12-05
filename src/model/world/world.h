@@ -66,6 +66,9 @@ public:
     /** Returns the current level of energy, the sum of all entities within */
     [[nodiscard]] double getEnergy() const;
 
+    /** Removes the given energy value from the total */
+    void usedEnergy(double usage);
+
     /** Returns an array containing all Food items */
     [[nodiscard]] std::vector<Food *> getFood() const;
     /** Adds the Food vector given to the world */

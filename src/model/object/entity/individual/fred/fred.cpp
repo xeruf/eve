@@ -12,9 +12,7 @@ Fred::Fred(long ID, Point position, double a, double energy, int color) :
 }
 
 Fred * Fred::reproduce(long ID) {
-    double energy = getEnergy();
-    updateEnergy(1 - REPRODUCTION_CHILD_FRACTION);
-    return new Fred (ID, position, getVision().angle.radians(), REPRODUCTION_CHILD_FRACTION * energy, darken (color));
+    return new Fred (ID, position, getVision().angle.radians(), reproductionSplit(), darken (color));
 }
 
 Action Fred::act(const std::unique_ptr<std::vector<Object *>> & visibles) {

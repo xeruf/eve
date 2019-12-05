@@ -30,3 +30,9 @@ double Individual::eat (const Food & food) {
 int Individual::getColor() {
     return color;
 }
+
+double Individual::reproductionSplit() {
+    double childEnergy = getEnergy() * REPRODUCTION_CHILD_FRACTION;
+    updateEnergy(getEnergy() - childEnergy);
+    return childEnergy;
+}
