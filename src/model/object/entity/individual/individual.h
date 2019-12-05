@@ -16,6 +16,7 @@ private:
     Individual (long ID, Point position, Vector vision, double energy);
 
     const long ID;
+    static const int color = INDIVIDUAL_COLOR;
 
     Vector vision;
 
@@ -34,6 +35,9 @@ public:
 
     /** Eat the given Food item */
     double eat (const Food & food);
+
+    /** Color of the individual */
+    virtual int getColor () {return color;}
 
     virtual Individual * reproduce (long ID) = 0;
 

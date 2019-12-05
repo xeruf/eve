@@ -13,6 +13,8 @@
 
 /** Player-controller Species */
 class Piercy : public Individual {
+    static const int color = PIERCY_COLOR;
+
 public:
     /** Constructs a new individual of species Piercy
      * @param ID is unique and set automatically by the World
@@ -27,6 +29,8 @@ public:
      * @param a is the direction it's looking
      * @param energy is its life source */
     Piercy (long ID, Point position, double a, double energy);
+
+    int getColor () override {return color;}
 
     /** Methods giving birth to an offspring */
     Piercy * reproduce (long ID) override;

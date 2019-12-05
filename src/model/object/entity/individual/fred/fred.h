@@ -11,6 +11,8 @@
 /** Non-Player-controlled Species using a basic reinforcement algorithm to supposedly act *smart**/
 class Fred : public Individual {
 private:
+    static const int color = FRED_COLOR;
+
     action previousActions;
     double previousEnergy;
     std::unordered_map<action, double> memory;
@@ -30,6 +32,8 @@ public:
      * @param a is the direction it's looking
      * @param energy is its life source */
     Fred (long ID, Point position, double a, double energy);
+
+    int getColor () override {return color;}
 
     /** Methods giving birth to an offspring */
     Fred * reproduce (long ID) override;
