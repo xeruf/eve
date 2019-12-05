@@ -49,3 +49,6 @@ action Fred::think (const std::unique_ptr<std::vector<Object *>> &visibles) {
     return SLEEP;
 }
 
+int Fred::getColor() {
+    return color;
+}

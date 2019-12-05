@@ -33,7 +33,7 @@ public:
      * @param energy is its life source */
     Fred (long ID, Point position, double a, double energy);
 
-    int getColor () override {return color;}
+    int getColor () override;
 
     /** Methods giving birth to an offspring */
     Fred * reproduce (long ID) override;

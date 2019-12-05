@@ -23,3 +23,7 @@ Action Piercy::act (const std::unique_ptr<std::vector<Object *>> & visibles) {
         }
     }
 }
+
+int Piercy::getColor() {
+    return color;
+}

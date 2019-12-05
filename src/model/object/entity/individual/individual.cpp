@@ -25,3 +25,7 @@ void Individual::turnBy (Angle angle) {
 double Individual::eat (const Food & food) {
     return addEnergy (food.getEnergy());
 }
+
+int Individual::getColor() {
+    return color;
+}
