@@ -17,6 +17,7 @@
 #include <map>
 #include <functional>
 
+/** Main class for the EVE project - initialise then run to start the simulation */
 class Controller {
 private:
     long iteration = 0;
@@ -43,6 +44,7 @@ public:
     TerminalView terminalview;
     SDLView sdlview;
 
+    /** Constructs a World with the given parameters. They represent its dimension and max energy level */
     Controller(double WIDTH, double HEIGHT, double ENERGY);
 
      /** Adds objects to the world and prepares simulation. must be invoked before run() */
