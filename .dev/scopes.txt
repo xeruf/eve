@@ -1,6 +1,7 @@
 model
 world
 object
+individual
 view
 controller
 cmake
