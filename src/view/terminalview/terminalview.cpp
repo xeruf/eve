@@ -33,6 +33,8 @@ std::string TerminalView::createTable(const World & world) const {
 
 std::string TerminalView::padIntL(int number, int maxLen) {
     std::string numberString = std::to_string(number);
+    if(numberString.length() >= maxLen)
+        return numberString;
     std::string paddedString(maxLen - numberString.length(), ' ');
     paddedString += numberString;
     return paddedString;
