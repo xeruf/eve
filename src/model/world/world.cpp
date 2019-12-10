@@ -2,10 +2,9 @@
 #include "../../view/terminalview/terminalview.h"
 
 World::World(double WIDTH, double HEIGHT, double ENERGY) :
-    WIDTH{WIDTH},
-    HEIGHT{HEIGHT},
-    ENERGY{ENERGY}
-{
+        WIDTH{WIDTH},
+        HEIGHT{HEIGHT},
+        ENERGY{ENERGY} {
     if (WIDTH <= 0) throw std::range_error("World(): WIDTH must be positive");
     if (HEIGHT <= 0) throw std::range_error("World(): HEIGHT must be positive");
     if (ENERGY <= 0) throw std::range_error("World(): ENERGY must be positive");
@@ -23,14 +22,21 @@ World::~World() {
     for (auto corpse : cemetery) delete corpse;
 }
 
-void World::addFood(Food * food) {
-    foods.push_back(food);
-    incEnergy(food);
+void World::incEnergy(const Entity * entity) {
+    if (totalEnergy + entity->getEnergy() > ENERGY)
+        throw std::overflow_error("World::incEnergy(): operation exceeds ENERGY");
+    totalEnergy += entity->getEnergy();
 }
 
-void World::incEnergy(const Entity * entity) {
-    if (energy + entity->getEnergy() > ENERGY) throw std::overflow_error("World::incEnergy(): operation exceeds ENERGY");
-    energy += entity->getEnergy();
+double World::removeFoodAt(unsigned int foodIndex, const Food * food) {
+    if (foods[foodIndex] != food)
+        throw std::invalid_argument(
+                "Trying to remove food at " + std::to_string(foodIndex) +
+                " but it does not match " + TerminalView::stringifyEntity(food));
+    double foodEnergy = food->getEnergy();
+    foods.erase(foods.begin() + foodIndex);
+    delete food;
+    return foodEnergy;
 }
 
 double World::rand(Distribution_e d) {
@@ -39,19 +45,38 @@ double World::rand(Distribution_e d) {
 }
 
 double World::getEnergy() const {
-    return energy;
+    return totalEnergy;
 }
 
-std::vector<Food *> World::getFood() const {
+const std::vector<Food *> & World::getFood() const {
     return foods;
 }
 
-void World::usedEnergy(double usage) {
-    energy -= usage;
+const std::vector<Individual *> & World::getIndividuals() const {
+    return individuals;
 }
 
-std::vector<Individual *> World::getIndividuals() const {
-    return individuals;
+const std::list<Individual *> & World::getCemetery() const {
+    return cemetery;
+}
+
+void World::usedEnergy(double usage) {
+    totalEnergy -= usage;
+}
+
+void World::addFood(Food * food) {
+    foods.push_back(food);
+    incEnergy(food);
+}
+
+bool World::remove(const Food * ptr) {
+    for (unsigned long i = 0; i < foods.size(); i++) {
+        if (foods[i] == ptr) {
+            removeFoodAt(i, ptr);
+            return true;
+        }
+    }
+    return false;
 }
 
 void World::addChild(Individual * individual) {
@@ -71,13 +96,13 @@ double World::removeFoodsAround(const Point & position, double radius) {
 }
 
 std::unique_ptr<std::vector<Food *>> World::getFoodsAround(const Point & position, double radius) const {
-    std::unique_ptr<std::vector<Food *>> Foods(new std::vector<Food *>);
+    std::unique_ptr<std::vector<Food *>> foodAround(new std::vector<Food *>);
     for (auto food : foods) {
         if (std::abs(food->getPosition().distanceTo(position)) < radius + food->getRadius()) {
-            Foods->push_back(food);
+            foodAround->push_back(food);
         }
     }
-    return Foods;
+    return foodAround;
 }
 
 std::unique_ptr<std::vector<Object *>> World::getObjectsAround(const Point & position, double radius) const {
@@ -100,7 +125,8 @@ std::unique_ptr<std::vector<Object *>> World::getObjectsAround(const Point & pos
     return visibles;
 }
 
-std::unique_ptr<std::vector<Object *>> World::getObjectsInCone(const Point & apex, Vector centre, Angle angle) const {
+std::unique_ptr<std::vector<Object *>>
+World::getObjectsInCone(const Point & apex, Vector centre, Angle angle) const {
     auto surroundings = getObjectsAround(apex, centre.length);
     std::unique_ptr<std::vector<Object *>> visibles(new std::vector<Object *>);
     for (auto & object : * surroundings) {
@@ -111,13 +137,13 @@ std::unique_ptr<std::vector<Object *>> World::getObjectsInCone(const Point & ape
     return visibles;
 }
 
-void World::setRefillFunction(const std::function<Food * (World * world)> & f) {
+void World::setRefillFunction(const std::function<Food *(World * world)> & f) {
     refillFunction = f;
 }
 
-bool World::fillWithFood(const std::function<Food * (World * world)> & f) {
+bool World::fillWithFood(const std::function<Food *(World * world)> & f) {
     try {
-        while (energy < ENERGY) addFood(f(this));
+        while (totalEnergy < ENERGY) addFood(f(this));
         return true;
     } catch (std::overflow_error & e) {
         std::cerr << e.what() << std::endl;
@@ -129,15 +155,11 @@ bool World::fillWithFood() {
     return fillWithFood(refillFunction);
 }
 
-std::list<Individual *> World::getCemetery() const {
-    return cemetery;
-}
-
 bool World::kill(long ID) {
     unsigned long index = 0;
     for (auto individual : individuals) {
         if (individual->getID() == ID) {
-            energy -= individual->getEnergy();
+            totalEnergy -= individual->getEnergy();
             cemetery.push_back(individual);
             individuals.erase(individuals.begin() + index);
             return true;
@@ -147,31 +169,12 @@ bool World::kill(long ID) {
     return false;
 }
 
-double World::removeFoodAt (unsigned int foodIndex, const Food * food) {
-    if(foods[foodIndex] != food)
-        throw std::invalid_argument("Trying to remove food at " + std::to_string(foodIndex) + " but it does not match " + TerminalView::stringifyEntity(food));
-    double foodEnergy = food->getEnergy();
-    foods.erase (foods.begin() + foodIndex);
-    delete food;
-    return foodEnergy;
-}
-
-bool World::remove (const Food * ptr) {
-    for (unsigned long i = 0; i < foods.size(); i++) {
-        if (foods[i] == ptr) {
-            removeFoodAt(i, ptr);
-            return true;
-        }
-    }
-    return false;
-}
-
-Point World::normalisePosition (Point position) {
+Point World::normalisePosition(Point position) {
     while (position.x < 0.0) position.x += WIDTH;
-    position.x = fmod (position.x, WIDTH);
+    position.x = fmod(position.x, WIDTH);
 
     while (position.y < 0.0) position.y += HEIGHT;
-    position.y = fmod (position.y, HEIGHT);
+    position.y = fmod(position.y, HEIGHT);
 
     return position;
 }
