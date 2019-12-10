@@ -69,7 +69,8 @@ long Controller::run() {
 bool Controller::simulate() {
     world.fillWithFood();
 
-    if (RENDER_TERMINALVIEW) terminalview.render(world);
+    if (RENDER_TERMINALVIEW)
+        std::cout << TerminalView::stringifyList("Individuals", world.getIndividuals());
     if (RENDER_SDLVIEW) {
         int keysm = sdlview.render(world);
         if (keysm == -1) return false;

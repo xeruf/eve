@@ -4,18 +4,16 @@
 #include <exception>
 
 TEST_CASE("A string table can be created") {
-    TerminalView terminalView = TerminalView();
-
     std::string table =
-            "—————————————————————————————————————————\n"
+            "————————————————\n"
             "Food:\n"
-            "—————————————————————————————————————————\n"
+            "————————————————\n"
             "X:  500 | Y:  689 | Energy:  10\n"
             "X: 1000 | Y: 1000 | Energy: 100\n"
             "X:    0 | Y:    0 | Energy:   1\n"
-            "—————————————————————————————————————————\n"
+            "————————————————\n"
             "Individuals:\n"
-            "—————————————————————————————————————————\n"
+            "————————————————\n"
             "ID:   0 | X:  123 | Y:  321 | Energy: 100\n"
             "ID:   1 | X:  138 | Y:  153 | Energy:  70\n"
             "ID:   2 | X:  420 | Y:  420 | Energy: 5999\n";
@@ -35,23 +33,23 @@ TEST_CASE("A string table can be created") {
 
     // Food tests
     SECTION("stringifyEntity can convert a Food object into a string") {
-        REQUIRE(terminalView.stringifyEntity(food1) == "X:  500 | Y:  689 | Energy:  10\n");
+        REQUIRE(TerminalView::stringifyEntity(food1) == "X:  500 | Y:  689 | Energy:  10");
     }
 
     SECTION("stringifyEntity correctly formats food at max values") {
-        REQUIRE(terminalView.stringifyEntity(food2) == "X: 1000 | Y: 1000 | Energy: 100\n");
+        REQUIRE(TerminalView::stringifyEntity(food2) == "X: 1000 | Y: 1000 | Energy: 100");
     }
 
     SECTION("stringifyEntity correctly formats food at minimum values") {
-        REQUIRE(terminalView.stringifyEntity(food3) == "X:    0 | Y:    0 | Energy:   1\n");
+        REQUIRE(TerminalView::stringifyEntity(food3) == "X:    0 | Y:    0 | Energy:   1");
     }
 
     SECTION("stringifyEntity can convert an individual object into a string") {
-        REQUIRE(terminalView.stringifyEntity(world.getIndividuals().front()) == "ID:   0 | X:  123 | Y:  321 | Energy: 100\n");
-        REQUIRE(terminalView.stringifyEntity(world.getIndividuals().back()) == "ID:   2 | X:  420 | Y:  420 | Energy: 5999\n");
+        REQUIRE(TerminalView::stringifyEntity(world.getIndividuals().front()) == "ID:   0 | X:  123 | Y:  321 | Energy: 100");
+        REQUIRE(TerminalView::stringifyEntity(world.getIndividuals().back()) == "ID:   2 | X:  420 | Y:  420 | Energy: 5999");
     }
 
     SECTION("createTable correctly formats the whole table") {
-        REQUIRE(terminalView.createTable(world) == table);
+        REQUIRE(TerminalView::createTable(world) == table);
     }
 }

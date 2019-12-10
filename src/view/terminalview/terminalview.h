@@ -4,14 +4,24 @@
 
 #include "../../model/world/world.h"
 
-class TerminalView {
-private:
-    [[nodiscard]] static std::string padIntL(int number, int maxLen);
-public:
-    static void render(const World & world) ;
-    [[nodiscard]] static std::string createTable(const World & world) ;
-    [[nodiscard]] static std::string stringifyEntity(const Entity * entity);
-    [[nodiscard]] static std::string stringifyEntity(const Individual * individual);
+namespace TerminalView {
+    [[nodiscard]] std::string padIntL(int number, int maxLen);
+    void render(const World & world);
+    [[nodiscard]] std::string createTable(const World & world);
+    [[nodiscard]] std::string stringifyEntity(const Entity * entity);
+    [[nodiscard]] std::string stringifyEntity(const Individual * individual);
+
+    template <class T>
+    std::string stringifyList(const std::string& header, const std::vector<T *>& list) {
+        std::string string =
+                "————————————————\n" +
+                header + ":\n" +
+                "————————————————\n";
+        for (auto i : list) {
+            string += stringifyEntity(i) + "\n";
+        }
+        return string;
+    }
 };
 
 #endif // EVE_TERMINALVIEW_H

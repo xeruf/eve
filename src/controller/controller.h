@@ -41,7 +41,6 @@ private:
 
 public:
     World world;
-    TerminalView terminalview;
     SDLView sdlview;
 
     /** Constructs a World with the given parameters. They represent its dimension and max energy level */
