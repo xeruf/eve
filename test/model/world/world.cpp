@@ -1,6 +1,5 @@
 #include "../../../src/model/world/world.h"
 #include "../../../src/model/object/entity/individual/fred/fred.h"
-#include "../../../src/model/algebra/algebra.h"
 
 #include <catch2/catch.hpp>
 #include <exception>
@@ -20,8 +19,9 @@ SCENARIO("A world can be created and initialised") {
         CHECK(not world.getEnergy());
 
         WHEN ("I add entities to the world") {
-            static double foodE = 10.0;
-            static double fredE = 20.0;
+            int freds = 3;
+            double foodE = 10.0;
+            double fredE = 20.0;
 
             world.addFood(new Food(10, 20, foodE));
             world.addIndividual<Fred>(40.0, 50.0, 0.0, fredE);
@@ -47,7 +47,7 @@ SCENARIO("A world can be created and initialised") {
             }
 
             WHEN ("I fill up to max ENERGY") {
-                world.fillWithFood([](World * world) -> Food * {
+                world.fillWithFood([foodE](World * world) -> Food * {
                     return new Food(0, 0, std::min(foodE, world->getEnergy()));
                 });
 
@@ -70,7 +70,7 @@ SCENARIO("A world can be created and initialised") {
             CHECK(sizeI > 0);
             CHECK(sizeC == 0);
 
-            WHEN("I kill all individuals again") {
+            WHEN("I kill all individuals") {
                 for (auto individual : world.getIndividuals()) {
                     world.kill(individual->getID());
 
@@ -80,12 +80,15 @@ SCENARIO("A world can be created and initialised") {
                     }
                 }
 
-                THEN("All individuals reside in the cemetery instead") {
-                    CHECK(world.getIndividuals().empty());
-                }
-
                 THEN("The energy level of the world isn't maximised anymore") {
                     CHECK(world.getEnergy() < world.ENERGY);
+                }
+
+                WHEN("A new individual arises") {
+                    auto newborn = world.addIndividual<Fred>(0, 0, 0, fredE);
+                    THEN("The new individual has a new ID") {
+                        CHECK(newborn.getID() == freds);
+                    }
                 }
             }
         }

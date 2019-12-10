@@ -114,16 +114,17 @@ public:
 
     /** Constructs an Individual of the given Species with the given parameters in the world */
     template <class Species>
-    void addIndividual(Point position, double angle, double energy) {
-        Species * individual = new Species(individuals.size(), position, angle, energy);
+    Species& addIndividual(Point position, double angle, double energy) {
+        auto * individual = new Species(individuals.size() + cemetery.size(), position, angle, energy);
         individuals.push_back(individual);
         incEnergy(individual);
+        return *individual;
     }
 
     /** Constructs an Individual of the given Species with the given parameters in the world */
     template <class Species>
-    void addIndividual(double x, double y, double angle, double energy) {
-        addIndividual<Species>(Point(x, y), angle, energy);
+    Species& addIndividual(double x, double y, double angle, double energy) {
+        return addIndividual<Species>(Point(x, y), angle, energy);
     }
 
     /** Returns the given position, ensuring it's within the boundaries of the world */
