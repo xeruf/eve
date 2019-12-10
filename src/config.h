@@ -30,14 +30,14 @@
 /** scaling of individuals and food for easier identification */
 #define SCALE_FACTOR 1
 /** delay between drawn frames in ms */
-#define RENDER_DELAY 10
+#define RENDER_DELAY 2
 
 /* DEBUG CONSTANTS */
 #define RENDER_TERMINALVIEW false
-#define RENDER_SDLVIEW true
+#define RENDER_SDLVIEW false
 
-#define AMOUNT_OF_FREDS    8
-#define AMOUNT_OF_BRANDIES 8
+#define AMOUNT_OF_FREDS    1
+#define AMOUNT_OF_BRANDIES 0
 #define AMOUNT_OF_PIERCIES 0
 
 /* COLOR constants */

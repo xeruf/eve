@@ -79,6 +79,7 @@ bool Controller::simulate() {
     for (auto individual : world.getIndividuals()) {
         auto action = applyAction(* individual);
         update (* individual, action);
+        std::cout << " Done" << std::endl;
     }
 
     return not world.getIndividuals().empty();
@@ -86,8 +87,9 @@ bool Controller::simulate() {
 
 action Controller::applyAction (Individual & individual) {
     auto visibles = world.getObjectsInCone(individual.getPosition(), individual.getVision(), Angle(MOUTH_ANGLE));
-    action action = individual.act(visibles).type;
-    switch (action) {
+    auto action = individual.act(visibles);
+    std::cout << TerminalView::stringifyEntity(& individual) + " " + action.toString();
+    switch (action.type) {
         case SLEEP:
             break;
         case MOVE:
@@ -100,7 +102,7 @@ action Controller::applyAction (Individual & individual) {
             individual.turnBy(Angle((int) (TURN_RATE + ACTION_FACTOR_TURN * individual.getEnergy())));
             break;
     }
-    return action;
+    return action.type;
 }
 
 void Controller::update (Individual & individual, action action) {
@@ -128,6 +130,7 @@ void Controller::updateEnergy (Individual & individual, action action) {
     world.usedEnergy(usage);
 
     energy = individual.getEnergy();
+    std::cout << " Energy: " << energy << " " << world.getCemetery().size() << world.getIndividuals().size();
     if (energy < SURVIVAL_THRESHOLD) {
         world.kill (individual.getID());
     }
@@ -137,6 +140,7 @@ void Controller::updateEnergy (Individual & individual, action action) {
 }
 
 void Controller::eatNearbyFood (Individual & individual) {
+    std::cout << " Eat";
     double energy = world.removeFoodsAround(
             individual.getPosition(),
             individual.getRadius() + sqrt(MAX_FOOD_SIZE) / M_PI);
