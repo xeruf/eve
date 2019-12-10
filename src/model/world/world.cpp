@@ -83,6 +83,24 @@ void World::addChild(Individual * individual) {
     individuals.emplace_back(individual);
 }
 
+bool World::kill(long ID) {
+    unsigned long index = 0;
+    for (auto individual : individuals) {
+        if (individual->getID() == ID) {
+            totalEnergy -= individual->getEnergy();
+            cemetery.push_back(individual);
+            individuals.erase(individuals.begin() + index);
+            return true;
+        }
+        index++;
+    }
+    return false;
+}
+
+unsigned long World::nextId() {
+    return individuals.size() + cemetery.size();
+}
+
 double World::removeFoodsAround(const Point & position, double radius) {
     double value = 0;
     int counter = 0;
@@ -153,20 +171,6 @@ bool World::fillWithFood(const std::function<Food *(World * world)> & f) {
 
 bool World::fillWithFood() {
     return fillWithFood(refillFunction);
-}
-
-bool World::kill(long ID) {
-    unsigned long index = 0;
-    for (auto individual : individuals) {
-        if (individual->getID() == ID) {
-            totalEnergy -= individual->getEnergy();
-            cemetery.push_back(individual);
-            individuals.erase(individuals.begin() + index);
-            return true;
-        }
-        index++;
-    }
-    return false;
 }
 
 Point World::normalisePosition(Point position) {

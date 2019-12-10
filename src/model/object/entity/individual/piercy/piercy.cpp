@@ -6,7 +6,7 @@ Piercy::Piercy(long ID, Point position, double a, double energy) :
 Piercy::Piercy(long ID, Point position, double a, double energy, int color) :
     Individual(ID, position, a, energy, color) {}
 
-Piercy * Piercy::reproduce(long ID) {
+Piercy * Piercy::reproduce(unsigned long ID) {
     return new Piercy (ID, position, getVision().angle.radians(), reproductionSplit(), darken (color));
 }
 

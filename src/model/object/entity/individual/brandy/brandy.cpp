@@ -6,7 +6,7 @@ Brandy::Brandy (long ID, Point position, double a, double energy) :
 Brandy::Brandy (long ID, Point position, double a, double energy, int color) :
         Individual (ID, position, a, energy, color) {}
 
-Brandy * Brandy::reproduce(long ID) {
+Brandy * Brandy::reproduce(unsigned long ID) {
     return new Brandy (ID, position, getVision().angle.radians(), reproductionSplit(), darken (color));
 }
 

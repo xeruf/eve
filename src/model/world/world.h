@@ -93,6 +93,8 @@ public:
     /** Kills the Individual with the given ID. Returns whether this operation was successful */
     bool kill(long ID);
 
+    unsigned long nextId();
+
     /** Sets the function the world uses to refill itself,
      *  should the energy level fall below the maximum energy value.
      *  The function gets a pointer to this world and should return a pointer to a Food item on the heap.
@@ -128,7 +130,7 @@ public:
     /** Constructs an Individual of the given Species with the given parameters in the world */
     template<class Species>
     Species & addIndividual(Point position, double angle, double energy) {
-        auto * individual = new Species(individuals.size() + cemetery.size(), position, angle, energy);
+        auto * individual = new Species(nextId(), position, angle, energy);
         individuals.push_back(individual);
         incEnergy(individual);
         return * individual;

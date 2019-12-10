@@ -16,7 +16,7 @@ struct Action {
     explicit Action(action type);
 
     /** Returns a string representation of the action */
-    std::string toString();;
+    std::string toString();
 };
 
 

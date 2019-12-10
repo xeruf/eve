@@ -11,7 +11,7 @@ Fred::Fred(long ID, Point position, double a, double energy, int color) :
     memory.insert({TURN_RIGHT, 1});
 }
 
-Fred * Fred::reproduce(long ID) {
+Fred * Fred::reproduce(unsigned long ID) {
     return new Fred (ID, position, getVision().angle.radians(), reproductionSplit(), darken (color));
 }
 

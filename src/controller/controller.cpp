@@ -132,7 +132,7 @@ void Controller::updateEnergy (Individual & individual, action action) {
         world.kill (individual.getID());
     }
     if (energy > REPRODUCTION_THRESHOLD) {
-        world.addChild (individual.reproduce(world.getIndividuals().size()));
+        world.addChild (individual.reproduce(world.nextId()));
     }
 }
 

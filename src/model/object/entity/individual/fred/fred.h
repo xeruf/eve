@@ -35,7 +35,7 @@ public:
 
     int getColor () override;
 
-    Fred * reproduce (long ID) override;
+    Fred * reproduce (unsigned long ID) override;
 
     /** Determines the action to take based on Reinforcement Learning. */
     Action act(const std::unique_ptr<std::vector<Object *>> & visibles) override;

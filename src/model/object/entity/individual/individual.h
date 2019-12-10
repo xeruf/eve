@@ -45,7 +45,7 @@ public:
     virtual int getColor ();
 
     /** Gives birth to an offspring */
-    virtual Individual * reproduce (long ID) = 0;
+    virtual Individual * reproduce (unsigned long ID) = 0;
 
     /**@param visibles is a pointer to an array holding all objects within its vision
      * @return the Action to execute */

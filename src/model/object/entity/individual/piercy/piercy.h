@@ -32,7 +32,7 @@ public:
 
     int getColor () override;
 
-    Piercy * reproduce (long ID) override;
+    Piercy * reproduce (unsigned long ID) override;
 
     /** Waits for a key input in stdin and then returns an action based on that key. */
     Action act(const std::unique_ptr<std::vector<Object *>> & visibles) override;

@@ -28,7 +28,7 @@ public:
 
     int getColor () override;
 
-    Brandy * reproduce (long ID) override;
+    Brandy * reproduce (unsigned long ID) override;
 
     /** Returns a random Action. */
     Action act(const std::unique_ptr<std::vector<Object *>> & visibles) override;
