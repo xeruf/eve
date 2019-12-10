@@ -1,34 +1,32 @@
 #include "terminalview.h"
 #include <iostream>
 
-void TerminalView::render(const World & world) const {
+void TerminalView::render(const World & world) {
     std::string table = createTable(world);
     std::cout << table << std::endl;
 }
 
-std::string TerminalView::createTable(const World & world) const {
-    std::string outputString;
-
-    outputString += "—————————————————————————————————————————\n"
-                    "Food:\n"
-                    "—————————————————————————————————————————\n";
+std::string TerminalView::createTable(const World & world) {
+    std::string foodString =
+            "—————————————————————————————————————————\n"
+            "Food:\n"
+            "—————————————————————————————————————————\n";
 
     std::vector<Food *> food = world.getFood();
-
     for (auto f : food) {
-        outputString += stringifyEntity(f);
+        foodString += stringifyEntity(f);
     }
 
-    outputString += "—————————————————————————————————————————\n"
-                    "Individuals:\n"
-                    "—————————————————————————————————————————\n";
-
+    std::string individualString =
+            "—————————————————————————————————————————\n"
+            "Individuals:\n"
+            "—————————————————————————————————————————\n";
     std::vector<Individual *> individuals = world.getIndividuals();
     for (auto i : individuals) {
-        outputString += stringifyEntity(i);
+        individualString += stringifyEntity(i);
     }
 
-    return outputString;
+    return foodString + individualString;
 };
 
 std::string TerminalView::padIntL(int number, int maxLen) {

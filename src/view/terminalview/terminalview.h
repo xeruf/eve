@@ -8,8 +8,8 @@ class TerminalView {
 private:
     [[nodiscard]] static std::string padIntL(int number, int maxLen);
 public:
-    void render(const World & world) const;
-    [[nodiscard]] std::string createTable(const World & world) const;
+    static void render(const World & world) ;
+    [[nodiscard]] static std::string createTable(const World & world) ;
     [[nodiscard]] static std::string stringifyEntity(const Entity * entity);
     [[nodiscard]] static std::string stringifyEntity(const Individual * individual);
 };
