@@ -7,16 +7,18 @@
 #include "../../../../color/color.h"
 #include "../../../../random/random.h"
 
+namespace deisy {
 enum NATURE {LUST, GLUTTONY, GREED, SLOTH, WRATH, ENVY, PRIDE};
 static unsigned long const COLOR[] {CLUST, CGLUTTONY, CGREED, CSLOTH, CWRATH, CENVY, CPRIDE};
+}
 
 /** Autonomous Species */
 class Deisy : public Individual {
     static const int DEFAULT_COLOR = DEISY_COLOR;
 
-    const NATURE nature;
+    const deisy::NATURE nature;
 
-    Deisy(long ID, Point position, double a, double energy, int color, NATURE nature);
+    Deisy(long ID, Point position, double a, double energy, int color, deisy::NATURE nature);
 
 public:
     /** Constructs a new individual of species Deisy

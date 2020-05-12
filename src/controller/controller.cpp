@@ -108,6 +108,10 @@ action Controller::applyAction (Individual & individual) {
         case TURN_RIGHT:
             individual.turnBy(Angle((int) (TURN_RATE + ACTION_FACTOR_TURN * individual.getEnergy())));
             break;
+        case REPRODUCE:
+            if (individual.getEnergy() > REPRODUCTION_THRESHOLD) {
+                world.addChild (individual.reproduce(world.nextId()));
+            } else action = SLEEP;
     }
     return action;
 }
@@ -139,9 +143,6 @@ void Controller::updateEnergy (Individual & individual, action action) {
     energy = individual.getEnergy();
     if (energy < SURVIVAL_THRESHOLD) {
         world.kill (individual.getID());
-    }
-    if (energy > REPRODUCTION_THRESHOLD) {
-        world.addChild (individual.reproduce(world.nextId()));
     }
 }
 

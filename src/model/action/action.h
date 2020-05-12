@@ -5,7 +5,7 @@
 
 /** Enumeration defining the different possible actions */
 enum action {
-    SLEEP, MOVE, TURN_LEFT, TURN_RIGHT
+    SLEEP, MOVE, TURN_LEFT, TURN_RIGHT, REPRODUCE
 };
 
 /** Struct as container for different actions */

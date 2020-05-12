@@ -4,10 +4,10 @@ Deisy::Deisy(long ID, Point position, double a, double energy) :
     Deisy(ID, position, a, energy, DEFAULT_COLOR) {}
 
 Deisy::Deisy(long ID, Point position, double a, double energy, int color) :
-    Deisy(ID, position, a, energy, color, (NATURE) std::floor (NatureDist.rand())) {}
+    Deisy(ID, position, a, energy, color, (deisy::NATURE) std::floor (NatureDist.rand())) {}
 
-Deisy::Deisy(long ID, Point position, double a, double energy, int color, NATURE nature) :
-    Individual(ID, position, a, energy, COLOR_BY_NATURE ? COLOR [nature] : color),
+Deisy::Deisy(long ID, Point position, double a, double energy, int color, deisy::NATURE nature) :
+    Individual(ID, position, a, energy, COLOR_BY_NATURE ? deisy::COLOR [nature] : color),
     nature {nature} {}
 
 Deisy * Deisy::reproduce(unsigned long ID) {
@@ -15,7 +15,7 @@ Deisy * Deisy::reproduce(unsigned long ID) {
 }
 
 Action Deisy::act(const std::unique_ptr<std::vector<Object *>> & visibles) {
-    return Action(MOVE);
+    return Action ((action) Uniform (1, 5).rand());
 }
 
 int Deisy::getColor() {
