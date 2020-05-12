@@ -19,13 +19,13 @@
 
 /* Vision parameters for individuals. The vision is a cone starting from their core */
 /// Radius of the cone. Displayed as a grey line
-#define VISION_RANGE 100
+#define VISION_RANGE 80
 /// Angle. Imagine Pacman (We want to render them like that later)
 #define MOUTH_ANGLE 59
 
 /* Action constants */
 /// We work with kinetic. Kinetical energy decays by *this* much every turn
-#define FRICTION 0.4
+#define FRICTION 0.2
 /// The speed by which they turn. Set high for disks spinning uncontrolledly
 #define TURN_RATE 3
 /// The speed by which they move. Higher values makes them faster, lower ones let them starve.
@@ -33,17 +33,17 @@
 
 /* Action multiplier */
 /// Multiplied with individual's size - This basically determines their inertia
-#define ACTION_FACTOR_MOVE -0.0002
+#define ACTION_FACTOR_MOVE -0.0001
 /// Same as above; higher values mean that larger entities rotate slower
-#define ACTION_FACTOR_TURN -0.0001
+#define ACTION_FACTOR_TURN -0.00005
 
 /* Energy consumption multiplier per action */
 /// Energy use if individual does nothing
 #define IDLE_ENERGY_USE 0.001
 /// Energy use if individual turns
-#define TURN_COST       3
+#define TURN_COST       2
 /// Energy use if individual moves
-#define MOVE_COST       10
+#define MOVE_COST       8
 
 /* SDL RENDER PARAMETERS */
 /// Scaling of individuals and food for easier identification.
