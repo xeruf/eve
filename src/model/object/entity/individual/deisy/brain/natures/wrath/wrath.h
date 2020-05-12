@@ -13,7 +13,7 @@ class Wrath : public Brain {
 public:
     const brain::Nature nature = brain::WRATH;
 
-    Action think (const std::unique_ptr <std::vector <Object *>> & visibles) override;
+    Action think (const std::unique_ptr <std::vector <Object *>> & visibles, double energy) override;
 };
 
 

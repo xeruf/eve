@@ -13,7 +13,7 @@ class Greed : public Brain {
 public:
     const brain::Nature nature = brain::GREED;
 
-    Action think (const std::unique_ptr <std::vector <Object *>> & visibles) override;
+    Action think (const std::unique_ptr <std::vector <Object *>> & visibles, double energy) override;
 };
 
 

@@ -16,7 +16,7 @@ class Brain {
 public:
     const brain::Nature nature = brain::LUST;
 
-    virtual Action think (const std::unique_ptr <std::vector <Object *>> & visibles) = 0;
+    virtual Action think (const std::unique_ptr <std::vector <Object *>> & visibles, double energy) = 0;
 
 };
 

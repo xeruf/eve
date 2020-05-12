@@ -32,7 +32,7 @@ Deisy * Deisy::reproduce(unsigned long ID) {
 }
 
 Action Deisy::act(const std::unique_ptr<std::vector<Object *>> & visibles) {
-    brain->think (visibles);
+    brain->think (visibles, getEnergy());
 }
 
 int Deisy::getColor() const {
