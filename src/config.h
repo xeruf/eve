@@ -60,7 +60,7 @@
 
 /** Specify the how many of each species to spawn initially */
 /// Species choosing random actions each turn:
-#define AMOUNT_OF_FREDS    8
+#define AMOUNT_OF_FREDS    0
 /// Species with very basic reinforcement learning:
 #define AMOUNT_OF_BRANDIES 0
 /// Player-controlled species. This one doesn't work yet and will just stay idle
@@ -69,6 +69,12 @@
 #define AMOUNT_OF_DEISIES  8
 
 /* COLOR constants */
+/** IMPORTANT: All colors are in 0xAABBGGRR:
+ * A: Brightness
+ * B: Blue
+ * G: Green
+ * R: Red
+ */
 #define POINTER_COLOR    0xAAAAAAAA
 #define BACKGROUND_COLOR 0xFF000000
 #define FOOD_COLOR       0xFF0000FF
@@ -77,6 +83,24 @@
 #define BRANDY_COLOR     0xFFFFFF00
 #define PIERCY_COLOR     0xFFFF00FF
 #define DEISY_COLOR      0xFFFF00FF
+
+/* Deisy has seven different natures determining its behaviour */
+/// Disable the default color for deisy and color it by nature instead:
+#define COLOR_BY_NATURE true
+/// Color for a lustful deisy (red):
+#define CLUST       0xFF6000FF
+/// Color for a gluttonous deisy (orange):
+#define CGLUTTONY   0xFF00A5FF
+/// Color for a greedy deisy (yellow):
+#define CGREED      0xFF00FFD0
+/// Color for a slothful deisy (green):
+#define CSLOTH      0xFF00FF00
+/// Color for a wrathsome deisy (blue):
+#define CWRATH      0xFFFFB000
+/// Color for an envious deisy (indigo):
+#define CENVY       0xFF82004B
+/// Color for a proud deisy (violet):
+#define CPRIDE      0xFFFF007F
 
 /// Children are *this* much darker than their parents
 #define COLOR_CHANGE_FRACTION 0.2

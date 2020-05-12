@@ -5,10 +5,18 @@
 #include "../../../object.h"
 #include "../../../../action/action.h"
 #include "../../../../color/color.h"
+#include "../../../../random/random.h"
+
+enum NATURE {LUST, GLUTTONY, GREED, SLOTH, WRATH, ENVY, PRIDE};
+static unsigned long const COLOR[] {CLUST, CGLUTTONY, CGREED, CSLOTH, CWRATH, CENVY, CPRIDE};
 
 /** Autonomous Species */
 class Deisy : public Individual {
     static const int DEFAULT_COLOR = DEISY_COLOR;
+
+    const NATURE nature;
+
+    Deisy(long ID, Point position, double a, double energy, int color, NATURE nature);
 
 public:
     /** Constructs a new individual of species Deisy
@@ -31,5 +39,7 @@ public:
     /** Waits for a key input in stdin and then returns an action based on that key. */
     Action act(const std::unique_ptr<std::vector<Object *>> & visibles) override;
 };
+
+static Uniform NatureDist {0, 7};
 
 #endif //EVE_DEISY_H
