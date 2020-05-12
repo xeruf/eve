@@ -1,3 +1,6 @@
 #include "lust.h"
 
-/* Copyright (C) 2020 Aaron Alef & Felix Bachstein */
+Action Lust::think(const std::unique_ptr<std::vector<Object *> > &visibles) {
+    return Action ((action) Uniform (1, 5).rand());
+}
+
