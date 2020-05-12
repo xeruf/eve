@@ -1,24 +1,23 @@
 #ifndef EVE_DEISY_H
 #define EVE_DEISY_H
 
+#include "brain/brain.h"
+#include "brain/natures.h"
 #include "../individual.h"
 #include "../../../object.h"
 #include "../../../../action/action.h"
 #include "../../../../color/color.h"
 #include "../../../../random/random.h"
 
-namespace deisy {
-enum NATURE {LUST, GLUTTONY, GREED, SLOTH, WRATH, ENVY, PRIDE};
-static unsigned long const COLOR[] {CLUST, CGLUTTONY, CGREED, CSLOTH, CWRATH, CENVY, CPRIDE};
-}
+#include <memory>
 
 /** Autonomous Species */
 class Deisy : public Individual {
     static const int DEFAULT_COLOR = DEISY_COLOR;
 
-    const deisy::NATURE nature;
+    std::unique_ptr <Brain> brain;
 
-    Deisy(long ID, Point position, double a, double energy, int color, deisy::NATURE nature);
+    Deisy(long ID, Point position, double a, double energy, int color, brain::Nature nature);
 
 public:
     /** Constructs a new individual of species Deisy
@@ -34,7 +33,7 @@ public:
      * @param energy is its life source */
     Deisy(long ID, Point position, double a, double energy, int color);
 
-    int getColor () override;
+    [[nodiscard]] int getColor () const;
 
     Deisy * reproduce (unsigned long ID) override;
 
@@ -43,5 +42,6 @@ public:
 };
 
 static Uniform NatureDist {0, 7};
+
 
 #endif //EVE_DEISY_H

@@ -19,7 +19,7 @@
 
 /* Vision parameters for individuals. The vision is a cone starting from their core */
 /// Radius of the cone. Displayed as a grey line
-#define VISION_RANGE 80
+#define VISION_RANGE 100
 /// Angle. Imagine Pacman (We want to render them like that later)
 #define MOUTH_ANGLE 59
 
@@ -62,11 +62,11 @@
 /// Species with very basic reinforcement learning:
 #define AMOUNT_OF_FREDS    0
 /// Species choosing random actions each turn:
-#define AMOUNT_OF_BRANDIES 1
+#define AMOUNT_OF_BRANDIES 0
 /// Player-controlled species. This one doesn't work yet and will just stay idle
 #define AMOUNT_OF_PIERCIES 0
 /// Species using basic reinforcement learning and its vision range
-#define AMOUNT_OF_DEISIES  8
+#define AMOUNT_OF_DEISIES  1
 
 /* COLOR constants */
 /** IMPORTANT: All colors are in 0xAABBGGRR:
