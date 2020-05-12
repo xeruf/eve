@@ -6,8 +6,8 @@ Controller::Controller(double WIDTH, double HEIGHT, double ENERGY) :
 
 void Controller::init() {
     {
-        int amounts[] = {AMOUNT_OF_FREDS, AMOUNT_OF_BRANDIES, AMOUNT_OF_PIERCIES};
-        for (int i = 0; i < 3; i++) {
+        std::vector <int> amounts {AMOUNT_OF_FREDS, AMOUNT_OF_BRANDIES, AMOUNT_OF_PIERCIES, AMOUNT_OF_DEISIES};
+        for (int i = 0; i < amounts.size(); i++) {
             std::cout << "Amount of ";
             int counter;
             try {
@@ -15,6 +15,7 @@ void Controller::init() {
                     case 0: std::cout << "Freds:    "; break;
                     case 1: std::cout << "Brandies: "; break;
                     case 2: std::cout << "Piercies: "; break;
+                    case 3: std::cout << "Deisies:  "; break;
                 }
                 for (counter = 0; counter < amounts[i]; counter++) {
                     switch (i) {
@@ -39,6 +40,13 @@ void Controller::init() {
                                     world.rand(DIRECTION_d),
                                     INDIVIDUAL_START_SIZE);
                             break;
+                        case 3:
+                            world.addIndividual<Deisy>(
+                                    world.rand(X_d),
+                                    world.rand(Y_d),
+                                    world.rand(DIRECTION_d),
+                                    INDIVIDUAL_START_SIZE);
+                            break;
                     }
                 }
             }
@@ -49,11 +57,12 @@ void Controller::init() {
         }
     }
     world.setRefillFunction([](World * w) -> Food * {
+        double energyDiff = abs(w->ENERGY - w->getEnergy());
         return new Food(
                 w->rand(X_d),
                 w->rand(Y_d),
-                (w->ENERGY - w->getEnergy()) < MAX_FOOD_SIZE ?
-                w->ENERGY - w->getEnergy() :
+                energyDiff < MAX_FOOD_SIZE ?
+                energyDiff :
                 w->rand(ENERGY_d));
     });
 
@@ -76,7 +85,7 @@ bool Controller::simulate() {
         if (keysm == -1) return false;
     }
 
-    for (auto individual : world.getIndividuals()) {
+    for (auto * individual : world.getIndividuals()) {
         auto action = applyAction(* individual);
         update (* individual, action);
     }

@@ -143,7 +143,7 @@ public:
     }
 
     /** Returns the given position, ensuring it's within the boundaries of the world */
-    Point normalisePosition(Point position);
+    Point normalisePosition(Point position) const;
 };
 
 #endif //EVE_WORLD_H

@@ -6,7 +6,7 @@
 #include "../individual.h"
 #include "../../../object.h"
 #include "../../../../action/action.h"
-#include "../../../../color//color.h"
+#include "../../../../color/color.h"
 
 #include <iostream>
 #include <limits>

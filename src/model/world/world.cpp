@@ -115,7 +115,7 @@ double World::removeFoodsAround(const Point & position, double radius) {
 
 std::unique_ptr<std::vector<Food *>> World::getFoodsAround(const Point & position, double radius) const {
     std::unique_ptr<std::vector<Food *>> foodAround(new std::vector<Food *>);
-    for (auto food : foods) {
+    for (auto * food : foods) {
         if (std::abs(food->getPosition().distanceTo(position)) < radius + food->getRadius()) {
             foodAround->push_back(food);
         }
@@ -125,17 +125,17 @@ std::unique_ptr<std::vector<Food *>> World::getFoodsAround(const Point & positio
 
 std::unique_ptr<std::vector<Object *>> World::getObjectsAround(const Point & position, double radius) const {
     std::unique_ptr<std::vector<Object *>> visibles(new std::vector<Object *>);
-    for (auto & object : foods) {
+    for (auto const & object : foods) {
         if (std::abs(object->getPosition().distanceTo(position)) < radius) {
             visibles->push_back(object);
         }
     }
-    for (auto & object : individuals) {
+    for (auto const & object : individuals) {
         if (std::abs(object->getPosition().distanceTo(position)) < radius) {
             visibles->push_back(object);
         }
     }
-    for (auto & object : obstacles) {
+    for (auto const & object : obstacles) {
         if (std::abs(object->getPosition().distanceTo(position)) < radius) {
             visibles->push_back(object);
         }
@@ -161,7 +161,7 @@ void World::setRefillFunction(const std::function<Food *(World * world)> & f) {
 
 bool World::fillWithFood(const std::function<Food *(World * world)> & f) {
     try {
-        while (totalEnergy < ENERGY) addFood(f(this));
+        while (ENERGY - totalEnergy > MIN_FOOD_SIZE) addFood(f(this));
         return true;
     } catch (std::overflow_error & e) {
         std::cerr << e.what() << std::endl;
@@ -173,7 +173,7 @@ bool World::fillWithFood() {
     return fillWithFood(refillFunction);
 }
 
-Point World::normalisePosition(Point position) {
+Point World::normalisePosition(Point position) const {
     while (position.x < 0.0) position.x += WIDTH;
     position.x = fmod(position.x, WIDTH);
 
