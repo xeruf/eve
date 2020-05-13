@@ -1,7 +1,6 @@
 #ifndef EVE_DEISY_H
 #define EVE_DEISY_H
 
-#include "brain/brain.h"
 #include "brain/natures.h"
 #include "../individual.h"
 #include "../../../object.h"

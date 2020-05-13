@@ -13,7 +13,7 @@ class Pride : public Brain {
 public:
     const brain::Nature nature = brain::PRIDE;
 
-    Action think (const std::unique_ptr <std::vector <Object *>> & visibles, double energy) override;
+    Action think (const std::unique_ptr <std::vector <Object *>> & visibles, Individual const * body) override;
 };
 
 

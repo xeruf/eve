@@ -19,7 +19,7 @@ class Lust : public Brain {
 public:
     const brain::Nature nature = brain::LUST;
 
-    Action think (const std::unique_ptr <std::vector <Object *>> & visibles, double energy) override;
+    Action think (const std::unique_ptr <std::vector <Object *>> & visibles, Individual const * body) override;
 
 };
 

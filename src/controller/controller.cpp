@@ -89,7 +89,6 @@ bool Controller::simulate() {
         auto action = applyAction(* individual);
         update (* individual, action);
     }
-
     return not world.getIndividuals().empty();
 }
 

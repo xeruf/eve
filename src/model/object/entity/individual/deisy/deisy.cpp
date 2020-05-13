@@ -10,20 +10,21 @@ Deisy::Deisy(long ID, Point position, double a, double energy, int color, brain:
     Individual(ID, position, a, energy, COLOR_BY_NATURE ? brain::Color [nature] : color),
     brain {[nature]() -> Brain * {
         switch (nature) {
-            case brain::LUST:
-                return new Lust;
-            case brain::GLUTTONY:
-                return new Gluttony;
-            case brain::GREED:
-                return new Greed;
-            case brain::SLOTH:
-                return new Sloth;
-            case brain::WRATH:
-                return new Wrath;
-            case brain::ENVY:
-                return new Envy;
-            case brain::PRIDE:
-                return new Pride;
+//            case brain::LUST:
+//                return new Lust;
+//            case brain::GLUTTONY:
+//                return new Gluttony;
+//            case brain::GREED:
+//                return new Greed;
+//            case brain::SLOTH:
+//                return new Sloth;
+//            case brain::WRATH:
+//                return new Wrath;
+//            case brain::ENVY:
+//                return new Envy;
+//            case brain::PRIDE:
+//                return new Pride;
+            default: return new Greed;
         }
     }()} {}
 
@@ -32,7 +33,7 @@ Deisy * Deisy::reproduce(unsigned long ID) {
 }
 
 Action Deisy::act(const std::unique_ptr<std::vector<Object *>> & visibles) {
-    brain->think (visibles, getEnergy());
+    brain->think (visibles, this);
 }
 
 int Deisy::getColor() const {

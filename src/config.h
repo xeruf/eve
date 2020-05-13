@@ -33,9 +33,9 @@
 
 /* Action multiplier */
 /// Multiplied with individual's size - This basically determines their inertia
-#define ACTION_FACTOR_MOVE -0.0001
+#define ACTION_FACTOR_MOVE -0.00001
 /// Same as above; higher values mean that larger entities rotate slower
-#define ACTION_FACTOR_TURN -0.00005
+#define ACTION_FACTOR_TURN -0.000005
 
 /* Energy consumption multiplier per action */
 /// Energy use if individual does nothing

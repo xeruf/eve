@@ -4,6 +4,7 @@
 #include "../../../../../../config.h"
 #include "../../../../../action/action.h"
 #include "../../../../../random/random.h"
+#include "../../individual.h"
 
 #include <memory>
 
@@ -19,7 +20,7 @@ protected:
 public:
     const brain::Nature nature = brain::LUST;
 
-    virtual Action think (const std::unique_ptr <std::vector <Object *>> & visibles, double energy) = 0;
+    virtual Action think (const std::unique_ptr <std::vector <Object *>> & visibles, Individual const * body) = 0;
 
 };
 

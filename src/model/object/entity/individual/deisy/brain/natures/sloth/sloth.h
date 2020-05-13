@@ -19,7 +19,7 @@ class Sloth : public Brain {
 public:
     const brain::Nature nature = brain::SLOTH;
 
-    Action think (const std::unique_ptr <std::vector <Object *>> & visibles, double energy) override;
+    Action think (const std::unique_ptr <std::vector <Object *>> & visibles, Individual const * body) override;
 };
 
 

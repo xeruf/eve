@@ -1,6 +1,6 @@
 #include "gluttony.h"
 
-Action Gluttony::think(const std::unique_ptr<std::vector<Object *> > & visibles, double energy) {
+Action Gluttony::think (const std::unique_ptr <std::vector <Object *>> & visibles, Individual const * body) {
     if (!visibles->empty()) return Action (MOVE);
     if (dice.rand() >= GLUTTONY_TURN_WEIGHT) return Action (SLEEP);
     if (dice.rand() < GLUTTONY_CHANGE_DIR_WEIGHT) turnLeft = !turnLeft;
