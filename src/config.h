@@ -33,9 +33,9 @@
 
 /* Action multiplier */
 /// Multiplied with individual's size - This basically determines their inertia
-#define ACTION_FACTOR_MOVE -0.00001
+#define ACTION_FACTOR_MOVE -0.00005
 /// Same as above; higher values mean that larger entities rotate slower
-#define ACTION_FACTOR_TURN -0.000005
+#define ACTION_FACTOR_TURN -0.00001
 
 /* Energy consumption multiplier per action */
 /// Energy use if individual does nothing
@@ -66,7 +66,7 @@
 /// Player-controlled species. This one doesn't work yet and will just stay idle
 #define AMOUNT_OF_PIERCIES 0
 /// Species using basic reinforcement learning and its vision range
-#define AMOUNT_OF_DEISIES  4
+#define AMOUNT_OF_DEISIES  16
 
 /* COLOR constants */
 /** IMPORTANT: All colors are in 0xAABBGGRR:
