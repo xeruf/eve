@@ -13,8 +13,6 @@
 #define LUST_TURN_WEIGHT 0.8
 
 class Lust : public Brain {
-    static Uniform dice;
-
     int visiblesLimit = int (std::floor (dice.rand() * 4 + 1));
     bool turnLeft = bool (std::round (dice.rand()));
 

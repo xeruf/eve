@@ -1,7 +1,5 @@
 #include "lust.h"
 
-Uniform Lust::dice {0, 1};
-
 Action Lust::think(const std::unique_ptr<std::vector<Object *> > & visibles, double energy) {
     if (energy > REPRODUCTION_THRESHOLD) return Action (REPRODUCE);
     if (visibles->size() > visiblesLimit) return Action (MOVE);

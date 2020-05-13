@@ -3,6 +3,7 @@
 
 #include "../../../../../../config.h"
 #include "../../../../../action/action.h"
+#include "../../../../../random/random.h"
 
 #include <memory>
 
@@ -12,6 +13,8 @@ namespace brain {
 }
 
 class Brain {
+protected:
+    static Uniform dice;
 
 public:
     const brain::Nature nature = brain::LUST;
@@ -19,7 +22,6 @@ public:
     virtual Action think (const std::unique_ptr <std::vector <Object *>> & visibles, double energy) = 0;
 
 };
-
 
 
 #endif //EVE_BRAIN_H
