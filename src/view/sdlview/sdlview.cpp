@@ -54,6 +54,7 @@ void SDLView::draw(const World &world) {
 
         Point relativeVision2 = getRelativePosition(individual->getPosition() + (individual->getVision() - Angle (int (0.5 * MOUTH_ANGLE))), world.WIDTH, world.HEIGHT, DM.w, DM.h);
         thickLineColor(renderer, relativePosition.x, relativePosition.y, relativeVision2.x, relativeVision2.y, 3, POINTER_COLOR);
+
    }
 
    SDL_RenderPresent(renderer);

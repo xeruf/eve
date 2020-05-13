@@ -13,7 +13,7 @@
 #define GLUTTONY_CHANGE_DIR_WEIGHT  0.01
 
 class Gluttony : public Brain {
-    bool turnLeft = true;
+    bool turnLeft = bool (std::round (dice.rand()));
 
 public:
     const brain::Nature nature = brain::GLUTTONY;

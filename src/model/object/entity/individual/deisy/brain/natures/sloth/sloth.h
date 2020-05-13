@@ -9,7 +9,13 @@
 #include <vector>
 #include <memory>
 
+#define SLOTH_MOVE_WEIGHT 0.01
+#define SLOTH_TURN_WEIGHT 0.05
+#define SLOTH_CHANGE_DIR  0.02
+
 class Sloth : public Brain {
+    bool turnLeft = bool (std::round (dice.rand()));
+
 public:
     const brain::Nature nature = brain::SLOTH;
 
