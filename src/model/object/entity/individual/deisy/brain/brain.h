@@ -17,10 +17,14 @@ class Brain {
 protected:
     static Uniform dice;
 
+    Individual const * body;
+
 public:
+    explicit Brain(Individual const * body);
+
     const brain::Nature nature = brain::LUST;
 
-    virtual Action think (const std::unique_ptr <std::vector <Object *>> & visibles, Individual const * body) = 0;
+    virtual Action think (const std::unique_ptr <std::vector <Object *>> & visibles) = 0;
 
 };
 

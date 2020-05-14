@@ -17,9 +17,11 @@ class Greed : public Brain {
     const Angle middleAngle = Angle (MOUTH_ANGLE) * (1 - 2 * GREED_SIDE_AREA);
 
 public:
+    explicit Greed (Individual const * body);
+
     const brain::Nature nature = brain::GREED;
 
-    Action think (const std::unique_ptr <std::vector <Object *>> & visibles, Individual const * body) override;
+    Action think (const std::unique_ptr <std::vector <Object *>> & visibles) override;
 };
 
 

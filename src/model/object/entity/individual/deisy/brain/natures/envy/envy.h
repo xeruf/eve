@@ -12,9 +12,11 @@
 
 class Envy : public Brain {
 public:
+    explicit Envy (Individual const * body);
+
     const brain::Nature nature = brain::ENVY;
 
-    Action think (const std::unique_ptr <std::vector <Object *>> & visibles, Individual const * body) override;
+    Action think (const std::unique_ptr <std::vector <Object *>> & visibles) override;
 };
 
 

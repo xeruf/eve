@@ -19,9 +19,11 @@ class Wrath : public Brain {
     bool turnLeft = bool (std::round (dice.rand()));
 
 public:
+    explicit Wrath (Individual const * body);
+
     const brain::Nature nature = brain::WRATH;
 
-    Action think (const std::unique_ptr <std::vector <Object *>> & visibles, Individual const * body) override;
+    Action think (const std::unique_ptr <std::vector <Object *>> & visibles) override;
 };
 
 

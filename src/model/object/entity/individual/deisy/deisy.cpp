@@ -8,22 +8,24 @@ Deisy::Deisy(long ID, Point position, double a, double energy, int color) :
 
 Deisy::Deisy(long ID, Point position, double a, double energy, int color, brain::Nature nature) :
     Individual(ID, position, a, energy, COLOR_BY_NATURE ? brain::Color [nature] : color),
-    brain {[nature]() -> Brain * {
+    brain {[nature, this]() -> Brain * {
         switch (nature) {
             case brain::LUST:
-                return new Lust;
+                return new Lust (this);
             case brain::GLUTTONY:
-                return new Gluttony;
+                return new Gluttony (this);
             case brain::GREED:
-                return new Greed;
+                return new Greed (this);
             case brain::SLOTH:
-                return new Sloth;
+                return new Sloth (this);
             case brain::WRATH:
-                return new Wrath;
+                return new Wrath (this);
             case brain::ENVY:
-                return new Envy;
+                return new Envy (this);
             case brain::PRIDE:
-                return new Pride;
+                return new Pride (this);
+            default:
+                throw std::logic_error ("Deisy has gone insane - Insanity not yet implemented!");
         }
     }()} {}
 
@@ -32,7 +34,7 @@ Deisy * Deisy::reproduce(unsigned long ID) {
 }
 
 Action Deisy::act(const std::unique_ptr<std::vector<Object *>> & visibles) {
-    brain->think (visibles, this);
+    return brain->think (visibles);
 }
 
 int Deisy::getColor() const {

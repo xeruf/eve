@@ -1,6 +1,8 @@
 #include "wrath.h"
 
-Action Wrath::think (const std::unique_ptr <std::vector <Object *>> & visibles, Individual const * body) {
+Wrath::Wrath (Individual const * body) : Brain (body) {}
+
+Action Wrath::think (const std::unique_ptr <std::vector <Object *>> & visibles) {
     Entity const * followee = nullptr;
     for (auto const * object : * visibles) if (((Entity *) object)->getEnergy() >= MAX_FOOD_SIZE) {
         followee = (Entity const *) object;

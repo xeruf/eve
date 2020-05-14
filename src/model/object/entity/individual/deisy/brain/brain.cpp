@@ -1,5 +1,7 @@
 #include "brain.h"
 
+Brain::Brain (Individual const * body) : body {body} {}
+
 Uniform Brain::dice = Uniform {0, 1};
 
 

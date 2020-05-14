@@ -1,6 +1,8 @@
 #include "greed.h"
 
-Action Greed::think (const std::unique_ptr <std::vector <Object *>> & visibles, Individual const * body) {
+Greed::Greed (Individual const * body) : Brain (body) {}
+
+Action Greed::think (const std::unique_ptr <std::vector <Object *>> & visibles) {
     if (body->getEnergy() > GREED_REPRODUCTION_THRESHOLD_MULTIPLIER * REPRODUCTION_THRESHOLD) return Action (REPRODUCE);
 
     int left = 0;

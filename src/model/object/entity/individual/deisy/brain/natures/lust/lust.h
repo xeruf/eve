@@ -13,13 +13,17 @@
 #define LUST_TURN_WEIGHT 0.8
 
 class Lust : public Brain {
+
+
     int visiblesLimit = int (std::floor (dice.rand() * 4 + 1));
     bool turnLeft = bool (std::round (dice.rand()));
 
 public:
+    explicit Lust (Individual const * body);
+
     const brain::Nature nature = brain::LUST;
 
-    Action think (const std::unique_ptr <std::vector <Object *>> & visibles, Individual const * body) override;
+    Action think (const std::unique_ptr <std::vector <Object *>> & visibles) override;
 
 };
 

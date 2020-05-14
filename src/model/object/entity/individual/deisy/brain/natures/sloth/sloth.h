@@ -17,9 +17,11 @@ class Sloth : public Brain {
     bool turnLeft = bool (std::round (dice.rand()));
 
 public:
+    explicit Sloth (Individual const * body);
+
     const brain::Nature nature = brain::SLOTH;
 
-    Action think (const std::unique_ptr <std::vector <Object *>> & visibles, Individual const * body) override;
+    Action think (const std::unique_ptr <std::vector <Object *>> & visibles) override;
 };
 
 

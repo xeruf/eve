@@ -16,9 +16,11 @@ class Gluttony : public Brain {
     bool turnLeft = bool (std::round (dice.rand()));
 
 public:
+    explicit Gluttony (Individual const * body);
+
     const brain::Nature nature = brain::GLUTTONY;
 
-    Action think (const std::unique_ptr <std::vector <Object *>> & visibles, Individual const * body) override;
+    Action think (const std::unique_ptr <std::vector <Object *>> & visibles) override;
 };
 
 
