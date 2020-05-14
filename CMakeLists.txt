@@ -33,8 +33,6 @@ IF (Catch2_FOUND)
         target_link_libraries(tests ${LIB_SDL2})
     endif()
 
-    add_compile_definitions(tests ERRORS_AS_WARNINGS)
-
     target_link_libraries(tests Catch2::Catch2)
     include(CTest)
     include(Catch)
