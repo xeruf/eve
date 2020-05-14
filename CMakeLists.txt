@@ -29,6 +29,10 @@ IF (Catch2_FOUND)
     file(GLOB_RECURSE TEST_SRCS ${PROJECT_SOURCE_DIR}/test/*.c*)
     add_executable(tests ${TEST_SRCS} ${SRCS})
 
+    if(UBUNTU)
+        target_link_libraries(tests ${LIB_SDL2})
+    endif()
+
     add_compile_definitions(tests ERRORS_AS_WARNINGS)
 
     target_link_libraries(tests Catch2::Catch2)
