@@ -9,7 +9,7 @@ Action Wrath::think (const std::unique_ptr <std::vector <Object *>> & visibles) 
         break;
     }
     if (!followee) {
-        if (body->getEnergy() > REPRODUCTION_THRESHOLD) return Action (REPRODUCE);
+        if (body->getEnergy() >  WRATH_REPRODUCTION_MODIFIER * REPRODUCTION_THRESHOLD) return Action (REPRODUCE);
         if (visibles->size() > visiblesLimit) return Action (MOVE);
         double random = dice.rand();
         if (random < WRATH_MOVE_WEIGHT) return Action (MOVE);

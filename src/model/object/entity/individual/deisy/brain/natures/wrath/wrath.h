@@ -3,6 +3,7 @@
 
 #include "../../brain.h"
 #include "../../../../../../../../config.h"
+#include "../../../../../../../algebra/algebra.h"
 #include "../../../../../../../action/action.h"
 #include "../../../../../../../random/random.h"
 
@@ -11,8 +12,7 @@
 
 #define WRATH_MOVE_WEIGHT 0.8
 #define WRATH_TURN_WEIGHT 0.8
-
-
+#define WRATH_REPRODUCTION_MODIFIER 1.2
 
 class Wrath : public Brain {
     int visiblesLimit = int (std::floor (dice.rand() * 4 + 1));
