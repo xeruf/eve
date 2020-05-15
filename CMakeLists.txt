@@ -15,22 +15,26 @@ if(UBUNTU)
 endif()
 
 find_package(SDL2 REQUIRED)
-find_package(Catch2 REQUIRED)
 
 project(eve)
-
 file(GLOB_RECURSE SRCS ${PROJECT_SOURCE_DIR}/src/*/*.cpp)
-file(GLOB_RECURSE TEST_SRCS ${PROJECT_SOURCE_DIR}/test/*.cpp)
-
 add_executable(eve src/main.cpp ${SRCS})
-add_executable(tests ${TEST_SRCS} ${SRCS})
-
-target_link_libraries(tests Catch2::Catch2)
-include(CTest)
-include(Catch)
-catch_discover_tests(tests)
 
 if(UBUNTU)
     target_link_libraries(eve ${LIB_SDL2})
-    target_link_libraries(tests ${LIB_SDL2})
 endif()
+
+find_package(Catch2)
+IF (Catch2_FOUND)
+    file(GLOB_RECURSE TEST_SRCS ${PROJECT_SOURCE_DIR}/test/*.c*)
+    add_executable(tests ${TEST_SRCS} ${SRCS})
+
+    if(UBUNTU)
+        target_link_libraries(tests ${LIB_SDL2})
+    endif()
+
+    target_link_libraries(tests Catch2::Catch2)
+    include(CTest)
+    include(Catch)
+    catch_discover_tests(tests)
+ENDIF()
