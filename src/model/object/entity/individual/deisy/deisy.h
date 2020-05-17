@@ -17,6 +17,7 @@ class Deisy : public Individual {
     std::unique_ptr <Brain> brain;
 
     Deisy(long ID, Point position, double a, double energy, int color, brain::Nature nature);
+    Deisy(long ID, Point position, double a, double energy, int color, brain::Nature nature, int);
 
 public:
     /** Constructs a new individual of species Deisy

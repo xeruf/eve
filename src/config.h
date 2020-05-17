@@ -66,7 +66,7 @@
 /// Player-controlled species. This one doesn't work yet and will just stay idle
 #define AMOUNT_OF_PIERCIES 0
 /// Species using basic reinforcement learning and its vision range
-#define AMOUNT_OF_DEISIES  16
+#define AMOUNT_OF_DEISIES  8
 
 /* COLOR constants */
 /** IMPORTANT: All colors are in 0xAABBGGRR:
@@ -87,20 +87,21 @@
 /* Deisy has seven different natures determining its behaviour */
 /// Disable the default color for deisy and color it by nature instead:
 #define COLOR_BY_NATURE true
-/// Color for a lustful deisy (red):
-#define CLUST       0xFF6000FF
-/// Color for a gluttonous deisy (orange):
-#define CGLUTTONY   0xFF00A5FF
-/// Color for a greedy deisy (yellow):
-#define CGREED      0xFF00FFD0
-/// Color for a slothful deisy (green):
-#define CSLOTH      0xFF00FF00
-/// Color for a wrathsome deisy (blue):
-#define CWRATH      0xFFFFB000
-/// Color for an envious deisy (indigo):
-#define CENVY       0xFF82004B
-/// Color for a proud deisy (violet):
-#define CPRIDE      0xFFFF007F
+
+/// Color for a lustful deisy:
+#define CLUST       0xFF6000FF                  /// LUST     = RED
+/// Color for a gluttonous deisy:
+#define CGLUTTONY   0xFF00A5FF                  /// GLUTTONY = ORANGE
+/// Color for a greedy deisy:
+#define CGREED      0xFF00FFD0                  /// GREED    = YELLOW
+/// Color for a slothful deisy:
+#define CSLOTH      0xFF00FF00                  /// SLOTH    = GREEN
+/// Color for a wrathsome deisy:
+#define CWRATH      0xFFFFB000                  /// WRATH    = BLUE
+/// Color for an envious deisy:
+#define CENVY       0xFF82004B                  /// ENVY     = INDIGO
+/// Color for a proud deisy:
+#define CPRIDE      0xFFFF007F                  /// PRIDE    = VIOLET
 
 /// Children are *this* much darker than their parents
 #define COLOR_CHANGE_FRACTION 0.2

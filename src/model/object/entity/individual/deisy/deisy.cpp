@@ -7,7 +7,10 @@ Deisy::Deisy(long ID, Point position, double a, double energy, int color) :
     Deisy(ID, position, a, energy, color, (brain::Nature) std::floor (NatureDist.rand())) {}
 
 Deisy::Deisy(long ID, Point position, double a, double energy, int color, brain::Nature nature) :
-    Individual(ID, position, a, energy, COLOR_BY_NATURE ? brain::Color [nature] : color),
+        Deisy(ID, position, a, energy, COLOR_BY_NATURE ? brain::Color [nature] : color, nature, 0) {}
+
+Deisy::Deisy(long ID, Point position, double a, double energy, int color, brain::Nature nature, int) :
+    Individual(ID, position, a, energy, color),
     brain {[nature, this]() -> Brain * {
         switch (nature) {
             case brain::LUST:
@@ -30,7 +33,7 @@ Deisy::Deisy(long ID, Point position, double a, double energy, int color, brain:
     }()} {}
 
 Deisy * Deisy::reproduce(unsigned long ID) {
-    return new Deisy (static_cast<long>(ID), position, getVision().angle.radians(), reproductionSplit(), darken (color), brain->nature);
+    return new Deisy (static_cast<long>(ID), position, getVision().angle.radians(), reproductionSplit(), darken (color), brain->nature, 0);
 }
 
 Action Deisy::act(const std::unique_ptr<std::vector<Object *>> & visibles) {
