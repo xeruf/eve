@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
-mkdir -p cmake-build-debug && cd cmake-build-debug
-cmake ..
-cmake --build . --target tests
+mkdir -p cmake-build-debug
+cmake . --build cmake-build-debug
+cmake --build cmake-build-debug --target tests
 ./tests
