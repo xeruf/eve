@@ -28,14 +28,10 @@ void World::incEnergy(const Entity * entity) {
     totalEnergy += entity->getEnergy();
 }
 
-double World::removeFoodAt(unsigned int foodIndex, const Food * food) {
-    if (foods[foodIndex] != food)
-        throw std::invalid_argument(
-                "Trying to remove food at " + std::to_string(foodIndex) +
-                " but it does not match " + TerminalView::stringifyEntity(food));
+double World::removeFoodAt(const Food * food) {
     double foodEnergy = food->getEnergy();
-    foods.erase(foods.begin() + foodIndex);
-    delete food;
+    auto tail = std::remove(foods.begin(), foods.end(), food);
+    foods.erase (tail, foods.end());
     return foodEnergy;
 }
 
@@ -69,16 +65,6 @@ void World::addFood(Food * food) {
     incEnergy(food);
 }
 
-bool World::remove(const Food * ptr) {
-    for (unsigned long i = 0; i < foods.size(); i++) {
-        if (foods[i] == ptr) {
-            removeFoodAt(i, ptr);
-            return true;
-        }
-    }
-    return false;
-}
-
 void World::addChild(Individual * individual) {
     individuals.emplace_back(individual);
 }
@@ -103,12 +89,10 @@ unsigned long World::nextId() {
 
 double World::removeFoodsAround(const Point & position, double radius) {
     double value = 0;
-    int counter = 0;
     for (auto food : foods) {
         if (std::abs(food->getPosition().distanceTo(position)) < radius + food->getRadius()) {
-            value += removeFoodAt(counter, food);
+            value += removeFoodAt(food);
         }
-        counter++;
     }
     return value;
 }

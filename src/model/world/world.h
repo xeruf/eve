@@ -41,7 +41,7 @@ private:
     void incEnergy(const Entity * entity);
 
     /** Removes the food at the specified index and returns its value */
-    double removeFoodAt(unsigned int foodIndex, const Food * food);
+    double removeFoodAt(const Food * food);
 
 public:
     /** The width of the world */
@@ -83,9 +83,6 @@ public:
 
     /** Adds the Food vector given to the world */
     void addFood(Food * food);
-
-    /** Removes the given food from the list of foods */
-    bool remove(const Food * food);
 
     /** Copies the given Individual into the world */
     void addChild(Individual * individual);
