@@ -19,6 +19,8 @@ class Deisy : public Individual {
     Deisy(long ID, Point position, double a, double energy, int color, brain::Nature nature);
     Deisy(long ID, Point position, double a, double energy, int color, brain::Nature nature, int);
 
+    static brain::Nature getNature();
+
 public:
     /** Constructs a new individual of species Deisy
      * @param ID is unique and set automatically by the World

@@ -6,6 +6,7 @@
 #include "../../../../../random/random.h"
 #include "../../individual.h"
 
+#include <cmath>
 #include <memory>
 
 namespace brain {
@@ -20,12 +21,13 @@ protected:
     Individual const * body;
 
 public:
+    virtual ~Brain() = 0;
+
     explicit Brain(Individual const * body);
 
-    const brain::Nature nature = brain::LUST;
+    brain::Nature const nature = brain::Nature::LUST;
 
     virtual Action think (const std::unique_ptr <std::vector <Object *>> & visibles) = 0;
-
 };
 
 

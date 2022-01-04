@@ -24,9 +24,9 @@
 #define MOUTH_ANGLE 59
 
 /* Action constants */
-/// We work with kinetic. Kinetical energy decays by *this* much every turn
+/// We work with kinetic. Kinetic energy decays by *this* much every turn
 #define FRICTION 0.2
-/// The speed by which they turn. Set high for disks spinning uncontrolledly
+/// The speed by which they turn. Set high for disks spinning uncontrolled
 #define TURN_RATE 3
 /// The speed by which they move. Higher values makes them faster, lower ones let them starve.
 #define MOVE_RATE 3
@@ -47,7 +47,7 @@
 
 /* SDL RENDER PARAMETERS */
 /// Scaling of individuals and food for easier identification.
-/// This does not change hit boxes and vision ranges; it's purely cosmetical
+/// This does not change hit boxes and vision ranges; it's purely cosmetic
 #define SCALE_FACTOR 1
 /// Delay between drawn frames in ms
 #define RENDER_DELAY 10
@@ -58,7 +58,7 @@
 /// Graphical view
 #define RENDER_SDLVIEW true
 
-/** Specify the how many of each species to spawn initially */
+/** Specify how many of each species to spawn initially */
 /// Species with very basic reinforcement learning:
 #define AMOUNT_OF_FREDS    0
 /// Species choosing random actions each turn:
@@ -102,6 +102,9 @@
 #define CENVY       0xFF82004B                  /// ENVY     = INDIGO
 /// Color for a proud deisy:
 #define CPRIDE      0xFFFF007F                  /// PRIDE    = VIOLET
+
+/// Control Deisy nature generation. 0-6: Lust-Pride (see order above), 7: Random
+#define DEISY_NATURE 1
 
 /// Children are *this* much darker than their parents
 #define COLOR_CHANGE_FRACTION 0.2

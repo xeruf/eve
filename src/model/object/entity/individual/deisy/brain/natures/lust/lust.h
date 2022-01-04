@@ -14,7 +14,6 @@
 
 class Lust : public Brain {
 
-
     int visiblesLimit = int (std::floor (dice.rand() * 4 + 1));
     bool turnLeft = bool (std::round (dice.rand()));
 

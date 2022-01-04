@@ -4,7 +4,7 @@ Deisy::Deisy(long ID, Point position, double a, double energy) :
     Deisy(ID, position, a, energy, DEFAULT_COLOR) {}
 
 Deisy::Deisy(long ID, Point position, double a, double energy, int color) :
-    Deisy(ID, position, a, energy, color, (brain::Nature) std::floor (NatureDist.rand())) {}
+    Deisy(ID, position, a, energy, color, Deisy::getNature()) {}
 
 Deisy::Deisy(long ID, Point position, double a, double energy, int color, brain::Nature nature) :
         Deisy(ID, position, a, energy, COLOR_BY_NATURE ? brain::Color [nature] : color, nature, 0) {}
@@ -42,4 +42,10 @@ Action Deisy::act(const std::unique_ptr<std::vector<Object *>> & visibles) {
 
 int Deisy::getColor() const {
     return color;
+}
+
+brain::Nature Deisy::getNature() {
+  unsigned int const nature = DEISY_NATURE;
+  if (nature < 7) return (brain::Nature) nature;
+  else return (brain::Nature) std::floor (NatureDist.rand());
 }
