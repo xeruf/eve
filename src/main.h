@@ -3,6 +3,8 @@
 
 #include "controller/controller.h"
 
+#include <string>
+
 #define WIDTH  1920.0
 #define HEIGHT 1080.0
 

@@ -41,6 +41,8 @@ public:
 
     /** Waits for a key input in stdin and then returns an action based on that key. */
     Action act(const std::unique_ptr<std::vector<Object *>> & visibles) override;
+
+    static unsigned int nature;
 };
 
 static Uniform NatureDist {0, 7};

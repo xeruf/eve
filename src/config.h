@@ -41,9 +41,9 @@
 /// Energy use if individual does nothing
 #define IDLE_ENERGY_USE 0.001
 /// Energy use if individual turns
-#define TURN_COST       2
+#define TURN_COST       1
 /// Energy use if individual moves
-#define MOVE_COST       8
+#define MOVE_COST       10
 
 /* SDL RENDER PARAMETERS */
 /// Scaling of individuals and food for easier identification.
@@ -104,7 +104,7 @@
 #define CPRIDE      0xFFFF007F                  /// PRIDE    = VIOLET
 
 /// Control Deisy nature generation. 0-6: Lust-Pride (see order above), 7: Random
-#define DEISY_NATURE 1
+#define DEISY_NATURE 7
 
 /// Children are *this* much darker than their parents
 #define COLOR_CHANGE_FRACTION 0.2

@@ -45,7 +45,8 @@ int Deisy::getColor() const {
 }
 
 brain::Nature Deisy::getNature() {
-  unsigned int const nature = DEISY_NATURE;
-  if (nature < 7) return (brain::Nature) nature;
+  if (Deisy::nature < 7) return (brain::Nature) Deisy::nature;
   else return (brain::Nature) std::floor (NatureDist.rand());
 }
+
+unsigned int Deisy::nature = DEISY_NATURE;

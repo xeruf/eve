@@ -8,15 +8,15 @@ void Controller::init() {
     {
         std::vector <int> amounts {AMOUNT_OF_FREDS, AMOUNT_OF_BRANDIES, AMOUNT_OF_PIERCIES, AMOUNT_OF_DEISIES};
         for (int i = 0; i < amounts.size(); i++) {
-            std::cout << "Amount of ";
+//            std::cout << "Amount of ";
             int counter;
             try {
-                switch (i) {
-                    case 0: std::cout << "Freds:    "; break;
-                    case 1: std::cout << "Brandies: "; break;
-                    case 2: std::cout << "Piercies: "; break;
-                    case 3: std::cout << "Deisies:  "; break;
-                }
+//                switch (i) {
+//                    case 0: std::cout << "Freds:    "; break;
+//                    case 1: std::cout << "Brandies: "; break;
+//                    case 2: std::cout << "Piercies: "; break;
+//                    case 3: std::cout << "Deisies:  "; break;
+//                }
                 for (counter = 0; counter < amounts[i]; counter++) {
                     switch (i) {
                         case 0:
@@ -53,7 +53,7 @@ void Controller::init() {
             catch (std::overflow_error & e) {
                     std::cerr << e.what() << std::endl;
             }
-            std::cout << counter << std::endl;
+//            std::cout << counter << std::endl;
         }
     }
     world.setRefillFunction([](World * w) -> Food * {
