@@ -6,16 +6,17 @@ Controller::Controller(double WIDTH, double HEIGHT, double ENERGY) :
 
 void Controller::init() {
     {
-        int amounts[] = {AMOUNT_OF_FREDS, AMOUNT_OF_BRANDIES, AMOUNT_OF_PIERCIES};
-        for (int i = 0; i < 3; i++) {
-            std::cout << "Amount of ";
+        std::vector <int> amounts {AMOUNT_OF_FREDS, AMOUNT_OF_BRANDIES, AMOUNT_OF_PIERCIES, AMOUNT_OF_DEISIES};
+        for (int i = 0; i < amounts.size(); i++) {
+//            std::cout << "Amount of ";
             int counter;
             try {
-                switch (i) {
-                    case 0: std::cout << "Freds:    "; break;
-                    case 1: std::cout << "Brandies: "; break;
-                    case 2: std::cout << "Piercies: "; break;
-                }
+//                switch (i) {
+//                    case 0: std::cout << "Freds:    "; break;
+//                    case 1: std::cout << "Brandies: "; break;
+//                    case 2: std::cout << "Piercies: "; break;
+//                    case 3: std::cout << "Deisies:  "; break;
+//                }
                 for (counter = 0; counter < amounts[i]; counter++) {
                     switch (i) {
                         case 0:
@@ -39,21 +40,29 @@ void Controller::init() {
                                     world.rand(DIRECTION_d),
                                     INDIVIDUAL_START_SIZE);
                             break;
+                        case 3:
+                            world.addIndividual<Deisy>(
+                                    world.rand(X_d),
+                                    world.rand(Y_d),
+                                    world.rand(DIRECTION_d),
+                                    INDIVIDUAL_START_SIZE);
+                            break;
                     }
                 }
             }
             catch (std::overflow_error & e) {
                     std::cerr << e.what() << std::endl;
             }
-            std::cout << counter << std::endl;
+//            std::cout << counter << std::endl;
         }
     }
     world.setRefillFunction([](World * w) -> Food * {
+        double energyDiff = abs(w->ENERGY - w->getEnergy());
         return new Food(
                 w->rand(X_d),
                 w->rand(Y_d),
-                (w->ENERGY - w->getEnergy()) < MAX_FOOD_SIZE ?
-                w->ENERGY - w->getEnergy() :
+                energyDiff < MAX_FOOD_SIZE ?
+                energyDiff :
                 w->rand(ENERGY_d));
     });
 
@@ -76,11 +85,10 @@ bool Controller::simulate() {
         if (keysm == -1) return false;
     }
 
-    for (auto individual : world.getIndividuals()) {
+    for (auto * individual : world.getIndividuals()) {
         auto action = applyAction(* individual);
         update (* individual, action);
     }
-
     return not world.getIndividuals().empty();
 }
 
@@ -99,6 +107,10 @@ action Controller::applyAction (Individual & individual) {
         case TURN_RIGHT:
             individual.turnBy(Angle((int) (TURN_RATE + ACTION_FACTOR_TURN * individual.getEnergy())));
             break;
+        case REPRODUCE:
+            if (individual.getEnergy() > REPRODUCTION_THRESHOLD) {
+                world.addChild (individual.reproduce(world.nextId()));
+            } else action = SLEEP;
     }
     return action;
 }
@@ -130,9 +142,6 @@ void Controller::updateEnergy (Individual & individual, action action) {
     energy = individual.getEnergy();
     if (energy < SURVIVAL_THRESHOLD) {
         world.kill (individual.getID());
-    }
-    if (energy > REPRODUCTION_THRESHOLD) {
-        world.addChild (individual.reproduce(world.nextId()));
     }
 }
 

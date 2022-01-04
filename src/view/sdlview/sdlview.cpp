@@ -49,8 +49,12 @@ void SDLView::draw(const World &world) {
         Point relativePosition = getRelativePosition(individual->getPosition(), world.WIDTH, world.HEIGHT, DM.w, DM.h);
         filledCircleColor(renderer, relativePosition.x, relativePosition.y, individual->getRadius() * SCALE_FACTOR, individual->getColor());
 
-        Point relativeVision = getRelativePosition(individual->getPosition() + individual->getVision(), world.WIDTH, world.HEIGHT, DM.w, DM.h);
-        thickLineColor(renderer, relativePosition.x, relativePosition.y, relativeVision.x, relativeVision.y, 3, POINTER_COLOR);
+        Point relativeVision1 = getRelativePosition(individual->getPosition() + (individual->getVision() + Angle (int (0.5 * MOUTH_ANGLE))), world.WIDTH, world.HEIGHT, DM.w, DM.h);
+        thickLineColor(renderer, relativePosition.x, relativePosition.y, relativeVision1.x, relativeVision1.y, 3, POINTER_COLOR);
+
+        Point relativeVision2 = getRelativePosition(individual->getPosition() + (individual->getVision() - Angle (int (0.5 * MOUTH_ANGLE))), world.WIDTH, world.HEIGHT, DM.w, DM.h);
+        thickLineColor(renderer, relativePosition.x, relativePosition.y, relativeVision2.x, relativeVision2.y, 3, POINTER_COLOR);
+
    }
 
    SDL_RenderPresent(renderer);

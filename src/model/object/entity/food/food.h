@@ -13,6 +13,9 @@ public:
     Food(Point position, double value);
     /** Constructs an object with the given position */
     Food(double x, double y, double value);
+
 };
+
+std::ostream & operator << (std::ostream & os, Food const & food);
 
 #endif //EVE_FOOD_H

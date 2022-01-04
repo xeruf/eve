@@ -28,14 +28,10 @@ void World::incEnergy(const Entity * entity) {
     totalEnergy += entity->getEnergy();
 }
 
-double World::removeFoodAt(unsigned int foodIndex, const Food * food) {
-    if (foods[foodIndex] != food)
-        throw std::invalid_argument(
-                "Trying to remove food at " + std::to_string(foodIndex) +
-                " but it does not match " + TerminalView::stringifyEntity(food));
+double World::removeFoodAt(const Food * food) {
     double foodEnergy = food->getEnergy();
-    foods.erase(foods.begin() + foodIndex);
-    delete food;
+    auto tail = std::remove(foods.begin(), foods.end(), food);
+    foods.erase (tail, foods.end());
     return foodEnergy;
 }
 
@@ -69,16 +65,6 @@ void World::addFood(Food * food) {
     incEnergy(food);
 }
 
-bool World::remove(const Food * ptr) {
-    for (unsigned long i = 0; i < foods.size(); i++) {
-        if (foods[i] == ptr) {
-            removeFoodAt(i, ptr);
-            return true;
-        }
-    }
-    return false;
-}
-
 void World::addChild(Individual * individual) {
     individuals.emplace_back(individual);
 }
@@ -102,20 +88,18 @@ unsigned long World::nextId() {
 }
 
 double World::removeFoodsAround(const Point & position, double radius) {
-    double value = 0;
-    int counter = 0;
+    double eatenEnergy = 0;
     for (auto food : foods) {
-        if (std::abs(food->getPosition().distanceTo(position)) < radius + food->getRadius()) {
-            value += removeFoodAt(counter, food);
+        if (std::abs(food->getPosition().distanceTo(position)) < radius) {
+            eatenEnergy += removeFoodAt(food);
         }
-        counter++;
     }
-    return value;
+    return eatenEnergy;
 }
 
 std::unique_ptr<std::vector<Food *>> World::getFoodsAround(const Point & position, double radius) const {
     std::unique_ptr<std::vector<Food *>> foodAround(new std::vector<Food *>);
-    for (auto food : foods) {
+    for (auto * food : foods) {
         if (std::abs(food->getPosition().distanceTo(position)) < radius + food->getRadius()) {
             foodAround->push_back(food);
         }
@@ -125,17 +109,17 @@ std::unique_ptr<std::vector<Food *>> World::getFoodsAround(const Point & positio
 
 std::unique_ptr<std::vector<Object *>> World::getObjectsAround(const Point & position, double radius) const {
     std::unique_ptr<std::vector<Object *>> visibles(new std::vector<Object *>);
-    for (auto & object : foods) {
+    for (auto const & object : foods) {
         if (std::abs(object->getPosition().distanceTo(position)) < radius) {
             visibles->push_back(object);
         }
     }
-    for (auto & object : individuals) {
+    for (auto const & object : individuals) {
         if (std::abs(object->getPosition().distanceTo(position)) < radius) {
             visibles->push_back(object);
         }
     }
-    for (auto & object : obstacles) {
+    for (auto const & object : obstacles) {
         if (std::abs(object->getPosition().distanceTo(position)) < radius) {
             visibles->push_back(object);
         }
@@ -161,7 +145,7 @@ void World::setRefillFunction(const std::function<Food *(World * world)> & f) {
 
 bool World::fillWithFood(const std::function<Food *(World * world)> & f) {
     try {
-        while (totalEnergy < ENERGY) addFood(f(this));
+        while (ENERGY - totalEnergy > MIN_FOOD_SIZE) addFood(f(this));
         return true;
     } catch (std::overflow_error & e) {
         std::cerr << e.what() << std::endl;
@@ -173,7 +157,7 @@ bool World::fillWithFood() {
     return fillWithFood(refillFunction);
 }
 
-Point World::normalisePosition(Point position) {
+Point World::normalisePosition(Point position) const {
     while (position.x < 0.0) position.x += WIDTH;
     position.x = fmod(position.x, WIDTH);
 

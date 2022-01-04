@@ -11,7 +11,7 @@ Brandy * Brandy::reproduce(unsigned long ID) {
 }
 
 Action Brandy::act(const std::unique_ptr<std::vector<Object *>> & visibles) {
-    return Action ((action) Uniform (0, 4).rand());
+    return Action ((action) Uniform (0, 5).rand());
 }
 
 int Brandy::getColor() {

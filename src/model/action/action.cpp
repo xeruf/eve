@@ -8,5 +8,7 @@ std::string Action::toString() {
         case SLEEP: return "sleep";
         case TURN_LEFT: return "turn_left";
         case TURN_RIGHT: return "turn_right";
+        case REPRODUCE: return "reproduce";
     }
+    throw std::logic_error ("This can't be happening...");
 }
